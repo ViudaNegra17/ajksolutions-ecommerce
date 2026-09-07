@@ -1,0 +1,13 @@
+allowBuilds:
+  '@parcel/watcher': false
+  '@prisma/engines': true
+  '@tailwindcss/oxide': false
+  argon2: true
+  esbuild: false
+  prisma: true
+  unrs-resolver: false
+  vue-demi: false
+overrides:
+  vue: 3.5.40
+minimumReleaseAgeExclude:
+  - happy-dom@20.11.13
