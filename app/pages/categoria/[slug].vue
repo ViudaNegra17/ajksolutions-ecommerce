@@ -61,7 +61,7 @@ useHead(() => ({
     <PublicBreadcrumbs :items="category.breadcrumbs" />
     <div class="mt-8 max-w-3xl">
       <h1 class="text-4xl font-black tracking-tight sm:text-5xl">{{ category.name }}</h1>
-      <p v-if="category.description" class="mt-4 text-lg leading-8 text-slate-300">
+      <p v-if="category.description" class="mt-4 text-lg leading-8 text-default">
         {{ category.description }}
       </p>
     </div>

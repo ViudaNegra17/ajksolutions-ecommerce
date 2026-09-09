@@ -46,13 +46,13 @@ const modules = [
   <div>
     <AdminPageHeader
       title="Catálogo"
-      description="Administración comercial centralizada y respaldada por PostgreSQL."
+      description="Gestiona los productos, las categorías y el inventario de tu tienda."
     />
     <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <UCard v-for="module in modules" :key="module.to" class="bg-slate-900/70 ring-white/10">
-        <UIcon :name="module.icon" class="size-8 text-cyan-400" />
+      <UCard v-for="module in modules" :key="module.to" class="bg-default ring-default">
+        <UIcon :name="module.icon" class="size-8 text-primary" />
         <h2 class="mt-4 text-lg font-semibold">{{ module.title }}</h2>
-        <p class="mt-2 min-h-12 text-sm text-slate-400">{{ module.description }}</p>
+        <p class="mt-2 min-h-12 text-sm text-muted">{{ module.description }}</p>
         <UButton :to="module.to" label="Administrar" variant="soft" block class="mt-5" />
       </UCard>
     </div>

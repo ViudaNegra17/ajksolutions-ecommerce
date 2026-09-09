@@ -13,11 +13,11 @@ const formatted = computed(() =>
 
 <template>
   <div>
-    <p v-if="price.mode === 'QUOTE'" class="text-lg font-bold text-cyan-300">Solicitar cotización</p>
-    <p v-else class="text-lg font-black text-white">
-      <span v-if="price.mode === 'FROM'" class="mr-1 text-sm font-medium text-slate-400">Desde</span
+    <p v-if="price.mode === 'QUOTE'" class="text-lg font-bold text-primary">Solicitar cotización</p>
+    <p v-else class="text-lg font-black text-highlighted">
+      <span v-if="price.mode === 'FROM'" class="mr-1 text-sm font-medium text-muted">Desde</span
       >{{ formatted }}
     </p>
-    <p v-if="price.amount" class="text-xs text-slate-500">Precio final calculado con impuestos.</p>
+    <p v-if="price.amount" class="text-xs text-muted">Precio final calculado con impuestos.</p>
   </div>
 </template>

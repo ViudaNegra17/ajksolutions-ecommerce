@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Configuración', robots: 'noindex, nofollow' })
 type Settings = {
@@ -46,7 +47,7 @@ watchEffect(() => {
 async function save() {
   saving.value = true
   try {
-    const result = await $fetch<{ success: true; data: Settings }>('/api/admin/settings', {
+    const result = await adminRequest<{ success: true; data: Settings }>('/api/admin/settings', {
       method: 'PUT',
       body: form
     })
@@ -54,7 +55,7 @@ async function save() {
     toast.add({ title: 'Configuración guardada', color: 'success' })
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo guardar', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -65,7 +66,7 @@ async function save() {
   <div>
     <AdminPageHeader
       title="Configuración operativa"
-      description="Única fuente para negocio, comercio, inventario, SEO y redes."
+      description="Administra los datos del negocio, las condiciones de venta y las alertas del equipo."
     >
       <UButton label="Guardar configuración" icon="i-lucide-save" :loading="saving" @click="save" />
     </AdminPageHeader>
@@ -79,7 +80,7 @@ async function save() {
       <USkeleton v-for="i in 4" :key="i" class="h-64 rounded-2xl" />
     </div>
     <div v-else class="grid gap-5 lg:grid-cols-2">
-      <UCard class="bg-slate-900/70 ring-white/10"
+      <UCard class="bg-default ring-default"
         ><h2 class="text-xl font-bold">Negocio</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre"><UInput v-model="form.business.name" class="w-full" /></UFormField
@@ -97,7 +98,7 @@ async function save() {
             ><UInput v-model="form.business.timeZone" class="w-full"
           /></UFormField></div
       ></UCard>
-      <UCard class="bg-slate-900/70 ring-white/10"
+      <UCard class="bg-default ring-default"
         ><h2 class="text-xl font-bold">Comercio</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Moneda"
@@ -111,25 +112,31 @@ async function save() {
               class="w-full" /></UFormField
           ><UCheckbox v-model="form.commerce.pricesIncludeTax" label="Precios incluyen impuesto" /></div
       ></UCard>
-      <UCard class="bg-slate-900/70 ring-white/10"
+      <UCard class="bg-default ring-default"
         ><h2 class="text-xl font-bold">Inventario y alertas</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Ubicación predeterminada"
             ><UInput v-model="form.inventory.defaultLocationCode" class="w-full" /></UFormField
-          ><UFormField label="Umbral stock bajo"
+          ><UFormField
+            label="Stock mínimo de alerta"
+            description="Los productos con esta cantidad disponible o menos aparecen como stock bajo en el dashboard."
             ><UInput v-model.number="form.inventory.lowStockThreshold" type="number" min="0" class="w-full"
           /></UFormField>
-          <UFormField label="Alerta pedido NEW (horas)"
+          <UFormField
+            label="Alerta de pedidos nuevos (horas)"
+            description="Tiempo sin atención antes de destacar un pedido nuevo."
             ><UInput
               v-model.number="form.operations.orderAlertHours"
               type="number"
               min="1"
               class="w-full" /></UFormField
-          ><UFormField label="Alerta ticket NEW (horas)"
+          ><UFormField
+            label="Alerta de solicitudes nuevas (horas)"
+            description="Tiempo sin atención antes de destacar una solicitud nueva."
             ><UInput v-model.number="form.operations.ticketAlertHours" type="number" min="1" class="w-full"
           /></UFormField></div
       ></UCard>
-      <UCard class="bg-slate-900/70 ring-white/10"
+      <UCard class="bg-default ring-default"
         ><h2 class="text-xl font-bold">SEO</h2>
         <div class="mt-5 grid gap-4">
           <UFormField label="Nombre del sitio"
@@ -140,7 +147,7 @@ async function save() {
             ><UTextarea v-model="form.seo.defaultDescription" class="w-full"
           /></UFormField></div
       ></UCard>
-      <UCard class="bg-slate-900/70 ring-white/10 lg:col-span-2"
+      <UCard class="bg-default ring-default lg:col-span-2"
         ><h2 class="text-xl font-bold">Redes sociales</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Facebook HTTPS"
@@ -149,7 +156,7 @@ async function save() {
             ><UInput v-model="form.social.instagram" class="w-full"
           /></UFormField>
         </div>
-        <p class="mt-4 text-xs text-slate-500">
+        <p class="mt-4 text-xs text-muted">
           Este módulo no admite secretos, credenciales ni variables de infraestructura.
         </p></UCard
       >

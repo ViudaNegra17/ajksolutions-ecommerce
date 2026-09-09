@@ -27,7 +27,7 @@ const hero = computed(() => home.value?.banners.find((banner) => banner.placemen
 const heroDescription = computed(
   () =>
     hero.value?.description ||
-    'Explora un catálogo tecnológico con precios transparentes, disponibilidad real y asesoría cuando la solución requiere una cotización.'
+    'Encuentra equipos, accesorios y productos digitales para tu día a día. Completa tu compra o solicita soporte con atención personalizada por WhatsApp.'
 )
 const secondaryBanners = computed(
   () => home.value?.banners.filter((banner) => banner.placement === 'HOME_SECONDARY') || []
@@ -52,62 +52,74 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 
 <template>
   <div>
-    <section class="relative overflow-hidden border-b border-white/10">
-      <picture v-if="hero" class="absolute inset-0">
-        <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
-        <img :src="hero.imageUrl" :alt="hero.title" class="h-full w-full object-cover opacity-25" />
-      </picture>
+    <section class="relative overflow-hidden border-b border-default bg-ajk-50">
+  
+  <picture v-if="hero" class="absolute inset-0">
+    <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
+    <img :src="hero.imageUrl" :alt="hero.title" class="h-full w-full object-cover opacity-25" />
+  </picture>
+  <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/60" />
+
+  <UContainer class="relative grid items-center gap-8 py-10 lg:grid-cols-12 lg:py-16">
+    
+    
+    <div class="lg:col-span-7">
+      <UBadge :label="hero?.subtitle || 'Tecnología para Personas Naturales y Empresas'" variant="soft" />
+      
+      <h1 class="mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        <template v-if="hero">{{ hero.title }}</template>
+        <template v-else>
+          Tecnología para trabajar, crear y <span class="text-primary">conectar.</span>
+        </template>
+      </h1>
+
+      <p class="mt-4 max-w-xl text-base leading-7 text-default sm:text-lg">
+        {{ heroDescription }}
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <UButton
+          :to="hero?.ctaUrl || '/productos'"
+          :label="hero?.ctaLabel || 'Explorar productos'"
+          size="lg"
+          icon="i-lucide-arrow-right"
+          trailing
+        />
+        <UButton to="/servicios" label="Ver servicios" size="lg" color="neutral" variant="outline" />
+      </div>
+    </div>
+
+    
+    <div class="flex flex-col justify-center gap-3.5 sm:grid sm:grid-cols-3 lg:flex lg:flex-col lg:col-span-5">
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,.22),transparent_42%),radial-gradient(circle_at_bottom_left,rgba(79,70,229,.18),transparent_40%)]"
-      />
-      <UContainer class="relative grid gap-12 py-20 lg:grid-cols-[1.15fr_.85fr] lg:py-28">
-        <div>
-          <UBadge :label="hero?.subtitle || 'Tecnología para personas y empresas'" variant="soft" />
-          <h1 class="mt-6 max-w-4xl text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-            <template v-if="hero">{{ hero.title }}</template>
-            <template v-else
-              >Soluciones que convierten ideas en <span class="text-cyan-300">resultados.</span></template
-            >
-          </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            {{ heroDescription }}
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <UButton
-              :to="hero?.ctaUrl || '/productos'"
-              :label="hero?.ctaLabel || 'Explorar catálogo'"
-              size="xl"
-              icon="i-lucide-arrow-right"
-              trailing
-            />
-            <UButton to="/servicios" label="Conocer servicios" size="xl" color="neutral" variant="outline" />
-          </div>
-        </div>
-        <div class="grid content-end gap-4 sm:grid-cols-3 lg:grid-cols-1">
-          <div
-            v-for="benefit in [
-              [
-                'i-lucide-package-check',
-                'Disponibilidad clara',
-                'Stock propio y disponibilidad bajo pedido.'
-              ],
-              [
-                'i-lucide-badge-dollar-sign',
-                'Precio confiable',
-                'Impuestos calculados desde la configuración real.'
-              ],
-              ['i-lucide-monitor-smartphone', 'Experiencia ágil', 'Catálogo adaptable a cualquier pantalla.']
-            ]"
-            :key="benefit[1]"
-            class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
-          >
-            <UIcon :name="benefit[0]" class="size-6 text-cyan-300" />
-            <p class="mt-3 font-bold">{{ benefit[1] }}</p>
-            <p class="mt-1 text-sm leading-6 text-slate-400">{{ benefit[2] }}</p>
-          </div>
-        </div>
-      </UContainer>
-    </section>
+        v-for="benefit in [
+          [
+            'i-lucide-package-check',
+            'Disponibilidad clara',
+            'Conoce qué puedes recibir y qué podemos conseguir para ti.'
+          ],
+          [
+            'i-lucide-badge-dollar-sign',
+            'Precios claros',
+            'Revisa el total y las condiciones antes de confirmar tu pedido.'
+          ],
+          [
+            'i-lucide-message-circle',
+            'Atención personalizada',
+            'Te acompañamos en la compra y el soporte por WhatsApp.'
+          ]
+        ]"
+        :key="benefit[1]"
+        class="rounded-xl border border-default bg-white/80 p-4 shadow-sm backdrop-blur-sm dark:bg-gray-900/80"
+      >
+        <UIcon :name="benefit[0]" class="size-5 text-primary" />
+        <p class="mt-2 text-sm font-bold">{{ benefit[1] }}</p>
+        <p class="mt-1 text-xs leading-5 text-muted">{{ benefit[2] }}</p>
+      </div>
+    </div>
+
+  </UContainer>
+</section>
 
     <div v-if="status === 'pending'" class="py-24">
       <UContainer class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -128,7 +140,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
           <article
             v-for="banner in secondaryBanners"
             :key="banner.title"
-            class="relative min-h-64 overflow-hidden rounded-3xl border border-white/10 p-7"
+            class="relative min-h-64 overflow-hidden rounded-3xl border border-default p-7"
           >
             <img
               :src="banner.imageUrl"
@@ -136,11 +148,11 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
               class="absolute inset-0 h-full w-full object-cover opacity-25"
             />
             <div class="relative">
-              <p v-if="banner.subtitle" class="text-sm font-bold uppercase text-cyan-300">
+              <p v-if="banner.subtitle" class="text-sm font-bold uppercase text-primary">
                 {{ banner.subtitle }}
               </p>
               <h2 class="mt-2 text-3xl font-black">{{ banner.title }}</h2>
-              <p v-if="banner.description" class="mt-3 max-w-xl text-slate-300">{{ banner.description }}</p>
+              <p v-if="banner.description" class="mt-3 max-w-xl text-default">{{ banner.description }}</p>
               <UButton
                 v-if="banner.ctaUrl"
                 :to="banner.ctaUrl"
@@ -155,7 +167,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         <UContainer>
           <div class="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Explora</p>
+              <p class="text-sm font-bold uppercase tracking-widest text-primary">Explora</p>
               <h2 id="home-categories" class="mt-2 text-3xl font-black">Categorías</h2>
             </div>
             <UButton
@@ -182,9 +194,9 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         </UContainer>
       </section>
 
-      <section class="border-y border-white/10 bg-slate-900/35 py-16" aria-labelledby="featured-products">
+      <section class="border-y border-default bg-default py-16" aria-labelledby="featured-products">
         <UContainer>
-          <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Selección especial</p>
+          <p class="text-sm font-bold uppercase tracking-widest text-primary">Selección especial</p>
           <h2 id="featured-products" class="mb-8 mt-2 text-3xl font-black">Productos destacados</h2>
           <PublicProductGrid :products="home.featured" />
         </UContainer>
@@ -192,7 +204,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 
       <section class="py-16" aria-labelledby="new-products">
         <UContainer>
-          <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Recién publicados</p>
+          <p class="text-sm font-bold uppercase tracking-widest text-primary">Recién publicados</p>
           <h2 id="new-products" class="mb-8 mt-2 text-3xl font-black">Nuevos productos</h2>
           <PublicProductGrid :products="home.newest" />
         </UContainer>
@@ -200,12 +212,12 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 
       <section
         v-if="home.services.length"
-        class="border-y border-white/10 bg-gradient-to-r from-cyan-950/30 to-indigo-950/30 py-16"
+        class="border-y border-default bg-gradient-to-r from-ajk-50 to-muted py-16"
       >
         <UContainer
           ><div class="mb-8 flex items-end justify-between">
             <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Atención especializada</p>
+              <p class="text-sm font-bold uppercase tracking-widest text-primary">Atención especializada</p>
               <h2 class="mt-2 text-3xl font-black">Servicios destacados</h2>
             </div>
             <UButton to="/servicios" label="Ver todos" variant="ghost" trailing icon="i-lucide-arrow-right" />
@@ -215,21 +227,21 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         ></UContainer>
       </section>
 
-      <section class="border-y border-white/10 bg-gradient-to-r from-cyan-950/30 to-indigo-950/30 py-16">
+      <section class="border-y border-default bg-gradient-to-r from-ajk-50 to-muted py-16">
         <UContainer class="grid gap-6 md:grid-cols-2">
-          <UCard class="bg-slate-950/60 ring-white/10">
-            <UIcon name="i-lucide-wrench" class="size-8 text-cyan-300" />
+          <UCard class="bg-default ring-default">
+            <UIcon name="i-lucide-wrench" class="size-8 text-primary" />
             <h2 class="mt-5 text-2xl font-black">Servicios tecnológicos</h2>
-            <p class="mt-3 leading-7 text-slate-400">
-              Conoce el espacio preparado para soporte y soluciones profesionales.
+            <p class="mt-3 leading-7 text-muted">
+              Solicita soporte, mantenimiento y soluciones para tus equipos. Cuéntanos qué necesitas.
             </p>
             <UButton to="/servicios" label="Ver servicios" class="mt-6" variant="soft" />
           </UCard>
-          <UCard class="bg-slate-950/60 ring-white/10">
-            <UIcon name="i-lucide-key-round" class="size-8 text-indigo-300" />
-            <h2 class="mt-5 text-2xl font-black">Licencias digitales</h2>
-            <p class="mt-3 leading-7 text-slate-400">
-              Consulta el espacio de software original, sin iniciar todavía un flujo de compra.
+          <UCard class="bg-default ring-default">
+            <UIcon name="i-lucide-key-round" class="size-8 text-primary" />
+            <h2 class="mt-5 text-2xl font-black">Software y productos digitales</h2>
+            <p class="mt-3 leading-7 text-muted">
+              Encuentra licencias y soluciones digitales y coordina tu compra directamente por WhatsApp.
             </p>
             <UButton
               to="/productos"
@@ -250,7 +262,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
               v-for="brand in home.brands"
               :key="brand.slug"
               :to="{ path: '/productos', query: { brand: brand.slug } }"
-              class="rounded-xl border border-white/10 bg-slate-900 px-5 py-3 font-semibold text-slate-300 hover:border-cyan-400/40 hover:text-white"
+              class="rounded-xl border border-default bg-default px-5 py-3 font-semibold text-default hover:border-primary hover:text-highlighted"
             >
               {{ brand.name }}
             </NuxtLink>

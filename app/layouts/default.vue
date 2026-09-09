@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-slate-950 text-white"
+    class="min-h-screen bg-default text-highlighted"
     data-public-app
     :data-hydrated="hydrated ? 'true' : 'false'"
   >

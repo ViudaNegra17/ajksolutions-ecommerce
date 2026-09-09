@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Categorías', robots: 'noindex, nofollow' })
 
@@ -61,15 +62,22 @@ async function save() {
   saving.value = true
   try {
     const body = { ...form, slug: form.slug || undefined, parentId: form.parentId || null }
-    await $fetch(selected.value ? `/api/admin/categories/${selected.value.id}` : '/api/admin/categories', {
-      method: selected.value ? 'PUT' : 'POST',
-      body
-    })
+    await adminRequest(
+      selected.value ? `/api/admin/categories/${selected.value.id}` : '/api/admin/categories',
+      {
+        method: selected.value ? 'PUT' : 'POST',
+        body
+      }
+    )
     toast.add({ title: selected.value ? 'Categoría actualizada' : 'Categoría creada', color: 'success' })
     open.value = false
     await Promise.all([refresh(), refreshTree()])
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar la categoría', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo guardar la categoría',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     saving.value = false
   }
@@ -79,12 +87,16 @@ async function remove() {
   if (!selected.value) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/categories/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/categories/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Categoría eliminada', color: 'success' })
     confirmOpen.value = false
     await Promise.all([refresh(), refreshTree()])
   } catch (cause) {
-    toast.add({ title: 'No se pudo eliminar la categoría', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo eliminar la categoría',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     saving.value = false
   }
@@ -104,12 +116,12 @@ async function remove() {
       @update:model-value="page = 1"
     />
     <UAlert v-if="error" color="error" title="No se pudieron cargar las categorías" />
-    <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10">
+    <UCard class="overflow-x-auto bg-default ring-default">
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 4" :key="index" class="h-10" />
       </div>
       <table v-else class="w-full min-w-180 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Nombre</th>
             <th>Padre</th>
@@ -120,10 +132,10 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-slate-500">{{ item.slug }}</div>
+              <div class="text-xs text-muted">{{ item.slug }}</div>
             </td>
             <td>{{ item.parent?.name || 'Raíz' }}</td>
             <td>{{ item.sortOrder }}</td>
@@ -161,20 +173,15 @@ async function remove() {
       class="mt-4"
     />
 
-    <div
-      v-if="open"
-      class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-    >
-      <UCard class="w-full max-w-xl bg-slate-900 ring-white/10">
+    <AdminFormDialog v-model:open="open" title="Datos del registro">
+      <UCard class="w-full max-w-xl bg-default ring-default">
         <h2 class="text-xl font-bold">{{ selected ? 'Editar categoría' : 'Nueva categoría' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
           ><UFormField label="Slug">
             <UInput v-model="form.slug" class="w-full" placeholder="Automático" /> </UFormField
           ><UFormField label="Categoría padre">
-            <select v-model="form.parentId" class="w-full rounded-md border border-white/10 bg-slate-950 p-2">
+            <select v-model="form.parentId" class="w-full rounded-md border border-default bg-default p-2">
               <option value="">Raíz</option>
               <option
                 v-for="item in treeData?.data.filter((category) => category.id !== selected?.id)"
@@ -196,9 +203,8 @@ async function remove() {
             :loading="saving"
             @click="save"
           />
-        </div>
-      </UCard>
-    </div>
+        </div> </UCard
+    ></AdminFormDialog>
     <AdminConfirmDialog
       :open="confirmOpen"
       title="¿Eliminar categoría?"

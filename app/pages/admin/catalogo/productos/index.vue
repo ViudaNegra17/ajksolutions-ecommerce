@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Productos', robots: 'noindex, nofollow' })
 type Product = {
@@ -60,12 +61,16 @@ async function remove() {
   if (!selected.value) return
   deleting.value = true
   try {
-    await $fetch(`/api/admin/products/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/products/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Producto eliminado', color: 'success' })
     confirmOpen.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo eliminar el producto', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo eliminar el producto',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     deleting.value = false
   }
@@ -83,53 +88,53 @@ async function remove() {
         label="Nuevo producto"
         icon="i-lucide-plus"
       /> </AdminPageHeader
-    ><UCard class="mb-4 bg-slate-900/70 ring-white/10">
+    ><UCard class="mb-4 bg-default ring-default">
       <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-4">
         <UInput
           v-model="filters.search"
           placeholder="Código, SKU, nombre o slug"
           icon="i-lucide-search"
-        /><select v-model="filters.categoryId" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        /><select v-model="filters.categoryId" class="rounded-md border border-default bg-default p-2">
           <option value="">Todas las categorías</option>
           <option v-for="item in categories?.data" :key="item.id" :value="item.id">
             {{ item.name }}
           </option></select
-        ><select v-model="filters.brandId" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.brandId" class="rounded-md border border-default bg-default p-2">
           <option value="">Todas las marcas</option>
           <option v-for="item in brands?.data.items" :key="item.id" :value="item.id">
             {{ item.name }}
           </option></select
-        ><select v-model="filters.supplierId" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.supplierId" class="rounded-md border border-default bg-default p-2">
           <option value="">Todos los proveedores</option>
           <option v-for="item in suppliers?.data.items" :key="item.id" :value="item.id">
             {{ item.name }}
           </option></select
-        ><select v-model="filters.active" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.active" class="rounded-md border border-default bg-default p-2">
           <option value="">Cualquier estado</option>
           <option value="true">Activos</option>
           <option value="false">Inactivos</option></select
-        ><select v-model="filters.featured" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.featured" class="rounded-md border border-default bg-default p-2">
           <option value="">Destacado o no</option>
           <option value="true">Destacados</option>
           <option value="false">No destacados</option></select
-        ><select v-model="filters.priceMode" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.priceMode" class="rounded-md border border-default bg-default p-2">
           <option value="">Cualquier precio</option>
           <option value="FIXED">Precio fijo</option>
           <option value="CONTACT">Consultar</option></select
-        ><select v-model="filters.stock" class="rounded-md border border-white/10 bg-slate-950 p-2">
+        ><select v-model="filters.stock" class="rounded-md border border-default bg-default p-2">
           <option value="">Cualquier stock</option>
           <option value="with">Con stock propio</option>
           <option value="without">Sin stock propio</option>
         </select>
       </div> </UCard
     ><UAlert v-if="error" color="error" title="No se pudieron cargar los productos" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
     >
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 6" :key="index" class="h-14" />
       </div>
       <table v-else class="w-full min-w-280 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Imagen</th>
             <th>Código / SKU</th>
@@ -144,7 +149,7 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3">
               <img
                 v-if="item.images[0]"
@@ -152,13 +157,13 @@ async function remove() {
                 :alt="item.images[0].alt || item.name"
                 class="size-12 rounded-lg object-cover"
               />
-              <div v-else class="grid size-12 place-items-center rounded-lg bg-white/5">
+              <div v-else class="grid size-12 place-items-center rounded-lg bg-muted">
                 <UIcon name="i-lucide-image" />
               </div>
             </td>
             <td>
-              <div class="font-mono text-cyan-400">{{ item.productCode }}</div>
-              <div class="text-xs text-slate-500">{{ item.sku }}</div>
+              <div class="font-mono text-primary">{{ item.productCode }}</div>
+              <div class="text-xs text-muted">{{ item.sku }}</div>
             </td>
             <td class="font-medium">
               {{ item.name }}<UBadge v-if="item.featured" class="ml-2" size="xs">Destacado</UBadge>
@@ -201,7 +206,7 @@ async function remove() {
     /><AdminConfirmDialog
       :open="confirmOpen"
       title="¿Desactivar producto?"
-      description="El producto dejará de estar activo y se conservará mediante soft delete."
+      description="El producto dejará de estar publicado. Se conservará su historial."
       :loading="deleting"
       @close="confirmOpen = false"
       @confirm="remove"

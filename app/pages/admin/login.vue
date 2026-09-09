@@ -34,17 +34,12 @@ async function submit(event: FormSubmitEvent<LoginInput>) {
 </script>
 
 <template>
-  <div class="grid min-h-screen place-items-center bg-slate-950 px-4 text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(6,182,212,.18),transparent_42%)]" />
-    <UCard class="relative w-full max-w-md bg-slate-900/90 ring-white/10">
+  <div class="grid min-h-screen place-items-center bg-default px-4 text-highlighted">
+    <UCard class="relative w-full max-w-md bg-default ring-default">
       <div class="mb-8 text-center">
-        <div
-          class="mx-auto grid size-12 place-items-center rounded-2xl bg-cyan-500 font-black text-slate-950"
-        >
-          A
-        </div>
+        <AppLogo class="mx-auto w-40" />
         <h1 class="mt-5 text-2xl font-bold">Acceso administrativo</h1>
-        <p class="mt-2 text-sm text-slate-400">Gestiona AjkSolutionS e-Commerce de forma segura.</p>
+        <p class="mt-2 text-sm text-muted">Gestiona AjkSolutionS e-Commerce de forma segura.</p>
       </div>
       <UAlert
         v-if="errorMessage"

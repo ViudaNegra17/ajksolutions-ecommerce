@@ -37,8 +37,7 @@ const itemPayload = computed(() => ({
 }))
 
 function readableError(error: unknown) {
-  const value = error as { data?: { data?: { error?: { message?: string } }; statusMessage?: string } }
-  return value.data?.data?.error?.message || value.data?.statusMessage || 'No se pudo procesar la compra.'
+  return uiErrorMessage(error)
 }
 
 async function refreshPreview() {
@@ -105,9 +104,9 @@ onMounted(async () => {
       ]"
     />
     <div class="mt-7">
-      <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Compra directa</p>
+      <p class="text-sm font-bold uppercase tracking-widest text-primary">Compra directa</p>
       <h1 class="mt-2 text-4xl font-black">Comprar producto digital</h1>
-      <p class="mt-3 text-slate-400">
+      <p class="mt-3 text-muted">
         Compra individual, coordinación por WhatsApp, sin dirección ni costo de envío.
       </p>
     </div>
@@ -119,7 +118,7 @@ onMounted(async () => {
       :description="errorMessage"
     />
     <form class="mt-8 grid gap-7 lg:grid-cols-[1fr_380px]" @submit.prevent="confirmOrder">
-      <UCard class="h-fit bg-slate-900/70 ring-white/10">
+      <UCard class="h-fit bg-default ring-default">
         <h2 class="text-xl font-black">Datos del cliente</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombres" required>
@@ -143,19 +142,19 @@ onMounted(async () => {
           description="Después de confirmar el pedido, el vendedor coordinará el pago y entregará manualmente el producto digital por WhatsApp."
         />
       </UCard>
-      <UCard class="h-fit bg-slate-900/70 ring-white/10 lg:sticky lg:top-24">
+      <UCard class="h-fit bg-default ring-default lg:sticky lg:top-24">
         <h2 class="text-xl font-black">Resumen</h2>
         <div v-if="loading" class="mt-5 space-y-3">
           <USkeleton v-for="index in 4" :key="index" class="h-10" />
         </div>
         <template v-else-if="preview">
-          <div class="mt-5 border-b border-white/10 pb-4">
+          <div class="mt-5 border-b border-default pb-4">
             <div class="flex justify-between gap-4">
               <span>{{ product.name }}</span>
               <strong>{{ formatCurrency(preview.total, preview.currency) }}</strong>
             </div>
-            <p v-if="selectedVariant" class="mt-1 text-xs text-slate-400">{{ selectedVariant.name }}</p>
-            <p class="mt-2 text-xs text-cyan-300">Cantidad: 1 · Entrega digital</p>
+            <p v-if="selectedVariant" class="mt-1 text-xs text-muted">{{ selectedVariant.name }}</p>
+            <p class="mt-2 text-xs text-primary">Cantidad: 1 · Entrega digital</p>
           </div>
           <dl class="mt-5 space-y-2 text-sm">
             <div class="flex justify-between">
@@ -170,7 +169,7 @@ onMounted(async () => {
               <dt>Envío</dt>
               <dd>{{ formatCurrency(preview.shipping, preview.currency) }}</dd>
             </div>
-            <div class="flex justify-between border-t border-white/10 pt-4 text-lg font-black">
+            <div class="flex justify-between border-t border-default pt-4 text-lg font-black">
               <dt>Total</dt>
               <dd>{{ formatCurrency(preview.total, preview.currency) }}</dd>
             </div>

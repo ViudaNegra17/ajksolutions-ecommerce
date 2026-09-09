@@ -58,6 +58,32 @@ const state = computed(() =>
     Object.entries(route.query).flatMap(([key, value]) => (typeof value === 'string' ? [[key, value]] : []))
   )
 )
+const activeFilters = computed(() =>
+  Object.entries(state.value)
+    .filter(([key]) => !['page', 'pageSize', 'sort'].includes(key))
+    .map(([key, value]) => {
+      const names: Record<string, string> = {
+        search: 'Búsqueda',
+        category: 'Categoría',
+        brand: 'Marca',
+        priceMode: 'Precio',
+        availability: 'Disponibilidad',
+        featured: 'Destacados',
+        minPrice: 'Precio mínimo',
+        maxPrice: 'Precio máximo',
+        attributes: 'Características'
+      }
+      const values: Record<string, string> = {
+        FIXED: 'Publicado',
+        CONTACT: 'Consultar precio',
+        OWN_STOCK: 'Disponible',
+        SUPPLIER_STOCK: 'Bajo pedido',
+        OUT_OF_STOCK: 'Agotado',
+        true: 'Sí'
+      }
+      return { key, label: (names[key] || 'Filtro') + ': ' + (values[value] || value) }
+    })
+)
 watch(
   () => route.query.search,
   (value) => (search.value = typeof value === 'string' ? value : '')
@@ -105,16 +131,16 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
     <section
       v-for="banner in topBanners"
       :key="`${banner.title}-${banner.imageUrl}`"
-      class="relative mt-6 overflow-hidden rounded-2xl border border-white/10 bg-slate-900"
+      class="relative mt-6 overflow-hidden rounded-2xl border border-default bg-default"
     >
       <picture class="absolute inset-0">
         <source v-if="banner.mobileImageUrl" :srcset="banner.mobileImageUrl" media="(max-width: 639px)" />
         <img :src="banner.imageUrl" :alt="banner.title" class="h-full w-full object-cover opacity-25" />
       </picture>
       <div class="relative p-6 sm:p-8">
-        <p v-if="banner.subtitle" class="text-sm font-semibold text-cyan-300">{{ banner.subtitle }}</p>
+        <p v-if="banner.subtitle" class="text-sm font-semibold text-primary">{{ banner.subtitle }}</p>
         <h2 class="mt-1 text-2xl font-black">{{ banner.title }}</h2>
-        <p v-if="banner.description" class="mt-2 max-w-2xl text-slate-300">{{ banner.description }}</p>
+        <p v-if="banner.description" class="mt-2 max-w-2xl text-default">{{ banner.description }}</p>
         <UButton
           v-if="banner.ctaLabel && banner.ctaUrl"
           :to="banner.ctaUrl"
@@ -126,7 +152,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
     <div class="mt-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
       <div>
         <h1 class="text-4xl font-black tracking-tight">Productos</h1>
-        <p class="mt-2 text-slate-400">
+        <p class="mt-2 text-muted">
           {{ catalog ? `${catalog.pagination.total} resultados` : 'Explora el catálogo' }}
         </p>
       </div>
@@ -151,7 +177,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         variant="outline"
         @click="filterOpen = true"
       />
-      <label class="ml-auto flex items-center gap-2 text-sm text-slate-400">
+      <label class="ml-auto flex items-center gap-2 text-sm text-muted">
         Ordenar
         <select
           :value="state.sort || 'relevance'"
@@ -166,11 +192,26 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         </select>
       </label>
     </div>
+    <div v-if="activeFilters.length" class="mt-5 flex flex-wrap gap-2" aria-label="Filtros activos">
+      <UButton
+        v-for="filter in activeFilters"
+        :key="filter.key"
+        :label="filter.label"
+        :aria-label="'Quitar ' + filter.label"
+        trailing-icon="i-lucide-x"
+        size="sm"
+        variant="soft"
+        @click="changeFilters({ [filter.key]: undefined })"
+      />
+      <UButton
+        label="Limpiar filtros"
+        color="neutral"
+        variant="ghost"
+        @click="changeFilters({ __clear: 'true' })"
+      />
+    </div>
     <div class="mt-6 grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
-      <aside
-        class="hidden rounded-2xl border border-white/10 bg-slate-900/50 p-5 lg:block"
-        aria-label="Filtros"
-      >
+      <aside class="hidden rounded-2xl border border-default bg-default p-5 lg:block" aria-label="Filtros">
         <PublicCatalogFilters
           v-if="catalog"
           :categories="catalog.filters.categories"
@@ -205,7 +246,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
               :disabled="catalog.pagination.page <= 1"
               @click="goToPage(catalog.pagination.page - 1)"
             />
-            <span class="text-sm text-slate-400"
+            <span class="text-sm text-muted"
               >Página {{ catalog.pagination.page }} de {{ catalog.pagination.totalPages }}</span
             >
             <UButton
@@ -219,25 +260,13 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         </template>
       </div>
     </div>
-    <div
-      v-if="filterOpen"
-      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm lg:hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Filtros del catálogo"
+    <USlideover
+      v-model:open="filterOpen"
+      title="Filtros del catálogo"
+      description="Encuentra el producto que necesitas"
+      :close="{ label: 'Cerrar filtros' }"
     >
-      <aside class="ml-auto h-full w-[min(90vw,24rem)] overflow-y-auto bg-slate-950 p-5 shadow-2xl">
-        <div class="mb-6 flex items-center justify-between">
-          <h2 class="text-xl font-black">Filtros</h2>
-          <button
-            type="button"
-            class="grid size-11 place-items-center"
-            aria-label="Cerrar filtros"
-            @click="filterOpen = false"
-          >
-            <UIcon name="i-lucide-x" class="size-5" />
-          </button>
-        </div>
+      <template #body>
         <PublicCatalogFilters
           v-if="catalog"
           :categories="catalog.filters.categories"
@@ -246,7 +275,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
           :state="state"
           @update-filters="changeFilters"
         />
-      </aside>
-    </div>
+      </template>
+    </USlideover>
   </UContainer>
 </template>

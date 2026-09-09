@@ -10,7 +10,7 @@ const querySchema = z.object({
     .optional()
 })
 
-export default defineEventHandler(async (event) => ({
+export default definePublicCachedHandler('services', async (event) => ({
   success: true,
   data: await publicServiceService.list(parseValidatedQuery(event, querySchema))
 }))

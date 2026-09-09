@@ -47,9 +47,9 @@ function choose(attributeSlug: string, value: string) {
 
 <template>
   <fieldset v-if="variants.length" class="space-y-5">
-    <legend class="mb-3 text-sm font-semibold text-slate-200">Selecciona una variante</legend>
+    <legend class="mb-3 text-sm font-semibold text-default">Selecciona una variante</legend>
     <div v-for="group in groups" :key="group.slug">
-      <p class="mb-2 text-sm text-slate-400">{{ group.name }}</p>
+      <p class="mb-2 text-sm text-muted">{{ group.name }}</p>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="option in group.options"
@@ -58,10 +58,10 @@ function choose(attributeSlug: string, value: string) {
           :disabled="!candidateFor(group.slug, option.value)"
           :aria-pressed="selected[group.slug] === option.value"
           :class="[
-            'min-h-11 rounded-xl border px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-cyan-400 disabled:cursor-not-allowed disabled:opacity-30',
+            'min-h-11 rounded-xl border px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-30',
             selected[group.slug] === option.value
-              ? 'border-cyan-400 bg-cyan-400 text-slate-950'
-              : 'border-white/15 bg-slate-900 text-slate-200 hover:border-cyan-400/50'
+              ? 'border-primary bg-primary text-white'
+              : 'border-default bg-default text-default hover:border-primary'
           ]"
           @click="choose(group.slug, option.value)"
         >

@@ -11,7 +11,7 @@ defineProps<{ availability: PublicAvailability }>()
       :class="[
         'mt-1 size-2 shrink-0 rounded-full',
         availability.source === 'DIGITAL'
-          ? 'bg-cyan-400'
+          ? 'bg-primary'
           : availability.source === 'OWN_STOCK'
             ? 'bg-emerald-400'
             : availability.source === 'SUPPLIER_STOCK'
@@ -20,10 +20,10 @@ defineProps<{ availability: PublicAvailability }>()
       ]"
     />
     <div>
-      <p class="font-medium text-slate-200">{{ availabilityLabel(availability.source) }}</p>
+      <p class="font-medium text-default">{{ availabilityLabel(availability.source) }}</p>
       <p
         v-if="availability.source === 'SUPPLIER_STOCK' && availability.estimatedLeadTimeDays"
-        class="text-xs text-slate-500"
+        class="text-xs text-muted"
       >
         Entrega estimada: {{ availability.estimatedLeadTimeDays }} días
       </p>

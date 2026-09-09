@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Marcas', robots: 'noindex, nofollow' })
 type Brand = {
@@ -48,7 +49,7 @@ function confirmRemove(item: Brand) {
 async function save() {
   saving.value = true
   try {
-    await $fetch(selected.value ? `/api/admin/brands/${selected.value.id}` : '/api/admin/brands', {
+    await adminRequest(selected.value ? `/api/admin/brands/${selected.value.id}` : '/api/admin/brands', {
       method: selected.value ? 'PUT' : 'POST',
       body: {
         ...form,
@@ -61,7 +62,7 @@ async function save() {
     open.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar la marca', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo guardar la marca', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -70,12 +71,12 @@ async function remove() {
   if (!selected.value) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/brands/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/brands/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Marca eliminada', color: 'success' })
     confirmOpen.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo eliminar la marca', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo eliminar la marca', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -92,13 +93,13 @@ async function remove() {
       icon="i-lucide-search"
       class="mb-4 max-w-md"
     /><UAlert v-if="error" color="error" title="No se pudieron cargar las marcas" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
     >
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 4" :key="index" class="h-10" />
       </div>
       <table v-else class="w-full min-w-150 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Marca</th>
             <th>Productos</th>
@@ -107,10 +108,10 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-slate-500">{{ item.slug }}</div>
+              <div class="text-xs text-muted">{{ item.slug }}</div>
             </td>
             <td>{{ item._count?.products || 0 }}</td>
             <td><AdminStatusBadge :active="item.active" /></td>
@@ -140,13 +141,8 @@ async function remove() {
       :items-per-page="20"
       class="mt-4"
     />
-    <div
-      v-if="open"
-      class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-    >
-      <UCard class="w-full max-w-xl bg-slate-900 ring-white/10">
+    <AdminFormDialog v-model:open="open" title="Datos del registro">
+      <UCard class="w-full max-w-xl bg-default ring-default">
         <h2 class="text-xl font-bold">{{ selected ? 'Editar marca' : 'Nueva marca' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
@@ -164,13 +160,12 @@ async function remove() {
             :loading="saving"
             @click="save"
           />
-        </div>
-      </UCard>
-    </div>
+        </div> </UCard
+    ></AdminFormDialog>
     <AdminConfirmDialog
       :open="confirmOpen"
       title="¿Eliminar marca?"
-      description="La marca quedará desactivada mediante soft delete; sus productos se conservan."
+      description="La marca quedará desactivada; sus productos se conservan."
       :loading="saving"
       @close="confirmOpen = false"
       @confirm="remove"

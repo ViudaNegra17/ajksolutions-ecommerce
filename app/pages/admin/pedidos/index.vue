@@ -37,18 +37,7 @@ const query = computed(() => ({
 const { data, status, error } = await useFetch<{ success: true; data: PageData }>('/api/admin/orders', {
   query
 })
-const labels: Record<string, string> = {
-  NEW: 'Nuevo',
-  CONTACTED: 'Contactado',
-  CONFIRMED: 'Confirmado',
-  PAYMENT_PENDING: 'Pago pendiente',
-  PAID: 'Pagado',
-  PREPARING: 'Preparando',
-  READY: 'Listo',
-  SHIPPED: 'Enviado',
-  DELIVERED: 'Entregado',
-  CANCELLED: 'Cancelado'
-}
+const labels = orderStatusLabels
 </script>
 
 <template>
@@ -56,16 +45,16 @@ const labels: Record<string, string> = {
     <AdminPageHeader title="Pedidos" description="Pedidos web, reservas y seguimiento comercial." />
     <div class="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
       <UInput v-model="search" icon="i-lucide-search" placeholder="ORD, cliente o contacto" />
-      <select v-model="statusFilter" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      <select v-model="statusFilter" class="rounded-md border border-default bg-default px-3">
         <option value="">Todos los estados</option>
         <option v-for="item in orderStatuses" :key="item" :value="item">{{ labels[item] }}</option>
       </select>
-      <select v-model="deliveryType" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      <select v-model="deliveryType" class="rounded-md border border-default bg-default px-3">
         <option value="">Toda entrega</option>
         <option value="PICKUP">Retiro</option>
         <option value="DELIVERY">Entrega</option>
       </select>
-      <select v-model="availabilitySource" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      <select v-model="availabilitySource" class="rounded-md border border-default bg-default px-3">
         <option value="">Toda disponibilidad</option>
         <option value="OWN_STOCK">Stock propio</option>
         <option value="SUPPLIER_STOCK">Proveedor</option>
@@ -74,12 +63,12 @@ const labels: Record<string, string> = {
       <UInput v-model="dateTo" type="date" aria-label="Fecha hasta" />
     </div>
     <UAlert v-if="error" color="error" title="No se pudieron cargar los pedidos" />
-    <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10">
+    <UCard class="overflow-x-auto bg-default ring-default">
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="i in 6" :key="i" class="h-10" />
       </div>
       <table v-else class="w-full min-w-220 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Pedido</th>
             <th>Fecha</th>
@@ -93,8 +82,8 @@ const labels: Record<string, string> = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
-            <td class="p-3 font-mono font-bold text-cyan-300">{{ item.orderNumber }}</td>
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
+            <td class="p-3 font-mono font-bold text-primary">{{ item.orderNumber }}</td>
             <td>{{ new Date(item.createdAt).toLocaleString('es-EC') }}</td>
             <td>{{ item.customer }}</td>
             <td>{{ item.itemCount }}</td>

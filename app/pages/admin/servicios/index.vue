@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Servicios', robots: 'noindex, nofollow' })
 type Row = {
@@ -31,12 +32,12 @@ async function remove() {
   if (!selected.value) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/services/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/services/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Servicio desactivado', color: 'success' })
     confirmOpen.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo eliminar', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo eliminar', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -56,12 +57,12 @@ async function remove() {
       icon="i-lucide-search"
       placeholder="Buscar por código o nombre"
     /><UAlert v-if="error" color="error" title="No se pudieron cargar los servicios" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
       ><div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="i in 5" :key="i" class="h-10" />
       </div>
       <table v-else class="w-full min-w-180 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Código</th>
             <th>Servicio</th>
@@ -73,11 +74,11 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-mono">{{ item.serviceCode }}</td>
             <td>
               <strong>{{ item.name }}</strong>
-              <div class="text-xs text-slate-500">{{ item._count.fields }} campos</div>
+              <div class="text-xs text-muted">{{ item._count.fields }} campos</div>
             </td>
             <td>{{ item.category.name }}</td>
             <td>

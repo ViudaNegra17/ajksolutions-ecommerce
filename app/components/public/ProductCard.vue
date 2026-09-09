@@ -34,11 +34,11 @@ onMounted(() => cart.hydrate())
 
 <template>
   <article
-    class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-950/30"
+    class="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-default shadow-sm transition hover:border-primary hover:shadow-lg"
   >
     <NuxtLink
       :to="`/productos/${product.slug}`"
-      class="relative block aspect-[4/3] overflow-hidden bg-slate-800"
+      class="relative block aspect-[4/3] overflow-hidden bg-default"
     >
       <NuxtImg
         v-if="product.image"
@@ -48,15 +48,16 @@ onMounted(() => cart.hydrate())
         height="360"
         format="webp"
         loading="lazy"
-        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        sizes="100vw sm:50vw lg:33vw xl:25vw"
+        class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-105"
       />
-      <div v-else class="grid h-full place-items-center bg-gradient-to-br from-slate-800 to-slate-900">
-        <UIcon name="i-lucide-image" class="size-12 text-slate-600" aria-hidden="true" />
+      <div v-else class="grid h-full place-items-center bg-gradient-to-br from-muted to-elevated">
+        <UIcon name="i-lucide-image" class="size-12 text-muted" aria-hidden="true" />
         <span class="sr-only">Producto sin imagen</span>
       </div>
       <span
-        v-if="product.featured"
-        class="absolute left-3 top-3 rounded-full bg-cyan-400 px-2.5 py-1 text-xs font-bold text-slate-950"
+        v-if="product.featured && !product.promotion"
+        class="absolute left-3 top-3 rounded-full bg-primary px-2.5 py-1 text-xs font-bold text-white"
       >
         Destacado
       </span>
@@ -71,20 +72,20 @@ onMounted(() => cart.hydrate())
       />
       <UBadge
         v-if="product.productType !== 'PHYSICAL'"
-        label="Licencia digital"
+        label="Producto digital"
         color="info"
         variant="soft"
         class="mb-3 self-start"
       />
-      <p class="text-xs font-semibold uppercase tracking-wider text-cyan-400">
+      <p class="text-xs font-semibold uppercase tracking-wider text-primary">
         {{ product.brand?.name || product.category.name }}
       </p>
-      <h3 class="mt-2 text-lg font-bold leading-snug text-white">
-        <NuxtLink :to="`/productos/${product.slug}`" class="hover:text-cyan-300">
+      <h3 class="mt-2 text-lg font-bold leading-snug text-highlighted">
+        <NuxtLink :to="`/productos/${product.slug}`" class="hover:text-primary">
           {{ product.name }}
         </NuxtLink>
       </h3>
-      <p v-if="product.shortDescription" class="mt-2 line-clamp-2 text-sm leading-6 text-slate-400">
+      <p v-if="product.shortDescription" class="mt-2 line-clamp-2 text-sm leading-6 text-muted">
         {{ product.shortDescription }}
       </p>
       <div class="mt-auto space-y-4 pt-5">
@@ -93,7 +94,7 @@ onMounted(() => cart.hydrate())
           v-if="product.productType === 'PHYSICAL'"
           :availability="product.availability"
         />
-        <p v-else class="text-sm text-cyan-200">Entrega digital coordinada por WhatsApp</p>
+        <p v-else class="text-sm text-primary">Entrega digital coordinada por WhatsApp</p>
         <UButton
           v-if="action === 'ADD_TO_CART'"
           :label="actionLabel"

@@ -154,7 +154,7 @@ function submit() {
 
 <template>
   <form class="space-y-6" @submit.prevent="submit">
-    <UCard class="bg-slate-900/70 ring-white/10"
+    <UCard class="bg-default ring-default"
       ><h2 class="mb-5 text-xl font-bold">Información general</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <UFormField label="Nombre" required><UInput v-model="form.name" required class="w-full" /></UFormField
@@ -165,7 +165,7 @@ function submit() {
             v-model="form.categoryId"
             data-testid="service-category"
             required
-            class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+            class="w-full rounded-md border border-default bg-default px-3 py-2"
           >
             <option value="">Selecciona</option>
             <option v-for="item in categories" :key="item.id" :value="item.id">{{ item.name }}</option>
@@ -177,13 +177,13 @@ function submit() {
           ><UTextarea v-model="form.description" class="w-full" :rows="7"
         /></UFormField></div
     ></UCard>
-    <UCard class="bg-slate-900/70 ring-white/10"
+    <UCard class="bg-default ring-default"
       ><h2 class="mb-5 text-xl font-bold">Precio y atención</h2>
       <div class="grid gap-4 sm:grid-cols-3">
         <UFormField label="Modalidad de precio"
           ><select
             v-model="form.priceMode"
-            class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+            class="w-full rounded-md border border-default bg-default px-3 py-2"
           >
             <option value="FIXED">Precio fijo</option>
             <option value="FROM">Desde</option>
@@ -211,11 +211,13 @@ function submit() {
           />
         </div></div
     ></UCard>
-    <UCard class="bg-slate-900/70 ring-white/10"
+    <UCard class="bg-default ring-default"
       ><div class="mb-5 flex items-center justify-between">
         <div>
           <h2 class="text-xl font-bold">Formulario dinámico</h2>
-          <p class="text-sm text-slate-400">Los campos publicados se validan también en el servidor.</p>
+          <p class="text-sm text-muted">
+            Define las preguntas que el cliente completará al solicitar este servicio.
+          </p>
         </div>
         <UButton type="button" label="Agregar campo" icon="i-lucide-plus" variant="soft" @click="addField" />
       </div>
@@ -223,7 +225,7 @@ function submit() {
         <div
           v-for="(field, index) in form.fields"
           :key="field.id || index"
-          class="rounded-xl border border-white/10 p-4"
+          class="rounded-xl border border-default p-4"
         >
           <div class="mb-3 flex justify-between">
             <strong>Campo {{ index + 1 }}</strong>
@@ -267,9 +269,9 @@ function submit() {
             ><UFormField label="Tipo"
               ><select
                 v-model="field.type"
-                class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+                class="w-full rounded-md border border-default bg-default px-3 py-2"
               >
-                <option v-for="type in fieldTypes" :key="type" :value="type">{{ type }}</option>
+                <option v-for="type in fieldTypes" :key="type" :value="type">{{ adminLabel(type) }}</option>
               </select></UFormField
             ><UFormField label="Ayuda"><UInput v-model="field.description" class="w-full" /></UFormField
             ><UFormField label="Placeholder"
@@ -282,10 +284,7 @@ function submit() {
               />
             </div>
           </div>
-          <div
-            v-if="['SELECT', 'MULTISELECT'].includes(field.type)"
-            class="mt-4 rounded-lg bg-slate-950/50 p-3"
-          >
+          <div v-if="['SELECT', 'MULTISELECT'].includes(field.type)" class="mt-4 rounded-lg bg-default p-3">
             <div class="mb-2 flex justify-between">
               <span class="font-medium">Opciones</span
               ><UButton type="button" size="xs" label="Agregar opción" @click="addOption(field)" />
@@ -311,7 +310,7 @@ function submit() {
       </div>
       <UEmpty v-else title="Sin campos personalizados"
     /></UCard>
-    <UCard class="bg-slate-900/70 ring-white/10"
+    <UCard class="bg-default ring-default"
       ><h2 class="mb-5 text-xl font-bold">Publicación y SEO</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <UFormField label="Meta title"><UInput v-model="form.metaTitle" class="w-full" /></UFormField

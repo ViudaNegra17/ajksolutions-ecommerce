@@ -98,11 +98,9 @@ test('/productos → DIGITAL → Buy Now → checkout → ORD → WhatsApp sin c
   await expect(
     page.getByRole('navigation', { name: 'Navegación principal' }).locator('a[href="/licencias"]')
   ).toHaveCount(0)
-  await expect(page.getByText(`Licencia digital 6.2 ${suffix}`)).toBeVisible({ timeout: 30_000 })
-  await page
-    .getByRole('link', { name: `Licencia digital 6.2 ${suffix}` })
-    .first()
-    .click()
+  const productLink = page.getByRole('link', { name: `Licencia digital 6.2 ${suffix}` }).first()
+  await expect(productLink).toBeVisible({ timeout: 30_000 })
+  await productLink.click()
   await expect(page).toHaveURL(new RegExp(`/productos/${slug}$`))
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
@@ -179,7 +177,7 @@ test('PHYSICAL no puede abrir checkout directo y DIGITAL solo aparece en sitemap
 
 test('la búsqueda global abre DIGITAL en /productos', async ({ page }) => {
   await page.goto('/')
-  const search = page.locator('#public-search').first()
+  const search = page.getByRole('combobox', { name: 'Buscar productos' }).first()
   await search.fill(`Licencia digital 6.2 ${suffix}`)
   await expect(page.getByRole('link', { name: `Licencia digital 6.2 ${suffix}` }).first()).toBeVisible({
     timeout: 30_000

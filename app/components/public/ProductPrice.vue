@@ -10,13 +10,13 @@ defineProps<{ price: PublicPrice; size?: 'sm' | 'lg' }>()
     <p
       :class="[
         'font-black tracking-tight',
-        size === 'lg' ? 'text-3xl text-white' : 'text-lg text-white',
-        price.mode === 'CONTACT' ? 'text-cyan-300' : ''
+        size === 'lg' ? 'text-3xl text-highlighted' : 'text-lg text-highlighted',
+        price.mode === 'CONTACT' ? 'text-primary' : ''
       ]"
     >
       {{ formatCurrency(price.amount, price.currency) }}
     </p>
-    <p v-if="price.mode === 'FIXED' && price.taxIncludedInDisplayedPrice" class="mt-1 text-xs text-slate-500">
+    <p v-if="price.mode === 'FIXED' && price.taxIncludedInDisplayedPrice" class="mt-1 text-xs text-muted">
       Impuestos incluidos según configuración del producto
     </p>
   </div>

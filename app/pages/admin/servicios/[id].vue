@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Editar servicio', robots: 'noindex, nofollow' })
 type Category = { id: string; name: string }
@@ -13,10 +14,10 @@ if (error.value) throw createError({ statusCode: 404, statusMessage: 'Servicio n
 async function save(value: Record<string, unknown>) {
   saving.value = true
   try {
-    await $fetch(`/api/admin/services/${route.params.id}`, { method: 'PUT', body: value })
+    await adminRequest(`/api/admin/services/${route.params.id}`, { method: 'PUT', body: value })
     toast.add({ title: 'Servicio actualizado', color: 'success' })
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo guardar', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }

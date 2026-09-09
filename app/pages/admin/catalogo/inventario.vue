@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 
 type Location = { id: string; locationCode: string; name: string }
@@ -94,7 +95,7 @@ watch(
   async (productId) => {
     adjustment.variantId = ''
     selectedProduct.value = productId
-      ? (await $fetch<{ success: true; data: ProductDetail }>(`/api/admin/products/${productId}`)).data
+      ? (await adminRequest<{ success: true; data: ProductDetail }>(`/api/admin/products/${productId}`)).data
       : null
   }
 )
@@ -116,7 +117,7 @@ function openAdjustment(stock?: Stock) {
 async function saveAdjustment() {
   saving.value = true
   try {
-    await $fetch('/api/admin/inventory/adjust', {
+    await adminRequest('/api/admin/inventory/adjust', {
       method: 'POST',
       body: {
         ...adjustment,
@@ -128,7 +129,7 @@ async function saveAdjustment() {
     adjustmentOpen.value = false
     await Promise.all([refreshStock(), refreshMovements()])
   } catch (cause) {
-    toast.add({ title: 'No se pudo ajustar el stock', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo ajustar el stock', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -172,7 +173,7 @@ function movementColor(quantity: number) {
         icon="i-lucide-search"
         class="min-w-64"
       />
-      <select v-model="locationId" class="rounded-md border border-white/10 bg-slate-950 px-3">
+      <select v-model="locationId" class="rounded-md border border-default bg-default px-3">
         <option value="">Todas las ubicaciones</option>
         <option v-for="location in locations" :key="location.id" :value="location.id">
           {{ location.locationCode }} — {{ location.name }}
@@ -181,13 +182,13 @@ function movementColor(quantity: number) {
     </div>
 
     <UAlert v-if="currentError" color="error" title="No se pudo cargar el inventario" class="mb-4" />
-    <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10">
+    <UCard class="overflow-x-auto bg-default ring-default">
       <div v-if="currentStatus === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 5" :key="index" class="h-10" />
       </div>
 
       <table v-else-if="tab === 'stock'" class="w-full min-w-210 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Producto</th>
             <th>Ubicación</th>
@@ -198,10 +199,10 @@ function movementColor(quantity: number) {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="stock in stockData?.data.items" :key="stock.id" class="border-t border-white/10">
+          <tr v-for="stock in stockData?.data.items" :key="stock.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ stock.product.name }}
-              <div class="text-xs text-slate-500">
+              <div class="text-xs text-muted">
                 {{ stock.product.productCode }} · {{ stock.variant?.name || 'Producto simple' }}
               </div>
             </td>
@@ -217,7 +218,7 @@ function movementColor(quantity: number) {
       </table>
 
       <table v-else class="w-full min-w-240 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Movimiento</th>
             <th>Producto</th>
@@ -229,19 +230,15 @@ function movementColor(quantity: number) {
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="movement in movementData?.data.items"
-            :key="movement.id"
-            class="border-t border-white/10"
-          >
+          <tr v-for="movement in movementData?.data.items" :key="movement.id" class="border-t border-default">
             <td class="p-3 font-mono text-xs">{{ movement.movementCode }}</td>
             <td>
               {{ movement.product.name }}
-              <div class="text-xs text-slate-500">
+              <div class="text-xs text-muted">
                 {{ movement.variant?.name || movement.product.productCode }}
               </div>
             </td>
-            <td>{{ movement.type }}</td>
+            <td>{{ adminLabel(movement.type) }}</td>
             <td :class="movementColor(movement.quantity)" class="font-semibold">
               {{ movement.quantity > 0 ? '+' : '' }}{{ movement.quantity }}
             </td>
@@ -249,7 +246,7 @@ function movementColor(quantity: number) {
             <td>{{ movement.reason }}</td>
             <td>
               {{ movement.createdBy.firstName }} {{ movement.createdBy.lastName }}
-              <div class="text-xs text-slate-500">
+              <div class="text-xs text-muted">
                 {{ new Date(movement.createdAt).toLocaleString('es-EC') }}
               </div>
             </td>
@@ -276,13 +273,13 @@ function movementColor(quantity: number) {
       <template #body>
         <div class="space-y-4">
           <UAlert
-            title="Operación transaccional"
+            title="Ajuste de inventario"
             description="Se actualiza la existencia, se crea el movimiento y se registra la auditoría. Nunca se permite stock negativo."
           />
           <UFormField label="Ubicación" required>
             <select
               v-model="adjustment.locationId"
-              class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
+              class="w-full rounded-md border border-default bg-default p-2"
             >
               <option value="" disabled>Selecciona</option>
               <option v-for="location in locations" :key="location.id" :value="location.id">
@@ -293,7 +290,7 @@ function movementColor(quantity: number) {
           <UFormField label="Producto" required>
             <select
               v-model="adjustment.productId"
-              class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
+              class="w-full rounded-md border border-default bg-default p-2"
             >
               <option value="" disabled>Selecciona</option>
               <option v-for="product in products" :key="product.id" :value="product.id">
@@ -304,7 +301,7 @@ function movementColor(quantity: number) {
           <UFormField v-if="selectedProduct?.variants.length" label="Variante">
             <select
               v-model="adjustment.variantId"
-              class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
+              class="w-full rounded-md border border-default bg-default p-2"
             >
               <option value="">Producto simple</option>
               <option v-for="variant in selectedProduct.variants" :key="variant.id" :value="variant.id">
@@ -313,10 +310,7 @@ function movementColor(quantity: number) {
             </select>
           </UFormField>
           <UFormField label="Tipo" required>
-            <select
-              v-model="adjustment.type"
-              class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
-            >
+            <select v-model="adjustment.type" class="w-full rounded-md border border-default bg-default p-2">
               <option value="INITIAL">Stock inicial (+)</option>
               <option value="PURCHASE">Compra (+)</option>
               <option value="ADJUSTMENT_IN">Ajuste de entrada (+)</option>

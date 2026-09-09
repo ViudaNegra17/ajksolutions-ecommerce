@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Promociones', robots: 'noindex, nofollow' })
 type Promotion = {
@@ -19,6 +20,7 @@ type Option = { id: string; name: string }
 const toast = useToast()
 const open = ref(false)
 const saving = ref(false)
+const removal = ref<Promotion | null>(null)
 const selected = ref<Promotion | null>(null)
 const form = reactive({
   name: '',
@@ -46,8 +48,8 @@ function edit(item?: Promotion) {
       ? {
           ...item,
           description: item.description || '',
-          startsAt: item.startsAt?.slice(0, 16) || '',
-          endsAt: item.endsAt?.slice(0, 16) || '',
+          startsAt: localDateInput(item.startsAt),
+          endsAt: localDateInput(item.endsAt),
           productIds: item.products.map((row) => row.productId),
           categoryIds: item.categories.map((row) => row.categoryId)
         }
@@ -74,33 +76,57 @@ function toggle(list: string[], id: string) {
 async function save() {
   saving.value = true
   try {
-    await $fetch(selected.value ? `/api/admin/promotions/${selected.value.id}` : '/api/admin/promotions', {
-      method: selected.value ? 'PUT' : 'POST',
-      body: {
-        ...form,
-        description: form.description || null,
-        startsAt: form.startsAt ? new Date(form.startsAt).toISOString() : null,
-        endsAt: form.endsAt ? new Date(form.endsAt).toISOString() : null
+    await adminRequest(
+      selected.value ? `/api/admin/promotions/${selected.value.id}` : '/api/admin/promotions',
+      {
+        method: selected.value ? 'PUT' : 'POST',
+        body: {
+          ...form,
+          description: form.description || null,
+          startsAt: form.startsAt ? new Date(form.startsAt).toISOString() : null,
+          endsAt: form.endsAt ? new Date(form.endsAt).toISOString() : null
+        }
       }
-    })
+    )
     toast.add({ title: selected.value ? 'Promoción actualizada' : 'Promoción creada', color: 'success' })
     open.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar la promoción', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo guardar la promoción',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     saving.value = false
   }
 }
-async function remove(item: Promotion) {
-  if (!confirm(`¿Eliminar ${item.code}?`)) return
-  await $fetch(`/api/admin/promotions/${item.id}`, { method: 'DELETE' })
-  await refresh()
+async function remove() {
+  if (!removal.value || saving.value) return
+  saving.value = true
+  try {
+    await adminRequest(`/api/admin/promotions/${removal.value.id}`, { method: 'DELETE' })
+    removal.value = null
+    await refresh()
+    toast.add({ title: 'Promoción eliminada', color: 'success' })
+  } catch (cause) {
+    toast.add({ title: 'No se pudo eliminar', description: uiErrorMessage(cause), color: 'error' })
+  } finally {
+    saving.value = false
+  }
 }
 </script>
 
 <template>
   <div>
+    <AdminConfirmDialog
+      :open="Boolean(removal)"
+      title="¿Eliminar promoción?"
+      description="Se retirará el contenido promocional de la tienda."
+      :loading="saving"
+      @close="removal = null"
+      @confirm="remove"
+    />
     <AdminPageHeader
       title="Promociones"
       description="Mensajes comerciales informativos; nunca modifican el precio del checkout."
@@ -108,10 +134,10 @@ async function remove(item: Promotion) {
       <UButton label="Nueva promoción" icon="i-lucide-plus" @click="edit()" />
     </AdminPageHeader>
     <UAlert v-if="error" color="error" title="No se pudieron cargar las promociones" />
-    <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+    <UCard class="overflow-x-auto bg-default ring-default"
       ><USkeleton v-if="status === 'pending'" class="h-48" />
       <table v-else class="w-full min-w-180 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Nombre</th>
             <th>Tipo</th>
@@ -124,7 +150,7 @@ async function remove(item: Promotion) {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data" :key="item.id" class="border-t border-default">
             <td class="p-3">
               <span class="font-medium">{{ item.name }}</span
               ><br /><UBadge :label="item.badge" color="warning" variant="soft" />
@@ -146,7 +172,7 @@ async function remove(item: Promotion) {
                 aria-label="Eliminar"
                 color="error"
                 variant="ghost"
-                @click="remove(item)"
+                @click="removal = item"
               />
             </td>
           </tr>
@@ -154,13 +180,8 @@ async function remove(item: Promotion) {
       </table>
       <UEmpty v-if="status !== 'pending' && !data?.data.length" title="Sin promociones"
     /></UCard>
-    <div
-      v-if="open"
-      class="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-    >
-      <UCard class="my-8 w-full max-w-4xl bg-slate-900 ring-white/10">
+    <AdminFormDialog v-model:open="open" title="Datos del registro">
+      <UCard class="my-8 w-full max-w-4xl bg-default ring-default">
         <h2 class="text-xl font-bold">{{ selected ? 'Editar promoción' : 'Nueva promoción' }}</h2>
         <UAlert
           class="mt-4"
@@ -186,7 +207,7 @@ async function remove(item: Promotion) {
         <div class="mt-5 grid gap-5 md:grid-cols-2">
           <fieldset>
             <legend class="font-bold">Productos</legend>
-            <div class="mt-2 max-h-48 space-y-2 overflow-auto rounded-xl border border-white/10 p-3">
+            <div class="mt-2 max-h-48 space-y-2 overflow-auto rounded-xl border border-default p-3">
               <UCheckbox
                 v-for="item in optionData?.data.products"
                 :key="item.id"
@@ -198,7 +219,7 @@ async function remove(item: Promotion) {
           </fieldset>
           <fieldset>
             <legend class="font-bold">Categorías</legend>
-            <div class="mt-2 max-h-48 space-y-2 overflow-auto rounded-xl border border-white/10 p-3">
+            <div class="mt-2 max-h-48 space-y-2 overflow-auto rounded-xl border border-default p-3">
               <UCheckbox
                 v-for="item in optionData?.data.categories"
                 :key="item.id"
@@ -215,8 +236,7 @@ async function remove(item: Promotion) {
             :loading="saving"
             @click="save"
           />
-        </div>
-      </UCard>
-    </div>
+        </div> </UCard
+    ></AdminFormDialog>
   </div>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 const props = defineProps<{ productId?: string }>()
 type Category = { id: string; name: string }
 type Brand = { id: string; name: string }
@@ -169,11 +170,8 @@ const productCode = ref('Se generará al guardar')
 if (!props.productId) {
   state.taxRate = String(taxResponse.data['tax.defaultRate'] ?? '0.00')
   state.priceIncludesTax = Boolean(taxResponse.data['tax.pricesIncludeTaxDefault'] ?? false)
-} else {
-  const response = await requestFetch<{ success: true; data: ProductDetail }>(
-    `/api/admin/products/${props.productId}`
-  )
-  const product = response.data
+}
+function applyProduct(product: ProductDetail) {
   productCode.value = product.productCode
   Object.assign(state, {
     sku: product.sku,
@@ -229,6 +227,13 @@ if (!props.productId) {
       active: item.active
     }))
   })
+}
+
+if (props.productId) {
+  const response = await requestFetch<{ success: true; data: ProductDetail }>(
+    `/api/admin/products/${props.productId}`
+  )
+  applyProduct(response.data)
 }
 
 const categoryAttributes = computed(() =>
@@ -326,20 +331,10 @@ function decimalOrNull(value: unknown): string | null {
   return value === '' || value == null ? null : String(value)
 }
 function requestErrorMessage(cause: unknown): string {
-  const error = cause as {
-    data?: { error?: { message?: string }; message?: string }
-    statusMessage?: string
-    message?: string
-  }
-  return (
-    error?.data?.error?.message ||
-    error?.data?.message ||
-    error?.statusMessage ||
-    error?.message ||
-    'Revisa los campos obligatorios e intenta nuevamente.'
-  )
+  return uiErrorMessage(cause)
 }
 async function save() {
+  if (saving.value) return
   saving.value = true
   try {
     const body = {
@@ -366,10 +361,14 @@ async function save() {
         .filter((item) => item.supplierId)
         .map((item) => ({ ...item, supplierCost: decimalOrNull(item.supplierCost) }))
     }
-    const response = await $fetch<{ success: true; data: { id: string } }>(
+    const response = await adminRequest<{ success: true; data: { id: string } }>(
       props.productId ? `/api/admin/products/${props.productId}` : '/api/admin/products',
       { method: props.productId ? 'PUT' : 'POST', body }
     )
+    const saved = await requestFetch<{ success: true; data: ProductDetail }>(
+      `/api/admin/products/${response.data.id}`
+    )
+    applyProduct(saved.data)
     toast.add({
       title: props.productId ? 'Producto actualizado' : 'Producto creado correctamente',
       color: 'success'
@@ -391,7 +390,7 @@ async function save() {
   <div>
     <AdminPageHeader
       :title="productId ? `Editar ${productCode}` : 'Nuevo producto'"
-      description="Los códigos comerciales se generan de forma atómica en PostgreSQL."
+      description="Completa la información del producto y elige cómo se publicará en la tienda. El código se asigna automáticamente."
     >
       <UButton to="/admin/catalogo/productos" label="Volver" color="neutral" variant="ghost" /><UButton
         label="Guardar producto"
@@ -410,7 +409,7 @@ async function save() {
         @click="activeTab = tab"
       />
     </div>
-    <UCard class="bg-slate-900/70 ring-white/10">
+    <UCard class="bg-default ring-default">
       <div v-if="activeTab === 'general'" class="grid gap-4 md:grid-cols-2">
         <UFormField label="Nombre" required><UInput v-model="state.name" class="w-full" /></UFormField
         ><UFormField label="SKU" required><UInput v-model="state.sku" class="w-full" /></UFormField
@@ -418,10 +417,7 @@ async function save() {
         ><UFormField label="Slug">
           <UInput v-model="state.slug" placeholder="Automático" class="w-full" /> </UFormField
         ><UFormField label="Tipo">
-          <select
-            v-model="state.productType"
-            class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
-          >
+          <select v-model="state.productType" class="w-full rounded-md border border-default bg-default p-2">
             <option value="PHYSICAL">Físico</option>
             <option value="DIGITAL">Digital / Licencia</option>
           </select>
@@ -447,7 +443,7 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'precio'" class="grid gap-4 md:grid-cols-2">
         <UFormField label="Modo de precio">
-          <select v-model="state.priceMode" class="w-full rounded-md border border-white/10 bg-slate-950 p-2">
+          <select v-model="state.priceMode" class="w-full rounded-md border border-default bg-default p-2">
             <option value="FIXED">Precio fijo</option>
             <option value="CONTACT">Consultar precio</option>
           </select> </UFormField
@@ -478,17 +474,14 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'clasificación'" class="grid gap-4 md:grid-cols-2">
         <UFormField label="Categoría" required>
-          <select
-            v-model="state.categoryId"
-            class="w-full rounded-md border border-white/10 bg-slate-950 p-2"
-          >
+          <select v-model="state.categoryId" class="w-full rounded-md border border-default bg-default p-2">
             <option value="" disabled>Selecciona</option>
             <option v-for="category in categories" :key="category.id" :value="category.id">
               {{ category.name }}
             </option>
           </select> </UFormField
         ><UFormField label="Marca">
-          <select v-model="state.brandId" class="w-full rounded-md border border-white/10 bg-slate-950 p-2">
+          <select v-model="state.brandId" class="w-full rounded-md border border-default bg-default p-2">
             <option value="">Sin marca</option>
             <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
           </select>
@@ -496,14 +489,14 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'imágenes'">
         <div class="mb-4 flex justify-between">
-          <p class="text-slate-400">URL manual hoy; `storageKey` deja preparado R2.</p>
+          <p class="text-muted">URL manual hoy; `storageKey` deja preparado R2.</p>
           <UButton label="Agregar URL" icon="i-lucide-plus" @click="addImage" />
         </div>
         <div class="space-y-4">
           <div
             v-for="(image, index) in state.images"
             :key="index"
-            class="grid gap-3 rounded-lg border border-white/10 p-4 md:grid-cols-[1fr_1fr_auto_auto]"
+            class="grid gap-3 rounded-lg border border-default p-4 md:grid-cols-[1fr_1fr_auto_auto]"
           >
             <UInput v-model="image.url" placeholder="https://..." /><UInput
               v-model="image.alt"
@@ -567,7 +560,7 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'variantes'">
         <div v-if="variantAttributes.length" class="grid gap-5 md:grid-cols-2">
-          <UCard v-for="attribute in variantAttributes" :key="attribute.id" class="bg-slate-950/60">
+          <UCard v-for="attribute in variantAttributes" :key="attribute.id" class="bg-default">
             <h3 class="font-semibold">{{ attribute.name }}</h3>
             <div class="mt-3 flex flex-wrap gap-3">
               <UCheckbox
@@ -588,7 +581,7 @@ async function save() {
           <div
             v-for="(variant, index) in state.variants"
             :key="variant.id || index"
-            class="grid gap-3 rounded-lg border border-white/10 p-3 md:grid-cols-4"
+            class="grid gap-3 rounded-lg border border-default p-3 md:grid-cols-4"
           >
             <UInput v-model="variant.name" placeholder="Combinación" /><UInput
               v-model="variant.sku"
@@ -619,7 +612,7 @@ async function save() {
         <UAlert
           v-else
           title="El stock no se edita directamente"
-          description="Guarda el producto y utiliza Ajustar stock para generar InventoryMovement y AuditLog en una transacción."
+          description="Guarda el producto y utiliza Ajustar stock para registrar las entradas y salidas con su motivo."
         /><UButton
           to="/admin/catalogo/inventario"
           label="Abrir inventario"
@@ -629,16 +622,16 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'proveedores'">
         <div class="mb-4 flex justify-between">
-          <p class="text-slate-400">Este stock nunca se suma al inventario físico.</p>
+          <p class="text-muted">Este stock nunca se suma al inventario físico.</p>
           <UButton label="Agregar proveedor" icon="i-lucide-plus" @click="addSupplier" />
         </div>
         <div class="space-y-4">
           <div
             v-for="(item, index) in state.supplierProducts"
             :key="item.id || index"
-            class="grid gap-3 rounded-lg border border-white/10 p-4 md:grid-cols-3"
+            class="grid gap-3 rounded-lg border border-default p-4 md:grid-cols-3"
           >
-            <select v-model="item.supplierId" class="rounded-md border border-white/10 bg-slate-950 p-2">
+            <select v-model="item.supplierId" class="rounded-md border border-default bg-default p-2">
               <option value="">Proveedor</option>
               <option v-for="supplier in suppliers" :key="supplier.id" :value="supplier.id">
                 {{ supplier.supplierCode }} — {{ supplier.name }}

@@ -43,14 +43,13 @@ const hasDigital = computed(() => cart.items.some((item) => item.productType !==
 const digitalOnly = computed(() => hasDigital.value && !hasPhysical.value)
 
 function sourceLabel(source: CheckoutPreview['items'][number]['availabilitySource']) {
-  if (source === 'OWN_STOCK') return 'Stock propio reservado al confirmar'
+  if (source === 'OWN_STOCK') return 'Disponible'
   if (source === 'SUPPLIER_STOCK') return 'Disponible bajo pedido'
   return 'Entrega digital'
 }
 
 function readableError(error: unknown) {
-  const value = error as { data?: { data?: { error?: { message?: string } }; statusMessage?: string } }
-  return value.data?.data?.error?.message || value.data?.statusMessage || 'No se pudo procesar el checkout.'
+  return uiErrorMessage(error)
 }
 
 async function refreshPreview() {
@@ -122,10 +121,10 @@ watch(deliveryType, refreshPreview)
 <template>
   <UContainer class="py-10">
     <div class="mb-8">
-      <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Checkout invitado</p>
+      <p class="text-sm font-bold uppercase tracking-widest text-primary">Compra sin crear una cuenta</p>
       <h1 class="mt-2 text-4xl font-black">Finalizar pedido</h1>
-      <p class="mt-3 text-slate-400">
-        El servidor validará nuevamente precios, impuestos y stock al confirmar.
+      <p class="mt-3 text-muted">
+        Completa tus datos, elige la entrega y revisa el total antes de confirmar.
       </p>
     </div>
     <UAlert
@@ -135,10 +134,10 @@ watch(deliveryType, refreshPreview)
       :description="errorMessage"
       class="mb-6"
     />
-    <UCard v-if="cart.hydrated && !cart.items.length" class="bg-slate-900/70 ring-white/10">
+    <UCard v-if="cart.hydrated && !cart.items.length" class="bg-default ring-default">
       <UEmpty
         title="No hay productos para finalizar"
-        description="El carrito permanece disponible cuando un checkout falla."
+        description="Agrega productos al carrito para continuar tu compra."
       >
         <template #actions><UButton to="/productos" label="Ver productos" /></template>
       </UEmpty>
@@ -149,7 +148,7 @@ watch(deliveryType, refreshPreview)
       @submit.prevent="confirmOrder"
     >
       <div class="space-y-6">
-        <UCard class="bg-slate-900/70 ring-white/10">
+        <UCard class="bg-default ring-default">
           <h2 class="text-xl font-black">1. Datos del cliente</h2>
           <div class="mt-5 grid gap-4 sm:grid-cols-2">
             <UFormField label="Nombres" required
@@ -170,7 +169,7 @@ watch(deliveryType, refreshPreview)
             <input v-model="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
           </div>
         </UCard>
-        <UCard class="bg-slate-900/70 ring-white/10">
+        <UCard class="bg-default ring-default">
           <h2 class="text-xl font-black">2. Entrega</h2>
           <UAlert
             v-if="digitalOnly"
@@ -180,18 +179,18 @@ watch(deliveryType, refreshPreview)
             description="Recibirás la entrega mediante el correo registrado después de su confirmación."
           />
           <div v-else class="mt-5 grid gap-3 sm:grid-cols-2">
-            <label class="flex cursor-pointer gap-3 rounded-xl border border-white/10 p-4">
+            <label class="flex cursor-pointer gap-3 rounded-xl border border-default p-4">
               <input v-model="deliveryType" type="radio" value="PICKUP" />
               <span
                 ><strong>Retiro</strong
-                ><span class="block text-sm text-slate-400">Coordinar retiro en tienda</span></span
+                ><span class="block text-sm text-muted">Coordinar retiro en tienda</span></span
               >
             </label>
-            <label class="flex cursor-pointer gap-3 rounded-xl border border-white/10 p-4">
+            <label class="flex cursor-pointer gap-3 rounded-xl border border-default p-4">
               <input v-model="deliveryType" type="radio" value="DELIVERY" />
               <span
                 ><strong>Entrega</strong
-                ><span class="block text-sm text-slate-400">Envío por coordinar</span></span
+                ><span class="block text-sm text-muted">Envío por coordinar</span></span
               >
             </label>
           </div>
@@ -209,7 +208,7 @@ watch(deliveryType, refreshPreview)
             /></UFormField>
           </div>
         </UCard>
-        <UCard class="bg-slate-900/70 ring-white/10">
+        <UCard class="bg-default ring-default">
           <h2 class="text-xl font-black">3. Notas</h2>
           <UTextarea
             v-model="notes"
@@ -218,7 +217,7 @@ watch(deliveryType, refreshPreview)
           />
         </UCard>
       </div>
-      <UCard class="h-fit bg-slate-900/70 ring-white/10 lg:sticky lg:top-24">
+      <UCard class="h-fit bg-default ring-default lg:sticky lg:top-24">
         <h2 class="text-xl font-black">4. Resumen confirmado</h2>
         <div v-if="loadingPreview" class="mt-5 space-y-3">
           <USkeleton v-for="i in 4" :key="i" class="h-12" />
@@ -228,14 +227,14 @@ watch(deliveryType, refreshPreview)
             <div
               v-for="item in preview.items"
               :key="`${item.productId}:${item.variantId || ''}`"
-              class="border-b border-white/10 pb-4"
+              class="border-b border-default pb-4"
             >
               <div class="flex justify-between gap-4">
                 <span>{{ item.quantity }} × {{ item.productName }}</span
                 ><strong>{{ formatCurrency(item.total, preview.currency) }}</strong>
               </div>
-              <p v-if="item.variantName" class="text-xs text-slate-400">{{ item.variantName }}</p>
-              <p class="text-xs text-cyan-300">
+              <p v-if="item.variantName" class="text-xs text-muted">{{ item.variantName }}</p>
+              <p class="text-xs text-primary">
                 {{ sourceLabel(item.availabilitySource) }}
               </p>
             </div>
@@ -259,7 +258,7 @@ watch(deliveryType, refreshPreview)
                 }}
               </dd>
             </div>
-            <div class="flex justify-between border-t border-white/10 pt-4 text-lg font-black">
+            <div class="flex justify-between border-t border-default pt-4 text-lg font-black">
               <dt>Total</dt>
               <dd>{{ formatCurrency(preview.total, preview.currency) }}</dd>
             </div>

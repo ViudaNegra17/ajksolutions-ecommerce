@@ -7,11 +7,12 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'es' },
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#0f172a' }
+        { name: 'theme-color', content: '#ffffff' }
       ]
     }
   },
   css: ['~/assets/css/main.css'],
+  colorMode: { preference: 'light', fallback: 'light' },
   runtimeConfig: {
     checkoutSigningSecret: process.env.NUXT_CHECKOUT_SIGNING_SECRET || process.env.NUXT_SESSION_PASSWORD,
     orderHandoffSecret: process.env.NUXT_ORDER_HANDOFF_SECRET || process.env.NUXT_SESSION_PASSWORD,
@@ -27,6 +28,7 @@ export default defineNuxtConfig({
     public: { appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000' }
   },
   compatibilityDate: '2026-06-30',
+  nitro: { storage: { 'public-cache': { driver: 'memory' } } },
   // Keep production bundling independent from vite-plugin-checker's Windows path parsing.
   // `pnpm typecheck` remains a mandatory, strict and separate quality gate.
   typescript: { strict: true, typeCheck: false },

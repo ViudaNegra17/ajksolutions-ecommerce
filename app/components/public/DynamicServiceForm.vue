@@ -45,6 +45,7 @@ function payloadAnswers() {
 }
 
 async function submit() {
+  if (saving.value) return
   saving.value = true
   try {
     const response = await $fetch<{ success: true; data: PublicTicketResult }>('/api/tickets', {
@@ -62,7 +63,7 @@ async function submit() {
     result.value = response.data
     toast.add({ title: `Ticket ${response.data.ticketCode} creado`, color: 'success' })
   } catch (cause) {
-    toast.add({ title: 'No se pudo crear la solicitud', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo crear la solicitud', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -84,18 +85,18 @@ async function openWhatsApp() {
 </script>
 
 <template>
-  <UCard id="solicitar" class="bg-slate-900/70 ring-white/10">
+  <UCard id="solicitar" class="bg-default ring-default">
     <template v-if="result">
       <div class="text-center">
         <span class="mx-auto grid size-16 place-items-center rounded-full bg-emerald-500/15"
           ><UIcon name="i-lucide-circle-check" class="size-9 text-emerald-400"
         /></span>
         <h2 class="mt-5 text-2xl font-black">Solicitud registrada</h2>
-        <p class="mt-2 text-slate-300">
+        <p class="mt-2 text-default">
           Tu número de seguimiento es <strong>{{ result.ticketCode }}</strong
           >.
         </p>
-        <p class="mt-2 text-sm text-slate-500">
+        <p class="mt-2 text-sm text-muted">
           El ticket ya está guardado. Ahora puedes continuar la conversación por WhatsApp.
         </p>
         <UButton
@@ -110,7 +111,7 @@ async function openWhatsApp() {
     <form v-else class="space-y-6" novalidate @submit.prevent="submit">
       <div>
         <h2 class="text-2xl font-black">Solicitar este servicio</h2>
-        <p class="mt-1 text-slate-400">Completa los datos para generar tu ticket de atención.</p>
+        <p class="mt-1 text-muted">Completa los datos para generar tu ticket de atención.</p>
       </div>
       <div class="grid gap-4 sm:grid-cols-2">
         <UFormField label="Nombres" required
@@ -191,7 +192,7 @@ async function openWhatsApp() {
             v-else-if="field.type === 'SELECT'"
             v-model="answers[field.id] as string"
             :required="field.required"
-            class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+            class="w-full rounded-md border border-default bg-default px-3 py-2"
           >
             <option value="">Selecciona una opción</option>
             <option v-for="option in field.options" :key="option.id" :value="option.id">
@@ -230,7 +231,7 @@ async function openWhatsApp() {
         :loading="saving"
         :disabled="saving"
       />
-      <p class="text-xs leading-5 text-slate-500">
+      <p class="text-xs leading-5 text-muted">
         Al enviar, primero registramos tu solicitud y luego habilitamos el contacto por WhatsApp.
       </p>
     </form>

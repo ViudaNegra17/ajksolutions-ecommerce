@@ -9,23 +9,23 @@ const settings = computed(() => data.value?.data)
 </script>
 
 <template>
-  <footer class="border-t border-white/10 bg-slate-950 py-12 text-sm text-slate-400">
+  <footer class="border-t border-default bg-default py-12 text-sm text-muted">
     <UContainer class="grid gap-10 md:grid-cols-4">
       <div class="md:col-span-2">
-        <p class="text-lg font-black text-white">{{ settings?.business.name || 'AjkSolutionS' }}</p>
+        <NuxtLink to="/" aria-label="AJKSolutionS, inicio"><AppLogo class="mb-3 w-36" /></NuxtLink>
         <p class="mt-3 max-w-md leading-6">
           Tecnología, licencias y servicios profesionales en una experiencia comercial clara y segura.
         </p>
       </div>
       <div>
-        <p class="font-semibold text-white">Explorar</p>
+        <p class="font-semibold text-highlighted">Explorar</p>
         <nav class="mt-3 grid gap-2" aria-label="Enlaces del pie">
-          <NuxtLink to="/productos" class="hover:text-cyan-300">Productos</NuxtLink>
-          <NuxtLink to="/servicios" class="hover:text-cyan-300">Servicios</NuxtLink>
+          <NuxtLink to="/productos" class="hover:text-primary">Productos</NuxtLink>
+          <NuxtLink to="/servicios" class="hover:text-primary">Servicios</NuxtLink>
         </nav>
       </div>
       <div>
-        <p class="font-semibold text-white">Contacto</p>
+        <p class="font-semibold text-highlighted">Contacto</p>
         <div class="mt-3 grid gap-2">
           <a v-if="settings?.business.email" :href="`mailto:${settings.business.email}`">
             {{ settings.business.email }}
@@ -59,7 +59,7 @@ const settings = computed(() => data.value?.data)
         </div>
       </div>
     </UContainer>
-    <UContainer class="mt-10 border-t border-white/10 pt-6">
+    <UContainer class="mt-10 border-t border-default pt-6">
       © {{ new Date().getFullYear() }} {{ settings?.business.name || 'AjkSolutionS' }}
     </UContainer>
   </footer>

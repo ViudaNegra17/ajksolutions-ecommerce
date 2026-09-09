@@ -6,8 +6,8 @@ defineProps<{ specifications: PublicSpecification[] }>()
 
 <template>
   <section v-if="specifications.length" aria-labelledby="specifications-title">
-    <h2 id="specifications-title" class="text-2xl font-black text-white">Especificaciones</h2>
-    <dl class="mt-5 overflow-hidden rounded-2xl border border-white/10">
+    <h2 id="specifications-title" class="text-2xl font-black text-highlighted">Especificaciones</h2>
+    <dl class="mt-5 overflow-hidden rounded-2xl border border-default">
       <div
         v-for="(item, index) in specifications"
         :key="item.name"
@@ -16,8 +16,8 @@ defineProps<{ specifications: PublicSpecification[] }>()
           index % 2 ? 'bg-white/[.03]' : ''
         ]"
       >
-        <dt class="font-medium text-slate-400">{{ item.name }}</dt>
-        <dd class="text-slate-100">{{ item.value }}{{ item.unit ? ` ${item.unit}` : '' }}</dd>
+        <dt class="font-medium text-muted">{{ item.name }}</dt>
+        <dd class="text-default">{{ item.value }}{{ item.unit ? ` ${item.unit}` : '' }}</dd>
       </div>
     </dl>
   </section>

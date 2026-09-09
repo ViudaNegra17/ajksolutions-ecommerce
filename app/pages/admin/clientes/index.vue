@@ -35,10 +35,10 @@ const { data, status, error } = await useFetch<{
       class="mb-4 max-w-xl"
     />
     <UAlert v-if="error" color="error" title="No se pudieron cargar los clientes" />
-    <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+    <UCard class="overflow-x-auto bg-default ring-default"
       ><USkeleton v-if="status === 'pending'" class="h-52" />
       <table v-else class="w-full min-w-220 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Código</th>
             <th>Nombre</th>
@@ -53,8 +53,8 @@ const { data, status, error } = await useFetch<{
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
-            <td class="p-3 font-mono text-cyan-300">{{ item.customerCode }}</td>
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
+            <td class="p-3 font-mono text-primary">{{ item.customerCode }}</td>
             <td>{{ item.firstName }} {{ item.lastName }}</td>
             <td>{{ item.documentNumber || '—' }}</td>
             <td>{{ item.email || '—' }}</td>

@@ -9,7 +9,7 @@ export default defineConfig({
     command: 'pnpm exec nuxt dev --host 127.0.0.1 --port 3000',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: true,
-    timeout: 120_000
+    timeout: 240_000
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }]
 })

@@ -56,60 +56,58 @@ const customer = computed(() => data.value?.data)
     />
     <template v-else-if="customer"
       ><div class="grid gap-5 lg:grid-cols-3">
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="text-xl font-bold">{{ customer.firstName }} {{ customer.lastName }}</h2>
-          <p class="mt-1 font-mono text-cyan-300">{{ customer.customerCode }}</p>
+          <p class="mt-1 font-mono text-primary">{{ customer.customerCode }}</p>
           <dl class="mt-5 grid gap-2 text-sm">
             <div>
-              <dt class="text-slate-500">Documento</dt>
+              <dt class="text-muted">Documento</dt>
               <dd>{{ customer.documentNumber || '—' }}</dd>
             </div>
             <div>
-              <dt class="text-slate-500">Email</dt>
+              <dt class="text-muted">Email</dt>
               <dd>{{ customer.email || '—' }}</dd>
             </div>
             <div>
-              <dt class="text-slate-500">Teléfono</dt>
+              <dt class="text-muted">Teléfono</dt>
               <dd>{{ customer.phone || '—' }}</dd>
             </div>
             <div>
-              <dt class="text-slate-500">WhatsApp</dt>
+              <dt class="text-muted">WhatsApp</dt>
               <dd>{{ customer.whatsapp || '—' }}</dd>
             </div>
           </dl></UCard
         >
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="text-xl font-bold">Resumen</h2>
-          <p class="mt-5 text-sm text-slate-400">Pedidos</p>
+          <p class="mt-5 text-sm text-muted">Pedidos</p>
           <p class="text-3xl font-black">{{ customer.orders.length }}</p>
-          <p class="mt-4 text-sm text-slate-400">Valor histórico de pedidos no cancelados</p>
+          <p class="mt-4 text-sm text-muted">Valor histórico de pedidos no cancelados</p>
           <p class="text-2xl font-black">
             {{ formatCurrency(customer.historicalOrderValue, customer.orders[0]?.currency || 'USD') }}
           </p>
-          <p class="mt-4 text-sm text-slate-400">Tickets</p>
+          <p class="mt-4 text-sm text-muted">Tickets</p>
           <p class="text-3xl font-black">{{ customer.tickets.length }}</p></UCard
         >
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="text-xl font-bold">Direcciones</h2>
           <div
             v-for="address in customer.addresses"
             :key="address.id"
-            class="mt-4 border-t border-white/10 pt-3 text-sm"
+            class="mt-4 border-t border-default pt-3 text-sm"
           >
             <p class="font-bold">{{ address.label }}</p>
-            <p class="text-slate-400">
-              {{ address.addressLine1 }}, {{ address.city }}, {{ address.province }}
-            </p>
-            <p class="text-slate-500">{{ address.reference }}</p>
+            <p class="text-muted">{{ address.addressLine1 }}, {{ address.city }}, {{ address.province }}</p>
+            <p class="text-muted">{{ address.reference }}</p>
           </div>
           <UEmpty v-if="!customer.addresses.length" title="Sin direcciones"
         /></UCard>
       </div>
       <div class="mt-6 grid gap-5 xl:grid-cols-2">
-        <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+        <UCard class="overflow-x-auto bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Pedidos</h2>
-          <table class="w-full min-w-130 text-sm">
-            <thead class="text-left text-slate-400">
+          <table class="admin-table w-full min-w-130 text-sm">
+            <thead class="text-left text-muted">
               <tr>
                 <th>Pedido</th>
                 <th>Fecha</th>
@@ -118,9 +116,9 @@ const customer = computed(() => data.value?.data)
               </tr>
             </thead>
             <tbody>
-              <tr v-for="order in customer.orders" :key="order.id" class="border-t border-white/10">
+              <tr v-for="order in customer.orders" :key="order.id" class="border-t border-default">
                 <td class="py-3">
-                  <NuxtLink :to="`/admin/pedidos/${order.id}`" class="text-cyan-300">{{
+                  <NuxtLink :to="`/admin/pedidos/${order.id}`" class="text-primary">{{
                     order.orderNumber
                   }}</NuxtLink>
                 </td>
@@ -132,10 +130,10 @@ const customer = computed(() => data.value?.data)
           </table>
           <UEmpty v-if="!customer.orders.length" title="Sin pedidos"
         /></UCard>
-        <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+        <UCard class="overflow-x-auto bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Tickets</h2>
-          <table class="w-full min-w-130 text-sm">
-            <thead class="text-left text-slate-400">
+          <table class="admin-table w-full min-w-130 text-sm">
+            <thead class="text-left text-muted">
               <tr>
                 <th>Ticket</th>
                 <th>Servicio</th>
@@ -144,9 +142,9 @@ const customer = computed(() => data.value?.data)
               </tr>
             </thead>
             <tbody>
-              <tr v-for="ticket in customer.tickets" :key="ticket.id" class="border-t border-white/10">
+              <tr v-for="ticket in customer.tickets" :key="ticket.id" class="border-t border-default">
                 <td class="py-3">
-                  <NuxtLink :to="`/admin/tickets/${ticket.id}`" class="text-cyan-300">{{
+                  <NuxtLink :to="`/admin/tickets/${ticket.id}`" class="text-primary">{{
                     ticket.ticketCode
                   }}</NuxtLink>
                 </td>

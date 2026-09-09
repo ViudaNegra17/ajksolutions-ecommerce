@@ -57,23 +57,23 @@ const priorityLabels: Record<string, string> = {
     <div class="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
       <UInput v-model="search" icon="i-lucide-search" placeholder="Código, cliente o asunto" /><select
         v-model="statusFilter"
-        class="rounded-md border border-white/15 bg-slate-900 px-3"
+        class="rounded-md border border-default bg-default px-3"
       >
         <option value="">Todos los estados</option>
         <option v-for="item in ticketStatuses" :key="item" :value="item">
           {{ statusLabels[item] }}
         </option></select
-      ><select v-model="priority" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      ><select v-model="priority" class="rounded-md border border-default bg-default px-3">
         <option value="">Todas las prioridades</option>
         <option v-for="item in ticketPriorities" :key="item" :value="item">
           {{ priorityLabels[item] }}
         </option></select
-      ><select v-model="service" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      ><select v-model="service" class="rounded-md border border-default bg-default px-3">
         <option value="">Todos los servicios</option>
         <option v-for="item in options?.data.services" :key="item.id" :value="item.id">
           {{ item.name }}
         </option></select
-      ><select v-model="assignedUser" class="rounded-md border border-white/15 bg-slate-900 px-3">
+      ><select v-model="assignedUser" class="rounded-md border border-default bg-default px-3">
         <option value="">Todos los responsables</option>
         <option v-for="item in options?.data.users" :key="item.id" :value="item.id">
           {{ item.firstName }} {{ item.lastName }}
@@ -81,12 +81,12 @@ const priorityLabels: Record<string, string> = {
       </select>
     </div>
     <UAlert v-if="error" color="error" title="No se pudieron cargar los tickets" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
       ><div v-if="loading === 'pending'" class="space-y-3">
         <USkeleton v-for="i in 6" :key="i" class="h-10" />
       </div>
       <table v-else class="w-full min-w-220 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Ticket</th>
             <th>Cliente</th>
@@ -99,10 +99,10 @@ const priorityLabels: Record<string, string> = {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3">
-              <strong class="font-mono text-cyan-300">{{ item.ticketCode }}</strong>
-              <div class="max-w-60 truncate text-xs text-slate-500">{{ item.subject }}</div>
+              <strong class="font-mono text-primary">{{ item.ticketCode }}</strong>
+              <div class="max-w-60 truncate text-xs text-muted">{{ item.subject }}</div>
             </td>
             <td>{{ item.customer }}</td>
             <td>{{ item.service }}</td>

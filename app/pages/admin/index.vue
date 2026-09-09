@@ -75,18 +75,7 @@ const actions = computed(() =>
     ['Ajustar inventario', '/admin/catalogo/inventario', 'i-lucide-warehouse', PERMISSIONS.INVENTORY_ADJUST]
   ].filter((item) => permitted(item[3]!))
 )
-const orderLabels: Record<string, string> = {
-  NEW: 'Nuevo',
-  CONTACTED: 'Contactado',
-  CONFIRMED: 'Confirmado',
-  PAYMENT_PENDING: 'Pago pendiente',
-  PAID: 'Pagado',
-  PREPARING: 'Preparando',
-  READY: 'Listo',
-  SHIPPED: 'Enviado',
-  DELIVERED: 'Entregado',
-  CANCELLED: 'Cancelado'
-}
+const orderLabels = orderStatusLabels
 </script>
 
 <template>
@@ -98,7 +87,7 @@ const orderLabels: Record<string, string> = {
       <select
         v-model="period"
         aria-label="Período"
-        class="rounded-md border border-white/15 bg-slate-900 px-3 py-2"
+        class="rounded-md border border-default bg-default px-3 py-2"
       >
         <option value="today">Hoy</option>
         <option value="7d">7 días</option>
@@ -129,14 +118,14 @@ const orderLabels: Record<string, string> = {
             ['Productos activos', dashboard.products, 'i-lucide-package']
           ]"
           :key="metric[0]"
-          class="bg-slate-900/70 ring-white/10"
+          class="bg-default ring-default"
         >
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-slate-400">{{ metric[0] }}</p>
+              <p class="text-sm text-muted">{{ metric[0] }}</p>
               <p class="mt-2 text-3xl font-black">{{ metric[1] }}</p>
             </div>
-            <UIcon :name="String(metric[2])" class="size-7 text-cyan-400" />
+            <UIcon :name="String(metric[2])" class="size-7 text-primary" />
           </div>
         </UCard>
       </div>
@@ -148,9 +137,9 @@ const orderLabels: Record<string, string> = {
             ['Valor de pedidos entregados', dashboard.money.deliveredValue]
           ]"
           :key="money[0]"
-          class="bg-gradient-to-br from-cyan-950/60 to-slate-900 ring-cyan-500/20"
+          class="bg-gradient-to-br from-primary/10 to-default ring-primary"
         >
-          <p class="text-sm text-cyan-200">{{ money[0] }}</p>
+          <p class="text-sm text-primary">{{ money[0] }}</p>
           <p class="mt-2 text-3xl font-black">
             {{ formatCurrency(String(money[1]), dashboard.money.currency) }}
           </p>
@@ -170,10 +159,10 @@ const orderLabels: Record<string, string> = {
         </div>
       </section>
       <div class="mt-8 grid gap-6 xl:grid-cols-2">
-        <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+        <UCard class="overflow-x-auto bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Últimos pedidos</h2>
-          <table class="w-full min-w-160 text-sm">
-            <thead class="text-left text-slate-400">
+          <table class="admin-table w-full min-w-160 text-sm">
+            <thead class="text-left text-muted">
               <tr>
                 <th>ORD</th>
                 <th>Cliente</th>
@@ -184,9 +173,9 @@ const orderLabels: Record<string, string> = {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in dashboard.recentOrders" :key="item.id" class="border-t border-white/10">
+              <tr v-for="item in dashboard.recentOrders" :key="item.id" class="border-t border-default">
                 <td class="py-3">
-                  <NuxtLink :to="`/admin/pedidos/${item.id}`" class="font-mono text-cyan-300">{{
+                  <NuxtLink :to="`/admin/pedidos/${item.id}`" class="font-mono text-primary">{{
                     item.orderNumber
                   }}</NuxtLink>
                 </td>
@@ -200,10 +189,10 @@ const orderLabels: Record<string, string> = {
           </table>
           <UEmpty v-if="!dashboard.recentOrders.length" title="Sin pedidos en el período"
         /></UCard>
-        <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+        <UCard class="overflow-x-auto bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Tickets recientes</h2>
-          <table class="w-full min-w-160 text-sm">
-            <thead class="text-left text-slate-400">
+          <table class="admin-table w-full min-w-160 text-sm">
+            <thead class="text-left text-muted">
               <tr>
                 <th>TCK</th>
                 <th>Cliente</th>
@@ -214,9 +203,9 @@ const orderLabels: Record<string, string> = {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in dashboard.recentTickets" :key="item.id" class="border-t border-white/10">
+              <tr v-for="item in dashboard.recentTickets" :key="item.id" class="border-t border-default">
                 <td class="py-3">
-                  <NuxtLink :to="`/admin/tickets/${item.id}`" class="font-mono text-cyan-300">{{
+                  <NuxtLink :to="`/admin/tickets/${item.id}`" class="font-mono text-primary">{{
                     item.ticketCode
                   }}</NuxtLink>
                 </td>
@@ -232,13 +221,13 @@ const orderLabels: Record<string, string> = {
         /></UCard>
       </div>
       <div class="mt-8 grid gap-6 xl:grid-cols-[1.3fr_.7fr]">
-        <UCard class="overflow-x-auto bg-slate-900/70 ring-white/10"
+        <UCard class="overflow-x-auto bg-default ring-default"
           ><div class="flex items-center justify-between">
             <h2 class="text-xl font-bold">Stock bajo</h2>
             <UBadge :label="`Disponible ≤ ${dashboard.lowStock.threshold}`" variant="soft" />
           </div>
-          <table class="mt-4 w-full min-w-140 text-sm">
-            <thead class="text-left text-slate-400">
+          <table class="admin-table mt-4 w-full min-w-140 text-sm">
+            <thead class="text-left text-muted">
               <tr>
                 <th>Producto</th>
                 <th>En mano</th>
@@ -247,7 +236,7 @@ const orderLabels: Record<string, string> = {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in dashboard.lowStock.items" :key="item.id" class="border-t border-white/10">
+              <tr v-for="item in dashboard.lowStock.items" :key="item.id" class="border-t border-default">
                 <td class="py-3">{{ item.productCode }} · {{ item.name }}</td>
                 <td>{{ item.onHand }}</td>
                 <td>{{ item.reserved }}</td>
@@ -257,7 +246,7 @@ const orderLabels: Record<string, string> = {
           </table>
           <UEmpty v-if="!dashboard.lowStock.items.length" title="Sin alertas de stock propio"
         /></UCard>
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="text-xl font-bold">Alertas operativas</h2>
           <dl class="mt-4 grid gap-3 text-sm">
             <div class="flex justify-between">
@@ -265,7 +254,7 @@ const orderLabels: Record<string, string> = {
               <dd>{{ dashboard.alerts.oldReservedOrders }}</dd>
             </div>
             <div class="flex justify-between">
-              <dt>Tickets NEW antiguos</dt>
+              <dt>Solicitudes nuevas sin atender</dt>
               <dd>{{ dashboard.alerts.oldNewTickets }}</dd>
             </div>
             <div class="flex justify-between">
@@ -283,7 +272,7 @@ const orderLabels: Record<string, string> = {
           </dl></UCard
         >
       </div>
-      <p class="mt-5 text-xs text-slate-500">
+      <p class="mt-5 text-xs text-muted">
         Período calculado en {{ dashboard.range.timeZone }}. Los cancelados no integran valores monetarios.
       </p>
     </template>

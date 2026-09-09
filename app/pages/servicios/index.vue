@@ -28,11 +28,11 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 
 <template>
   <div>
-    <section class="border-b border-white/10 bg-gradient-to-br from-cyan-950/30 to-slate-950 py-16">
+    <section class="border-b border-default bg-gradient-to-br from-primary/10 to-default py-16">
       <UContainer
-        ><p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Soluciones profesionales</p>
+        ><p class="text-sm font-bold uppercase tracking-widest text-primary">Soluciones profesionales</p>
         <h1 class="mt-3 text-4xl font-black sm:text-5xl">Servicios tecnológicos</h1>
-        <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-default">
           Cuéntanos lo que necesitas. Registramos tu solicitud y te damos un número de ticket antes de
           continuar por WhatsApp.
         </p></UContainer
@@ -42,7 +42,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
       <div class="mb-8 grid gap-3 sm:grid-cols-[1fr_260px]">
         <UInput v-model="search" icon="i-lucide-search" placeholder="Buscar servicio" size="lg" /><select
           v-model="category"
-          class="rounded-md border border-white/15 bg-slate-900 px-3"
+          class="rounded-md border border-default bg-default px-3"
         >
           <option value="">Todas las categorías</option>
           <option v-for="item in result?.categories" :key="item.slug" :value="item.slug">

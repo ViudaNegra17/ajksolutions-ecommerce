@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Proveedores', robots: 'noindex, nofollow' })
 type Supplier = {
@@ -69,15 +70,22 @@ function confirmRemove(item: Supplier) {
 async function save() {
   saving.value = true
   try {
-    await $fetch(selected.value ? `/api/admin/suppliers/${selected.value.id}` : '/api/admin/suppliers', {
-      method: selected.value ? 'PUT' : 'POST',
-      body: form
-    })
+    await adminRequest(
+      selected.value ? `/api/admin/suppliers/${selected.value.id}` : '/api/admin/suppliers',
+      {
+        method: selected.value ? 'PUT' : 'POST',
+        body: form
+      }
+    )
     toast.add({ title: selected.value ? 'Proveedor actualizado' : 'Proveedor creado', color: 'success' })
     open.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar el proveedor', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo guardar el proveedor',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     saving.value = false
   }
@@ -86,12 +94,16 @@ async function remove() {
   if (!selected.value) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/suppliers/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/suppliers/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Proveedor eliminado', color: 'success' })
     confirmOpen.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo eliminar el proveedor', description: String(cause), color: 'error' })
+    toast.add({
+      title: 'No se pudo eliminar el proveedor',
+      description: uiErrorMessage(cause),
+      color: 'error'
+    })
   } finally {
     saving.value = false
   }
@@ -111,13 +123,13 @@ async function remove() {
       icon="i-lucide-search"
       class="mb-4 max-w-lg"
     /><UAlert v-if="error" color="error" title="No se pudieron cargar los proveedores" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
     >
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 4" :key="index" class="h-10" />
       </div>
       <table v-else class="w-full min-w-180 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Código</th>
             <th>Proveedor</th>
@@ -128,11 +140,11 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
-            <td class="p-3 font-mono text-cyan-400">{{ item.supplierCode }}</td>
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
+            <td class="p-3 font-mono text-primary">{{ item.supplierCode }}</td>
             <td class="font-medium">
               {{ item.name }}
-              <div class="text-xs text-slate-500">{{ item.taxId || 'Sin identificación' }}</div>
+              <div class="text-xs text-muted">{{ item.taxId || 'Sin identificación' }}</div>
             </td>
             <td>{{ item.contactName || item.email || item.phone || '—' }}</td>
             <td>{{ item._count?.supplierProducts || 0 }}</td>
@@ -163,13 +175,8 @@ async function remove() {
       :items-per-page="20"
       class="mt-4"
     />
-    <div
-      v-if="open"
-      class="fixed inset-0 z-50 overflow-y-auto bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-    >
-      <UCard class="mx-auto my-8 w-full max-w-3xl bg-slate-900 ring-white/10">
+    <AdminFormDialog v-model:open="open" title="Datos del registro">
+      <UCard class="mx-auto my-8 w-full max-w-3xl bg-default ring-default">
         <h2 class="text-xl font-bold">
           {{ selected ? `Editar ${selected.supplierCode}` : 'Nuevo proveedor' }}
         </h2>
@@ -194,13 +201,12 @@ async function remove() {
             :loading="saving"
             @click="save"
           />
-        </div>
-      </UCard>
-    </div>
+        </div> </UCard
+    ></AdminFormDialog>
     <AdminConfirmDialog
       :open="confirmOpen"
       title="¿Eliminar proveedor?"
-      description="Se aplicará soft delete y sus relaciones históricas se conservarán."
+      description="Se desactivará el proveedor y se conservará su historial."
       :loading="saving"
       @close="confirmOpen = false"
       @confirm="remove"

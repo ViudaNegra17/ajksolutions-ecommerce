@@ -60,7 +60,7 @@ useHead(() => ({
       <article>
         <UBadge :label="service.category.name" variant="soft" />
         <h1 class="mt-4 text-4xl font-black sm:text-5xl">{{ service.name }}</h1>
-        <p class="mt-5 text-xl leading-8 text-slate-300">{{ service.shortDescription }}</p>
+        <p class="mt-5 text-xl leading-8 text-default">{{ service.shortDescription }}</p>
         <NuxtImg
           v-if="service.image"
           :src="service.image"
@@ -69,21 +69,21 @@ useHead(() => ({
           height="560"
           class="mt-8 aspect-video w-full rounded-2xl object-cover"
         />
-        <div class="prose prose-invert mt-8 max-w-none whitespace-pre-line text-slate-300">
+        <div class="prose prose-invert mt-8 max-w-none whitespace-pre-line text-default">
           {{ service.description }}
         </div>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
-          <UCard class="bg-slate-900/60 ring-white/10"
-            ><p class="text-sm text-slate-400">Modalidades</p>
+          <UCard class="bg-default ring-default"
+            ><p class="text-sm text-muted">Modalidades</p>
             <p class="mt-2 font-bold">{{ service.modalities.join(' · ') || 'A coordinar' }}</p></UCard
-          ><UCard class="bg-slate-900/60 ring-white/10"
-            ><p class="text-sm text-slate-400">Duración estimada</p>
+          ><UCard class="bg-default ring-default"
+            ><p class="text-sm text-muted">Duración estimada</p>
             <p class="mt-2 font-bold">{{ service.estimatedDuration || 'A confirmar' }}</p></UCard
-          ><UCard v-if="service.warranty" class="bg-slate-900/60 ring-white/10"
-            ><p class="text-sm text-slate-400">Garantía</p>
+          ><UCard v-if="service.warranty" class="bg-default ring-default"
+            ><p class="text-sm text-muted">Garantía</p>
             <p class="mt-2 font-bold">{{ service.warranty }}</p></UCard
-          ><UCard class="bg-slate-900/60 ring-white/10"
-            ><p class="text-sm text-slate-400">Precio</p>
+          ><UCard class="bg-default ring-default"
+            ><p class="text-sm text-muted">Precio</p>
             <PublicServicePrice class="mt-2" :price="service.price"
           /></UCard>
         </div>

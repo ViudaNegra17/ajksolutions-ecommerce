@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ticketPriorities, ticketStatuses } from '#shared/schemas/ticket-admin.schema'
 
+const adminRequest = useAdminRequest()
+
 type Person = { firstName: string; lastName: string }
 type TicketField = {
   id: string
@@ -71,7 +73,7 @@ function fieldValue(item: TicketField) {
 async function update(path: string, body: Record<string, unknown>, message: string) {
   saving.value = true
   try {
-    await $fetch(`/api/admin/tickets/${route.params.id}/${path}`, {
+    await adminRequest(`/api/admin/tickets/${route.params.id}/${path}`, {
       method: 'PUT',
       body: { ...body, notes: note.value || null }
     })
@@ -79,7 +81,7 @@ async function update(path: string, body: Record<string, unknown>, message: stri
     note.value = ''
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo actualizar', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo actualizar', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -88,7 +90,7 @@ async function addMessage() {
   if (!newMessage.value.trim()) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/tickets/${route.params.id}/messages`, {
+    await adminRequest(`/api/admin/tickets/${route.params.id}/messages`, {
       method: 'POST',
       body: { message: newMessage.value, internal: true }
     })
@@ -96,7 +98,7 @@ async function addMessage() {
     toast.add({ title: 'Nota agregada', color: 'success' })
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo agregar la nota', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo agregar la nota', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -110,50 +112,50 @@ async function addMessage() {
     /></AdminPageHeader>
     <div class="grid gap-6 xl:grid-cols-[1fr_360px]">
       <div class="space-y-6">
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Solicitud</h2>
           <dl class="grid gap-4 sm:grid-cols-2">
             <div>
-              <dt class="text-sm text-slate-400">Servicio</dt>
+              <dt class="text-sm text-muted">Servicio</dt>
               <dd class="font-bold">{{ ticket.service.name }} · {{ ticket.service.serviceCode }}</dd>
             </div>
             <div>
-              <dt class="text-sm text-slate-400">Origen</dt>
-              <dd>{{ ticket.source }}</dd>
+              <dt class="text-sm text-muted">Origen</dt>
+              <dd>{{ adminLabel(ticket.source) }}</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-sm text-slate-400">Descripción</dt>
+              <dt class="text-sm text-muted">Descripción</dt>
               <dd class="whitespace-pre-line">{{ ticket.description || '—' }}</dd>
             </div>
             <div v-for="item in ticket.fieldValues" :key="item.id">
-              <dt class="text-sm text-slate-400">{{ item.fieldLabel }}</dt>
+              <dt class="text-sm text-muted">{{ item.fieldLabel }}</dt>
               <dd class="font-medium">{{ fieldValue(item) }}</dd>
             </div>
           </dl></UCard
-        ><UCard class="bg-slate-900/70 ring-white/10"
+        ><UCard class="bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Notas internas</h2>
           <div class="space-y-3">
-            <div v-for="item in ticket.messages" :key="item.id" class="rounded-lg border border-white/10 p-3">
+            <div v-for="item in ticket.messages" :key="item.id" class="rounded-lg border border-default p-3">
               <p>{{ item.message }}</p>
-              <p class="mt-2 text-xs text-slate-500">
+              <p class="mt-2 text-xs text-muted">
                 {{ item.authorUser ? `${item.authorUser.firstName} ${item.authorUser.lastName}` : 'Sistema' }}
                 · {{ new Date(item.createdAt).toLocaleString('es-EC') }}
               </p>
             </div>
-            <p v-if="!ticket.messages.length" class="text-slate-500">Sin notas.</p>
+            <p v-if="!ticket.messages.length" class="text-muted">Sin notas.</p>
           </div>
           <UTextarea v-model="newMessage" class="mt-4 w-full" placeholder="Agregar nota interna" /><UButton
             class="mt-3"
             label="Agregar nota"
             :loading="saving"
             @click="addMessage" /></UCard
-        ><UCard class="bg-slate-900/70 ring-white/10"
+        ><UCard class="bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Historial</h2>
           <ol class="space-y-4">
-            <li v-for="item in ticket.history" :key="item.id" class="border-l-2 border-cyan-500/30 pl-4">
+            <li v-for="item in ticket.history" :key="item.id" class="border-l-2 border-primary pl-4">
               <p class="font-medium">{{ item.action }}</p>
-              <p class="text-sm text-slate-400">{{ item.notes || 'Cambio registrado' }}</p>
-              <p class="text-xs text-slate-500">
+              <p class="text-sm text-muted">{{ item.notes || 'Cambio registrado' }}</p>
+              <p class="text-xs text-muted">
                 {{ item.user ? `${item.user.firstName} ${item.user.lastName}` : 'Portal público' }} ·
                 {{ new Date(item.createdAt).toLocaleString('es-EC') }}
               </p>
@@ -162,19 +164,19 @@ async function addMessage() {
         >
       </div>
       <aside class="space-y-5">
-        <UCard class="bg-slate-900/70 ring-white/10"
+        <UCard class="bg-default ring-default"
           ><h2 class="mb-4 text-xl font-bold">Cliente</h2>
           <p class="font-bold">{{ ticket.customer.firstName }} {{ ticket.customer.lastName }}</p>
-          <p class="mt-2 text-sm text-slate-400">{{ ticket.customer.email || 'Sin correo' }}</p>
-          <p class="text-sm text-slate-400">{{ ticket.customer.whatsapp }}</p>
-          <p class="mt-3 font-mono text-xs text-cyan-300">{{ ticket.customer.customerCode }}</p></UCard
-        ><UCard class="space-y-4 bg-slate-900/70 ring-white/10"
+          <p class="mt-2 text-sm text-muted">{{ ticket.customer.email || 'Sin correo' }}</p>
+          <p class="text-sm text-muted">{{ ticket.customer.whatsapp }}</p>
+          <p class="mt-3 font-mono text-xs text-primary">{{ ticket.customer.customerCode }}</p></UCard
+        ><UCard class="space-y-4 bg-default ring-default"
           ><h2 class="text-xl font-bold">Gestión</h2>
           <UFormField label="Estado"
             ><select
               data-testid="ticket-status"
               :value="ticket.status"
-              class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+              class="w-full rounded-md border border-default bg-default px-3 py-2"
               @change="
                 update('status', { status: ($event.target as HTMLSelectElement).value }, 'Estado actualizado')
               "
@@ -187,7 +189,7 @@ async function addMessage() {
             ><select
               data-testid="ticket-priority"
               :value="ticket.priority"
-              class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+              class="w-full rounded-md border border-default bg-default px-3 py-2"
               @change="
                 update(
                   'priority',
@@ -204,7 +206,7 @@ async function addMessage() {
             ><select
               data-testid="ticket-assignee"
               :value="ticket.assignedUserId || ''"
-              class="w-full rounded-md border border-white/15 bg-slate-950 px-3 py-2"
+              class="w-full rounded-md border border-default bg-default px-3 py-2"
               @change="
                 update(
                   'assignment',

@@ -7,7 +7,7 @@ defineProps<{ category: PublicCategory }>()
 <template>
   <NuxtLink
     :to="`/categoria/${category.slug}`"
-    class="group relative min-h-48 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 p-6 transition hover:border-cyan-400/50"
+    class="group relative min-h-48 overflow-hidden rounded-2xl border border-default bg-default p-6 transition hover:border-primary"
   >
     <NuxtImg
       v-if="category.imageUrl"
@@ -21,9 +21,9 @@ defineProps<{ category: PublicCategory }>()
     />
     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
     <div class="relative flex h-full flex-col justify-end">
-      <UIcon :name="category.icon || 'i-lucide-box'" class="mb-5 size-8 text-cyan-300" />
-      <h3 class="text-xl font-black text-white">{{ category.name }}</h3>
-      <p class="mt-1 text-sm text-slate-300">
+      <UIcon :name="category.icon || 'i-lucide-box'" class="mb-5 size-8 text-primary" />
+      <h3 class="text-xl font-black text-highlighted">{{ category.name }}</h3>
+      <p class="mt-1 text-sm text-default">
         {{ category.children.length ? `${category.children.length} subcategorías` : 'Explorar productos' }}
       </p>
     </div>

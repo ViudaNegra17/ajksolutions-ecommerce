@@ -47,7 +47,7 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
 <template>
   <form class="space-y-6" @submit.prevent>
     <div>
-      <label for="filter-category" class="mb-2 block text-sm font-semibold text-white">Categoría</label>
+      <label for="filter-category" class="mb-2 block text-sm font-semibold text-highlighted">Categoría</label>
       <select
         id="filter-category"
         :value="state.category || ''"
@@ -65,7 +65,7 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
       </select>
     </div>
     <div>
-      <label for="filter-brand" class="mb-2 block text-sm font-semibold text-white">Marca</label>
+      <label for="filter-brand" class="mb-2 block text-sm font-semibold text-highlighted">Marca</label>
       <select
         id="filter-brand"
         :value="state.brand || ''"
@@ -81,7 +81,7 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
       </select>
     </div>
     <div>
-      <label for="filter-price-mode" class="mb-2 block text-sm font-semibold text-white">Precio</label>
+      <label for="filter-price-mode" class="mb-2 block text-sm font-semibold text-highlighted">Precio</label>
       <select
         id="filter-price-mode"
         :value="state.priceMode || ''"
@@ -98,7 +98,7 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
       </select>
     </div>
     <div>
-      <label for="filter-availability" class="mb-2 block text-sm font-semibold text-white"
+      <label for="filter-availability" class="mb-2 block text-sm font-semibold text-highlighted"
         >Disponibilidad</label
       >
       <select
@@ -117,11 +117,11 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
         <option value="OUT_OF_STOCK">Agotado</option>
       </select>
     </div>
-    <label class="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-slate-200">
+    <label class="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-default">
       <input
         type="checkbox"
         :checked="state.featured === 'true'"
-        class="size-4 accent-cyan-400"
+        class="size-4 accent-primary"
         @change="
           emit('update-filters', {
             featured: ($event.target as HTMLInputElement).checked ? 'true' : undefined
@@ -131,16 +131,16 @@ function toggleAttribute(slug: string, value: string, checked: boolean) {
       Solo destacados
     </label>
     <fieldset v-for="attribute in attributes" :key="attribute.slug">
-      <legend class="mb-2 text-sm font-semibold text-white">{{ attribute.name }}</legend>
+      <legend class="mb-2 text-sm font-semibold text-highlighted">{{ attribute.name }}</legend>
       <label
         v-for="option in attribute.options"
         :key="option.value"
-        class="flex min-h-10 cursor-pointer items-center gap-3 text-sm text-slate-300"
+        class="flex min-h-10 cursor-pointer items-center gap-3 text-sm text-default"
       >
         <input
           type="checkbox"
           :checked="attributeChecked(attribute.slug, option.value)"
-          class="size-4 accent-cyan-400"
+          class="size-4 accent-primary"
           @change="toggleAttribute(attribute.slug, option.value, ($event.target as HTMLInputElement).checked)"
         />
         {{ option.label }}

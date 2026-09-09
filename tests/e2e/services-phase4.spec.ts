@@ -84,7 +84,7 @@ test.afterAll(async () => {
 })
 
 test('lista, detalle, SEO y sitemap publican solo el servicio activo', async ({ page, request }) => {
-  await page.goto('/servicios')
+  await page.goto(`/servicios?search=${encodeURIComponent(`Diagnóstico E2E ${suffix}`)}`)
   await expect(page.getByText(`Diagnóstico E2E ${suffix}`).first()).toBeVisible()
   await page.goto(`/servicios/${slug}`)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Diagnóstico E2E')

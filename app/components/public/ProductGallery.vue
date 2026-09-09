@@ -11,7 +11,7 @@ watch(
 
 <template>
   <div>
-    <div class="aspect-square overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
+    <div class="aspect-square overflow-hidden rounded-2xl border border-default bg-default">
       <NuxtImg
         v-if="images[active]"
         :src="images[active]!.url"
@@ -23,7 +23,7 @@ watch(
         class="h-full w-full object-contain"
       />
       <div v-else class="grid h-full place-items-center">
-        <div class="text-center text-slate-500">
+        <div class="text-center text-muted">
           <UIcon name="i-lucide-image-off" class="mx-auto size-16" />
           <p class="mt-3">Imagen no disponible</p>
         </div>
@@ -35,9 +35,10 @@ watch(
         :key="image.url"
         type="button"
         :aria-label="`Ver imagen ${index + 1} de ${productName}`"
+        :aria-pressed="active === index"
         :class="[
-          'size-20 shrink-0 overflow-hidden rounded-xl border bg-slate-900',
-          active === index ? 'border-cyan-400 ring-2 ring-cyan-400/20' : 'border-white/10'
+          'size-20 shrink-0 overflow-hidden rounded-xl border bg-default',
+          active === index ? 'border-primary ring-2 ring-primary' : 'border-default'
         ]"
         @click="active = index"
       >

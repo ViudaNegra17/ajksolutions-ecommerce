@@ -13,6 +13,6 @@ defineProps<{ products: PublicProductCard[] }>()
     icon="i-lucide-package-search"
     title="No encontramos productos"
     description="Prueba cambiando la búsqueda o eliminando algún filtro."
-    class="rounded-2xl border border-white/10 bg-slate-900/50 py-16"
+    class="rounded-2xl border border-default bg-default py-16"
   />
 </template>

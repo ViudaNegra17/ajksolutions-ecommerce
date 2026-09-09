@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const adminRequest = useAdminRequest()
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Atributos', robots: 'noindex, nofollow' })
 type Option = { id?: string; value: string; label: string; sortOrder: number; active: boolean }
@@ -118,15 +119,18 @@ async function save() {
         sortOrder: index
       }))
     }
-    await $fetch(selected.value ? `/api/admin/attributes/${selected.value.id}` : '/api/admin/attributes', {
-      method: selected.value ? 'PUT' : 'POST',
-      body
-    })
+    await adminRequest(
+      selected.value ? `/api/admin/attributes/${selected.value.id}` : '/api/admin/attributes',
+      {
+        method: selected.value ? 'PUT' : 'POST',
+        body
+      }
+    )
     toast.add({ title: selected.value ? 'Atributo actualizado' : 'Atributo creado', color: 'success' })
     open.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo guardar el atributo', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo guardar el atributo', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -135,12 +139,12 @@ async function remove() {
   if (!selected.value) return
   saving.value = true
   try {
-    await $fetch(`/api/admin/attributes/${selected.value.id}`, { method: 'DELETE' })
+    await adminRequest(`/api/admin/attributes/${selected.value.id}`, { method: 'DELETE' })
     toast.add({ title: 'Atributo desactivado', color: 'success' })
     confirmOpen.value = false
     await refresh()
   } catch (cause) {
-    toast.add({ title: 'No se pudo desactivar', description: String(cause), color: 'error' })
+    toast.add({ title: 'No se pudo desactivar', description: uiErrorMessage(cause), color: 'error' })
   } finally {
     saving.value = false
   }
@@ -160,13 +164,13 @@ async function remove() {
       icon="i-lucide-search"
       class="mb-4 max-w-md"
     /><UAlert v-if="error" color="error" title="No se pudieron cargar los atributos" /><UCard
-      class="overflow-x-auto bg-slate-900/70 ring-white/10"
+      class="overflow-x-auto bg-default ring-default"
     >
       <div v-if="status === 'pending'" class="space-y-3">
         <USkeleton v-for="index in 4" :key="index" class="h-10" />
       </div>
       <table v-else class="w-full min-w-180 text-sm">
-        <thead class="text-left text-slate-400">
+        <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Atributo</th>
             <th>Tipo</th>
@@ -178,10 +182,10 @@ async function remove() {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-white/10">
+          <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-slate-500">{{ item.slug }} {{ item.unit || '' }}</div>
+              <div class="text-xs text-muted">{{ item.slug }} {{ item.unit || '' }}</div>
             </td>
             <td>{{ item.type }}</td>
             <td>{{ item.options.length }}</td>
@@ -217,21 +221,16 @@ async function remove() {
       :items-per-page="20"
       class="mt-4"
     />
-    <div
-      v-if="open"
-      class="fixed inset-0 z-50 overflow-y-auto bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-    >
-      <UCard class="mx-auto my-8 w-full max-w-3xl bg-slate-900 ring-white/10">
+    <AdminFormDialog v-model:open="open" title="Datos del registro">
+      <UCard class="mx-auto my-8 w-full max-w-3xl bg-default ring-default">
         <h2 class="text-xl font-bold">{{ selected ? 'Editar atributo' : 'Nuevo atributo' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
           ><UFormField label="Slug">
             <UInput v-model="form.slug" class="w-full" placeholder="Automático" /> </UFormField
           ><UFormField label="Tipo" required>
-            <select v-model="form.type" class="w-full rounded-md border border-white/10 bg-slate-950 p-2">
-              <option v-for="type in types" :key="type">{{ type }}</option>
+            <select v-model="form.type" class="w-full rounded-md border border-default bg-default p-2">
+              <option v-for="type in types" :key="type">{{ adminLabel(type) }}</option>
             </select> </UFormField
           ><UFormField label="Unidad">
             <UInput v-model="form.unit" class="w-full" placeholder="GB, pulgadas, GHz..." /> </UFormField
@@ -239,7 +238,7 @@ async function remove() {
             <select
               v-model="form.categoryIds"
               multiple
-              class="h-32 w-full rounded-md border border-white/10 bg-slate-950 p-2"
+              class="h-32 w-full rounded-md border border-default bg-default p-2"
             >
               <option v-for="category in categoriesData?.data" :key="category.id" :value="category.id">
                 {{ category.name }}
@@ -249,7 +248,7 @@ async function remove() {
             <select
               v-model="form.requiredCategoryIds"
               multiple
-              class="h-32 w-full rounded-md border border-white/10 bg-slate-950 p-2"
+              class="h-32 w-full rounded-md border border-default bg-default p-2"
             >
               <option
                 v-for="category in categoriesData?.data.filter((item) => form.categoryIds.includes(item.id))"
@@ -284,9 +283,8 @@ async function remove() {
             :loading="saving"
             @click="save"
           />
-        </div>
-      </UCard>
-    </div>
+        </div> </UCard
+    ></AdminFormDialog>
     <AdminConfirmDialog
       :open="confirmOpen"
       title="¿Desactivar atributo?"

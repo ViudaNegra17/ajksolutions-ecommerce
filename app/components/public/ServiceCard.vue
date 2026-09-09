@@ -5,7 +5,7 @@ defineProps<{ service: PublicServiceCard }>()
 </script>
 
 <template>
-  <UCard class="flex h-full flex-col overflow-hidden bg-slate-900/70 ring-white/10">
+  <UCard class="flex h-full flex-col overflow-hidden bg-default ring-default">
     <NuxtImg
       v-if="service.image"
       :src="service.image"
@@ -15,12 +15,12 @@ defineProps<{ service: PublicServiceCard }>()
       loading="lazy"
       class="mb-5 aspect-video w-full rounded-xl object-cover"
     />
-    <div v-else class="mb-5 grid aspect-video place-items-center rounded-xl bg-cyan-500/10">
-      <UIcon name="i-lucide-wrench" class="size-12 text-cyan-300" />
+    <div v-else class="mb-5 grid aspect-video place-items-center rounded-xl bg-primary/10">
+      <UIcon name="i-lucide-wrench" class="size-12 text-primary" />
     </div>
     <UBadge :label="service.category.name" variant="soft" class="self-start" />
     <h2 class="mt-3 text-xl font-black">{{ service.name }}</h2>
-    <p class="mt-2 grow leading-6 text-slate-400">
+    <p class="mt-2 grow leading-6 text-muted">
       {{ service.shortDescription || 'Asesoría y atención especializada.' }}
     </p>
     <div v-if="service.modalities.length" class="mt-4 flex flex-wrap gap-2">
@@ -32,7 +32,7 @@ defineProps<{ service: PublicServiceCard }>()
         variant="outline"
       />
     </div>
-    <div class="mt-5 flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+    <div class="mt-5 flex items-end justify-between gap-4 border-t border-default pt-5">
       <PublicServicePrice :price="service.price" />
       <UButton :to="`/servicios/${service.slug}`" label="Ver servicio" trailing icon="i-lucide-arrow-right" />
     </div>

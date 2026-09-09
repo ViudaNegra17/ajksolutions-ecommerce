@@ -251,3 +251,31 @@ de precio.
 
 Porcentajes, montos fijos, cupones y reglas quedan fuera de Promotion. Si se requieren, deberán diseñarse como un
 PromotionEngine transaccional con redondeo, impuestos, snapshots, idempotencia y auditoría explícitos.
+
+## TD-029 — AJKSolutionS Light Design System and UI consistency
+
+**Fecha:** 2026-09-08
+**Estado:** aceptada
+
+La identidad oficial usa sin transformación el logo entregado por AJKSolutionS. La V1 adopta un sistema visual
+exclusivamente claro sobre Nuxt UI, con azul AJK como primario y zinc como neutral; no existe dark mode ni una
+variante alternativa del logo. El storefront se diseña mobile-first. El administrador se diseña desktop-first,
+pero navegación, formularios y tablas deben seguir siendo utilizables en móvil.
+
+Nuxt UI es la base de componentes, foco, overlays, estados y tokens. CSS propio se limita a composición y patrones
+compartidos, evitando paletas paralelas y controles interactivos improvisados.
+
+## TD-030 — Selective public caching with explicit invalidation
+
+**Fecha:** 2026-09-08
+**Estado:** aceptada
+
+Solo los read models públicos estables seleccionados pueden almacenarse en caché Nitro: home, banners, categorías,
+marcas, settings públicos, servicios, productos y relacionados. Cada recurso declara TTL, la query canónica forma
+parte de la clave y el contenido programado limita su propia vigencia. Availability, autenticación, administración,
+checkout y operaciones transaccionales de Order/Ticket usan `no-store` y nunca comparten caché.
+
+Las mutaciones invalidan explícitamente todos los recursos dependientes después de asentarse. Una versión por recurso
+evita repoblación obsoleta por requests en vuelo y los fallos de invalidación se tratan de forma cerrada. La V1 usa
+almacenamiento local Nitro, sin Redis; una topología multiproceso deberá adoptar un backend distribuido compatible.
+La reactividad del admin se resuelve por reconciliación y `refreshNuxtData`, separada de esta caché de servidor.

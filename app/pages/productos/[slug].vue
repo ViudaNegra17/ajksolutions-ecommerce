@@ -128,22 +128,22 @@ useHead(() => ({
           />
           <UBadge :label="product.category.name" color="neutral" variant="outline" />
         </div>
-        <p v-if="product.brand" class="mt-5 text-sm font-bold uppercase tracking-widest text-cyan-400">
+        <p v-if="product.brand" class="mt-5 text-sm font-bold uppercase tracking-widest text-primary">
           {{ product.brand.name }}
         </p>
         <h1 class="mt-2 text-4xl font-black tracking-tight sm:text-5xl">{{ product.name }}</h1>
-        <p v-if="product.shortDescription" class="mt-5 text-lg leading-8 text-slate-300">
+        <p v-if="product.shortDescription" class="mt-5 text-lg leading-8 text-default">
           {{ product.shortDescription }}
         </p>
-        <div class="mt-7 rounded-2xl border border-white/10 bg-slate-900/60 p-5">
+        <div class="mt-7 rounded-2xl border border-default bg-default p-5">
           <PublicProductPrice :price="displayPrice" size="lg" />
-          <div v-if="product.productType === 'PHYSICAL'" class="mt-4 border-t border-white/10 pt-4">
+          <div v-if="product.productType === 'PHYSICAL'" class="mt-4 border-t border-default pt-4">
             <PublicProductAvailability :availability="displayAvailability" />
           </div>
-          <p v-else class="mt-4 border-t border-white/10 pt-4 text-sm text-cyan-200">
+          <p v-else class="mt-4 border-t border-default pt-4 text-sm text-primary">
             Producto digital · entrega coordinada por WhatsApp
           </p>
-          <p class="mt-4 text-xs text-slate-500">SKU: {{ displaySku }} · Código: {{ product.productCode }}</p>
+          <p class="mt-4 text-xs text-muted">SKU: {{ displaySku }} · Código: {{ product.productCode }}</p>
         </div>
         <div v-if="product.variants.length" class="mt-7">
           <PublicProductVariantSelector v-model="selectedVariant" :variants="product.variants" />
@@ -176,14 +176,14 @@ useHead(() => ({
           data-testid="digital-buy-now"
           @click="buy"
         />
-        <p v-if="product.variants.length && !selectedVariant" class="mt-2 text-sm text-amber-300">
+        <p v-if="product.variants.length && !selectedVariant" class="mt-2 text-sm text-amber-800">
           Selecciona una variante antes de agregar el producto.
         </p>
-        <p v-if="product.productType === 'DIGITAL'" class="mt-3 text-sm text-cyan-200">
+        <p v-if="product.productType === 'DIGITAL'" class="mt-3 text-sm text-primary">
           Compra individual. El pago y la entrega manual del producto digital se coordinan por WhatsApp.
         </p>
-        <p v-if="product.warranty" class="mt-7 flex items-start gap-2 text-sm text-slate-300">
-          <UIcon name="i-lucide-shield-check" class="mt-0.5 size-5 text-cyan-400" />
+        <p v-if="product.warranty" class="mt-7 flex items-start gap-2 text-sm text-default">
+          <UIcon name="i-lucide-shield-check" class="mt-0.5 size-5 text-primary" />
           <span><strong>Garantía:</strong> {{ product.warranty }}</span>
         </p>
       </div>
@@ -191,13 +191,13 @@ useHead(() => ({
     <div class="mt-16 grid gap-12 lg:grid-cols-[1.2fr_.8fr]">
       <section v-if="product.description" aria-labelledby="product-description">
         <h2 id="product-description" class="text-2xl font-black">Descripción</h2>
-        <div class="mt-5 whitespace-pre-line leading-8 text-slate-300">{{ product.description }}</div>
+        <div class="mt-5 whitespace-pre-line leading-8 text-default">{{ product.description }}</div>
       </section>
       <PublicProductSpecifications :specifications="product.specifications" />
     </div>
     <section
       v-if="related.length"
-      class="mt-20 border-t border-white/10 pt-14"
+      class="mt-20 border-t border-default pt-14"
       aria-labelledby="related-products"
     >
       <h2 id="related-products" class="mb-7 text-3xl font-black">Productos relacionados</h2>

@@ -2,27 +2,93 @@
 @import '@nuxt/ui';
 
 @theme static {
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --color-ajk-50: #eff8ff;
+  --color-ajk-100: #dcefff;
+  --color-ajk-200: #b6dfff;
+  --color-ajk-300: #7ac8f5;
+  --color-ajk-400: #2eaae1;
+  --color-ajk-500: #188bc6;
+  --color-ajk-600: #0874b1;
+  --color-ajk-700: #075e90;
+  --color-ajk-800: #104e75;
+  --color-ajk-900: #123f60;
+  --color-ajk-950: #102a3d;
 }
+
+:root,
+.light {
+  color-scheme: light;
+  --ui-primary: var(--color-ajk-700);
+  --ui-bg: #ffffff;
+  --ui-bg-muted: #f7f8fa;
+  --ui-bg-elevated: #f0f3f6;
+  --ui-text: #343a40;
+  --ui-text-muted: #59636e;
+  --ui-text-dimmed: #65717d;
+  --ui-text-highlighted: #20252a;
+  --ui-border: #dce2e8;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 9rem;
 }
 body {
   min-width: 320px;
-  background: #020617;
+  background: var(--ui-bg);
+  color: var(--ui-text);
+}
+img {
+  max-width: 100%;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: 3px;
+}
+[id] {
+  scroll-margin-top: 9rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer components {
   .public-nav-link {
-    @apply rounded-lg px-3 py-2 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-cyan-400;
+    @apply rounded-xl px-3 py-3 text-sm font-semibold text-default transition hover:bg-muted hover:text-primary;
   }
   .public-mobile-link {
-    @apply block min-h-11 rounded-xl px-3 py-3 font-medium text-slate-100 hover:bg-white/10;
+    @apply block min-h-11 rounded-xl px-3 py-3 font-medium text-highlighted hover:bg-muted;
   }
-  .public-input {
-    @apply h-11 w-full rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20;
-  }
+  .public-input,
   .public-select {
-    @apply h-11 w-full rounded-xl border border-white/15 bg-slate-900 px-3 text-sm text-white outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20;
+    @apply min-h-11 w-full rounded-xl border border-default bg-default px-3 text-sm text-highlighted placeholder:text-dimmed focus:border-primary focus:ring-2 focus:ring-primary/15;
+  }
+  .admin-table {
+    @apply w-full text-left text-sm;
+  }
+  .admin-table th {
+    @apply bg-muted px-4 py-3 font-semibold text-muted;
+  }
+  .admin-table td {
+    @apply border-t border-default px-4 py-3;
+  }
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-xl bg-primary px-4 py-3 text-white focus:translate-y-0;
   }
 }

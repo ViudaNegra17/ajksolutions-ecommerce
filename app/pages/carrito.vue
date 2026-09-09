@@ -12,13 +12,11 @@ const estimatedTotal = computed(() =>
 <template>
   <UContainer class="py-10">
     <div class="mb-8">
-      <p class="text-sm font-bold uppercase tracking-widest text-cyan-400">Compra</p>
+      <p class="text-sm font-bold uppercase tracking-widest text-primary">Compra</p>
       <h1 class="mt-2 text-4xl font-black">Tu carrito</h1>
-      <p class="mt-3 text-slate-400">
-        Los precios y la disponibilidad se actualizarán al finalizar el pedido.
-      </p>
+      <p class="mt-3 text-muted">Los precios y la disponibilidad se actualizarán al finalizar el pedido.</p>
     </div>
-    <UCard v-if="cart.hydrated && !cart.items.length" class="bg-slate-900/70 ring-white/10">
+    <UCard v-if="cart.hydrated && !cart.items.length" class="bg-default ring-default">
       <UEmpty title="Tu carrito está vacío" description="Explora el catálogo para agregar productos.">
         <template #actions><UButton to="/productos" label="Ver productos" /></template>
       </UEmpty>
@@ -28,7 +26,7 @@ const estimatedTotal = computed(() =>
         <UCard
           v-for="item in cart.items"
           :key="`${item.productId}:${item.variantId || ''}`"
-          class="bg-slate-900/70 ring-white/10"
+          class="bg-default ring-default"
         >
           <div class="grid gap-4 sm:grid-cols-[88px_1fr_auto] sm:items-center">
             <img
@@ -37,14 +35,14 @@ const estimatedTotal = computed(() =>
               :alt="item.name"
               class="size-22 rounded-xl object-cover"
             />
-            <div v-else class="grid size-22 place-items-center rounded-xl bg-slate-800">
+            <div v-else class="grid size-22 place-items-center rounded-xl bg-default">
               <UIcon name="i-lucide-image" />
             </div>
             <div>
-              <NuxtLink :to="`/productos/${item.slug}`" class="font-bold hover:text-cyan-300">{{
+              <NuxtLink :to="`/productos/${item.slug}`" class="font-bold hover:text-primary">{{
                 item.name
               }}</NuxtLink>
-              <p v-if="item.variantName" class="text-sm text-slate-400">{{ item.variantName }}</p>
+              <p v-if="item.variantName" class="text-sm text-muted">{{ item.variantName }}</p>
               <p class="mt-2 font-semibold">{{ formatCurrency(item.displayPrice) }} estimado</p>
             </div>
             <div class="flex items-center gap-3">
@@ -68,12 +66,14 @@ const estimatedTotal = computed(() =>
           </div>
         </UCard>
       </div>
-      <UCard class="h-fit bg-slate-900/70 ring-white/10 lg:sticky lg:top-24">
+      <UCard class="h-fit bg-default ring-default lg:sticky lg:top-24">
         <h2 class="text-xl font-black">Resumen estimado</h2>
-        <div class="mt-5 flex justify-between border-t border-white/10 pt-5 text-lg font-bold">
+        <div class="mt-5 flex justify-between border-t border-default pt-5 text-lg font-bold">
           <span>Total estimado</span><span>{{ formatCurrency(estimatedTotal) }}</span>
         </div>
-        <p class="mt-3 text-xs text-slate-500">El servidor recalculará precio, IVA y disponibilidad.</p>
+        <p class="mt-3 text-xs text-muted">
+          Revisa el precio final, los impuestos y la entrega antes de confirmar.
+        </p>
         <UButton to="/checkout" label="Finalizar pedido" block size="xl" class="mt-6" />
         <UButton to="/productos" label="Continuar compra" block variant="ghost" class="mt-2" />
       </UCard>
