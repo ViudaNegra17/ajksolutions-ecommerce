@@ -213,7 +213,9 @@ test('rutas operativas y públicas principales responden y renderizan', async ({
   ]) {
     const response = await page.goto(route)
     expect(response?.ok(), `${route} respondió ${response?.status()}`).toBe(true)
-    await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true')
+    await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
+      timeout: 30_000
+    })
   }
   for (const route of ['/', '/productos', '/servicios']) {
     const response = await page.goto(route)

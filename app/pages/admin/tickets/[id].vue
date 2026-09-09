@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ticketPriorities, ticketStatuses } from '#shared/schemas/ticket-admin.schema'
 
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'tickets' })
 
 type Person = { firstName: string; lastName: string }
 type TicketField = {

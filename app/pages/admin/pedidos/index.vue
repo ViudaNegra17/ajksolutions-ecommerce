@@ -35,7 +35,8 @@ const query = computed(() => ({
   dateTo: dateTo.value ? `${dateTo.value}T23:59:59.999Z` : undefined
 }))
 const { data, status, error } = await useFetch<{ success: true; data: PageData }>('/api/admin/orders', {
-  query
+  query,
+  key: 'admin:orders:list'
 })
 const labels = orderStatusLabels
 </script>

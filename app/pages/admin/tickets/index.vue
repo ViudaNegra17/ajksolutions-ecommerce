@@ -25,7 +25,10 @@ const query = computed(() => ({
   assignedUser: assignedUser.value || undefined
 }))
 const [{ data, status: loading, error }, { data: options }] = await Promise.all([
-  useFetch<{ success: true; data: PageData }>('/api/admin/tickets', { query }),
+  useFetch<{ success: true; data: PageData }>('/api/admin/tickets', {
+    query,
+    key: 'admin:tickets:list'
+  }),
   useFetch<{ success: true; data: Options }>('/api/admin/tickets/options')
 ])
 const statusLabels: Record<string, string> = {

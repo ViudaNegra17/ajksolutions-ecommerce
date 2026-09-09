@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'promotions' })
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Promociones', robots: 'noindex, nofollow' })
 type Promotion = {
@@ -35,7 +35,9 @@ const form = reactive({
   categoryIds: [] as string[]
 })
 const [{ data, status, error, refresh }, { data: optionData }] = await Promise.all([
-  useFetch<{ success: true; data: Promotion[] }>('/api/admin/promotions'),
+  useFetch<{ success: true; data: Promotion[] }>('/api/admin/promotions', {
+    key: 'admin:promotions:list'
+  }),
   useFetch<{ success: true; data: { products: Option[]; categories: Option[] } }>(
     '/api/admin/promotions/options'
   )

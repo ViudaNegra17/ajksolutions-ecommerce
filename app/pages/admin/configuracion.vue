@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'settings' })
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Configuración', robots: 'noindex, nofollow' })
 type Settings = {
@@ -22,7 +22,8 @@ type Settings = {
 const toast = useToast()
 const saving = ref(false)
 const { data, status, error, refresh } = await useFetch<{ success: true; data: Settings }>(
-  '/api/admin/settings'
+  '/api/admin/settings',
+  { key: 'admin:settings' }
 )
 const form = reactive<Settings>({
   business: {

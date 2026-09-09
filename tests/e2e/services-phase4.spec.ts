@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type APIRequestContext } from '@playwright/test'
 import 'dotenv/config'
 import { prisma } from '../../server/utils/prisma'
 
@@ -7,7 +7,7 @@ const suffix = Date.now().toString()
 const slug = `servicio-e2e-${suffix}`
 const ids: Record<string, string> = {}
 
-async function login(page: import('@playwright/test').Page) {
+async function login(page: { request: APIRequestContext }) {
   const email = process.env.SEED_ADMIN_EMAIL
   const password = process.env.SEED_ADMIN_PASSWORD
   if (!email || !password)
@@ -67,7 +67,8 @@ test.beforeAll(async () => {
   })
 })
 
-test.afterAll(async () => {
+test.afterAll(async ({ request }) => {
+  await login({ request })
   if (ids.service) {
     const tickets = await prisma.ticket.findMany({
       where: { serviceId: ids.service },
@@ -75,9 +76,17 @@ test.afterAll(async () => {
     })
     await prisma.ticket.deleteMany({ where: { serviceId: ids.service } })
     await prisma.customer.deleteMany({ where: { id: { in: tickets.map((item) => item.customerId) } } })
-    await prisma.service.delete({ where: { id: ids.service } })
   }
-  if (ids.adminService) await prisma.service.delete({ where: { id: ids.adminService } })
+  for (const id of [ids.service, ids.adminService].filter(Boolean)) {
+    const response = await request.delete(`/api/admin/services/${id}`)
+    expect(response.ok(), await response.text()).toBe(true)
+  }
+  await prisma.auditLog.deleteMany({
+    where: { entityId: { in: [ids.service, ids.adminService].filter(Boolean) } }
+  })
+  await prisma.service.deleteMany({
+    where: { id: { in: [ids.service, ids.adminService].filter(Boolean) } }
+  })
   if (ids.category) await prisma.serviceCategory.delete({ where: { id: ids.category } })
   await prisma.user.deleteMany({ where: { id: { in: [ids.support, ids.invalid].filter(Boolean) } } })
   await prisma.$disconnect()

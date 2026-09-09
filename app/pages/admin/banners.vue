@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'banners' })
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Banners', robots: 'noindex, nofollow' })
 type Banner = {
@@ -38,7 +38,8 @@ const form = reactive({
   endsAt: ''
 })
 const { data, status, error, refresh } = await useFetch<{ success: true; data: Banner[] }>(
-  '/api/admin/banners'
+  '/api/admin/banners',
+  { key: 'admin:banners:list' }
 )
 function localDate(value: string | null) {
   return localDateInput(value)

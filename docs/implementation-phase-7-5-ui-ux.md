@@ -1,6 +1,6 @@
 # Implementación — Fase 7.5 UI/UX
 
-Fecha de cierre: 2026-09-08. Base auditada: `de5c398`. Alcance ejecutado sin Docker y sobre PostgreSQL local.
+Fecha de cierre: 2026-09-08. Última verificación: 2026-09-09. Base auditada: `de5c398`. Alcance ejecutado sin Docker y sobre PostgreSQL local.
 
 ## 1. Scope
 
@@ -36,7 +36,7 @@ El header presenta logo, catálogo, servicios, categorías y carrito. En móvil 
 
 ## 9. Home
 
-La portada adopta un hero comercial, CTAs claros y secciones de categorías, destacados, novedades y servicios. Se retiró el lenguaje de infraestructura y se priorizó la propuesta de valor para clientes.
+La portada adopta un hero comercial, CTAs claros y secciones de categorías, destacados, novedades y servicios. Se retiró el lenguaje de infraestructura y se priorizó la propuesta de valor para clientes. Las tarjetas de categoría aplican una superficie clara cuando no existe imagen; el overlay oscuro y el texto blanco se reservan para categorías con fotografía, evitando el contraste ilegible detectado en escritorio.
 
 ## 10. Catalog
 
@@ -84,7 +84,9 @@ Storefront mobile-first y admin desktop-first se verificaron en 320, 375, 390, 7
 
 ## 21. Reactive Admin
 
-`useAdminRequest` centraliza mutaciones administrativas. Después de un `POST`, `PUT`, `PATCH` o `DELETE` exitoso ejecuta `refreshNuxtData` dentro del contexto Nuxt. Producto además reconcilia el DTO guardado y vuelve a consultar el detalle. Las pruebas cubren producto, inventario, pedido, ticket, banner, promoción y configuración sin F5.
+`useAdminRequest` centraliza mutaciones administrativas. Después de un `POST`, `PUT`, `PATCH` o `DELETE` exitoso ejecuta `refreshNuxtData` dentro del contexto Nuxt. Ahora acepta `keys` y `domains`, en valor único o arreglo, combina y elimina duplicados sin mutar los argumentos del consumidor.
+
+El mapa `adminRefreshDomains` relaciona los dominios dashboard, productos, inventario, pedidos, tickets, banners, promociones, configuración, servicios, clientes y catálogo con sus claves `useAsyncData`. Los flujos críticos de producto, inventario, pedidos, tickets, banners, promociones y configuración ya usan invalidación selectiva. Los consumidores aún no migrados conservan el refresh global al no especificar targets; además, `fallbackGlobal` queda activo por defecto como recuperación si falla un refresh selectivo y puede desactivarse explícitamente. Producto también reconcilia el DTO guardado y vuelve a consultar el detalle.
 
 ## 22. Cache Strategy
 
@@ -98,15 +100,15 @@ El plugin de servidor invalida recursos después de cada mutación administrativ
 
 ## 24. Visual Regression
 
-`tests/e2e/visual-phase7-5.spec.ts` mantiene 19 referencias Chromium: ocho pantallas públicas a 390 y 1440 px, más dashboard, productos y configuración administrativos a 1440 px. Los fixtures crean productos SSR temporales, ejercitan carrito/checkout y se eliminan junto con stock y auditoría. Resultado validado contra baseline: 19/19.
+`tests/e2e/visual-phase7-5.spec.ts` mantiene 19 referencias Chromium: ocho pantallas públicas a 390 y 1440 px, más dashboard, productos y configuración administrativos a 1440 px. Los fixtures crean productos SSR temporales, ejercitan carrito/checkout y se eliminan junto con stock y auditoría. Tras retirar la clase residual `dark:bg-gray-900/80` y corregir el contraste condicional de categorías en la portada, se regeneraron únicamente los baselines `home-390` y `home-1440`; las otras 17 referencias no cambiaron. La comparación dispone de 15 segundos para obtener dos capturas estables sin aumentar `maxDiffPixelRatio`.
 
 ## 25. Tests
 
-La cobertura específica incluye nueve unit tests de tokens, marca, políticas de caché, invalidación y seguridad; seis E2E de caché, no-F5, foco, teclado y responsive; y diecinueve escenarios visuales. Los suites históricos siguen siendo la regresión de PHYSICAL, DIGITAL, servicios, promociones, SEO y ausencia del dominio legado.
+La cobertura específica incluye once unit tests de tokens, marca, políticas de caché, invalidación y seguridad. Los dos casos nuevos comprueban composición/deduplicación de keys y dominios, y la ausencia de targets que activa el fallback global. Se mantienen seis E2E de caché, no-F5, foco, teclado y responsive, además de diecinueve escenarios visuales. Las suites históricas siguen siendo la regresión de PHYSICAL, DIGITAL, servicios, promociones, SEO y ausencia del dominio legado.
 
 ## 26. Gates
 
-Se ejecutan antes del cierre: Prisma format/validate/generate/migrate status; ESLint; Prettier check; Nuxt typecheck; Vitest completo; Playwright completo; build de producción. Los números exactos del último pase se registran al final de este documento.
+El pase de mantenimiento repite ESLint, escritura y verificación Prettier, Nuxt typecheck, Vitest completo, Playwright completo, regresión visual aislada y build de producción. Las aserciones E2E de hidratación administrativa usan 30 segundos para tolerar la compilación en frío de Nuxt sin ocultar errores funcionales. La limpieza E2E de servicios pasa por la API antes del borrado definitivo para invalidar la caché pública y aislar los archivos de prueba. Los números exactos se registran al final de este documento.
 
 ## 27. Regressions
 
@@ -124,7 +126,7 @@ No cambió el schema comercial ni las 12 migraciones. Se preservaron restriccion
 
 ### Resultado del pase final
 
-- Vitest: 109/109.
+- Vitest: 111/111.
 - Playwright: 56/56.
 - Visual: 19/19.
 - Prisma format/validate/generate/migrate status: PASS.

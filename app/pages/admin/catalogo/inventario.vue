@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'inventory' })
 definePageMeta({ layout: 'admin' })
 
 type Location = { id: string; locationCode: string; name: string }
@@ -64,13 +64,19 @@ const {
   status: stockStatus,
   error: stockError,
   refresh: refreshStock
-} = await useFetch<{ success: true; data: PageData<Stock> }>('/api/admin/inventory', { query })
+} = await useFetch<{ success: true; data: PageData<Stock> }>('/api/admin/inventory', {
+  query,
+  key: 'admin:inventory:stock'
+})
 const {
   data: movementData,
   status: movementStatus,
   error: movementError,
   refresh: refreshMovements
-} = await useFetch<{ success: true; data: PageData<Movement> }>('/api/admin/inventory/movements', { query })
+} = await useFetch<{ success: true; data: PageData<Movement> }>('/api/admin/inventory/movements', {
+  query,
+  key: 'admin:inventory:movements'
+})
 const { data: locationData } = await useFetch<{ success: true; data: Location[] }>(
   '/api/admin/inventory/locations'
 )

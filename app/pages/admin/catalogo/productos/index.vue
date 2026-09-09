@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'products' })
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Productos', robots: 'noindex, nofollow' })
 type Product = {
@@ -37,7 +37,7 @@ const filters = reactive({
 const query = computed(() => ({ ...filters, page: page.value, pageSize: 20 }))
 const { data, status, error, refresh } = await useFetch<{ success: true; data: PageData }>(
   '/api/admin/products',
-  { query }
+  { query, key: 'admin:products:list' }
 )
 const { data: categories } = await useFetch<{ success: true; data: Option[] }>('/api/admin/categories', {
   query: { tree: 'true' }

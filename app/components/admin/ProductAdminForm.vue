@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'products' })
 const props = defineProps<{ productId?: string }>()
 type Category = { id: string; name: string }
 type Brand = { id: string; name: string }

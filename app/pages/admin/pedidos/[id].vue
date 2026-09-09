@@ -3,7 +3,7 @@ import { PERMISSIONS } from '#shared/constants/permissions'
 import { orderStatuses } from '#shared/schemas/order-admin.schema'
 import { formatCurrency } from '#shared/utils/public-catalog'
 
-const adminRequest = useAdminRequest()
+const adminRequest = useAdminRequest({ domains: 'orders' })
 
 definePageMeta({ layout: 'admin' })
 useSeoMeta({ title: 'Detalle de pedido', robots: 'noindex, nofollow' })

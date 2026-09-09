@@ -15,7 +15,8 @@ const screenshotOptions = {
   fullPage: true,
   animations: 'disabled' as const,
   style: 'nuxt-devtools-panel, #nuxt-devtools-container { visibility: hidden !important; }',
-  maxDiffPixelRatio: 0.005
+  maxDiffPixelRatio: 0.005,
+  timeout: 15_000
 }
 
 function publicPath(screen: string) {

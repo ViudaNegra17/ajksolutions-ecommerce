@@ -53,73 +53,70 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 <template>
   <div>
     <section class="relative overflow-hidden border-b border-default bg-ajk-50">
-  
-  <picture v-if="hero" class="absolute inset-0">
-    <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
-    <img :src="hero.imageUrl" :alt="hero.title" class="h-full w-full object-cover opacity-25" />
-  </picture>
-  <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/60" />
+      <picture v-if="hero" class="absolute inset-0">
+        <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
+        <img :src="hero.imageUrl" :alt="hero.title" class="h-full w-full object-cover opacity-25" />
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/60" />
 
-  <UContainer class="relative grid items-center gap-8 py-10 lg:grid-cols-12 lg:py-16">
-    
-    
-    <div class="lg:col-span-7">
-      <UBadge :label="hero?.subtitle || 'Tecnología para Personas Naturales y Empresas'" variant="soft" />
-      
-      <h1 class="mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-        <template v-if="hero">{{ hero.title }}</template>
-        <template v-else>
-          Tecnología para trabajar, crear y <span class="text-primary">conectar.</span>
-        </template>
-      </h1>
+      <UContainer class="relative grid items-center gap-8 py-10 lg:grid-cols-12 lg:py-16">
+        <div class="lg:col-span-7">
+          <UBadge :label="hero?.subtitle || 'Tecnología para Personas Naturales y Empresas'" variant="soft" />
 
-      <p class="mt-4 max-w-xl text-base leading-7 text-default sm:text-lg">
-        {{ heroDescription }}
-      </p>
+          <h1 class="mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <template v-if="hero">{{ hero.title }}</template>
+            <template v-else>
+              Tecnología para trabajar, crear y <span class="text-primary">conectar.</span>
+            </template>
+          </h1>
 
-      <div class="mt-6 flex flex-wrap gap-3">
-        <UButton
-          :to="hero?.ctaUrl || '/productos'"
-          :label="hero?.ctaLabel || 'Explorar productos'"
-          size="lg"
-          icon="i-lucide-arrow-right"
-          trailing
-        />
-        <UButton to="/servicios" label="Ver servicios" size="lg" color="neutral" variant="outline" />
-      </div>
-    </div>
+          <p class="mt-4 max-w-xl text-base leading-7 text-default sm:text-lg">
+            {{ heroDescription }}
+          </p>
 
-    
-    <div class="flex flex-col justify-center gap-3.5 sm:grid sm:grid-cols-3 lg:flex lg:flex-col lg:col-span-5">
-      <div
-        v-for="benefit in [
-          [
-            'i-lucide-package-check',
-            'Disponibilidad clara',
-            'Conoce qué puedes recibir y qué podemos conseguir para ti.'
-          ],
-          [
-            'i-lucide-badge-dollar-sign',
-            'Precios claros',
-            'Revisa el total y las condiciones antes de confirmar tu pedido.'
-          ],
-          [
-            'i-lucide-message-circle',
-            'Atención personalizada',
-            'Te acompañamos en la compra y el soporte por WhatsApp.'
-          ]
-        ]"
-        :key="benefit[1]"
-        class="rounded-xl border border-default bg-white/80 p-4 shadow-sm backdrop-blur-sm dark:bg-gray-900/80"
-      >
-        <UIcon :name="benefit[0]" class="size-5 text-primary" />
-        <p class="mt-2 text-sm font-bold">{{ benefit[1] }}</p>
-        <p class="mt-1 text-xs leading-5 text-muted">{{ benefit[2] }}</p>
-      </div>
-    </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <UButton
+              :to="hero?.ctaUrl || '/productos'"
+              :label="hero?.ctaLabel || 'Explorar productos'"
+              size="lg"
+              icon="i-lucide-arrow-right"
+              trailing
+            />
+            <UButton to="/servicios" label="Ver servicios" size="lg" color="neutral" variant="outline" />
+          </div>
+        </div>
 
-  </UContainer>
-</section>
+        <div
+          class="flex flex-col justify-center gap-3.5 sm:grid sm:grid-cols-3 lg:flex lg:flex-col lg:col-span-5"
+        >
+          <div
+            v-for="benefit in [
+              [
+                'i-lucide-package-check',
+                'Disponibilidad clara',
+                'Conoce qué puedes recibir y qué podemos conseguir para ti.'
+              ],
+              [
+                'i-lucide-badge-dollar-sign',
+                'Precios claros',
+                'Revisa el total y las condiciones antes de confirmar tu pedido.'
+              ],
+              [
+                'i-lucide-message-circle',
+                'Atención personalizada',
+                'Te acompañamos en la compra y el soporte por WhatsApp.'
+              ]
+            ]"
+            :key="benefit[1]"
+            class="rounded-xl border border-default bg-white/80 p-4 shadow-sm backdrop-blur-sm"
+          >
+            <UIcon :name="benefit[0]" class="size-5 text-primary" />
+            <p class="mt-2 text-sm font-bold">{{ benefit[1] }}</p>
+            <p class="mt-1 text-xs leading-5 text-muted">{{ benefit[2] }}</p>
+          </div>
+        </div>
+      </UContainer>
+    </section>
 
     <div v-if="status === 'pending'" class="py-24">
       <UContainer class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

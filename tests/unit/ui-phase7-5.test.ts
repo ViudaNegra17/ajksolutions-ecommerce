@@ -3,6 +3,7 @@ import { createPublicReadCache } from '../../server/utils/public-cache-core'
 import { publicInvalidations } from '../../server/utils/public-cache-policy'
 import { uiErrorMessage } from '../../shared/utils/ui-error'
 import { localDateInput } from '../../app/utils/local-date'
+import { resolveAdminRefreshKeys } from '../../app/composables/useAdminRequest'
 
 function setup(limit = 512) {
   const data = new Map<string, unknown>()
@@ -126,5 +127,18 @@ describe('Fase 7.5: mensajes y fechas', () => {
     expect(new Date(localDateInput(original)).toISOString()).toBe(original)
     expect(localDateInput(null)).toBe('')
     expect(localDateInput('invalid')).toBe('')
+  })
+})
+describe('Fase 7.5: refresh administrativo selectivo', () => {
+  it('combina keys y dominios sin duplicar dependencias', () => {
+    expect(
+      resolveAdminRefreshKeys({
+        keys: ['admin:orders:detail:123', 'admin:dashboard'],
+        domains: ['orders', 'dashboard']
+      })
+    ).toEqual(['admin:orders:detail:123', 'admin:dashboard', 'admin:orders:list'])
+  })
+  it('permite mantener el fallback global cuando no se indican targets', () => {
+    expect(resolveAdminRefreshKeys()).toEqual([])
   })
 })

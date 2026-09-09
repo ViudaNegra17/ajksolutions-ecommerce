@@ -15,6 +15,7 @@ test('health comprueba la conexión real con PostgreSQL', async ({ request }) =>
 })
 
 test('inicia y cierra una sesión administrativa completa', async ({ page }) => {
+  test.setTimeout(90_000)
   const email = process.env.SEED_ADMIN_EMAIL
   const password = process.env.SEED_ADMIN_PASSWORD
   test.skip(!email || !password, 'Configura SEED_ADMIN_EMAIL y SEED_ADMIN_PASSWORD para esta prueba')
@@ -25,7 +26,10 @@ test('inicia y cierra una sesión administrativa completa', async ({ page }) => 
   expect(loginResponse.ok()).toBeTruthy()
 
   await page.goto('/admin')
-  await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible()
+  await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 30_000
+  })
+  await expect(page.getByRole('heading', { name: 'Dashboard operativo' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Salir' })).toBeVisible()
 
   const logoutResponse = await page.request.post('/api/auth/logout')

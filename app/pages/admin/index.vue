@@ -54,7 +54,8 @@ type DashboardData = {
 const { data, status, error, refresh } = await useFetch<{ success: true; data: DashboardData }>(
   '/api/admin/dashboard',
   {
-    query: computed(() => ({ period: period.value }))
+    query: computed(() => ({ period: period.value })),
+    key: 'admin:dashboard'
   }
 )
 const dashboard = computed(() => data.value?.data)
