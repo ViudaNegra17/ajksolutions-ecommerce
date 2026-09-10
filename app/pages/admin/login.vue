@@ -10,8 +10,20 @@ const { loggedIn, fetch } = useUserSession()
 const state = reactive<LoginInput>({ email: '', password: '' })
 const loading = ref(false)
 const errorMessage = ref('')
+const expirationMessage = computed(() =>
+  route.query.reason === 'session-expired'
+    ? 'Tu sesión administrativa expiró por inactividad. Inicia sesión nuevamente para continuar.'
+    : ''
+)
 
-if (loggedIn.value) await navigateTo('/admin')
+if (loggedIn.value) {
+  try {
+    const response = await useRequestFetch()<{ data: { user: unknown } }>('/api/auth/session', { retry: 0 })
+    if (response.data.user) await navigateTo('/admin')
+  } catch {
+    // La sesión inválida se limpia en el servidor y el login permanece visible.
+  }
+}
 
 async function submit(event: FormSubmitEvent<LoginInput>) {
   loading.value = true
@@ -41,6 +53,14 @@ async function submit(event: FormSubmitEvent<LoginInput>) {
         <h1 class="mt-5 text-2xl font-bold">Acceso administrativo</h1>
         <p class="mt-2 text-sm text-muted">Gestiona AjkSolutionS e-Commerce de forma segura.</p>
       </div>
+      <UAlert
+        v-if="expirationMessage"
+        class="mb-5"
+        color="warning"
+        variant="soft"
+        icon="i-lucide-clock-alert"
+        :description="expirationMessage"
+      />
       <UAlert
         v-if="errorMessage"
         class="mb-5"

@@ -1,4 +1,5 @@
 import { loginSchema } from '#shared/schemas/auth.schema'
+import { ADMIN_SESSION_ABSOLUTE_MS } from '#shared/utils/admin-session'
 import { auditService } from '../../services/audit.service'
 import { authService } from '../../services/auth.service'
 import { clearLoginRateLimit, enforceLoginRateLimit } from '../../utils/login-rate-limit'
@@ -25,7 +26,12 @@ export default defineEventHandler(async (event) => {
     entity: 'User',
     entityId: user.id
   })
-  await setUserSession(event, { user, loggedInAt: new Date().toISOString() })
+  const now = new Date().toISOString()
+  await setUserSession(
+    event,
+    { user, loggedInAt: now, lastActivityAt: now, lastValidatedAt: now },
+    { maxAge: ADMIN_SESSION_ABSOLUTE_MS / 1000 }
+  )
   clearLoginRateLimit(event)
 
   return { success: true, data: { user } }

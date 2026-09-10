@@ -1,3 +1,11 @@
 export default defineEventHandler((event) => {
-  if (getRequestURL(event).pathname.startsWith('/admin')) setHeader(event, 'Cache-Control', 'no-store')
+  const path = getRequestURL(event).pathname
+  if (
+    path.startsWith('/admin') ||
+    path.startsWith('/api/admin') ||
+    path.startsWith('/api/auth') ||
+    path.startsWith('/api/_auth')
+  ) {
+    setHeader(event, 'Cache-Control', 'no-store')
+  }
 })

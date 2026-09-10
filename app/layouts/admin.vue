@@ -2,6 +2,7 @@
 import { PERMISSIONS, type PermissionCode } from '#shared/constants/permissions'
 
 const { user, clear } = useUserSession()
+const sessionGuard = useAdminSessionGuard()
 const sidebarCollapsed = ref(false)
 const hydrated = ref(false)
 const route = useRoute()
@@ -219,5 +220,11 @@ onMounted(() => {
         </template>
       </UDashboardPanel>
     </UDashboardGroup>
+    <AdminSessionExpiryModal
+      :open="sessionGuard.warningOpen.value"
+      :loading="sessionGuard.syncing.value"
+      @continue="sessionGuard.continueSession"
+      @logout="sessionGuard.logoutNow"
+    />
   </div>
 </template>

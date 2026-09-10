@@ -284,3 +284,17 @@ Las mutaciones invalidan explícitamente todos los recursos dependientes despué
 evita repoblación obsoleta por requests en vuelo y los fallos de invalidación se tratan de forma cerrada. La V1 usa
 almacenamiento local Nitro, sin Redis; una topología multiproceso deberá adoptar un backend distribuido compatible.
 La reactividad del admin se resuelve por reconciliación y `refreshNuxtData`, separada de esta caché de servidor.
+
+## TD-031 — Administrative session lifetime and inactivity policy
+
+**Fecha:** 2026-09-10
+**Estado:** aceptada
+
+La sesión administrativa tiene un máximo absoluto no deslizante de 8 horas desde `loggedInAt` y un máximo de 30
+minutos desde `lastActivityAt`. El cliente avisa durante los últimos 2 minutos de inactividad y revalida cada ~5
+minutos o al volver a una pestaña desactualizada. Los eventos locales solo gobiernan UX; el servidor valida fechas,
+usuario activo y RBAC antes de entregar cualquier dato de `/api/admin/**`.
+
+Los refresh de actividad, usuario o permisos limitan el `maxAge` del cookie al tiempo absoluto restante. Auth y
+administración permanecen en `no-store`; no participan del caché público. La política usa el cookie cifrado de
+`nuxt-auth-utils`, no requiere tablas ni migraciones y mantiene `httpOnly`, `secure` en producción y `sameSite=lax`.

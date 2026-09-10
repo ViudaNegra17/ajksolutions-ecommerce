@@ -9,6 +9,10 @@ declare module '#auth-utils' {
   }
   interface UserSession {
     loggedInAt: string
+    lastActivityAt: string
+    lastValidatedAt: string
+    expiresAt?: string
+    idleExpiresAt?: string
   }
 }
 
