@@ -254,4 +254,14 @@ test('RBAC impide escrituras de contenido y settings sin permisos', async ({ pag
   expect(banner.status()).toBe(403)
   expect(promotion.status()).toBe(403)
   expect(settings.status()).toBe(403)
+
+  await page.goto('/admin')
+  await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 30_000
+  })
+  const navigation = page.getByTestId('admin-sidebar').locator('[data-admin-navigation]')
+  await expect(navigation.getByRole('link', { name: 'Banners', exact: true })).toBeVisible()
+  await expect(navigation.getByRole('link', { name: 'Promociones', exact: true })).toBeVisible()
+  await expect(navigation.getByRole('link', { name: 'Tickets', exact: true })).toBeVisible()
+  await expect(navigation.getByRole('link', { name: 'Configuración', exact: true })).toHaveCount(0)
 })

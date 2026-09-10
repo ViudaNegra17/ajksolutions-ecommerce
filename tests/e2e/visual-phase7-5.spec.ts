@@ -153,7 +153,7 @@ for (const screen of ['dashboard', 'products', 'settings']) {
     await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
       timeout: 45_000
     })
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+    await expect(page.getByTestId('admin-navbar').getByRole('heading', { level: 1 })).toBeVisible()
     await page.evaluate(() => document.fonts.ready)
     await expect(page).toHaveScreenshot(`admin-${screen}.png`, {
       ...screenshotOptions,

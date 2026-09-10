@@ -1,6 +1,6 @@
 # Implementación — Fase 7.5 UI/UX
 
-Fecha de cierre: 2026-09-08. Última verificación: 2026-09-09. Base auditada: `de5c398`. Alcance ejecutado sin Docker y sobre PostgreSQL local.
+Fecha de cierre: 2026-09-08. Última verificación: 2026-09-10. Base auditada: `de5c398`. Alcance ejecutado sin Docker y sobre PostgreSQL local.
 
 ## 1. Scope
 
@@ -68,7 +68,17 @@ Listado, tarjetas, detalle y formulario dinámico conservan modalidades `FIXED`,
 
 ## 17. Admin UX
 
-El admin es desktop-first y usable en móvil. La navegación se agrupó por Operación, Catálogo, Contenido y Sistema respetando RBAC; el móvil usa slideover. Headers, tablas, formularios, badges, dashboard, clientes, productos, inventario, pedidos, tickets, banners, promociones y configuración comparten patrones visuales claros.
+El admin es desktop-first y usable en móvil. La navegación conserva los grupos Resumen, Operación, Catálogo, Servicios, Contenido y Sistema, con el mismo orden, rutas y filtrado RBAC. Headers, tablas, formularios, badges, dashboard, clientes, productos, inventario, pedidos, tickets, banners, promociones y configuración mantienen patrones visuales claros.
+
+### Admin Dashboard Shell Hardening
+
+El shell manual fue migrado a UDashboardGroup, UDashboardSidebar, UDashboardPanel y UDashboardNavbar de Nuxt UI 4. Siguiendo el template Dashboard oficial, UDashboardSidebarCollapse está en el sector izquierdo del navbar y se muestra solo en escritorio; UDashboardSidebarToggle ocupa esa misma zona en móvil y abre el overlay oficial, sin un USlideover duplicado. El sidebar es colapsable, redimensionable entre 220 y 340 px, conserva 72 px en modo compacto, usa la superficie `bg-elevated/25` del template y persiste tamaño y colapso bajo la clave `ajk-admin-dashboard-shell`.
+
+AdminNavigation usa UNavigationMenu vertical con tooltip inmediato y nombre accesible en cada enlace cuando el texto queda oculto. El estado activo continúa basado en la ruta exacta y el filtrado reutiliza los permisos existentes. El logo oficial no fue sustituido ni transformado; el botón Salir permanece disponible en el navbar.
+
+En móvil, el overlay oficial administra foco, Escape, bloqueo de scroll y autocierre al navegar. En escritorio, la navegación permanece funcional durante el colapso y el estado compacto sobrevive cambios SPA sin F5. La prueba de estructura exige que el control de colapso pertenezca al navbar y no al sidebar, y confirma que en móvil solo quede visible el toggle apropiado.
+
+El navbar presenta dinámicamente la opción administrativa activa junto al control de colapso, reproduciendo el patrón del template Dashboard oficial. La coincidencia de ruta usa la sección autorizada más específica para distinguir, por ejemplo, Servicios de Categorías de servicio. En la raíz de cada sección, AdminPageHeader conserva descripción y acciones pero omite el título duplicado. Las vistas subordinadas mantienen su contexto específico —como Nuevo producto, un número de pedido o un código de ticket— como encabezado de segundo nivel bajo el título principal del navbar.
 
 ## 18. Copy Audit
 
@@ -80,7 +90,7 @@ Se añadieron skip link, route announcer, foco visible, etiquetas, controles nat
 
 ## 20. Responsive
 
-Storefront mobile-first y admin desktop-first se verificaron en 320, 375, 390, 768, 1024, 1280 y 1440 px. Tablas administrativas tienen contención horizontal local; ningún viewport probado produce overflow horizontal de documento.
+Storefront mobile-first y admin desktop-first se verificaron en 320, 375, 390, 430, 768, 1024, 1280 y 1440 px. El selector de orden del catálogo se apila únicamente por debajo de 360 px; las tablas administrativas tienen contención horizontal local y ningún viewport probado produce overflow horizontal de documento.
 
 ## 21. Reactive Admin
 
@@ -100,11 +110,11 @@ El plugin de servidor invalida recursos después de cada mutación administrativ
 
 ## 24. Visual Regression
 
-`tests/e2e/visual-phase7-5.spec.ts` mantiene 19 referencias Chromium: ocho pantallas públicas a 390 y 1440 px, más dashboard, productos y configuración administrativos a 1440 px. Los fixtures crean productos SSR temporales, ejercitan carrito/checkout y se eliminan junto con stock y auditoría. Tras retirar la clase residual `dark:bg-gray-900/80` y corregir el contraste condicional de categorías en la portada, se regeneraron únicamente los baselines `home-390` y `home-1440`; las otras 17 referencias no cambiaron. La comparación dispone de 15 segundos para obtener dos capturas estables sin aumentar `maxDiffPixelRatio`.
+`tests/e2e/visual-phase7-5.spec.ts` mantiene 19 referencias Chromium: ocho pantallas públicas a 390 y 1440 px, más dashboard, productos y configuración administrativos a 1440 px. Los fixtures crean productos SSR temporales, ejercitan carrito/checkout y se eliminan junto con stock y auditoría. El hardening del shell regeneró únicamente los tres baselines administrativos; las 16 referencias públicas permanecieron iguales. La comparación dispone de 15 segundos para obtener dos capturas estables sin aumentar `maxDiffPixelRatio`.
 
 ## 25. Tests
 
-La cobertura específica incluye once unit tests de tokens, marca, políticas de caché, invalidación y seguridad. Los dos casos nuevos comprueban composición/deduplicación de keys y dominios, y la ausencia de targets que activa el fallback global. Se mantienen seis E2E de caché, no-F5, foco, teclado y responsive, además de diecinueve escenarios visuales. Las suites históricas siguen siendo la regresión de PHYSICAL, DIGITAL, servicios, promociones, SEO y ausencia del dominio legado.
+La cobertura específica incluye once unit tests de tokens, marca, políticas de caché, invalidación y seguridad. Los dos casos de refresh selectivo comprueban composición/deduplicación de keys y dominios, y la ausencia de targets que activa el fallback global. Los ocho E2E de UI cubren caché, no-F5, foco, teclado, responsive y el shell administrativo desktop/móvil. La prueba RBAC verifica el menú contra permisos reales y se mantienen diecinueve escenarios visuales. Las suites históricas siguen siendo la regresión de PHYSICAL, DIGITAL, servicios, promociones, SEO y ausencia del dominio legado.
 
 ## 26. Gates
 
@@ -127,7 +137,7 @@ No cambió el schema comercial ni las 12 migraciones. Se preservaron restriccion
 ### Resultado del pase final
 
 - Vitest: 111/111.
-- Playwright: 56/56.
+- Playwright: 58/58.
 - Visual: 19/19.
 - Prisma format/validate/generate/migrate status: PASS.
 - ESLint: PASS.

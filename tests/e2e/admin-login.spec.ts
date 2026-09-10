@@ -29,7 +29,7 @@ test('inicia y cierra una sesión administrativa completa', async ({ page }) => 
   await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
     timeout: 30_000
   })
-  await expect(page.getByRole('heading', { name: 'Dashboard operativo' })).toBeVisible()
+  await expect(page.getByTestId('admin-navbar').getByRole('heading', { name: 'Dashboard' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Salir' })).toBeVisible()
 
   const logoutResponse = await page.request.post('/api/auth/logout')

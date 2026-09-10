@@ -264,6 +264,11 @@ pero navegación, formularios y tablas deben seguir siendo utilizables en móvil
 
 Nuxt UI es la base de componentes, foco, overlays, estados y tokens. CSS propio se limita a composición y patrones
 compartidos, evitando paletas paralelas y controles interactivos improvisados.
+El shell administrativo usa la familia oficial UDashboard y UNavigationMenu; el mismo sidebar resuelve escritorio
+y móvil, conserva RBAC y persiste de forma nativa su tamaño y estado colapsado. El control de colapso de escritorio
+se aloja en el navbar, como en el template Dashboard oficial, mientras el toggle móvil abre el overlay del sidebar.
+Ese navbar es también la única fuente del encabezado principal de la sección activa; las páginas raíz no repiten el
+título y las vistas de creación, edición o detalle conservan únicamente su encabezado contextual de segundo nivel.
 
 ## TD-030 — Selective public caching with explicit invalidation
 

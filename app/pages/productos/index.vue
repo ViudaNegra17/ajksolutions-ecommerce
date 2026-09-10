@@ -168,7 +168,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         <UButton type="submit" label="Buscar" icon="i-lucide-search" />
       </form>
     </div>
-    <div class="mt-8 flex items-center justify-between gap-3">
+    <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
       <UButton
         class="lg:hidden"
         label="Filtros"
@@ -177,7 +177,9 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
         variant="outline"
         @click="filterOpen = true"
       />
-      <label class="ml-auto flex items-center gap-2 text-sm text-muted">
+      <label
+        class="ml-auto flex items-center gap-2 text-sm text-muted max-[359px]:w-full max-[359px]:justify-between"
+      >
         Ordenar
         <select
           :value="state.sort || 'relevance'"

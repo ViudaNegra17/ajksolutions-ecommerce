@@ -330,7 +330,78 @@ test('móvil: menú y filtros gestionan foco/Escape; búsqueda usa teclado e IDs
   await expect(page).toHaveURL(new RegExp('/productos/' + productSlug + '$'))
 })
 
-test('responsive: cero overflow en storefront y admin a siete anchuras', async ({ page }) => {
+test('admin desktop: sidebar oficial colapsa, navega, persiste y permite redimensionar', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await login(page.request)
+  await ready(page, '/admin')
+
+  const sidebar = page.getByTestId('admin-sidebar')
+  const navbar = page.getByTestId('admin-navbar')
+  const collapse = page.getByTestId('admin-sidebar-collapse')
+  await expect(sidebar).toBeVisible()
+  await expect(navbar).toBeVisible()
+  await expect(navbar.getByRole('heading', { name: 'Dashboard', exact: true })).toBeVisible()
+  await expect(navbar.getByTestId('admin-sidebar-collapse')).toBeVisible()
+  await expect(sidebar.getByTestId('admin-sidebar-collapse')).toHaveCount(0)
+  await expect(sidebar).toHaveAttribute('data-collapsed', 'false')
+  await expect(sidebar.getByRole('link', { name: 'Dashboard', exact: true })).toHaveAttribute(
+    'aria-current',
+    'page'
+  )
+
+  await collapse.click()
+  await expect(sidebar).toHaveAttribute('data-collapsed', 'true')
+  await markDocument(page)
+  await sidebar.getByRole('link', { name: 'Productos', exact: true }).click()
+  await expect(page).toHaveURL(/\/admin\/catalogo\/productos$/)
+  await unchangedDocument(page)
+  await expect(navbar.getByRole('heading', { name: 'Productos', exact: true })).toBeVisible()
+  await expect(page.locator('main').getByRole('heading', { name: 'Productos', exact: true })).toHaveCount(0)
+  await expect(sidebar).toHaveAttribute('data-collapsed', 'true')
+  await expect(sidebar.getByRole('link', { name: 'Productos', exact: true })).toHaveAttribute(
+    'aria-current',
+    'page'
+  )
+
+  await collapse.click()
+  await expect(sidebar).toHaveAttribute('data-collapsed', 'false')
+  const sidebarId = await sidebar.getAttribute('id')
+  const handle = page.locator(`[data-slot="handle"][aria-controls="${sidebarId}"]`)
+  const before = await sidebar.boundingBox()
+  const handleBox = await handle.boundingBox()
+  expect(before).not.toBeNull()
+  expect(handleBox).not.toBeNull()
+  await page.mouse.move(handleBox!.x + handleBox!.width / 2, handleBox!.y + 120)
+  await page.mouse.down()
+  await page.mouse.move(handleBox!.x + 36, handleBox!.y + 120)
+  await page.mouse.up()
+  await expect.poll(async () => (await sidebar.boundingBox())?.width || 0).toBeGreaterThan(before!.width + 20)
+})
+
+test('admin móvil: sidebar oficial abre, cierra con Escape y navega sin F5', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await login(page.request)
+  await ready(page, '/admin')
+
+  const toggle = page.getByTestId('admin-sidebar-toggle')
+  await expect(page.getByTestId('admin-navbar').getByTestId('admin-sidebar-collapse')).toBeHidden()
+  await expect(page.getByTestId('admin-sidebar')).not.toBeVisible()
+  await toggle.click()
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(dialog).not.toBeVisible()
+  await expect(toggle).toBeFocused()
+
+  await markDocument(page)
+  await toggle.click()
+  await dialog.getByRole('link', { name: 'Productos', exact: true }).click()
+  await expect(page).toHaveURL(/\/admin\/catalogo\/productos$/)
+  await expect(dialog).not.toBeVisible()
+  await unchangedDocument(page)
+})
+
+test('responsive: cero overflow en storefront y admin a ocho anchuras', async ({ page }) => {
   test.setTimeout(240_000)
   await login(page.request)
   for (const path of [
@@ -351,7 +422,7 @@ test('responsive: cero overflow en storefront y admin a siete anchuras', async (
     '/admin/promociones'
   ]) {
     await ready(page, path)
-    for (const width of [360, 390, 430, 768, 1024, 1280, 1440]) {
+    for (const width of [320, 375, 390, 430, 768, 1024, 1280, 1440]) {
       await page.setViewportSize({ width, height: 900 })
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),
