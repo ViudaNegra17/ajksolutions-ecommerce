@@ -1,3 +1,8 @@
+import { normalizeAppUrl } from './config/production-env'
+
+const isProduction = process.env.NODE_ENV === 'production'
+const developmentSessionSecret = !isProduction ? process.env.NUXT_SESSION_PASSWORD : undefined
+
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/image', '@nuxt/icon', '@pinia/nuxt', 'nuxt-auth-utils'],
   ssr: true,
@@ -14,18 +19,20 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   colorMode: { preference: 'light', fallback: 'light' },
   runtimeConfig: {
-    checkoutSigningSecret: process.env.NUXT_CHECKOUT_SIGNING_SECRET || process.env.NUXT_SESSION_PASSWORD,
-    orderHandoffSecret: process.env.NUXT_ORDER_HANDOFF_SECRET || process.env.NUXT_SESSION_PASSWORD,
+    checkoutSigningSecret: process.env.NUXT_CHECKOUT_SIGNING_SECRET || developmentSessionSecret,
+    orderHandoffSecret: process.env.NUXT_ORDER_HANDOFF_SECRET || developmentSessionSecret,
     session: {
       password: process.env.NUXT_SESSION_PASSWORD,
       maxAge: 60 * 60 * 8,
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: isProduction,
         sameSite: 'lax'
       }
     },
-    public: { appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000' }
+    public: {
+      appUrl: normalizeAppUrl(process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000')
+    }
   },
   compatibilityDate: '2026-06-30',
   nitro: { storage: { 'public-cache': { driver: 'memory' } } },

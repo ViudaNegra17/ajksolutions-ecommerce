@@ -10,11 +10,14 @@ permissions:
 
 jobs:
   quality:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    runs-on: windows-2025
+    timeout-minutes: 50
     env:
       DATABASE_URL: postgresql://postgres:ci-local-password@localhost:5432/ajksolutions_ecommerce?schema=public
       NUXT_SESSION_PASSWORD: ci-only-session-secret-with-more-than-32-characters
+      NUXT_CHECKOUT_SIGNING_SECRET: ci-checkout-signing-secret-with-more-than-32-characters
+      NUXT_ORDER_HANDOFF_SECRET: ci-order-handoff-secret-with-more-than-32-characters
+      NUXT_PUBLIC_APP_URL: https://ci.ajksolutions.example
       SEED_ADMIN_EMAIL: admin-ci@ajksolutions.local
       SEED_ADMIN_PASSWORD: AjkSolutions-CI-2026
       SEED_ADMIN_FIRST_NAME: CI
@@ -30,14 +33,33 @@ jobs:
           node-version: 24
           cache: pnpm
       - name: Prepare PostgreSQL installed on the runner
+        shell: pwsh
+        env:
+          PGPASSWORD: root
         run: |
-          sudo systemctl start postgresql
-          sudo -u postgres psql --file .github/ci-postgres.sql
+          Set-Service -Name postgresql-x64-17 -StartupType Manual
+          Start-Service -Name postgresql-x64-17
+          & "$env:PGBIN\psql.exe" -v ON_ERROR_STOP=1 -U postgres -f .github/ci-postgres.sql
       - run: pnpm install --frozen-lockfile
+      - run: pnpm exec prisma format --check
+      - run: pnpm exec prisma validate
+      - run: pnpm db:generate
       - run: pnpm db:deploy
+      - run: pnpm exec prisma migrate status
       - run: pnpm db:seed
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm exec playwright install chromium
+      - run: pnpm test:e2e
+      - run: pnpm test:visual
       - run: pnpm build
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7

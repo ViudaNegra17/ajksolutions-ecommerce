@@ -298,3 +298,47 @@ usuario activo y RBAC antes de entregar cualquier dato de `/api/admin/**`.
 Los refresh de actividad, usuario o permisos limitan el `maxAge` del cookie al tiempo absoluto restante. Auth y
 administración permanecen en `no-store`; no participan del caché público. La política usa el cookie cifrado de
 `nuxt-auth-utils`, no requiere tablas ni migraciones y mantiene `httpOnly`, `secure` en producción y `sameSite=lax`.
+
+## TD-032 — Production security headers and environment policy
+
+**Fecha:** 2026-09-10
+**Estado:** aceptada
+
+Producción valida al inicio real de Nitro `DATABASE_URL`, los tres secretos criptográficos y el origen público HTTPS.
+Session, checkout signing y order handoff deben ser fuertes e independientes; sus fallbacks existen únicamente en
+desarrollo/test. Los errores de configuración nombran la variable o regla, nunca su valor.
+
+Todas las respuestas aplican CSP, nosniff, referrer policy y permissions policy. HSTS solo se emite en producción con
+app URL HTTPS y no usa preload. CSP niega objetos, framing y frames; permite imágenes HTTPS/data/blob. Los scripts y
+estilos inline se permiten por compatibilidad demostrada con payload/hidratación SSR y Nuxt UI hasta adoptar nonces.
+No se abre CORS global. Auth, admin y superficies transaccionales permanecen `no-store`; 5xx usan mensajes públicos
+genéricos y los detalles sanitizados quedan en logs operativos.
+
+## TD-033 — Observability, health and operational logging policy
+
+**Fecha:** 2026-09-10
+**Estado:** aceptada
+
+Cada request recibe un UUID generado por servidor en `event.context.requestId` y `X-Request-ID`. El logger operativo
+emite JSON con timestamp, nivel, requestId, ruta, método, status y duración, y redacta password, cookie,
+authorization, session, secret, tokens, checkout signatures y DSN PostgreSQL. AuditLog continúa como registro
+persistente de negocio/seguridad; el log operacional sirve solo para diagnóstico y no lo reemplaza.
+
+`/api/health/live` prueba únicamente que el proceso responde. `/api/health/ready` consulta PostgreSQL y devuelve 503
+si la dependencia crítica falla. `/api/health` conserva compatibilidad con semántica de readiness. Las tres
+respuestas son mínimas y no publican host, versión, schema, DSN ni stack.
+
+## TD-034 — Production deployment and database recovery strategy
+
+**Fecha:** 2026-09-10
+**Estado:** aceptada
+
+La Release Candidate se instala con lockfile congelado, valida/genera Prisma, aplica `prisma migrate deploy`, compila,
+arranca y pasa liveness, readiness y smoke antes de recibir tráfico. No se presupone Docker, PM2 ni proveedor. V1 se
+opera como instancia única mientras cache y rate limit sean memoria local; escalar horizontalmente exige storage
+distribuido.
+
+Los backups PostgreSQL usan `pg_dump` custom fuera del repositorio, cifrado, checksum y acceso restringido. Un backup
+solo es válido tras `pg_restore --exit-on-error` en una base aislada y verificación de migraciones/entidades. El
+rollback de aplicación requiere compatibilidad de schema; para cambios de DB se prefiere forward-fix o restauración
+en una base nueva, nunca SQL inverso improvisado. RPO 24 h y RTO 4 h son objetivos iniciales revisables, no SLA.

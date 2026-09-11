@@ -1,10 +1,8 @@
 import { prisma } from '../utils/prisma'
+import { probeReadiness } from '../utils/health'
 
-export default defineEventHandler(async () => {
-  try {
-    await prisma.$queryRaw`SELECT 1`
-    return { status: 'ok', database: 'connected' }
-  } catch {
-    throw apiError(503, 'DATABASE_UNAVAILABLE', 'El servicio no está disponible temporalmente.')
-  }
+export default defineEventHandler(async (event) => {
+  const result = await probeReadiness(() => prisma.$queryRaw`SELECT 1`)
+  if (!result.ready) setResponseStatus(event, 503)
+  return result.status
 })

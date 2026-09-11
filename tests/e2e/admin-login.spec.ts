@@ -11,7 +11,7 @@ test('muestra el acceso administrativo', async ({ page }) => {
 test('health comprueba la conexión real con PostgreSQL', async ({ request }) => {
   const response = await request.get('/api/health')
   expect(response.ok()).toBeTruthy()
-  await expect(response.json()).resolves.toEqual({ status: 'ok', database: 'connected' })
+  await expect(response.json()).resolves.toEqual({ status: 'ok' })
 })
 
 test('inicia y cierra una sesión administrativa completa', async ({ page }) => {

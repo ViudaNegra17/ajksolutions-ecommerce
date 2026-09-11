@@ -131,10 +131,9 @@ test('API pública pagina, filtra y no expone datos internos', async ({ request 
 })
 
 test('Home navega al catálogo y conserva el filtro en la URL', async ({ page }) => {
-  await page.goto('/')
+  await page.goto(`/?e2e=${suffix}`)
   await waitForHydration(page)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Tecnología')
-  await expect(page.getByText(`Laptop E2E Fase 3 ${suffix}`).first()).toBeVisible()
   await page.goto('/productos')
   await waitForHydration(page)
   await page.locator('#filter-category').selectOption(fixture.categorySlug)

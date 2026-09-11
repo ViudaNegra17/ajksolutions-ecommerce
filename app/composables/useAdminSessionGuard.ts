@@ -87,7 +87,11 @@ export function useAdminSessionGuard() {
       await synchronize(false)
       return
     }
-    if (metadata?.expiresAt && metadata.idleExpiresAt && shouldWarnAdminSession(metadata)) {
+    if (
+      metadata?.expiresAt &&
+      metadata.idleExpiresAt &&
+      shouldWarnAdminSession({ expiresAt: metadata.expiresAt, idleExpiresAt: metadata.idleExpiresAt })
+    ) {
       if (activityPending) await synchronize(true)
       else warningOpen.value = true
     } else {

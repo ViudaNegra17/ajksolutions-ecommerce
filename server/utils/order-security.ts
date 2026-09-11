@@ -2,10 +2,10 @@ import { createHash, createHmac, timingSafeEqual } from 'node:crypto'
 import { apiError } from './api-error'
 
 function requiredSecret(name: 'checkout' | 'handoff') {
+  const configured =
+    name === 'checkout' ? process.env.NUXT_CHECKOUT_SIGNING_SECRET : process.env.NUXT_ORDER_HANDOFF_SECRET
   const value =
-    (name === 'checkout'
-      ? process.env.NUXT_CHECKOUT_SIGNING_SECRET
-      : process.env.NUXT_ORDER_HANDOFF_SECRET) || process.env.NUXT_SESSION_PASSWORD
+    configured || (process.env.NODE_ENV === 'production' ? undefined : process.env.NUXT_SESSION_PASSWORD)
   if (typeof value !== 'string' || value.length < 32) {
     throw apiError(503, 'ORDER_SECURITY_NOT_CONFIGURED', `El secreto privado de ${name} no está configurado.`)
   }

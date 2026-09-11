@@ -6,6 +6,7 @@ import type {
   PublicCategory,
   PublicProductCard
 } from '#shared/types/public-catalog'
+import { catalogRobots } from '#shared/utils/seo'
 
 type CatalogData = {
   items: PublicProductCard[]
@@ -115,7 +116,8 @@ useSeoMeta({
   description: 'Busca, filtra y compara productos tecnológicos disponibles en AjkSolutionS.',
   ogTitle: 'Catálogo de productos · AjkSolutionS',
   ogDescription: 'Productos tecnológicos con precio y disponibilidad comercial.',
-  ogUrl: canonical
+  ogUrl: canonical,
+  robots: () => catalogRobots(route.query)
 })
 useHead({ link: [{ rel: 'canonical', href: canonical }] })
 </script>

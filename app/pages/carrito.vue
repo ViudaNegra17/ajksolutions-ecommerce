@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { formatCurrency } from '#shared/utils/public-catalog'
 
-useSeoMeta({ title: 'Carrito', description: 'Revisa los productos de tu pedido.' })
+useSeoMeta({
+  title: 'Carrito',
+  description: 'Revisa los productos de tu pedido.',
+  robots: 'noindex, nofollow'
+})
 const cart = useCartStore()
 onMounted(() => cart.hydrate())
 const estimatedTotal = computed(() =>

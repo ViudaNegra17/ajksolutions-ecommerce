@@ -6,6 +6,10 @@ export default defineEventHandler((event) => {
     'Allow: /',
     'Disallow: /admin',
     'Disallow: /api',
+    'Disallow: /carrito',
+    'Disallow: /checkout',
+    'Disallow: /pedido',
+    'Disallow: /*/comprar',
     `Sitemap: ${config.public.appUrl}/sitemap.xml`
   ].join('\n')
 })

@@ -86,6 +86,7 @@ model AuditLog {
   entityId  String?  @db.VarChar(100)
   oldValues Json?
   newValues Json?
+  requestId String?  @map("requestid") @db.VarChar(100)
   ip        String?  @db.VarChar(64)
   userAgent String?  @db.VarChar(512)
   createdAt DateTime @default(now()) @db.Timestamptz(3)
@@ -94,6 +95,7 @@ model AuditLog {
   @@index([userId, createdAt])
   @@index([entity, entityId])
   @@index([action, createdAt])
+  @@index([requestId], map: "audit_logs_requestid_idx")
   @@map("audit_logs")
 }
 
