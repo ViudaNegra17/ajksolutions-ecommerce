@@ -62,7 +62,7 @@ test.beforeAll(async () => {
           variantCode: `E2EV${index}-${suffix}`,
           sku: `E2EV${index}-${suffix}`,
           combinationKey: option.id,
-          priceOverride: index === 0 ? '400.00' : '450.00',
+          priceOverride: option.value === '8gb' ? '400.00' : '450.00',
           attributeValues: {
             create: { attributeId: attribute.id, optionId: option.id }
           }
@@ -152,6 +152,7 @@ test('la búsqueda abre detalle y la variante actualiza precio y disponibilidad'
     .first()
     .click()
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Laptop E2E')
+  await page.getByRole('button', { name: '8 GB' }).click()
   await expect(page.getByText(/400[.,]00/).first()).toBeVisible()
   await page.getByRole('button', { name: '16 GB' }).click()
   await expect(page.getByText(/450[.,]00/).first()).toBeVisible()

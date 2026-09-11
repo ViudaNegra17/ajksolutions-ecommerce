@@ -29,7 +29,7 @@ test.describe('Phase 8 production readiness', () => {
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow')
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'http://localhost:3000/productos'
+      `${process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000'}/productos`
     )
   })
 
