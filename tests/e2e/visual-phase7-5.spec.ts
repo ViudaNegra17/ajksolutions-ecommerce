@@ -9,6 +9,7 @@ const suffix = Date.now().toString()
 const physicalSlug = `visual-physical-${suffix}`
 const digitalSlug = `visual-digital-${suffix}`
 const productIds: string[] = []
+let categoryId = ''
 let serviceSlug = ''
 
 const screenshotOptions = {
@@ -37,7 +38,10 @@ async function login(request: APIRequestContext) {
 
 test.beforeAll(async ({ request }) => {
   await login(request)
-  const category = await prisma.category.findFirstOrThrow({ where: { active: true, deletedAt: null } })
+  const category = await prisma.category.create({
+    data: { name: `Visual E2E ${suffix}`, slug: `visual-e2e-${suffix}`, active: true }
+  })
+  categoryId = category.id
   serviceSlug = (await prisma.service.findFirstOrThrow({ where: { active: true, deletedAt: null } })).slug
 
   for (const product of [
@@ -99,6 +103,7 @@ test.afterAll(async ({ request }) => {
   await prisma.inventoryMovement.deleteMany({ where: { productId: { in: productIds } } })
   await prisma.inventoryStock.deleteMany({ where: { productId: { in: productIds } } })
   await prisma.product.deleteMany({ where: { id: { in: productIds } } })
+  if (categoryId) await prisma.category.delete({ where: { id: categoryId } })
   await prisma.$disconnect()
 })
 
