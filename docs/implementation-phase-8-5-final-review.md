@@ -212,6 +212,24 @@ el navegador integrado no pudo iniciar por CryptUnprotectData en este entorno.
 
 CI final debe corresponder al SHA exacto enviado a main. Consulte el SHA de la entrega con
 `git rev-parse HEAD` y el run enlazado en el reporte final; no confundir el CI baseline con el final.
-Estado local: implementación y QA completos. CI del candidato pendiente de push/ejecución;
-preproducción pendiente del checklist externo. No se declara FASE 8.5 CERRADA ni PRODUCTION READY
-con la sola validación local.
+Estado: **FASE 8.5 — IMPLEMENTACIÓN TÉCNICA COMPLETADA** para el candidato verificado abajo.
+**PREPRODUCCIÓN — PENDIENTE** del checklist externo; no se declara PRODUCTION READY.
+
+## 10. Evidencia GitHub Actions y entrega
+
+Commit de implementación: `a62e4cd7559e34e1d75751e5ab9e864b159d1389`,
+`feat: complete phase 8.5 commercial and release candidate review`.
+Push a main confirmado; worktree limpio al terminar la ejecución remota.
+
+[CI #11, run 37142830434](https://github.com/ViudaNegra17/ajksolutions-ecommerce/actions/runs/37142830434):
+completed / SUCCESS para ese SHA exacto. Se verificaron individualmente los 16 gates pnpm:
+instalación congelada, Prisma format/validate/generate/deploy/status/seed, lint, formato, typecheck,
+Vitest, DB vacía, instalación Chromium, E2E, visual y build. PostgreSQL del runner fue preparado
+correctamente; solo se omitió el upload de reporte condicionado a fallo, como corresponde a un run exitoso.
+No hizo falta corregir código después del primer push ni hacer cambios preventivos.
+
+Esta revisión posterior modifica únicamente la documentación para incorporar evidencia real,
+no código, schema, migraciones ni referencias. El commit documental también se envía a main y
+debe pasar su workflow completo. El reporte de entrega identifica su HEAD final y run exactos;
+no se graba aquí el SHA autorreferencial de este mismo archivo. La confirmación final se emite
+solo después de ese segundo CI GREEN. No se despliega producción ni se inicia fase 9.
