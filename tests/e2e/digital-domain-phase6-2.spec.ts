@@ -4,7 +4,7 @@ import { prisma } from '../../server/utils/prisma'
 
 test.describe.configure({ mode: 'serial', timeout: 60_000 })
 const suffix = Date.now().toString()
-const slug = `licencia-digital-62-${suffix}`
+let slug = `licencia-digital-62-${suffix}`
 const physicalSlug = `producto-fisico-62-${suffix}`
 const ids: Record<string, string> = {}
 
@@ -63,7 +63,7 @@ test('admin gestiona DIGITAL como producto y no existe inventario interno de lic
   await login(page)
   await page.goto('/admin/catalogo/productos/nuevo')
   await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', { timeout: 30_000 })
-  await expect(page.locator('option[value="DIGITAL"]')).toHaveText('Digital / Licencia')
+  await expect(page.locator('option[value="DIGITAL"]')).toHaveText('Producto digital')
   await expect(page.getByRole('link', { name: 'Licencias' })).toHaveCount(0)
 
   const response = await page.request.post('/api/admin/products', {
@@ -89,6 +89,7 @@ test('admin gestiona DIGITAL como producto y no existe inventario interno de lic
   expect(response.status(), await response.text()).toBe(201)
   const body = await response.json()
   ids.product = body.data.id
+  slug = body.data.slug
   const legacyApi = await page.request.get('/api/admin/licenses')
   expect(legacyApi.status()).toBe(404)
 })
@@ -177,6 +178,9 @@ test('PHYSICAL no puede abrir checkout directo y DIGITAL solo aparece en sitemap
 
 test('la búsqueda global abre DIGITAL en /productos', async ({ page }) => {
   await page.goto('/')
+  await expect(page.locator('[data-public-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 30_000
+  })
   const search = page.getByRole('combobox', { name: 'Buscar productos' }).first()
   await search.fill(`Licencia digital 6.2 ${suffix}`)
   await expect(page.getByRole('link', { name: `Licencia digital 6.2 ${suffix}` }).first()).toBeVisible({

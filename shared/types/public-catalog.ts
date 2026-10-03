@@ -79,6 +79,7 @@ export type PublicSpecification = { name: string; value: string; unit: string | 
 export type PublicProductDetail = PublicProductCard & {
   description: string | null
   warranty: string | null
+  weight: string | null
   metaTitle: string | null
   metaDescription: string | null
   images: PublicImage[]

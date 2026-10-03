@@ -316,7 +316,6 @@ async function createVariant(
     .sort()
     .join(':')
   const data = {
-    sku: variant.sku,
     name:
       variant.name ||
       options
@@ -352,11 +351,13 @@ async function createVariant(
       }
     })
   }
+  const variantCode = await nextCommercialCode(tx, 'variant')
   return tx.productVariant.create({
     data: {
       ...data,
       productId,
-      variantCode: await nextCommercialCode(tx, 'variant'),
+      variantCode,
+      sku: `SKU-${variantCode}`,
       attributeValues: {
         create: options.map((option) => ({ attributeId: option.attributeId, optionId: option.id }))
       }
@@ -366,7 +367,7 @@ async function createVariant(
 
 function productCore(input: ProductInput, slug: string) {
   return {
-    sku: input.sku,
+    barcode: input.barcode || null,
     name: input.name,
     slug,
     shortDescription: input.shortDescription || null,
@@ -378,11 +379,11 @@ function productCore(input: ProductInput, slug: string) {
     taxRate: input.taxRate || null,
     brandId: input.brandId || null,
     categoryId: input.categoryId,
-    manageStock: input.manageStock,
+    manageStock: input.productType === 'DIGITAL' ? false : input.manageStock,
     active: input.active,
     featured: input.featured,
     warranty: input.warranty || null,
-    weight: input.weight || null,
+    weight: input.productType === 'DIGITAL' ? null : input.weight || null,
     metaTitle: input.metaTitle || null,
     metaDescription: input.metaDescription || null
   }
@@ -452,6 +453,7 @@ export const productRepository = {
         ? {
             OR: [
               { productCode: { contains: input.search, mode: 'insensitive' } },
+              { barcode: { contains: input.search, mode: 'insensitive' } },
               { sku: { contains: input.search, mode: 'insensitive' } },
               { name: { contains: input.search, mode: 'insensitive' } },
               { slug: { contains: input.search, mode: 'insensitive' } }
@@ -501,10 +503,12 @@ export const productRepository = {
   },
   async create(input: ProductInput, slug: string) {
     return prisma.$transaction(async (tx) => {
+      const productCode = await nextCommercialCode(tx, 'product')
       const product = await tx.product.create({
         data: {
           ...productCore(input, slug),
-          productCode: await nextCommercialCode(tx, 'product'),
+          productCode,
+          sku: `SKU-${productCode}`,
           images: { create: input.images },
           attributeValues: {
             create: input.attributeValues.map((value) => ({
@@ -555,6 +559,7 @@ export const productRepository = {
         data: {
           ...productCore(input, slug),
           images: { create: input.images },
+          slug: undefined,
           attributeValues: {
             create: input.attributeValues.map((value) => ({
               attributeId: value.attributeId,

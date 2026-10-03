@@ -51,6 +51,7 @@ jobs:
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm test:database:phase8-5
       - run: pnpm exec playwright install chromium
       - run: pnpm test:e2e
       - run: pnpm test:visual

@@ -183,3 +183,11 @@ Falta completar en el entorno real:
 5. ejecutar deploy, smoke funcional controlado, SEO/accessibility final y restore drill periódico bajo la infraestructura elegida.
 
 Hasta completar esas cinco acciones no se declara `PRODUCTION READY` ni se cierra definitivamente la fase 8.
+
+## Actualización posterior — Fase 8.5
+
+El CI baseline posterior pasó en main: SHA `3b2a795d1fd06ce00bb1dc6f2a5e5cd4c8a4ecfd`,
+run `34654662376`. Esto resuelve la verificación remota de ese baseline, no acredita producción.
+La fase 8.5 añade una sola migración barcode (14 en total), simplificación comercial y QA actualizado;
+los pendientes de infraestructura/legal siguen requiriendo al operador.
+Consulte [la implementación 8.5](implementation-phase-8-5-final-review.md).

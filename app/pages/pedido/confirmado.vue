@@ -60,7 +60,7 @@ async function openWhatsApp() {
     <UCard v-else class="mx-auto max-w-2xl bg-default ring-default">
       <UEmpty
         title="No hay un pedido reciente en esta sesión"
-        description="Por privacidad no consultamos pedidos usando únicamente el número ORD."
+        description="Revisa tu confirmación en el dispositivo donde realizaste el pedido."
       >
         <template #actions><UButton to="/productos" label="Ver productos" /></template>
       </UEmpty>

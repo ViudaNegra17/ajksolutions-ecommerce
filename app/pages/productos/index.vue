@@ -164,7 +164,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
           id="catalog-search"
           v-model="search"
           type="search"
-          placeholder="Nombre, SKU, marca o categoría"
+          placeholder="Nombre, código, marca o categoría"
           class="public-input"
         />
         <UButton type="submit" label="Buscar" icon="i-lucide-search" />

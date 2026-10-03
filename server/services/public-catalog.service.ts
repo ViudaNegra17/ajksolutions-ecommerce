@@ -353,6 +353,7 @@ export const publicCatalogService = {
       ...card,
       description: row.description,
       warranty: row.warranty,
+      weight: row.productType === 'PHYSICAL' ? row.weight?.toString() || null : null,
       metaTitle: row.metaTitle,
       metaDescription: row.metaDescription,
       images,
@@ -419,21 +420,7 @@ export const publicCatalogService = {
   },
 
   async home() {
-    const base: PublicProductQuery = {
-      page: 1,
-      pageSize: 8,
-      search: '',
-      sort: 'newest',
-      attributes: ''
-    }
-    const [categories, brands, featured, newest, settings] = await Promise.all([
-      this.categories(),
-      this.brands(),
-      this.list({ ...base, featured: 'true', sort: 'relevance' }, false),
-      this.list(base, false),
-      this.settings()
-    ])
-    return { categories, brands, featured: featured.items, newest: newest.items, settings }
+    return { settings: await this.settings() }
   },
 
   async sitemap() {

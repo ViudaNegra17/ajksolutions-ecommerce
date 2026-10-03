@@ -6,7 +6,10 @@ export default definePublicCachedHandler('home', async () => {
   const [catalog, services, banners] = await Promise.all([
     publicCatalogService.home(),
     publicServiceService.homeFeatured(),
-    contentService.publicBanners()
+    Promise.all([
+      contentService.publicBanners('HOME_HERO'),
+      contentService.publicBanners('HOME_SECONDARY')
+    ]).then((groups) => groups.flat())
   ])
   return { success: true, data: { ...catalog, services, banners } }
 })

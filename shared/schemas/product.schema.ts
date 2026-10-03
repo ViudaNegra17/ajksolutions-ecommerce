@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { normalizeSku } from '../utils/catalog-integrity'
+import { warrantyText } from '../utils/product-warranty'
 
 const numericInput = z.union([z.string(), z.number().finite()])
 const decimal = numericInput
@@ -38,7 +39,7 @@ const attributeValueSchema = z.object({
 
 const variantSchema = z.object({
   id: z.uuid().optional(),
-  sku,
+  sku: sku.optional(),
   name: z.string().trim().max(255).nullish(),
   priceOverride: money.nullish(),
   active: z.boolean().default(true),
@@ -59,7 +60,13 @@ export const supplierProductSchema = z.object({
 
 export const productSchema = z
   .object({
-    sku,
+    sku: sku.optional(),
+    barcode: z
+      .string()
+      .trim()
+      .max(100)
+      .nullish()
+      .transform((value) => value || null),
     name: z.string().trim().min(2).max(220),
     slug: z
       .string()
@@ -81,7 +88,17 @@ export const productSchema = z
     active: z.boolean().default(false),
     featured: z.boolean().default(false),
     warranty: z.string().trim().max(255).nullish(),
-    weight: decimal.nullish(),
+    warrantyChoice: z.enum(['NONE', '30_DAYS', '90_DAYS', '6_MONTHS', '12_MONTHS', 'CUSTOM']).optional(),
+    warrantyCustom: z.string().trim().max(255).nullish(),
+    weight: numericInput
+      .transform(String)
+      .pipe(
+        z
+          .string()
+          .trim()
+          .regex(/^\d{1,9}(?:\.\d{1,3})?$/, 'Peso inválido; usa kg con hasta tres decimales.')
+      )
+      .nullish(),
     metaTitle: z.string().trim().max(255).nullish(),
     metaDescription: z.string().trim().max(500).nullish(),
     images: z.array(imageSchema).max(20).default([]),
@@ -90,6 +107,13 @@ export const productSchema = z
     supplierProducts: z.array(supplierProductSchema).default([])
   })
   .superRefine((value, context) => {
+    if (value.warrantyChoice === 'CUSTOM' && !value.warrantyCustom) {
+      context.addIssue({
+        code: 'custom',
+        path: ['warrantyCustom'],
+        message: 'Escribe la garantía personalizada.'
+      })
+    }
     if (value.productType === 'DIGITAL' && value.manageStock) {
       context.addIssue({
         code: 'custom',
@@ -130,7 +154,7 @@ export const productSchema = z
         })
       }
     })
-    const skus = [value.sku, ...value.variants.map((variant) => variant.sku)]
+    const skus = [value.sku, ...value.variants.map((variant) => variant.sku)].filter(Boolean)
     if (new Set(skus).size !== skus.length) {
       context.addIssue({
         code: 'custom',
@@ -150,5 +174,12 @@ export const productSchema = z
       })
     }
   })
+  .transform((value) => ({
+    ...value,
+    warranty: value.warrantyChoice
+      ? warrantyText(value.warrantyChoice, value.warrantyCustom)
+      : value.warranty || null,
+    weight: value.productType === 'DIGITAL' ? null : value.weight
+  }))
 
 export type ProductInput = z.infer<typeof productSchema>

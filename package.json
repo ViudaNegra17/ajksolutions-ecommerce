@@ -23,6 +23,7 @@
     "test:integration": "vitest run tests/integration",
     "test:migration:phase6-2": "node scripts/verify-phase6-2-migration.mjs",
     "test:database:phase7": "node scripts/verify-phase7-empty-database.mjs",
+    "test:database:phase8-5": "node scripts/verify-phase8-5-empty-database.mjs",
     "test:integrity:phase7": "node scripts/verify-phase7-content-integrity.mjs",
     "test:precheck:phase7": "node scripts/check-phase7-current-content.mjs",
     "test:e2e": "playwright test --grep-invert ^visual",

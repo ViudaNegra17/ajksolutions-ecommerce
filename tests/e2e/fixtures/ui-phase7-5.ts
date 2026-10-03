@@ -32,6 +32,7 @@ export const visualProduct: PublicProductDetail = {
   promotion: null,
   description: 'Un teclado cómodo y ligero para estudiar, trabajar y crear.',
   warranty: '12 meses de garantía.',
+  weight: '0.35',
   metaTitle: null,
   metaDescription: null,
   images: [],
@@ -54,6 +55,7 @@ export const visualDigital: PublicProductDetail = {
   featured: false,
   shortDescription: 'Herramientas digitales para organizar tus proyectos.',
   warranty: null,
+  weight: null,
   availability: {
     source: 'DIGITAL',
     available: true,
@@ -135,10 +137,6 @@ export async function visualFixtures(
     let data: unknown
     if (path === '/api/home')
       data = {
-        categories,
-        brands: [physical.brand],
-        featured: [physical, digital],
-        newest: [physical, digital],
         settings,
         services: [visualService],
         banners: []

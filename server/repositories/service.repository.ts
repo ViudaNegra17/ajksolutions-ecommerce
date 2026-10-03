@@ -115,7 +115,7 @@ export const serviceRepository = {
       }
     })
   },
-  async publicList(input: { search?: string; category?: string; featured?: boolean }) {
+  async publicList(input: { search?: string; category?: string; featured?: boolean; limit?: number }) {
     return prisma.service.findMany({
       where: {
         active: true,
@@ -131,7 +131,7 @@ export const serviceRepository = {
             }
           : {})
       },
-      take: 60,
+      take: input.limit ?? 60,
       orderBy: [{ featured: 'desc' }, { name: 'asc' }],
       include: { category: { select: { name: true, slug: true } } }
     })
@@ -174,7 +174,7 @@ export const serviceRepository = {
   },
   update(id: string, input: ServiceInput) {
     return prisma.$transaction(async (tx) => {
-      await tx.service.update({ where: { id }, data: serviceScalars(input) })
+      await tx.service.update({ where: { id }, data: { ...serviceScalars(input), slug: undefined } })
       const existing = await tx.serviceFormField.findMany({ where: { serviceId: id }, select: { id: true } })
       const incomingIds = input.fields.flatMap((field) => (field.id ? [field.id] : []))
       await tx.serviceFormField.updateMany({

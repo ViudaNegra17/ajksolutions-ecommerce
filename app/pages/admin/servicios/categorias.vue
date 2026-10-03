@@ -62,7 +62,7 @@ async function save() {
         method: selected.value ? 'PUT' : 'POST',
         body: {
           ...form,
-          slug: form.slug || undefined,
+          slug: undefined,
           description: form.description || null,
           icon: form.icon || null,
           parentId: form.parentId || null,
@@ -120,7 +120,6 @@ async function remove() {
           <tr v-for="item in data?.data" :key="item.id" class="border-t border-default">
             <td class="p-3">
               <strong>{{ item.name }}</strong>
-              <div class="text-xs text-muted">{{ item.slug }}</div>
             </td>
             <td>{{ item.parent?.name || '—' }}</td>
             <td>{{ item._count.services }}</td>
@@ -143,7 +142,6 @@ async function remove() {
         ><h2 class="text-xl font-bold">{{ selected ? 'Editar categoría' : 'Nueva categoría' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
-          ><UFormField label="Slug"><UInput v-model="form.slug" class="w-full" /></UFormField
           ><UFormField label="Categoría padre"
             ><select
               v-model="form.parentId"

@@ -176,7 +176,7 @@ watch(deliveryType, refreshPreview)
             class="mt-5"
             color="info"
             title="Entrega digital"
-            description="Recibirás la entrega mediante el correo registrado después de su confirmación."
+            description="Nuestro equipo coordinará el pago y la entrega manual contigo por WhatsApp."
           />
           <div v-else class="mt-5 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer gap-3 rounded-xl border border-default p-4">

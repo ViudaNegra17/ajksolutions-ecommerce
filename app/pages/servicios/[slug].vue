@@ -49,17 +49,21 @@ useHead(() => ({
 </script>
 
 <template>
-  <UContainer class="py-12">
+  <UContainer class="py-8 lg:py-12">
     <PublicBreadcrumbs
       :items="[
         { name: 'Servicios', path: '/servicios' },
         { name: service.name, path: canonical }
       ]"
     />
-    <div class="mt-8 grid gap-10 lg:grid-cols-[1fr_420px]">
-      <article>
+    <div class="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)]">
+      <article class="min-w-0">
         <UBadge :label="service.category.name" variant="soft" />
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">{{ service.name }}</h1>
+        <h1
+          class="mt-4 break-words text-3xl font-bold tracking-tight text-highlighted sm:text-4xl lg:text-5xl"
+        >
+          {{ service.name }}
+        </h1>
         <p class="mt-5 text-xl leading-8 text-default">{{ service.shortDescription }}</p>
         <NuxtImg
           v-if="service.image"
@@ -69,9 +73,13 @@ useHead(() => ({
           height="560"
           class="mt-8 aspect-video w-full rounded-2xl object-cover"
         />
-        <div class="prose prose-invert mt-8 max-w-none whitespace-pre-line text-default">
-          {{ service.description }}
-        </div>
+        <PublicDescription
+          v-if="service.description"
+          :text="service.description"
+          title="Descripción"
+          heading-id="service-description"
+          class="mt-8"
+        />
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <UCard class="bg-default ring-default"
             ><p class="text-sm text-muted">Modalidades</p>
@@ -88,7 +96,7 @@ useHead(() => ({
           /></UCard>
         </div>
       </article>
-      <aside><PublicDynamicServiceForm :service="service" /></aside>
+      <aside class="min-w-0"><PublicDynamicServiceForm :service="service" /></aside>
     </div>
   </UContainer>
 </template>

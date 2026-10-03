@@ -3,11 +3,12 @@ import 'dotenv/config'
 import { prisma } from '../../server/utils/prisma'
 import { visualFixtures } from './fixtures/ui-phase7-5'
 
-test.describe.configure({ mode: 'serial', timeout: 90_000 })
+// Screens are independent; keep workers=1, but inspect all diffs after a visual failure.
+test.describe.configure({ timeout: 90_000 })
 
 const suffix = Date.now().toString()
-const physicalSlug = `visual-physical-${suffix}`
-const digitalSlug = `visual-digital-${suffix}`
+let physicalSlug = ''
+let digitalSlug = ''
 const productIds: string[] = []
 let categoryId = ''
 let serviceSlug = ''
@@ -19,6 +20,7 @@ const screenshotOptions = {
   maxDiffPixelRatio: 0.005,
   timeout: 15_000
 }
+const selectedScreens = new Set(process.env.VISUAL_SCREEN_FILTER?.split(',').filter(Boolean) || [])
 
 function publicPath(screen: string) {
   if (screen === 'home') return '/'
@@ -48,7 +50,6 @@ test.beforeAll(async ({ request }) => {
     {
       sku: `VIS-P-${suffix}`,
       name: 'Teclado inalámbrico compacto',
-      slug: physicalSlug,
       productType: 'PHYSICAL',
       price: '35.00',
       manageStock: true
@@ -56,7 +57,6 @@ test.beforeAll(async ({ request }) => {
     {
       sku: `VIS-D-${suffix}`,
       name: 'Software de productividad',
-      slug: digitalSlug,
       productType: 'DIGITAL',
       price: '29.90',
       manageStock: false
@@ -65,6 +65,13 @@ test.beforeAll(async ({ request }) => {
     const response = await request.post('/api/admin/products', {
       data: {
         ...product,
+        ...(product.productType === 'PHYSICAL'
+          ? {
+              description: 'Un teclado cómodo y ligero para estudiar, trabajar y crear.',
+              warranty: '12 meses de garantía.',
+              weight: '0.35'
+            }
+          : {}),
         categoryId: category.id,
         priceMode: 'FIXED',
         taxRate: '0',
@@ -78,7 +85,10 @@ test.beforeAll(async ({ request }) => {
       }
     })
     expect(response.status(), await response.text()).toBe(201)
-    productIds.push((await response.json()).data.id)
+    const saved = (await response.json()).data
+    productIds.push(saved.id)
+    if (product.productType === 'PHYSICAL') physicalSlug = saved.slug
+    else digitalSlug = saved.slug
   }
   const location = await prisma.inventoryLocation.findFirstOrThrow({
     where: { active: true, deletedAt: null }
@@ -118,6 +128,7 @@ for (const width of [390, 1440]) {
     'services',
     'service-detail'
   ]) {
+    if (selectedScreens.size && !selectedScreens.has(screen)) continue
     test(`visual ${screen} ${width}`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 })
       await visualFixtures(page, { physicalSlug, digitalSlug, serviceSlug })
@@ -145,6 +156,7 @@ for (const width of [390, 1440]) {
 }
 
 for (const screen of ['dashboard', 'products', 'settings']) {
+  if (selectedScreens.size && !selectedScreens.has(`admin-${screen}`)) continue
   test(`visual admin ${screen}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 })
     await login(page.request)

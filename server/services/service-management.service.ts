@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client'
 import type { ServiceCategoryInput } from '#shared/schemas/service-category.schema'
 import type { ServiceInput } from '#shared/schemas/service.schema'
 import { wouldCreateServiceCategoryCycle } from '#shared/utils/service-categories'
-import { createSlug } from '#shared/utils/slug'
+import { createWithUniqueSlug } from '../utils/unique-slug'
 import { nextCommercialCode } from '../repositories/code.repository'
 import { serviceCategoryRepository, serviceRepository } from '../repositories/service.repository'
 import { apiError } from '../utils/api-error'
@@ -33,10 +33,10 @@ async function ensureParent(id: string | null, parentId: string | null | undefin
   }
 }
 
-function normalizeCategory(input: ServiceCategoryInput) {
+function normalizeCategory(input: ServiceCategoryInput, slug: string) {
   return {
     ...input,
-    slug: input.slug || createSlug(input.name),
+    slug,
     description: input.description || null,
     imageUrl: input.imageUrl || null,
     icon: input.icon || null,
@@ -74,7 +74,9 @@ export const serviceCategoryManagementService = {
   },
   async create(event: H3Event, userId: string, input: ServiceCategoryInput) {
     await ensureParent(null, input.parentId)
-    const item = await serviceCategoryRepository.create(normalizeCategory(input))
+    const item = await createWithUniqueSlug(input.name, 180, (slug) =>
+      serviceCategoryRepository.create(normalizeCategory(input, slug))
+    )
     await auditService.record(event, {
       userId,
       action: 'SERVICE_CATEGORY_CREATED',
@@ -87,7 +89,7 @@ export const serviceCategoryManagementService = {
   async update(event: H3Event, userId: string, id: string, input: ServiceCategoryInput) {
     const old = await this.get(id)
     await ensureParent(id, input.parentId)
-    const item = await serviceCategoryRepository.update(id, normalizeCategory(input))
+    const item = await serviceCategoryRepository.update(id, normalizeCategory(input, old.slug))
     await auditService.record(event, {
       userId,
       action: 'SERVICE_CATEGORY_UPDATED',
@@ -125,10 +127,11 @@ export const serviceManagementService = {
     return item
   },
   async create(event: H3Event, userId: string, input: ServiceInput) {
-    const normalized = { ...input, slug: input.slug || createSlug(input.name) }
-    await validateServiceInput(normalized)
+    await validateServiceInput(input)
     const serviceCode = await prisma.$transaction((tx) => nextCommercialCode(tx, 'service'))
-    const item = await serviceRepository.create(normalized, serviceCode)
+    const item = await createWithUniqueSlug(input.name, 250, (slug) =>
+      serviceRepository.create({ ...input, slug }, serviceCode)
+    )
     await auditService.record(event, {
       userId,
       action: 'SERVICE_CREATED',
@@ -140,7 +143,7 @@ export const serviceManagementService = {
   },
   async update(event: H3Event, userId: string, id: string, input: ServiceInput) {
     const old = await this.get(id)
-    const normalized = { ...input, slug: input.slug || createSlug(input.name) }
+    const normalized = { ...input, slug: old.slug }
     await validateServiceInput(normalized, id)
     const item = await serviceRepository.update(id, normalized)
     await auditService.record(event, {

@@ -82,8 +82,11 @@ export const publicServiceService = {
     }
   },
   async homeFeatured() {
-    const result = await this.list({ featured: true })
-    return result.items.slice(0, 4)
+    const [items, settingsRows] = await Promise.all([
+      serviceRepository.publicList({ featured: true, limit: 3 }),
+      serviceRepository.settings(['currency', 'tax.defaultRate'])
+    ])
+    return items.map((item) => card(item, settingMap(settingsRows)))
   },
   sitemap: serviceRepository.sitemap
 }

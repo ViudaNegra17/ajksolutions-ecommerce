@@ -1,23 +1,10 @@
 <script setup lang="ts">
 import type { ApiSuccess } from '#shared/types/api'
-import type {
-  PublicBanner,
-  PublicCategory,
-  PublicProductCard,
-  PublicSettings
-} from '#shared/types/public-catalog'
+import type { PublicBanner, PublicSettings } from '#shared/types/public-catalog'
 import type { PublicServiceCard } from '#shared/types/services'
+import { buildWhatsAppUrl } from '#shared/utils/tickets'
 
-type HomeData = {
-  categories: PublicCategory[]
-  brands: Array<{ name: string; slug: string; logoUrl: string | null }>
-  featured: PublicProductCard[]
-  newest: PublicProductCard[]
-  settings: PublicSettings
-  services: PublicServiceCard[]
-  banners: PublicBanner[]
-}
-
+type HomeData = { settings: PublicSettings; services: PublicServiceCard[]; banners: PublicBanner[] }
 const config = useRuntimeConfig()
 const { data, status, error, refresh } = await useAsyncData('public-home', () =>
   $fetch<ApiSuccess<HomeData>>('/api/home')
@@ -27,244 +14,287 @@ const hero = computed(() => home.value?.banners.find((banner) => banner.placemen
 const heroDescription = computed(
   () =>
     hero.value?.description ||
-    'Encuentra equipos, accesorios y productos digitales para tu día a día. Completa tu compra o solicita soporte con atención personalizada por WhatsApp.'
+    'Equipos, licencias digitales y soporte técnico. Encuentra tu solución y coordina los siguientes pasos con AJKSolutionS.'
 )
-const secondaryBanners = computed(
+const campaigns = computed(
   () => home.value?.banners.filter((banner) => banner.placement === 'HOME_SECONDARY') || []
 )
+const contactUrl = computed(() => {
+  const phone = home.value?.settings.business.whatsapp
+  return phone?.replace(/\D/g, '')
+    ? buildWhatsAppUrl(phone, 'Hola, necesito asesoría sobre productos, licencias digitales o servicios.')
+    : '/servicios'
+})
+const solutions = [
+  {
+    title: 'Productos',
+    text: 'Equipos, componentes y accesorios para trabajar, estudiar y crear.',
+    cta: 'Ver productos',
+    to: '/productos',
+    number: '01'
+  },
+  {
+    title: 'Licencias digitales',
+    text: 'Software y soluciones digitales. Coordinamos contigo el pago y la entrega por WhatsApp.',
+    cta: 'Ver licencias digitales',
+    to: '/productos?productType=DIGITAL',
+    number: '02'
+  },
+  {
+    title: 'Servicios tecnológicos',
+    text: 'Soporte, reparación y soluciones especializadas para tus equipos.',
+    cta: 'Ver servicios',
+    to: '/servicios',
+    number: '03'
+  }
+]
+const support = [
+  { title: 'Asesoría especializada', text: 'Consulta qué solución se ajusta a lo que necesitas.' },
+  { title: 'Garantía informada', text: 'Revisa la garantía indicada para cada producto o servicio.' },
+  { title: 'Soporte técnico', text: 'Solicita diagnóstico, mantenimiento o reparación de tus equipos.' },
+  { title: 'Atención directa', text: 'Continuamos contigo por WhatsApp para coordinar tu solicitud.' }
+]
 const canonical = `${config.public.appUrl}/`
-
 useSeoMeta({
-  title: () => home.value?.settings.seo.title || 'Tecnología para impulsar tus proyectos',
+  title: () => home.value?.settings.seo.title || 'Productos, licencias digitales y servicios tecnológicos',
   description: () =>
     home.value?.settings.seo.description ||
-    'Explora productos físicos, productos digitales y servicios profesionales.',
-  ogTitle: () => home.value?.settings.seo.title || 'AjkSolutionS e-Commerce',
+    'Encuentra tecnología para tus proyectos y solicita soporte con atención directa de AJKSolutionS.',
+  ogTitle: () => home.value?.settings.seo.title || 'AJKSolutionS',
   ogDescription: () =>
-    home.value?.settings.seo.description || 'Productos tecnológicos y soluciones profesionales.',
+    home.value?.settings.seo.description || 'Productos, licencias digitales y servicios tecnológicos.',
   ogUrl: canonical,
-  twitterTitle: () => home.value?.settings.seo.title || 'AjkSolutionS e-Commerce',
+  twitterTitle: () => home.value?.settings.seo.title || 'AJKSolutionS',
   twitterDescription: () =>
-    home.value?.settings.seo.description || 'Productos tecnológicos y soluciones profesionales.'
+    home.value?.settings.seo.description || 'Productos, licencias digitales y servicios tecnológicos.'
 })
 useHead({ link: [{ rel: 'canonical', href: canonical }] })
 </script>
 
 <template>
   <div>
-    <section class="relative overflow-hidden border-b border-default bg-ajk-50">
-      <picture v-if="hero" class="absolute inset-0">
-        <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
-        <img :src="hero.imageUrl" :alt="hero.title" class="h-full w-full object-cover opacity-25" />
-      </picture>
-      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/60" />
-
-      <UContainer class="relative grid items-center gap-8 py-10 lg:grid-cols-12 lg:py-16">
-        <div class="lg:col-span-7">
-          <UBadge :label="hero?.subtitle || 'Tecnología para Personas Naturales y Empresas'" variant="soft" />
-
-          <h1 class="mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            <template v-if="hero">{{ hero.title }}</template>
-            <template v-else>
-              Tecnología para trabajar, crear y <span class="text-primary">conectar.</span>
-            </template>
+    <section class="border-b border-default bg-ajk-50" aria-labelledby="home-hero">
+      <UContainer class="grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-20">
+        <div class="min-w-0">
+          <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+            {{ hero?.subtitle || 'Tecnología con atención directa' }}
+          </p>
+          <h1
+            id="home-hero"
+            class="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-highlighted sm:text-4xl lg:text-5xl"
+          >
+            {{ hero?.title || 'Tecnología para trabajar, crear y conectar.' }}
           </h1>
-
-          <p class="mt-4 max-w-xl text-base leading-7 text-default sm:text-lg">
+          <p class="mt-6 max-w-xl text-base leading-8 text-default sm:text-lg">
             {{ heroDescription }}
           </p>
-
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-8 flex flex-wrap gap-3">
             <UButton
               :to="hero?.ctaUrl || '/productos'"
-              :label="hero?.ctaLabel || 'Explorar productos'"
+              :label="hero?.ctaLabel || 'Ver productos'"
               size="lg"
-              icon="i-lucide-arrow-right"
               trailing
+              icon="i-lucide-arrow-right"
             />
-            <UButton to="/servicios" label="Ver servicios" size="lg" color="neutral" variant="outline" />
+            <UButton to="/servicios" label="Solicitar servicio" color="neutral" variant="outline" size="lg" />
           </div>
         </div>
-
-        <div
-          class="flex flex-col justify-center gap-3.5 sm:grid sm:grid-cols-3 lg:flex lg:flex-col lg:col-span-5"
-        >
-          <div
-            v-for="benefit in [
-              [
-                'i-lucide-package-check',
-                'Disponibilidad clara',
-                'Conoce qué puedes recibir y qué podemos conseguir para ti.'
-              ],
-              [
-                'i-lucide-badge-dollar-sign',
-                'Precios claros',
-                'Revisa el total y las condiciones antes de confirmar tu pedido.'
-              ],
-              [
-                'i-lucide-message-circle',
-                'Atención personalizada',
-                'Te acompañamos en la compra y el soporte por WhatsApp.'
-              ]
-            ]"
-            :key="benefit[1]"
-            class="rounded-xl border border-default bg-white/80 p-4 shadow-sm backdrop-blur-sm"
-          >
-            <UIcon :name="benefit[0]" class="size-5 text-primary" />
-            <p class="mt-2 text-sm font-bold">{{ benefit[1] }}</p>
-            <p class="mt-1 text-xs leading-5 text-muted">{{ benefit[2] }}</p>
-          </div>
+        <picture v-if="hero" class="block min-w-0 overflow-hidden rounded-3xl bg-white">
+          <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
+          <img
+            :src="hero.imageUrl"
+            :alt="hero.title"
+            width="720"
+            height="600"
+            fetchpriority="high"
+            class="aspect-[6/5] w-full object-contain"
+          />
+        </picture>
+        <div v-else class="rounded-3xl border border-default bg-white p-8 sm:p-12">
+          <AppLogo class="w-full max-w-72" />
+          <p class="mt-8 text-2xl font-semibold text-highlighted">Una solución para cada proyecto.</p>
+          <p class="mt-3 leading-7 text-muted">Productos · Licencias digitales · Servicios tecnológicos</p>
         </div>
       </UContainer>
     </section>
-
-    <div v-if="status === 'pending'" class="py-24">
-      <UContainer class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <USkeleton v-for="index in 4" :key="index" class="h-52 rounded-2xl" />
-      </UContainer>
-    </div>
-    <UContainer v-else-if="error" class="py-20">
-      <UAlert
+    <UContainer v-if="status === 'pending'" class="grid gap-6 py-16 md:grid-cols-3"
+      ><USkeleton v-for="n in 3" :key="n" class="h-64 rounded-3xl"
+    /></UContainer>
+    <UContainer v-else-if="error" class="py-16"
+      ><UAlert
+        title="No pudimos cargar la información"
         color="error"
-        title="No pudimos cargar el catálogo"
-        description="La página pública sigue disponible. Intenta nuevamente."
         :actions="[{ label: 'Reintentar', onClick: () => refresh() }]"
-      />
-    </UContainer>
+    /></UContainer>
     <template v-else-if="home">
-      <section v-if="secondaryBanners.length" class="py-8" aria-label="Novedades">
-        <UContainer class="grid gap-5 md:grid-cols-2">
+      <section class="py-16 lg:py-20" aria-labelledby="home-solutions">
+        <UContainer>
+          <p class="text-sm font-semibold uppercase tracking-widest text-primary">Elige tu camino</p>
+          <h2 id="home-solutions" class="mt-3 text-3xl font-bold tracking-tight text-highlighted">
+            Soluciones AJKSolutionS
+          </h2>
+          <div class="mt-8 grid gap-6 lg:grid-cols-3">
+            <article
+              v-for="solution in solutions"
+              :key="solution.title"
+              class="flex min-w-0 flex-col rounded-3xl border border-default bg-muted p-7 sm:p-8"
+            >
+              <span class="text-sm font-semibold text-primary" aria-hidden="true">{{ solution.number }}</span>
+              <h3 class="mt-6 text-2xl font-bold text-highlighted">{{ solution.title }}</h3>
+              <p class="mt-4 flex-1 leading-7 text-muted">{{ solution.text }}</p>
+              <UButton
+                :to="solution.to"
+                :label="solution.cta"
+                variant="link"
+                trailing
+                icon="i-lucide-arrow-right"
+                class="mt-7 self-start px-0"
+              />
+            </article>
+          </div>
+        </UContainer>
+      </section>
+      <section v-if="campaigns.length" class="pb-16 lg:pb-20" aria-label="Campañas comerciales">
+        <UContainer class="grid gap-6">
           <article
-            v-for="banner in secondaryBanners"
+            v-for="banner in campaigns"
             :key="banner.title"
-            class="relative min-h-64 overflow-hidden rounded-3xl border border-default p-7"
+            class="grid items-center overflow-hidden rounded-3xl border border-default bg-ajk-50 md:grid-cols-2"
           >
-            <img
-              :src="banner.imageUrl"
-              :alt="banner.title"
-              class="absolute inset-0 h-full w-full object-cover opacity-25"
-            />
-            <div class="relative">
-              <p v-if="banner.subtitle" class="text-sm font-bold uppercase text-primary">
-                {{ banner.subtitle }}
-              </p>
-              <h2 class="mt-2 text-3xl font-black">{{ banner.title }}</h2>
-              <p v-if="banner.description" class="mt-3 max-w-xl text-default">{{ banner.description }}</p>
+            <div class="min-w-0 p-7 sm:p-10">
+              <p v-if="banner.subtitle" class="text-sm font-semibold text-primary">{{ banner.subtitle }}</p>
+              <h2 class="mt-3 text-3xl font-bold tracking-tight text-highlighted">{{ banner.title }}</h2>
+              <p v-if="banner.description" class="mt-4 max-w-xl leading-7">{{ banner.description }}</p>
               <UButton
                 v-if="banner.ctaUrl"
                 :to="banner.ctaUrl"
-                :label="banner.ctaLabel || 'Ver más'"
-                class="mt-5"
+                :label="banner.ctaLabel || 'Ver productos'"
+                class="mt-6"
               />
             </div>
+            <img
+              :src="banner.imageUrl"
+              :alt="banner.title"
+              loading="lazy"
+              width="720"
+              height="480"
+              class="aspect-[3/2] w-full object-contain"
+            />
           </article>
         </UContainer>
       </section>
-      <section class="py-16" aria-labelledby="home-categories">
+      <section class="border-y border-default bg-muted py-16 lg:py-20" aria-labelledby="home-services">
         <UContainer>
-          <div class="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-primary">Explora</p>
-              <h2 id="home-categories" class="mt-2 text-3xl font-black">Categorías</h2>
-            </div>
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+              Soporte para seguir adelante
+            </p>
+            <h2 id="home-services" class="mt-3 text-3xl font-bold tracking-tight text-highlighted">
+              ¿Tu equipo necesita atención?
+            </h2>
+            <p class="mt-5 leading-8 text-muted">
+              Encuentra un servicio, describe lo que ocurre y solicita atención. Coordinamos contigo el
+              diagnóstico y los siguientes pasos.
+            </p>
+          </div>
+          <div v-if="home.services.length" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <article
+              v-for="service in home.services"
+              :key="service.slug"
+              class="flex min-w-0 flex-col rounded-3xl border border-default bg-default p-7"
+            >
+              <h3 class="text-xl font-bold text-highlighted">{{ service.name }}</h3>
+              <p v-if="service.shortDescription" class="mt-4 flex-1 leading-7 text-muted">
+                {{ service.shortDescription }}
+              </p>
+              <PublicServicePrice :price="service.price" class="mt-5" />
+              <UButton
+                :to="`/servicios/${service.slug}`"
+                label="Solicitar servicio"
+                class="mt-6 self-start"
+                variant="soft"
+              />
+            </article>
+          </div>
+          <UButton to="/servicios" label="Ver servicios" variant="outline" color="neutral" class="mt-8" />
+        </UContainer>
+      </section>
+      <section class="py-16 lg:py-20" aria-labelledby="home-digital">
+        <UContainer class="grid items-start gap-8 md:grid-cols-2">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+              Software para tus proyectos
+            </p>
+            <h2 id="home-digital" class="mt-3 text-3xl font-bold tracking-tight text-highlighted">
+              Licencias digitales
+            </h2>
+          </div>
+          <div>
+            <p class="max-w-xl leading-8 text-muted">
+              Consulta las soluciones disponibles, realiza tu compra individual y coordina el pago y la
+              entrega con nuestro equipo por WhatsApp.
+            </p>
             <UButton
-              to="/productos"
-              label="Ver catálogo"
-              variant="ghost"
+              to="/productos?productType=DIGITAL"
+              label="Ver licencias digitales"
+              class="mt-6"
               trailing
               icon="i-lucide-arrow-right"
             />
           </div>
-          <div v-if="home.categories.length" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <PublicCategoryCard
-              v-for="category in home.categories.slice(0, 8)"
-              :key="category.slug"
-              :category="category"
-            />
-          </div>
-          <UEmpty
-            v-else
-            icon="i-lucide-layout-grid"
-            title="Aún no hay categorías publicadas"
-            description="Vuelve pronto para conocer el catálogo."
-          />
         </UContainer>
       </section>
-
-      <section class="border-y border-default bg-default py-16" aria-labelledby="featured-products">
-        <UContainer>
-          <p class="text-sm font-bold uppercase tracking-widest text-primary">Selección especial</p>
-          <h2 id="featured-products" class="mb-8 mt-2 text-3xl font-black">Productos destacados</h2>
-          <PublicProductGrid :products="home.featured" />
-        </UContainer>
-      </section>
-
-      <section class="py-16" aria-labelledby="new-products">
-        <UContainer>
-          <p class="text-sm font-bold uppercase tracking-widest text-primary">Recién publicados</p>
-          <h2 id="new-products" class="mb-8 mt-2 text-3xl font-black">Nuevos productos</h2>
-          <PublicProductGrid :products="home.newest" />
-        </UContainer>
-      </section>
-
-      <section
-        v-if="home.services.length"
-        class="border-y border-default bg-gradient-to-r from-ajk-50 to-muted py-16"
-      >
+      <section class="border-y border-default py-16 lg:py-20" aria-labelledby="home-support">
         <UContainer
-          ><div class="mb-8 flex items-end justify-between">
-            <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-primary">Atención especializada</p>
-              <h2 class="mt-2 text-3xl font-black">Servicios destacados</h2>
+          ><h2 id="home-support" class="text-3xl font-bold tracking-tight text-highlighted">
+            Respaldo AJKSolutionS
+          </h2>
+          <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div v-for="item in support" :key="item.title">
+              <h3 class="text-lg font-semibold text-highlighted">{{ item.title }}</h3>
+              <p class="mt-3 leading-7 text-muted">{{ item.text }}</p>
             </div>
-            <UButton to="/servicios" label="Ver todos" variant="ghost" trailing icon="i-lucide-arrow-right" />
-          </div>
-          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <PublicServiceCard v-for="service in home.services" :key="service.slug" :service="service" /></div
-        ></UContainer>
+          </div></UContainer
+        >
       </section>
-
-      <section class="border-y border-default bg-gradient-to-r from-ajk-50 to-muted py-16">
-        <UContainer class="grid gap-6 md:grid-cols-2">
-          <UCard class="bg-default ring-default">
-            <UIcon name="i-lucide-wrench" class="size-8 text-primary" />
-            <h2 class="mt-5 text-2xl font-black">Servicios tecnológicos</h2>
-            <p class="mt-3 leading-7 text-muted">
-              Solicita soporte, mantenimiento y soluciones para tus equipos. Cuéntanos qué necesitas.
-            </p>
-            <UButton to="/servicios" label="Ver servicios" class="mt-6" variant="soft" />
-          </UCard>
-          <UCard class="bg-default ring-default">
-            <UIcon name="i-lucide-key-round" class="size-8 text-primary" />
-            <h2 class="mt-5 text-2xl font-black">Software y productos digitales</h2>
-            <p class="mt-3 leading-7 text-muted">
-              Encuentra licencias y soluciones digitales y coordina tu compra directamente por WhatsApp.
-            </p>
-            <UButton
-              to="/productos"
-              label="Ver productos digitales"
-              class="mt-6"
-              color="secondary"
-              variant="soft"
-            />
-          </UCard>
-        </UContainer>
-      </section>
-
-      <section v-if="home.brands.length" class="py-14" aria-labelledby="brands-title">
-        <UContainer>
-          <h2 id="brands-title" class="text-center text-xl font-bold">Marcas disponibles</h2>
-          <div class="mt-8 flex flex-wrap justify-center gap-3">
-            <NuxtLink
-              v-for="brand in home.brands"
-              :key="brand.slug"
-              :to="{ path: '/productos', query: { brand: brand.slug } }"
-              class="rounded-xl border border-default bg-default px-5 py-3 font-semibold text-default hover:border-primary hover:text-highlighted"
+      <section class="py-16 lg:py-20" aria-labelledby="home-how">
+        <UContainer
+          ><h2 id="home-how" class="text-3xl font-bold tracking-tight text-highlighted">
+            Cómo comprar o solicitar
+          </h2>
+          <ol class="mt-8 grid gap-7 md:grid-cols-3">
+            <li
+              v-for="(step, index) in [
+                'Encuentra tu producto o servicio',
+                'Realiza tu pedido o solicitud',
+                'Continuamos contigo por WhatsApp'
+              ]"
+              :key="step"
+              class="border-t-2 border-primary pt-5"
             >
-              {{ brand.name }}
-            </NuxtLink>
-          </div>
-        </UContainer>
+              <span class="text-sm font-bold text-primary">{{ index + 1 }}</span>
+              <p class="mt-3 text-lg font-semibold text-highlighted">{{ step }}</p>
+            </li>
+          </ol></UContainer
+        >
+      </section>
+      <section class="bg-ajk-50 py-16 lg:py-20" aria-labelledby="home-contact">
+        <UContainer
+          ><h2 id="home-contact" class="max-w-2xl text-3xl font-bold tracking-tight text-highlighted">
+            ¿Necesitas ayuda para elegir?
+          </h2>
+          <p class="mt-5 max-w-xl leading-8 text-muted">
+            Nuestro equipo puede orientarte en productos, licencias digitales y servicios.
+          </p>
+          <UButton
+            :to="contactUrl"
+            :target="contactUrl.startsWith('https://') ? '_blank' : undefined"
+            rel="noopener noreferrer"
+            :label="contactUrl.startsWith('https://') ? 'Hablar con AJKSolutionS' : 'Consultar servicios'"
+            size="lg"
+            icon="i-lucide-message-circle"
+            class="mt-7"
+        /></UContainer>
       </section>
     </template>
   </div>

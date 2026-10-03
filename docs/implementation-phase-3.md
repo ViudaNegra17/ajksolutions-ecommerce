@@ -219,3 +219,9 @@ Los criterios de aceptación de Home, catálogo, detalle, SEO, seguridad, perfor
 # FASE 4 — SERVICIOS Y TICKETS
 
 La siguiente iteración debe desarrollar exclusivamente el alcance de servicios y tickets según su especificación. No se inició automáticamente carrito, checkout, pedidos, pagos ni ninguna fase posterior.
+
+## Actualización posterior — Fase 8.5
+
+Home ya no consulta/renderiza categorías, marcas, destacados y novedades redundantes. El read model
+actual contiene settings, banners y hasta tres servicios; conserva cache y SEO. Los detalles mejoran
+lectura sin modificar flujos de compra. Consulte [la implementación 8.5](implementation-phase-8-5-final-review.md).

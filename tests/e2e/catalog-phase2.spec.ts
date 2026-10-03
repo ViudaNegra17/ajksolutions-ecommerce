@@ -54,7 +54,7 @@ test('administra categoría, producto y ajuste de inventario mediante la API', a
   let productId = ''
   try {
     const productInput = {
-      sku: `E2E-${suffix}`,
+      barcode: `E2E-${suffix}`,
       name: 'Producto E2E',
       slug: `producto-e2e-${suffix}`,
       categoryId: category.id,

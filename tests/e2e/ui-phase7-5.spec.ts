@@ -6,7 +6,7 @@ test.describe.configure({ mode: 'serial', timeout: 90_000 })
 const suffix = Date.now().toString()
 const ids: Record<string, string> = {}
 const productName = 'Producto UX ' + suffix
-const categorySlug = 'ux-' + suffix
+let categorySlug = ''
 const productSlug = 'producto-ux-' + suffix
 async function login(request: APIRequestContext) {
   const response = await request.post('/api/auth/login', {
@@ -31,10 +31,11 @@ async function unchangedDocument(page: Page) {
 test.beforeAll(async ({ request }) => {
   await login(request)
   const category = await request.post('/api/admin/categories', {
-    data: { name: 'Categoría UX ' + suffix, slug: categorySlug, active: true, sortOrder: 0 }
+    data: { name: 'Categoría UX ' + suffix, active: true, sortOrder: 0 }
   })
   expect(category.ok()).toBe(true)
   ids.category = (await category.json()).data.id
+  categorySlug = (await (await request.get('/api/admin/categories/' + ids.category)).json()).data.slug
   const product = await request.post('/api/admin/products', {
     data: {
       sku: 'UX-' + suffix,
@@ -182,7 +183,7 @@ test('sin F5: guardar producto y ajustar inventario actualiza lista y movimiento
   await expect(page.getByText('Producto actualizado', { exact: true })).toBeVisible()
   await unchangedDocument(page)
   await page.getByRole('link', { name: 'Volver', exact: true }).click()
-  await page.getByPlaceholder('Código, SKU, nombre o slug').fill(productName)
+  await page.getByPlaceholder('Nombre, código o código de barras').fill(productName)
   await expect(page.getByText(productName + ' editado', { exact: true })).toBeVisible()
   await ready(page, '/admin/catalogo/inventario')
   await page.getByPlaceholder('Producto, SKU o movimiento').fill(productName)

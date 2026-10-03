@@ -186,6 +186,7 @@ export const publicCatalogRepository = {
             OR: [
               { name: { contains: input.search, mode: 'insensitive' } },
               { sku: { contains: input.search, mode: 'insensitive' } },
+              { barcode: { contains: input.search, mode: 'insensitive' } },
               { productCode: { contains: input.search, mode: 'insensitive' } },
               { slug: { contains: input.search, mode: 'insensitive' } },
               { shortDescription: { contains: input.search, mode: 'insensitive' } },
@@ -234,6 +235,7 @@ export const publicCatalogRepository = {
         ...publicCardSelect,
         description: true,
         warranty: true,
+        weight: true,
         metaTitle: true,
         metaDescription: true,
         images: {
@@ -341,6 +343,7 @@ export const publicCatalogRepository = {
           OR: [
             { name: { contains: q, mode: 'insensitive' } },
             { sku: { contains: q, mode: 'insensitive' } },
+            { barcode: { contains: q, mode: 'insensitive' } },
             { productCode: { contains: q, mode: 'insensitive' } },
             { slug: { contains: q, mode: 'insensitive' } }
           ]

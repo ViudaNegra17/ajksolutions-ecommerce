@@ -26,7 +26,6 @@ const buyNow = useBuyNowStore()
 const toast = useToast()
 const displayPrice = computed(() => selectedVariant.value?.price || product.value.price)
 const displayAvailability = computed(() => selectedVariant.value?.availability || product.value.availability)
-const displaySku = computed(() => selectedVariant.value?.sku || product.value.sku)
 const canAdd = computed(
   () =>
     product.value.productType === 'PHYSICAL' &&
@@ -117,12 +116,12 @@ useHead(() => ({
     <PublicBreadcrumbs :items="product.breadcrumbs" />
     <div class="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
       <PublicProductGallery :images="product.images" :product-name="product.name" />
-      <div>
+      <div class="min-w-0">
         <div class="flex flex-wrap gap-2">
           <UBadge v-if="product.featured" label="Destacado" variant="soft" />
           <UBadge
             v-if="product.productType !== 'PHYSICAL'"
-            label="Digital / Licencia"
+            label="Producto digital"
             color="info"
             variant="soft"
           />
@@ -131,7 +130,11 @@ useHead(() => ({
         <p v-if="product.brand" class="mt-5 text-sm font-bold uppercase tracking-widest text-primary">
           {{ product.brand.name }}
         </p>
-        <h1 class="mt-2 text-4xl font-black tracking-tight sm:text-5xl">{{ product.name }}</h1>
+        <h1
+          class="mt-2 break-words text-3xl font-bold tracking-tight text-highlighted sm:text-4xl lg:text-5xl"
+        >
+          {{ product.name }}
+        </h1>
         <p v-if="product.shortDescription" class="mt-5 text-lg leading-8 text-default">
           {{ product.shortDescription }}
         </p>
@@ -143,7 +146,7 @@ useHead(() => ({
           <p v-else class="mt-4 border-t border-default pt-4 text-sm text-primary">
             Producto digital · entrega coordinada por WhatsApp
           </p>
-          <p class="mt-4 text-xs text-muted">SKU: {{ displaySku }} · Código: {{ product.productCode }}</p>
+          <p class="mt-4 text-xs text-muted">Código: {{ product.productCode }}</p>
         </div>
         <div v-if="product.variants.length" class="mt-7">
           <PublicProductVariantSelector v-model="selectedVariant" :variants="product.variants" />
@@ -186,13 +189,24 @@ useHead(() => ({
           <UIcon name="i-lucide-shield-check" class="mt-0.5 size-5 text-primary" />
           <span><strong>Garantía:</strong> {{ product.warranty }}</span>
         </p>
+        <p
+          v-if="product.productType === 'PHYSICAL' && product.weight != null"
+          class="mt-3 text-sm text-default"
+        >
+          <strong>Peso:</strong> {{ product.weight }} kg
+        </p>
       </div>
     </div>
-    <div class="mt-16 grid gap-12 lg:grid-cols-[1.2fr_.8fr]">
-      <section v-if="product.description" aria-labelledby="product-description">
-        <h2 id="product-description" class="text-2xl font-black">Descripción</h2>
-        <div class="mt-5 whitespace-pre-line leading-8 text-default">{{ product.description }}</div>
-      </section>
+    <div
+      v-if="product.description || product.specifications.length"
+      class="mt-16 grid gap-12 border-t border-default pt-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)]"
+    >
+      <PublicDescription
+        v-if="product.description"
+        :text="product.description"
+        title="Descripción"
+        heading-id="product-description"
+      />
       <PublicProductSpecifications :specifications="product.specifications" />
     </div>
     <section

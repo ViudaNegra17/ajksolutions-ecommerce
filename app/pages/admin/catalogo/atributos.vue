@@ -105,7 +105,7 @@ async function save() {
   try {
     const body = {
       name: form.name,
-      slug: form.slug || undefined,
+      slug: undefined,
       type: form.type,
       unit: form.unit || null,
       filterable: form.filterable,
@@ -185,7 +185,7 @@ async function remove() {
           <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-muted">{{ item.slug }} {{ item.unit || '' }}</div>
+              <div class="text-xs text-muted">{{ item.unit || '' }}</div>
             </td>
             <td>{{ item.type }}</td>
             <td>{{ item.options.length }}</td>
@@ -226,11 +226,9 @@ async function remove() {
         <h2 class="text-xl font-bold">{{ selected ? 'Editar atributo' : 'Nuevo atributo' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
-          ><UFormField label="Slug">
-            <UInput v-model="form.slug" class="w-full" placeholder="Automático" /> </UFormField
           ><UFormField label="Tipo" required>
             <select v-model="form.type" class="w-full rounded-md border border-default bg-default p-2">
-              <option v-for="type in types" :key="type">{{ adminLabel(type) }}</option>
+              <option v-for="type in types" :key="type" :value="type">{{ adminLabel(type) }}</option>
             </select> </UFormField
           ><UFormField label="Unidad">
             <UInput v-model="form.unit" class="w-full" placeholder="GB, pulgadas, GHz..." /> </UFormField

@@ -22,6 +22,7 @@ const detail: PublicProductDetail = {
   shortDescription: 'Equipo para empresas',
   description: 'Descripción',
   warranty: null,
+  weight: null,
   metaTitle: null,
   metaDescription: null,
   featured: false,

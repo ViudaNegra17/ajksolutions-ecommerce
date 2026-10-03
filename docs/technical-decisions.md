@@ -342,3 +342,36 @@ Los backups PostgreSQL usan `pg_dump` custom fuera del repositorio, cifrado, che
 solo es válido tras `pg_restore --exit-on-error` en una base aislada y verificación de migraciones/entidades. El
 rollback de aplicación requiere compatibilidad de schema; para cambios de DB se prefiere forward-fix o restauración
 en una base nueva, nunca SQL inverso improvisado. RPO 24 h y RTO 4 h son objetivos iniciales revisables, no SLA.
+
+## TD-035 — Automatic internal identifiers and stable public slugs
+
+**Fecha:** 2026-10-03
+**Estado:** aceptada
+
+Product/Variant SKU se derivan server-side de productCode/variantCode generados con CodeSequence
+dentro de la transacción existente. Son únicos, ocultos e inmutables; no se regeneran registros legacy.
+supplierSku sigue manual. Los slugs de las seis entidades de catálogo/servicios se generan del nombre
+y resuelven colisiones mediante restricción PostgreSQL y retry acotado de P2002 de slug. Los updates
+conservan URLs incluso ante cambio de nombre o slug enviado por el cliente. Complementa TD previas
+sin eliminar unicidad ni reemplazar códigos comerciales.
+
+## TD-036 — Commercial barcode separated from internal identifiers
+
+**Fecha:** 2026-10-03
+**Estado:** aceptada
+
+Product.barcode es comercial/manual, nullable VARCHAR(100), trim y UNIQUE no nulo. Una migración
+incremental añade columna e índice; múltiples NULL mantienen compatibilidad sin backfill. No se
+convierte productCode/SKU en barcode. Búsquedas admin/públicas y sugerencias lo consideran; lector
+USB funciona como teclado. No se añade infraestructura hardware ni otra columna para garantía/peso.
+
+## TD-037 — Conversion-oriented Home with minimal read model
+
+**Fecha:** 2026-10-03
+**Estado:** aceptada
+
+Home orienta a productos, digitales y servicios con hero/campañas existentes, selección de tres
+servicios, respaldo y pasos de compra. El read model elimina categorías/marcas/listados redundantes
+y devuelve settings, banners y servicios; conserva cache/versiones/invalidaciones. Los detalles
+comparten presentación segura de texto con ancho de lectura. No se modifican checkout, handoff,
+promociones INFORMATIONAL, SEO canónico ni reglas PHYSICAL/DIGITAL/SERVICE.

@@ -5,7 +5,7 @@ import type { BrandInput } from '#shared/schemas/brand.schema'
 import type { SupplierInput } from '#shared/schemas/supplier.schema'
 import type { AttributeInput } from '#shared/schemas/attribute.schema'
 import type { ProductInput } from '#shared/schemas/product.schema'
-import { createSlug } from '#shared/utils/slug'
+import { createWithUniqueSlug } from '../utils/unique-slug'
 import { isAttributeValueShapeValid } from '#shared/utils/catalog-integrity'
 import {
   attributeRepository,
@@ -146,10 +146,6 @@ async function validateProductReferences(input: ProductInput, productId?: string
     )
   if (productId && !(await productRepository.variantsBelongToProduct(productId, referencedVariantIds)))
     throw apiError(422, 'VARIANT_PRODUCT_MISMATCH', 'Una variante no pertenece al producto.')
-
-  const skus = [input.sku, ...input.variants.map((variant) => variant.sku)]
-  if (await productRepository.hasSkuConflict(skus, productId))
-    throw apiError(409, 'SKU_ALREADY_EXISTS', 'Un SKU ya está asignado a otro producto o variante.')
 }
 
 export const categoryService = {
@@ -163,14 +159,16 @@ export const categoryService = {
   async create(event: H3Event, userId: string, input: CategoryInput) {
     await ensureCategoryParent(null, input.parentId)
     try {
-      const item = await categoryRepository.create({
-        ...input,
-        slug: input.slug || createSlug(input.name),
-        description: nullable(input.description),
-        imageUrl: nullable(input.imageUrl),
-        icon: nullable(input.icon),
-        parentId: nullable(input.parentId)
-      })
+      const item = await createWithUniqueSlug(input.name, 180, (slug) =>
+        categoryRepository.create({
+          ...input,
+          slug,
+          description: nullable(input.description),
+          imageUrl: nullable(input.imageUrl),
+          icon: nullable(input.icon),
+          parentId: nullable(input.parentId)
+        })
+      )
       await auditService.record(event, {
         userId,
         action: 'CATEGORY_CREATED',
@@ -189,7 +187,7 @@ export const categoryService = {
     try {
       const item = await categoryRepository.update(id, {
         ...input,
-        slug: input.slug || createSlug(input.name),
+        slug: old.slug,
         description: nullable(input.description),
         imageUrl: nullable(input.imageUrl),
         icon: nullable(input.icon),
@@ -235,13 +233,15 @@ export const brandService = {
   },
   async create(event: H3Event, userId: string, input: BrandInput) {
     try {
-      const item = await brandRepository.create({
-        ...input,
-        slug: input.slug || createSlug(input.name),
-        description: nullable(input.description),
-        logoUrl: nullable(input.logoUrl),
-        websiteUrl: nullable(input.websiteUrl)
-      })
+      const item = await createWithUniqueSlug(input.name, 180, (slug) =>
+        brandRepository.create({
+          ...input,
+          slug,
+          description: nullable(input.description),
+          logoUrl: nullable(input.logoUrl),
+          websiteUrl: nullable(input.websiteUrl)
+        })
+      )
       await auditService.record(event, {
         userId,
         action: 'BRAND_CREATED',
@@ -259,7 +259,7 @@ export const brandService = {
     try {
       const item = await brandRepository.update(id, {
         ...input,
-        slug: input.slug || createSlug(input.name),
+        slug: old.slug,
         description: nullable(input.description),
         logoUrl: nullable(input.logoUrl),
         websiteUrl: nullable(input.websiteUrl)
@@ -359,7 +359,9 @@ export const attributeService = {
   },
   async create(event: H3Event, userId: string, input: AttributeInput) {
     try {
-      const item = await attributeRepository.create({ ...input, slug: input.slug || createSlug(input.name) })
+      const item = await createWithUniqueSlug(input.name, 180, (slug) =>
+        attributeRepository.create({ ...input, slug })
+      )
       await auditService.record(event, {
         userId,
         action: 'ATTRIBUTE_CREATED',
@@ -377,7 +379,7 @@ export const attributeService = {
     try {
       const item = await attributeRepository.update(id, {
         ...input,
-        slug: input.slug || createSlug(input.name)
+        slug: old.slug
       })
       await auditService.record(event, {
         userId,
@@ -448,7 +450,9 @@ export const productService = {
     validateAttributeValue(definition, input)
     await validateProductReferences(input)
     try {
-      const item = await productRepository.create(input, input.slug || createSlug(input.name))
+      const item = await createWithUniqueSlug(input.name, 250, (slug) =>
+        productRepository.create(input, slug)
+      )
       await auditService.record(event, {
         userId,
         action: 'PRODUCT_CREATED',
@@ -480,7 +484,7 @@ export const productService = {
     validateAttributeValue(definition, input)
     await validateProductReferences(input, id)
     try {
-      const item = await productRepository.update(id, input, input.slug || createSlug(input.name))
+      const item = await productRepository.update(id, input, old.slug)
       await auditService.record(event, {
         userId,
         action: 'PRODUCT_UPDATED',

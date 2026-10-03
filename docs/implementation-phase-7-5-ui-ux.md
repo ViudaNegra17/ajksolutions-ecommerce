@@ -145,3 +145,10 @@ No cambió el schema comercial ni las 12 migraciones. Se preservaron restriccion
 - Typecheck: PASS.
 - Build: PASS.
 - Migraciones: 12/12 originales; 0 nuevas.
+
+### Actualización posterior — Fase 8.5
+
+La revisión comercial posterior modifica deliberadamente Home, detalles y algunos labels, sin
+reescribir los resultados históricos anteriores. Las referencias visuales se inspeccionan antes
+de actualizar pantallas seleccionadas; el runner visual usa servidor y DB aislados.
+Consulte [la implementación 8.5](implementation-phase-8-5-final-review.md).

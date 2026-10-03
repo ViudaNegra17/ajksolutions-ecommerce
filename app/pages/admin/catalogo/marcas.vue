@@ -53,7 +53,7 @@ async function save() {
       method: selected.value ? 'PUT' : 'POST',
       body: {
         ...form,
-        slug: form.slug || undefined,
+        slug: undefined,
         logoUrl: form.logoUrl || null,
         websiteUrl: form.websiteUrl || null
       }
@@ -111,7 +111,6 @@ async function remove() {
           <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-muted">{{ item.slug }}</div>
             </td>
             <td>{{ item._count?.products || 0 }}</td>
             <td><AdminStatusBadge :active="item.active" /></td>
@@ -146,8 +145,6 @@ async function remove() {
         <h2 class="text-xl font-bold">{{ selected ? 'Editar marca' : 'Nueva marca' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
-          ><UFormField label="Slug">
-            <UInput v-model="form.slug" class="w-full" placeholder="Automático" /> </UFormField
           ><UFormField label="Logo URL"><UInput v-model="form.logoUrl" class="w-full" /></UFormField
           ><UFormField label="Sitio web"><UInput v-model="form.websiteUrl" class="w-full" /></UFormField
           ><UFormField label="Descripción" class="sm:col-span-2">

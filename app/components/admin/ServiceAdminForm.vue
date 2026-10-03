@@ -130,7 +130,7 @@ function addOption(field: Field) {
 function submit() {
   emit('submit', {
     ...form,
-    slug: form.slug || undefined,
+    slug: undefined,
     price: form.priceMode === 'QUOTE' ? null : form.price,
     imageUrl: form.imageUrl || null,
     shortDescription: form.shortDescription || null,
@@ -158,8 +158,6 @@ function submit() {
       ><h2 class="mb-5 text-xl font-bold">Información general</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <UFormField label="Nombre" required><UInput v-model="form.name" required class="w-full" /></UFormField
-        ><UFormField label="Slug"
-          ><UInput v-model="form.slug" class="w-full" placeholder="Automático" /></UFormField
         ><UFormField label="Categoría" required
           ><select
             v-model="form.categoryId"

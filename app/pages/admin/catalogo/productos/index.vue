@@ -92,7 +92,7 @@ async function remove() {
       <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-4">
         <UInput
           v-model="filters.search"
-          placeholder="Código, SKU, nombre o slug"
+          placeholder="Nombre, código o código de barras"
           icon="i-lucide-search"
         /><select v-model="filters.categoryId" class="rounded-md border border-default bg-default p-2">
           <option value="">Todas las categorías</option>
@@ -137,7 +137,7 @@ async function remove() {
         <thead class="text-left text-muted">
           <tr>
             <th class="p-3">Imagen</th>
-            <th>Código / SKU</th>
+            <th>Código interno</th>
             <th>Producto</th>
             <th>Categoría</th>
             <th>Marca</th>
@@ -163,7 +163,6 @@ async function remove() {
             </td>
             <td>
               <div class="font-mono text-primary">{{ item.productCode }}</div>
-              <div class="text-xs text-muted">{{ item.sku }}</div>
             </td>
             <td class="font-medium">
               {{ item.name }}<UBadge v-if="item.featured" class="ml-2" size="xs">Destacado</UBadge>

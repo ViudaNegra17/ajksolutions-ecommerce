@@ -212,3 +212,9 @@ Las pruebas cubren FIXED/CONTACT, normalización de valores numéricos del formu
 ## Próximo paso
 
 La siguiente iteración recomendada es Fase 3 — Portal público y catálogo: Home, catálogo, detalle de producto, búsqueda, filtros, productos relacionados, disponibilidad y SEO. Esta fase no se implementó automáticamente.
+
+## Actualización posterior — Fase 8.5
+
+El alcance histórico anterior se conserva. Fase 8.5 reemplaza el ingreso manual de SKU/slug por
+identificadores automáticos y URLs estables, añade barcode comercial y simplifica garantía/peso.
+supplierSku continúa manual. Consulte [la implementación 8.5](implementation-phase-8-5-final-review.md).

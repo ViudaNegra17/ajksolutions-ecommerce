@@ -61,7 +61,7 @@ function confirmRemove(item: Category) {
 async function save() {
   saving.value = true
   try {
-    const body = { ...form, slug: form.slug || undefined, parentId: form.parentId || null }
+    const body = { ...form, slug: undefined, parentId: form.parentId || null }
     await adminRequest(
       selected.value ? `/api/admin/categories/${selected.value.id}` : '/api/admin/categories',
       {
@@ -135,7 +135,6 @@ async function remove() {
           <tr v-for="item in data?.data.items" :key="item.id" class="border-t border-default">
             <td class="p-3 font-medium">
               {{ item.name }}
-              <div class="text-xs text-muted">{{ item.slug }}</div>
             </td>
             <td>{{ item.parent?.name || 'Raíz' }}</td>
             <td>{{ item.sortOrder }}</td>
@@ -178,8 +177,6 @@ async function remove() {
         <h2 class="text-xl font-bold">{{ selected ? 'Editar categoría' : 'Nueva categoría' }}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <UFormField label="Nombre" required><UInput v-model="form.name" class="w-full" /></UFormField
-          ><UFormField label="Slug">
-            <UInput v-model="form.slug" class="w-full" placeholder="Automático" /> </UFormField
           ><UFormField label="Categoría padre">
             <select v-model="form.parentId" class="w-full rounded-md border border-default bg-default p-2">
               <option value="">Raíz</option>

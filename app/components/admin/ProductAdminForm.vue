@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import {
+  warrantyChoice,
+  warrantyOptions,
+  warrantyText,
+  type WarrantyChoice
+} from '#shared/utils/product-warranty'
+
 const adminRequest = useAdminRequest({ domains: 'products' })
 const props = defineProps<{ productId?: string }>()
 type Category = { id: string; name: string }
@@ -23,7 +30,7 @@ type AttributeValue = {
 }
 type Variant = {
   id?: string
-  sku: string
+  sku?: string
   name: string
   priceOverride: string
   active: boolean
@@ -44,6 +51,7 @@ type ImageInput = { url: string; storageKey: null; alt: string; sortOrder: numbe
 type ProductDetail = Record<string, unknown> & {
   productCode: string
   sku: string
+  barcode?: string | null
   name: string
   slug: string
   categoryId: string
@@ -93,6 +101,11 @@ type ProductDetail = Record<string, unknown> & {
 
 const toast = useToast()
 const saving = ref(false)
+const selectedWarranty = ref<WarrantyChoice>('NONE')
+const customWarranty = ref('')
+watch(selectedWarranty, (choice) => {
+  if (choice !== 'CUSTOM') customWarranty.value = ''
+})
 const activeTab = ref('general')
 const tabs = [
   'general',
@@ -118,6 +131,7 @@ const labels: Record<string, string> = {
 }
 const state = reactive({
   sku: '',
+  barcode: '',
   name: '',
   slug: '',
   shortDescription: '',
@@ -145,7 +159,10 @@ const variantSelections = reactive<Record<string, string[]>>({})
 watch(
   () => state.productType,
   (productType) => {
-    if (productType === 'DIGITAL') state.manageStock = false
+    if (productType === 'DIGITAL') {
+      state.manageStock = false
+      state.weight = ''
+    }
   }
 )
 const requestFetch = useRequestFetch()
@@ -173,8 +190,11 @@ if (!props.productId) {
 }
 function applyProduct(product: ProductDetail) {
   productCode.value = product.productCode
+  selectedWarranty.value = warrantyChoice(product.warranty)
+  customWarranty.value = selectedWarranty.value === 'CUSTOM' ? product.warranty || '' : ''
   Object.assign(state, {
     sku: product.sku,
+    barcode: product.barcode || '',
     name: product.name,
     slug: product.slug,
     shortDescription: product.shortDescription || '',
@@ -293,8 +313,7 @@ function generateVariants() {
   const optionMap = new Map(
     attributes.flatMap((attribute) => attribute.options.map((option) => [option.id, option.label]))
   )
-  state.variants = combinations(groups).map((optionIds, index) => ({
-    sku: `${state.sku || 'VAR'}-${String(index + 1).padStart(2, '0')}`,
+  state.variants = combinations(groups).map((optionIds) => ({
     name: optionIds.map((id) => optionMap.get(id)).join(' / '),
     priceOverride: '',
     active: true,
@@ -339,14 +358,18 @@ async function save() {
   try {
     const body = {
       ...state,
-      slug: state.slug || undefined,
+      sku: undefined,
+      barcode: state.barcode.trim() || null,
+      slug: undefined,
       brandId: state.brandId || null,
       price: state.priceMode === 'CONTACT' ? null : decimalOrNull(state.price),
       taxRate: decimalOrNull(state.taxRate),
       weight: decimalOrNull(state.weight),
       shortDescription: state.shortDescription || null,
       description: state.description || null,
-      warranty: state.warranty || null,
+      warranty: warrantyText(selectedWarranty.value, customWarranty.value),
+      warrantyChoice: selectedWarranty.value,
+      warrantyCustom: selectedWarranty.value === 'CUSTOM' ? customWarranty.value : null,
       metaTitle: state.metaTitle || null,
       metaDescription: state.metaDescription || null,
       images: state.images.filter((image) => image.url),
@@ -355,6 +378,7 @@ async function save() {
       ),
       variants: state.variants.map((variant) => ({
         ...variant,
+        sku: undefined,
         priceOverride: decimalOrNull(variant.priceOverride)
       })),
       supplierProducts: state.supplierProducts
@@ -412,14 +436,16 @@ async function save() {
     <UCard class="bg-default ring-default">
       <div v-if="activeTab === 'general'" class="grid gap-4 md:grid-cols-2">
         <UFormField label="Nombre" required><UInput v-model="state.name" class="w-full" /></UFormField
-        ><UFormField label="SKU" required><UInput v-model="state.sku" class="w-full" /></UFormField
-        ><UFormField label="Código"><UInput :model-value="productCode" disabled class="w-full" /></UFormField
-        ><UFormField label="Slug">
-          <UInput v-model="state.slug" placeholder="Automático" class="w-full" /> </UFormField
-        ><UFormField label="Tipo">
+        ><UFormField
+          label="Código / código de barras"
+          description="Escribe el código del producto o escanéalo con un lector."
+          ><UInput v-model="state.barcode" maxlength="100" class="w-full" /></UFormField
+        ><UFormField v-if="productId" label="Código interno"
+          ><UInput :model-value="productCode" readonly class="w-full" /></UFormField
+        ><UFormField label="Tipo de producto" required>
           <select v-model="state.productType" class="w-full rounded-md border border-default bg-default p-2">
-            <option value="PHYSICAL">Físico</option>
-            <option value="DIGITAL">Digital / Licencia</option>
+            <option value="PHYSICAL">Producto físico</option>
+            <option value="DIGITAL">Producto digital</option>
           </select>
         </UFormField>
         <div class="flex flex-wrap items-end gap-5">
@@ -436,8 +462,16 @@ async function save() {
           <UTextarea v-model="state.shortDescription" class="w-full" /> </UFormField
         ><UFormField label="Descripción" class="md:col-span-2">
           <UTextarea v-model="state.description" :rows="8" class="w-full" /> </UFormField
-        ><UFormField label="Garantía"><UInput v-model="state.warranty" class="w-full" /></UFormField
-        ><UFormField label="Peso">
+        ><UFormField label="Garantía"
+          ><USelect
+            v-model="selectedWarranty"
+            :items="warrantyOptions.map((option) => ({ ...option }))"
+            class="w-full"
+        /></UFormField>
+        <UFormField v-if="selectedWarranty === 'CUSTOM'" label="Garantía personalizada" required
+          ><UInput v-model="customWarranty" maxlength="255" class="w-full"
+        /></UFormField>
+        <UFormField v-if="state.productType === 'PHYSICAL'" label="Peso (kg)">
           <UInput v-model="state.weight" type="number" step="0.001" min="0" class="w-full" />
         </UFormField>
       </div>
@@ -450,11 +484,11 @@ async function save() {
         ><UAlert
           class="md:col-span-2"
           :title="
-            state.priceMode === 'CONTACT' ? 'El precio se guardará como NULL' : 'Precio comercial público'
+            state.priceMode === 'CONTACT' ? 'El cliente consultará el precio' : 'Precio comercial público'
           "
           :description="
             state.priceMode === 'CONTACT'
-              ? 'Nunca se utilizará cero como precio ficticio.'
+              ? 'Completa la información comercial para responder su consulta.'
               : 'La tasa se toma de configuración y puede ajustarse por producto.'
           "
         /><template v-if="state.priceMode === 'FIXED'">
@@ -489,7 +523,7 @@ async function save() {
       </div>
       <div v-else-if="activeTab === 'imágenes'">
         <div class="mb-4 flex justify-between">
-          <p class="text-muted">URL manual hoy; `storageKey` deja preparado R2.</p>
+          <p class="text-muted">Agrega enlaces de imágenes y elige cuál aparecerá primero.</p>
           <UButton label="Agregar URL" icon="i-lucide-plus" @click="addImage" />
         </div>
         <div class="space-y-4">
@@ -584,9 +618,6 @@ async function save() {
             class="grid gap-3 rounded-lg border border-default p-3 md:grid-cols-4"
           >
             <UInput v-model="variant.name" placeholder="Combinación" /><UInput
-              v-model="variant.sku"
-              placeholder="SKU"
-            /><UInput
               v-model="variant.priceOverride"
               type="number"
               step="0.01"
@@ -597,6 +628,7 @@ async function save() {
                 icon="i-lucide-trash-2"
                 color="error"
                 variant="ghost"
+                aria-label="Quitar variante"
                 @click="state.variants.splice(index, 1)"
               />
             </div>
@@ -667,8 +699,8 @@ async function save() {
       <div v-else-if="activeTab === 'seo'" class="grid gap-4">
         <UFormField label="Meta title"><UInput v-model="state.metaTitle" class="w-full" /></UFormField
         ><UFormField label="Meta description">
-          <UTextarea v-model="state.metaDescription" class="w-full" /> </UFormField
-        ><UFormField label="Slug público"><UInput v-model="state.slug" class="w-full" /></UFormField>
+          <UTextarea v-model="state.metaDescription" class="w-full" />
+        </UFormField>
       </div>
     </UCard>
   </div>
