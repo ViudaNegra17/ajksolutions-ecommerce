@@ -37,7 +37,9 @@ test('Home comercial usa solo su read model y enlaces canónicos', async ({ page
 test('detalles legibles conservan garantía, peso, CTA y formulario sin overflow', async ({ page }) => {
   await visualFixtures(page)
   await page.goto('/')
-  await expect(page.locator('[data-public-app]')).toHaveAttribute('data-hydrated', 'true')
+  await expect(page.locator('[data-public-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 45_000
+  })
   for (const [path, text] of [
     ['/productos/teclado-visual', 'Un teclado cómodo y ligero para estudiar, trabajar y crear.'],
     ['/servicios/mantenimiento-visual', 'Revisión y mantenimiento para que puedas seguir trabajando.']
@@ -84,7 +86,9 @@ test('formulario comercial oculta identificadores, cambia garantía y limpia pes
   })
   expect(response.ok()).toBe(true)
   await page.goto('/admin/catalogo/productos/nuevo')
-  await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true')
+  await expect(page.locator('[data-admin-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 45_000
+  })
   await expect(page.getByLabel('SKU', { exact: true })).toHaveCount(0)
   await expect(page.getByLabel('Slug', { exact: true })).toHaveCount(0)
   await expect(page.getByLabel('Código / código de barras', { exact: true })).toBeVisible()
@@ -151,7 +155,9 @@ test('hero y campaña reutilizan imagen, contenido y CTA administrables', async 
     })
   )
   await page.goto('/productos')
-  await expect(page.locator('[data-public-app]')).toHaveAttribute('data-hydrated', 'true')
+  await expect(page.locator('[data-public-app]')).toHaveAttribute('data-hydrated', 'true', {
+    timeout: 45_000
+  })
   await page.getByRole('link', { name: 'AJKSolutionS, inicio', exact: true }).first().click()
   await expect(page.getByRole('heading', { level: 1, name: hero.title })).toBeVisible()
   await expect(page.getByRole('img', { name: hero.title, exact: true })).toBeVisible()

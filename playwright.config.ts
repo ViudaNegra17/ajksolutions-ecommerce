@@ -7,7 +7,8 @@ export default defineConfig({
   testDir: './tests/e2e',
   timeout: 60_000,
   workers: 1,
-  use: { baseURL, trace: 'on-first-retry' },
+  reporter: [['list'], ['html', { open: 'never' }]],
+  use: { baseURL, trace: 'retain-on-failure' },
   webServer: {
     command: `pnpm exec nuxt dev --host 127.0.0.1 --port ${testPort}`,
     url: baseURL,

@@ -212,7 +212,8 @@ el navegador integrado no pudo iniciar por CryptUnprotectData en este entorno.
 
 CI final debe corresponder al SHA exacto enviado a main. Consulte el SHA de la entrega con
 `git rev-parse HEAD` y el run enlazado en el reporte final; no confundir el CI baseline con el final.
-Estado: **FASE 8.5 — IMPLEMENTACIÓN TÉCNICA COMPLETADA** para el candidato verificado abajo.
+Estado del código auditado: validado localmente y en CI #11. La entrega final sigue bajo
+verificación CI por el incidente documentado en la sección 11; no se declara cierre anticipado.
 **PREPRODUCCIÓN — PENDIENTE** del checklist externo; no se declara PRODUCTION READY.
 
 ## 10. Evidencia GitHub Actions y entrega
@@ -226,10 +227,41 @@ completed / SUCCESS para ese SHA exacto. Se verificaron individualmente los 16 g
 instalación congelada, Prisma format/validate/generate/deploy/status/seed, lint, formato, typecheck,
 Vitest, DB vacía, instalación Chromium, E2E, visual y build. PostgreSQL del runner fue preparado
 correctamente; solo se omitió el upload de reporte condicionado a fallo, como corresponde a un run exitoso.
-No hizo falta corregir código después del primer push ni hacer cambios preventivos.
+El primer push pasó sin correcciones posteriores de código de aplicación.
 
 Esta revisión posterior modifica únicamente la documentación para incorporar evidencia real,
 no código, schema, migraciones ni referencias. El commit documental también se envía a main y
 debe pasar su workflow completo. El reporte de entrega identifica su HEAD final y run exactos;
 no se graba aquí el SHA autorreferencial de este mismo archivo. La confirmación final se emite
-solo después de ese segundo CI GREEN. No se despliega producción ni se inicia fase 9.
+solo después del CI GREEN correspondiente al último HEAD. No se despliega producción ni se inicia fase 9.
+
+## 11. Incidente de CI posterior y ajuste de QA
+
+El commit documental `7298aabaf5642f088020c49cde56355af0274587` no alteraba código de aplicación,
+pero [CI #12](https://github.com/ViudaNegra17/ajksolutions-ecommerce/actions/runs/37143796454)
+falló en E2E: 51 PASS, dos esperas de hidratación fallidas y una prueba posterior omitida por
+la suite serial existente. No se oculta ese resultado ni se confunde con el SUCCESS anterior.
+
+La prueba nueva del hero esperaba solamente 5 s para mounted; se alinea a 45 s, como otros
+controles existentes de hidratación. Conserva la misma aserción `data-hydrated=true`, imagen,
+CTA y responsive. La otra espera administrativa de 30 s conserva su límite y aserción; ahora
+identifica la ruta en el mensaje. Los logs disponibles no permiten atribuirle una causa de
+aplicación concreta ni afirmar que fue reparada mediante un cambio de dominio.
+
+Se corrige además un hueco de diagnóstico real: `on-first-retry` no producía trazas porque
+no hay retries configurados, y no existía reporter HTML para el artifact ya definido en CI.
+Ahora se retienen trazas solo al fallar y se genera HTML sin abrir navegador. No se añaden
+retries, skips, tolerancias visuales nuevas ni excepciones a las aserciones. Los reportes locales
+siguen ignorados por Git; las trazas de CI usan exclusivamente cuentas/secrets de prueba.
+Las suites afectadas y el workflow completo deben volver a pasar antes de la entrega final.
+
+La reproducción local con trazas encontró además la misma espera implícita de 5 s en detalle
+y producto nuevo: ambos fallaron mientras cargaban el grafo de módulos Vite, con respuestas
+HTTP 200 y sin page errors ni errores de consola. Se alinea únicamente la espera de mounted
+de esos casos a 45 s; las aserciones comerciales conservan sus límites. La prueba operativa
+completa pasó en esa reproducción y conserva su espera de 30 s; no se inventa una causa para
+su incidente remoto aislado. No se tocaron lógica de aplicación, dependencias ni migraciones.
+
+Tras el ajuste, `final-review-phase8-5.spec.ts` + `operations-phase7.spec.ts` pasaron 10/10
+localmente. La validación remota del último SHA sigue siendo condición obligatoria de entrega;
+un CI previo GREEN no reemplaza esa comprobación.
