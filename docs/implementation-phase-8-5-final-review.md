@@ -212,8 +212,9 @@ el navegador integrado no pudo iniciar por CryptUnprotectData en este entorno.
 
 CI final debe corresponder al SHA exacto enviado a main. Consulte el SHA de la entrega con
 `git rev-parse HEAD` y el run enlazado en el reporte final; no confundir el CI baseline con el final.
-Estado del código auditado: validado localmente y en CI #11. La entrega final sigue bajo
-verificación CI por el incidente documentado en la sección 11; no se declara cierre anticipado.
+Estado: **FASE 8.5 — IMPLEMENTACIÓN TÉCNICA COMPLETADA**, código y QA verificados en CI #13
+tras el incidente documentado en la sección 11. El último HEAD de entrega debe cumplir igualmente
+el protocolo de CI exacto descrito abajo; no se declara cierre anticipado de una ejecución pendiente.
 **PREPRODUCCIÓN — PENDIENTE** del checklist externo; no se declara PRODUCTION READY.
 
 ## 10. Evidencia GitHub Actions y entrega
@@ -253,7 +254,8 @@ no hay retries configurados, y no existía reporter HTML para el artifact ya def
 Ahora se retienen trazas solo al fallar y se genera HTML sin abrir navegador. No se añaden
 retries, skips, tolerancias visuales nuevas ni excepciones a las aserciones. Los reportes locales
 siguen ignorados por Git; las trazas de CI usan exclusivamente cuentas/secrets de prueba.
-Las suites afectadas y el workflow completo deben volver a pasar antes de la entrega final.
+Se exigió repetir las suites afectadas y el workflow completo antes de la entrega final;
+el resultado está registrado en la sección 12.
 
 La reproducción local con trazas encontró además la misma espera implícita de 5 s en detalle
 y producto nuevo: ambos fallaron mientras cargaban el grafo de módulos Vite, con respuestas
@@ -263,5 +265,22 @@ completa pasó en esa reproducción y conserva su espera de 30 s; no se inventa 
 su incidente remoto aislado. No se tocaron lógica de aplicación, dependencias ni migraciones.
 
 Tras el ajuste, `final-review-phase8-5.spec.ts` + `operations-phase7.spec.ts` pasaron 10/10
-localmente. La validación remota del último SHA sigue siendo condición obligatoria de entrega;
-un CI previo GREEN no reemplaza esa comprobación.
+localmente; lint, formato y typecheck también pasaron. La validación remota del último SHA
+sigue siendo condición obligatoria de entrega; un CI previo GREEN no reemplaza esa comprobación.
+
+## 12. CI del ajuste verificado y estado de Release Candidate
+
+Commit de QA: `6c6b2dff95c31d084b5bd7504553588c67659ea4`,
+`test: synchronize hydration checks and retain failure diagnostics`.
+[CI #13, run 37146653605](https://github.com/ViudaNegra17/ajksolutions-ecommerce/actions/runs/37146653605):
+completed / SUCCESS para ese SHA exacto. Los 16 gates pnpm fueron verificados individualmente
+en SUCCESS, incluidos E2E, visual, DB vacía y build. La espera administrativa de 30 s pasó
+sin modificar su límite ni aserción; no se afirma una reparación de dominio para ese incidente aislado.
+
+Este cierre posterior incorpora solo evidencia documental, sin alterar código de aplicación,
+pruebas, schema, migraciones, dependencias ni PNGs. El reporte de entrega proporciona el SHA
+del último commit documental y su run exacto, comprobados tras el push; no se requiere grabar
+un hash autorreferencial en el archivo. Solo se entrega confirmación final después de su CI GREEN.
+
+Resultado del candidato: implementación técnica validada; preproducción pendiente exclusivamente
+del checklist comercial, legal e infraestructura. No se despliega producción ni se inicia fase 9.
