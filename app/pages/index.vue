@@ -10,15 +10,6 @@ const { data, status, error, refresh } = await useAsyncData('public-home', () =>
   $fetch<ApiSuccess<HomeData>>('/api/home')
 )
 const home = computed(() => data.value?.data)
-const hero = computed(() => home.value?.banners.find((banner) => banner.placement === 'HOME_HERO'))
-const heroDescription = computed(
-  () =>
-    hero.value?.description ||
-    'Equipos, licencias digitales y soporte técnico. Encuentra tu solución y coordina los siguientes pasos con AJKSolutionS.'
-)
-const campaigns = computed(
-  () => home.value?.banners.filter((banner) => banner.placement === 'HOME_SECONDARY') || []
-)
 const contactUrl = computed(() => {
   const phone = home.value?.settings.business.whatsapp
   return phone?.replace(/\D/g, '')
@@ -73,50 +64,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
 
 <template>
   <div>
-    <section class="border-b border-default bg-ajk-50" aria-labelledby="home-hero">
-      <UContainer class="grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-20">
-        <div class="min-w-0">
-          <p class="text-sm font-semibold uppercase tracking-widest text-primary">
-            {{ hero?.subtitle || 'Tecnología con atención directa' }}
-          </p>
-          <h1
-            id="home-hero"
-            class="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-highlighted sm:text-4xl lg:text-5xl"
-          >
-            {{ hero?.title || 'Para trabajar, crear y conectar.' }}
-          </h1>
-          <p class="mt-6 max-w-xl text-base leading-8 text-default sm:text-lg">
-            {{ heroDescription }}
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <UButton
-              :to="hero?.ctaUrl || '/productos'"
-              :label="hero?.ctaLabel || 'Ver productos'"
-              size="lg"
-              trailing
-              icon="i-lucide-arrow-right"
-            />
-            <UButton to="/servicios" label="Solicitar servicio" color="neutral" variant="outline" size="lg" />
-          </div>
-        </div>
-        <picture v-if="hero" class="block min-w-0 overflow-hidden rounded-3xl bg-white">
-          <source v-if="hero.mobileImageUrl" :srcset="hero.mobileImageUrl" media="(max-width: 639px)" />
-          <img
-            :src="hero.imageUrl"
-            :alt="hero.title"
-            width="720"
-            height="600"
-            fetchpriority="high"
-            class="aspect-[6/5] w-full object-contain"
-          />
-        </picture>
-        <div v-else class="rounded-3xl border border-default bg-white p-8 sm:p-12">
-          <AppLogo class="w-full max-w-72" />
-          <p class="mt-8 text-2xl font-semibold text-highlighted">Una solución para cada proyecto.</p>
-          <p class="mt-3 leading-7 text-muted">Productos · Licencias digitales · Servicios tecnológicos</p>
-        </div>
-      </UContainer>
-    </section>
+    <PublicHomeHero />
     <UContainer v-if="status === 'pending'" class="grid gap-6 py-16 md:grid-cols-3"
       ><USkeleton v-for="n in 3" :key="n" class="h-64 rounded-3xl"
     /></UContainer>
@@ -154,35 +102,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
           </div>
         </UContainer>
       </section>
-      <section v-if="campaigns.length" class="pb-16 lg:pb-20" aria-label="Campañas comerciales">
-        <UContainer class="grid gap-6">
-          <article
-            v-for="banner in campaigns"
-            :key="banner.title"
-            class="grid items-center overflow-hidden rounded-3xl border border-default bg-ajk-50 md:grid-cols-2"
-          >
-            <div class="min-w-0 p-7 sm:p-10">
-              <p v-if="banner.subtitle" class="text-sm font-semibold text-primary">{{ banner.subtitle }}</p>
-              <h2 class="mt-3 text-3xl font-bold tracking-tight text-highlighted">{{ banner.title }}</h2>
-              <p v-if="banner.description" class="mt-4 max-w-xl leading-7">{{ banner.description }}</p>
-              <UButton
-                v-if="banner.ctaUrl"
-                :to="banner.ctaUrl"
-                :label="banner.ctaLabel || 'Ver productos'"
-                class="mt-6"
-              />
-            </div>
-            <img
-              :src="banner.imageUrl"
-              :alt="banner.title"
-              loading="lazy"
-              width="720"
-              height="480"
-              class="aspect-[3/2] w-full object-contain"
-            />
-          </article>
-        </UContainer>
-      </section>
+      <PublicHomeCampaigns :banners="home.banners" />
       <section class="border-y border-default bg-muted py-16 lg:py-20" aria-labelledby="home-services">
         <UContainer>
           <div class="max-w-2xl">

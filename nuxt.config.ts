@@ -10,6 +10,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'es' },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=ajk-official' },
+        { rel: 'icon', type: 'image/png', sizes: '64x64', href: '/favicon.png?v=ajk-official' }
+      ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#ffffff' }
