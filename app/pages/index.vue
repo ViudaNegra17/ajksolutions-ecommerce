@@ -83,7 +83,7 @@ useHead({ link: [{ rel: 'canonical', href: canonical }] })
             id="home-hero"
             class="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-highlighted sm:text-4xl lg:text-5xl"
           >
-            {{ hero?.title || 'Tecnología para trabajar, crear y conectar.' }}
+            {{ hero?.title || 'Para trabajar, crear y conectar.' }}
           </h1>
           <p class="mt-6 max-w-xl text-base leading-8 text-default sm:text-lg">
             {{ heroDescription }}

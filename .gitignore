@@ -19,3 +19,6 @@ logs
 .vscode/*
 !.vscode/extensions.json
 server/generated
+
+.vercel
+.env*
