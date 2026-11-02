@@ -1,0 +1,128 @@
+{
+  "phase": "before",
+  "rows": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": -10.859375,
+        "width": 390,
+        "height": 1009.890625
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -791,
+        "width": 390,
+        "height": 715.140625
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 45,
+          "y": 294.09375,
+          "width": 114.984375,
+          "height": 44
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 45,
+          "y": 624.0625,
+          "width": 161.1875,
+          "height": 44
+        },
+        {
+          "href": "/servicios",
+          "x": 45,
+          "y": 926.03125,
+          "width": 105.171875,
+          "height": 44
+        }
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 89.125,
+          "width": 358,
+          "height": 277.96875
+        },
+        {
+          "x": 16,
+          "y": 391.09375,
+          "width": 358,
+          "height": 305.96875
+        },
+        {
+          "x": 16,
+          "y": 721.0625,
+          "width": 358,
+          "height": 277.96875
+        }
+      ],
+      "iconCount": 0
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "y": 533.8125,
+        "width": 1280,
+        "height": 385.953125
+      },
+      "heroContainer": {
+        "x": 80,
+        "y": -108,
+        "width": 1280,
+        "height": 560.8125
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 145,
+          "y": 842.765625,
+          "width": 114.984375,
+          "height": 44
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 558.328125,
+          "y": 842.765625,
+          "width": 161.1875,
+          "height": 44
+        },
+        {
+          "href": "/servicios",
+          "x": 971.65625,
+          "y": 842.765625,
+          "width": 105.171875,
+          "height": 44
+        }
+      ],
+      "cards": [
+        {
+          "x": 112,
+          "y": 633.796875,
+          "width": 389.328125,
+          "height": 285.96875
+        },
+        {
+          "x": 525.328125,
+          "y": 633.796875,
+          "width": 389.328125,
+          "height": 285.96875
+        },
+        {
+          "x": 938.65625,
+          "y": 633.796875,
+          "width": 389.34375,
+          "height": 285.96875
+        }
+      ],
+      "iconCount": 0
+    }
+  ],
+  "errors": []
+}

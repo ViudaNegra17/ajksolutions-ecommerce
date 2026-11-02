@@ -1,0 +1,126 @@
+{
+  "phase": "before",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 320,
+        "height": 228,
+        "y": 64.125
+      },
+      "hero": {
+        "x": 0,
+        "width": 320,
+        "height": 691.4375,
+        "y": -6914
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 390,
+        "height": 228,
+        "y": 64.15625
+      },
+      "hero": {
+        "x": 0,
+        "width": 390,
+        "height": 715.140625,
+        "y": -6968
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 768,
+        "height": 160,
+        "y": 469.390625
+      },
+      "hero": {
+        "x": 0,
+        "width": 768,
+        "height": 909.078125,
+        "y": -4862
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 1024,
+        "height": 160,
+        "y": 197.640625
+      },
+      "hero": {
+        "x": 0,
+        "width": 1024,
+        "height": 442.65625,
+        "y": -3217
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "width": 1280,
+        "height": 160,
+        "y": 429.328125
+      },
+      "hero": {
+        "x": 80,
+        "width": 1280,
+        "height": 560.8125,
+        "y": -3503
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "width": 1280,
+        "height": 160,
+        "y": 509.453125
+      },
+      "hero": {
+        "x": 320,
+        "width": 1280,
+        "height": 564.875,
+        "y": -3432
+      },
+      "cards": [],
+      "headings": [],
+      "images": []
+    }
+  ],
+  "errors": []
+}

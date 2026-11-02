@@ -1,0 +1,462 @@
+{
+  "phase": "after",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 320,
+        "height": 1202.546875,
+        "y": -1096.421875
+      },
+      "hero": {
+        "x": 0,
+        "width": 320,
+        "height": 691.4375,
+        "y": -6768
+      },
+      "columns": 1,
+      "cards": [
+        {
+          "x": 16,
+          "width": 288,
+          "height": 353.09375,
+          "y": -968.859375
+        },
+        {
+          "x": 16,
+          "width": 288,
+          "height": 328.796875,
+          "y": -595.765625
+        },
+        {
+          "x": 16,
+          "width": 288,
+          "height": 353.09375,
+          "y": -246.96875
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion-400.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -967.859375
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud-400.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -594.765625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo-400.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -245.96875
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 390,
+        "height": 1279.265625,
+        "y": -804.109375
+      },
+      "hero": {
+        "x": 0,
+        "width": 390,
+        "height": 715.140625,
+        "y": -6453
+      },
+      "columns": 1,
+      "cards": [
+        {
+          "x": 16,
+          "width": 358,
+          "height": 381.296875,
+          "y": -708.734375
+        },
+        {
+          "x": 16,
+          "width": 358,
+          "height": 381.296875,
+          "y": -307.4375
+        },
+        {
+          "x": 16,
+          "width": 358,
+          "height": 381.296875,
+          "y": 93.859375
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion-400.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -707.734375
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud-400.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -306.4375
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo-400.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": 94.859375
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 768,
+        "height": 402.078125,
+        "y": 40.3125
+      },
+      "hero": {
+        "x": 0,
+        "width": 768,
+        "height": 909.078125,
+        "y": -4785
+      },
+      "columns": 3,
+      "cards": [
+        {
+          "x": 24,
+          "width": 224,
+          "height": 305.09375,
+          "y": 137.296875
+        },
+        {
+          "x": 272,
+          "width": 224,
+          "height": 305.09375,
+          "y": 137.296875
+        },
+        {
+          "x": 520,
+          "width": 224,
+          "height": 305.09375,
+          "y": 137.296875
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion-400.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 25,
+          "width": 222,
+          "height": 166.5,
+          "y": 138.296875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud-400.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 273,
+          "width": 222,
+          "height": 166.5,
+          "y": 138.296875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo-400.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 521,
+          "width": 222,
+          "height": 166.5,
+          "y": 138.296875
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 1024,
+        "height": 476.390625,
+        "y": 51.0625
+      },
+      "hero": {
+        "x": 0,
+        "width": 1024,
+        "height": 442.65625,
+        "y": -2756
+      },
+      "columns": 3,
+      "cards": [
+        {
+          "x": 32,
+          "width": 304,
+          "height": 376.28125,
+          "y": 151.171875
+        },
+        {
+          "x": 360,
+          "width": 304,
+          "height": 376.28125,
+          "y": 151.171875
+        },
+        {
+          "x": 688,
+          "width": 304,
+          "height": 376.28125,
+          "y": 151.171875
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion-400.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 33,
+          "width": 302,
+          "height": 226.5,
+          "y": 152.171875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud-400.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 361,
+          "width": 302,
+          "height": 226.5,
+          "y": 152.171875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo-400.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 689,
+          "width": 302,
+          "height": 226.5,
+          "y": 152.171875
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "width": 1280,
+        "height": 574.671875,
+        "y": 71.65625
+      },
+      "hero": {
+        "x": 80,
+        "width": 1280,
+        "height": 560.8125,
+        "y": -3134
+      },
+      "columns": 3,
+      "cards": [
+        {
+          "x": 112,
+          "width": 389.328125,
+          "height": 463.875,
+          "y": 182.453125
+        },
+        {
+          "x": 525.328125,
+          "width": 389.328125,
+          "height": 463.875,
+          "y": 182.453125
+        },
+        {
+          "x": 938.65625,
+          "width": 389.34375,
+          "height": 463.875,
+          "y": 182.453125
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 113,
+          "width": 387.328125,
+          "height": 290.484375,
+          "y": 183.453125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 526.328125,
+          "width": 387.328125,
+          "height": 290.484375,
+          "y": 183.453125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 939.65625,
+          "width": 387.34375,
+          "height": 290.5,
+          "y": 183.453125
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "width": 1280,
+        "height": 574.671875,
+        "y": 71.78125
+      },
+      "hero": {
+        "x": 320,
+        "width": 1280,
+        "height": 564.875,
+        "y": -3143
+      },
+      "columns": 3,
+      "cards": [
+        {
+          "x": 352,
+          "width": 389.328125,
+          "height": 463.875,
+          "y": 182.578125
+        },
+        {
+          "x": 765.328125,
+          "width": 389.328125,
+          "height": 463.875,
+          "y": 182.578125
+        },
+        {
+          "x": 1178.65625,
+          "width": 389.34375,
+          "height": 463.875,
+          "y": 182.578125
+        }
+      ],
+      "numbers": ["1", "2", "3"],
+      "headings": [
+        "Encuentra tu producto o servicio",
+        "Realiza tu pedido o solicitud",
+        "Continuamos contigo por WhatsApp"
+      ],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/encuentra-tu-solucion.webp",
+          "alt": "Catálogo ilustrado en un equipo genérico junto a una lupa",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 353,
+          "width": 387.328125,
+          "height": 290.484375,
+          "y": 183.578125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/registra-tu-solicitud.webp",
+          "alt": "Formulario ilustrado con un paquete genérico y un bolígrafo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 766.328125,
+          "width": 387.328125,
+          "height": 290.484375,
+          "y": 183.578125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/how-it-works/coordinamos-contigo.webp",
+          "alt": "Símbolos de conversación junto a auriculares y un sobre",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 1179.65625,
+          "width": 387.34375,
+          "height": 290.5,
+          "y": 183.578125
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

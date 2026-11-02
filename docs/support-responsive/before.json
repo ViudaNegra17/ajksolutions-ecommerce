@@ -1,0 +1,90 @@
+{
+  "phase": "before",
+  "rows": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 193.1875,
+        "width": 390,
+        "height": 601.984375
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -1821,
+        "width": 390,
+        "height": 715.140625
+      },
+      "links": [
+        {
+          "href": "/servicios/diagnostico-tecnico",
+          "x": 45,
+          "y": 646.171875,
+          "width": 123.515625,
+          "height": 44
+        },
+        {
+          "href": "/servicios",
+          "x": 16,
+          "y": 751.171875,
+          "width": 99.171875,
+          "height": 44
+        }
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 445.171875,
+          "width": 358,
+          "height": 274
+        }
+      ],
+      "iconCount": 0
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "y": 305.09375,
+        "width": 1280,
+        "height": 533.984375
+      },
+      "heroContainer": {
+        "x": 80,
+        "y": -967,
+        "width": 1280,
+        "height": 560.8125
+      },
+      "links": [
+        {
+          "href": "/servicios/diagnostico-tecnico",
+          "x": 141,
+          "y": 690.078125,
+          "width": 123.515625,
+          "height": 44
+        },
+        {
+          "href": "/servicios",
+          "x": 112,
+          "y": 795.078125,
+          "width": 99.171875,
+          "height": 44
+        }
+      ],
+      "cards": [
+        {
+          "x": 112,
+          "y": 489.078125,
+          "width": 389.328125,
+          "height": 274
+        }
+      ],
+      "iconCount": 0
+    }
+  ],
+  "errors": []
+}

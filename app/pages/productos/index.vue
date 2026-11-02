@@ -29,6 +29,7 @@ const allowed = [
   'search',
   'category',
   'brand',
+  'productType',
   'priceMode',
   'availability',
   'featured',
@@ -67,6 +68,7 @@ const activeFilters = computed(() =>
         search: 'Búsqueda',
         category: 'Categoría',
         brand: 'Marca',
+        productType: 'Tipo',
         priceMode: 'Precio',
         availability: 'Disponibilidad',
         featured: 'Destacados',
@@ -75,6 +77,8 @@ const activeFilters = computed(() =>
         attributes: 'Características'
       }
       const values: Record<string, string> = {
+        DIGITAL: 'Digital',
+        PHYSICAL: 'Físico',
         FIXED: 'Publicado',
         CONTACT: 'Consultar precio',
         OWN_STOCK: 'Disponible',

@@ -1,0 +1,372 @@
+{
+  "phase": "after",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": -250.5625,
+        "width": 320,
+        "height": 1214.03125
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -983,
+        "width": 320,
+        "height": 691.4375
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 16,
+          "y": -49.40625,
+          "width": 288,
+          "height": 333.890625
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 16,
+          "y": 304.484375,
+          "width": 288,
+          "height": 333.890625
+        },
+        {
+          "href": "/servicios",
+          "x": 16,
+          "y": 658.375,
+          "width": 288,
+          "height": 305.09375
+        }
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": -49.40625,
+          "width": 288,
+          "height": 333.890625
+        },
+        {
+          "x": 16,
+          "y": 304.484375,
+          "width": 288,
+          "height": 333.890625
+        },
+        {
+          "x": 16,
+          "y": 658.375,
+          "width": 288,
+          "height": 305.09375
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": -82.859375,
+        "width": 390,
+        "height": 1153.046875
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -839,
+        "width": 390,
+        "height": 715.140625
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 16,
+          "y": 86.109375,
+          "width": 358,
+          "height": 305.09375
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 16,
+          "y": 411.203125,
+          "width": 358,
+          "height": 333.890625
+        },
+        {
+          "href": "/servicios",
+          "x": 16,
+          "y": 765.09375,
+          "width": 358,
+          "height": 305.09375
+        }
+      ],
+      "cards": [
+        {
+          "x": 16,
+          "y": 86.109375,
+          "width": 358,
+          "height": 305.09375
+        },
+        {
+          "x": 16,
+          "y": 411.203125,
+          "width": 358,
+          "height": 333.890625
+        },
+        {
+          "x": 16,
+          "y": 765.09375,
+          "width": 358,
+          "height": 305.09375
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 77.078125,
+        "width": 768,
+        "height": 1014.265625
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -873,
+        "width": 768,
+        "height": 909.078125
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 24,
+          "y": 222.453125,
+          "width": 720,
+          "height": 276.296875
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 24,
+          "y": 518.75,
+          "width": 720,
+          "height": 276.296875
+        },
+        {
+          "href": "/servicios",
+          "x": 24,
+          "y": 815.046875,
+          "width": 720,
+          "height": 276.296875
+        }
+      ],
+      "cards": [
+        {
+          "x": 24,
+          "y": 222.453125,
+          "width": 720,
+          "height": 276.296875
+        },
+        {
+          "x": 24,
+          "y": 518.75,
+          "width": 720,
+          "height": 276.296875
+        },
+        {
+          "x": 24,
+          "y": 815.046875,
+          "width": 720,
+          "height": 276.296875
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 230.84375,
+        "width": 1024,
+        "height": 485.578125
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -264,
+        "width": 1024,
+        "height": 442.65625
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 32,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 360,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        },
+        {
+          "href": "/servicios",
+          "x": 688,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        }
+      ],
+      "cards": [
+        {
+          "x": 32,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        },
+        {
+          "x": 360,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        },
+        {
+          "x": 688,
+          "y": 379.34375,
+          "width": 304,
+          "height": 337.078125
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "y": 442.8125,
+        "width": 1280,
+        "height": 485.28125
+      },
+      "heroContainer": {
+        "x": 80,
+        "y": -191,
+        "width": 1280,
+        "height": 560.8125
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 112,
+          "y": 602,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 525.328125,
+          "y": 602,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "href": "/servicios",
+          "x": 938.65625,
+          "y": 602,
+          "width": 389.34375,
+          "height": 326.09375
+        }
+      ],
+      "cards": [
+        {
+          "x": 112,
+          "y": 602,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "x": 525.328125,
+          "y": 602,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "x": 938.65625,
+          "y": 602,
+          "width": 389.34375,
+          "height": 326.09375
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "y": 522.875,
+        "width": 1280,
+        "height": 485.28125
+      },
+      "heroContainer": {
+        "x": 320,
+        "y": -115,
+        "width": 1280,
+        "height": 564.875
+      },
+      "links": [
+        {
+          "href": "/productos",
+          "x": 352,
+          "y": 682.0625,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 765.328125,
+          "y": 682.0625,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "href": "/servicios",
+          "x": 1178.65625,
+          "y": 682.0625,
+          "width": 389.34375,
+          "height": 326.09375
+        }
+      ],
+      "cards": [
+        {
+          "x": 352,
+          "y": 682.0625,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "x": 765.328125,
+          "y": 682.0625,
+          "width": 389.328125,
+          "height": 326.09375
+        },
+        {
+          "x": 1178.65625,
+          "y": 682.0625,
+          "width": 389.34375,
+          "height": 326.09375
+        }
+      ],
+      "iconCount": 3
+    }
+  ],
+  "errors": []
+}

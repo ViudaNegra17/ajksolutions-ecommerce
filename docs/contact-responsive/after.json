@@ -1,0 +1,183 @@
+{
+  "phase": "after",
+  "mode": "whatsapp",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 320,
+        "height": 563.84375,
+        "y": 7091.125
+      },
+      "hero": {
+        "x": 0,
+        "width": 320,
+        "height": 691.4375,
+        "y": 137
+      },
+      "button": {
+        "x": 41,
+        "width": 238,
+        "height": 75.6875,
+        "y": 7517.484375
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 390,
+        "height": 467.375,
+        "y": 7145.15625
+      },
+      "hero": {
+        "x": 0,
+        "width": 390,
+        "height": 715.140625,
+        "y": 137
+      },
+      "button": {
+        "x": 41,
+        "width": 308,
+        "height": 56,
+        "y": 7494.734375
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 768,
+        "height": 426.3125,
+        "y": 5444.390625
+      },
+      "hero": {
+        "x": 0,
+        "width": 768,
+        "height": 909.078125,
+        "y": 137
+      },
+      "button": {
+        "x": 250.59375,
+        "width": 266.8125,
+        "height": 56,
+        "y": 5746.1875
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 1024,
+        "height": 451.140625,
+        "y": 3509.59375
+      },
+      "hero": {
+        "x": 0,
+        "width": 1024,
+        "height": 442.65625,
+        "y": 134
+      },
+      "button": {
+        "x": 378.59375,
+        "width": 266.8125,
+        "height": 56,
+        "y": 3825.984375
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "width": 1280,
+        "height": 492.96875,
+        "y": 4043.921875
+      },
+      "hero": {
+        "x": 80,
+        "width": 1280,
+        "height": 560.8125,
+        "y": 134
+      },
+      "button": {
+        "x": 586.59375,
+        "width": 266.8125,
+        "height": 56,
+        "y": 4387.09375
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "whatsapp",
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "width": 1280,
+        "height": 492.96875,
+        "y": 4059.453125
+      },
+      "hero": {
+        "x": 320,
+        "width": 1280,
+        "height": 564.875,
+        "y": 134
+      },
+      "button": {
+        "x": 826.59375,
+        "width": 266.8125,
+        "height": 56,
+        "y": 4402.625
+      },
+      "label": "Escríbenos por WhatsApp",
+      "labelFits": true,
+      "descriptionPresent": true,
+      "color": "rgb(16, 78, 117)",
+      "background": "rgb(255, 255, 255)"
+    }
+  ],
+  "keyboard": "PASS",
+  "externalNavigation": "intercepted locally",
+  "errors": []
+}

@@ -1,0 +1,62 @@
+{
+  "phase": "before",
+  "rows": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 362.484375,
+        "width": 390,
+        "height": 263.984375
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -2576,
+        "width": 390,
+        "height": 715.140625
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 16,
+          "y": 582.46875,
+          "width": 181.1875,
+          "height": 44
+        }
+      ],
+      "cards": [],
+      "iconCount": 0
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "y": 505.984375,
+        "width": 1280,
+        "height": 132
+      },
+      "heroContainer": {
+        "x": 80,
+        "y": -1520,
+        "width": 1280,
+        "height": 560.8125
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 736,
+          "y": 593.984375,
+          "width": 181.1875,
+          "height": 44
+        }
+      ],
+      "cards": [],
+      "iconCount": 0
+    }
+  ],
+  "errors": []
+}

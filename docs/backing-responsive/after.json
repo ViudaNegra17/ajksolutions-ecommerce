@@ -1,0 +1,528 @@
+{
+  "phase": "after",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 320,
+        "height": 1661.34375,
+        "y": -1662.765625
+      },
+      "hero": {
+        "x": 0,
+        "width": 320,
+        "height": 691.4375,
+        "y": -5592
+      },
+      "columns": 1,
+      "cards": [
+        {
+          "x": 16,
+          "width": 288,
+          "height": 362.09375,
+          "y": -1567.390625
+        },
+        {
+          "x": 16,
+          "width": 288,
+          "height": 362.09375,
+          "y": -1185.296875
+        },
+        {
+          "x": 16,
+          "width": 288,
+          "height": 390.890625,
+          "y": -803.203125
+        },
+        {
+          "x": 16,
+          "width": 288,
+          "height": 390.890625,
+          "y": -392.3125
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada-400.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -1566.390625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada-400.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -1184.296875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico-400.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -802.203125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa-400.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 286,
+          "height": 214.5,
+          "y": -391.3125
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 390,
+        "height": 1813.75,
+        "y": -1646.859375
+      },
+      "hero": {
+        "x": 0,
+        "width": 390,
+        "height": 715.140625,
+        "y": -5401
+      },
+      "columns": 1,
+      "cards": [
+        {
+          "x": 16,
+          "width": 358,
+          "height": 414.59375,
+          "y": -1551.484375
+        },
+        {
+          "x": 16,
+          "width": 358,
+          "height": 414.59375,
+          "y": -1116.890625
+        },
+        {
+          "x": 16,
+          "width": 358,
+          "height": 414.59375,
+          "y": -682.296875
+        },
+        {
+          "x": 16,
+          "width": 358,
+          "height": 414.59375,
+          "y": -247.703125
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada-400.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -1550.484375
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada-400.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -1115.890625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico-400.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -681.296875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa-400.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 17,
+          "width": 356,
+          "height": 267,
+          "y": -246.703125
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 768,
+        "height": 934.171875,
+        "y": 41.140625
+      },
+      "hero": {
+        "x": 0,
+        "width": 768,
+        "height": 909.078125,
+        "y": -3769
+      },
+      "columns": 2,
+      "cards": [
+        {
+          "x": 24,
+          "width": 350,
+          "height": 408.59375,
+          "y": 138.125
+        },
+        {
+          "x": 394,
+          "width": 350,
+          "height": 408.59375,
+          "y": 138.125
+        },
+        {
+          "x": 24,
+          "width": 350,
+          "height": 408.59375,
+          "y": 566.71875
+        },
+        {
+          "x": 394,
+          "width": 350,
+          "height": 408.59375,
+          "y": 566.71875
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada-400.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 25,
+          "width": 348,
+          "height": 261,
+          "y": 139.125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada-400.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 395,
+          "width": 348,
+          "height": 261,
+          "y": 139.125
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico-400.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 25,
+          "width": 348,
+          "height": 261,
+          "y": 567.71875
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa-400.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 395,
+          "width": 348,
+          "height": 261,
+          "y": 567.71875
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "width": 1024,
+        "height": 470.296875,
+        "y": 52.390625
+      },
+      "hero": {
+        "x": 0,
+        "width": 1024,
+        "height": 442.65625,
+        "y": -2181
+      },
+      "columns": 4,
+      "cards": [
+        {
+          "x": 32,
+          "width": 222,
+          "height": 370.1875,
+          "y": 152.5
+        },
+        {
+          "x": 278,
+          "width": 222,
+          "height": 370.1875,
+          "y": 152.5
+        },
+        {
+          "x": 524,
+          "width": 222,
+          "height": 370.1875,
+          "y": 152.5
+        },
+        {
+          "x": 770,
+          "width": 222,
+          "height": 370.1875,
+          "y": 152.5
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada-400.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 33,
+          "width": 220,
+          "height": 165,
+          "y": 153.5
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada-400.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 279,
+          "width": 220,
+          "height": 165,
+          "y": 153.5
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico-400.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 525,
+          "width": 220,
+          "height": 165,
+          "y": 153.5
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa-400.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 771,
+          "width": 220,
+          "height": 165,
+          "y": 153.5
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "width": 1280,
+        "height": 500.1875,
+        "y": 73.46875
+      },
+      "hero": {
+        "x": 80,
+        "width": 1280,
+        "height": 560.8125,
+        "y": -2487
+      },
+      "columns": 4,
+      "cards": [
+        {
+          "x": 112,
+          "width": 286,
+          "height": 389.390625,
+          "y": 184.265625
+        },
+        {
+          "x": 422,
+          "width": 286,
+          "height": 389.390625,
+          "y": 184.265625
+        },
+        {
+          "x": 732,
+          "width": 286,
+          "height": 389.390625,
+          "y": 184.265625
+        },
+        {
+          "x": 1042,
+          "width": 286,
+          "height": 389.390625,
+          "y": 184.265625
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada-400.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 113,
+          "width": 284,
+          "height": 213,
+          "y": 185.265625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada-400.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 423,
+          "width": 284,
+          "height": 213,
+          "y": 185.265625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico-400.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 733,
+          "width": 284,
+          "height": 213,
+          "y": 185.265625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa-400.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 1043,
+          "width": 284,
+          "height": 213,
+          "y": 185.265625
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "width": 1280,
+        "height": 500.1875,
+        "y": 72.59375
+      },
+      "hero": {
+        "x": 320,
+        "width": 1280,
+        "height": 564.875,
+        "y": -2497
+      },
+      "columns": 4,
+      "cards": [
+        {
+          "x": 352,
+          "width": 286,
+          "height": 389.390625,
+          "y": 183.390625
+        },
+        {
+          "x": 662,
+          "width": 286,
+          "height": 389.390625,
+          "y": 183.390625
+        },
+        {
+          "x": 972,
+          "width": 286,
+          "height": 389.390625,
+          "y": 183.390625
+        },
+        {
+          "x": 1282,
+          "width": 286,
+          "height": 389.390625,
+          "y": 183.390625
+        }
+      ],
+      "headings": ["Asesoría especializada", "Garantía informada", "Soporte técnico", "Atención directa"],
+      "images": [
+        {
+          "src": "http://127.0.0.1:3017/images/backing/asesoria-especializada.webp",
+          "alt": "Equipo genérico con símbolos de conversación y una lista de opciones",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 353,
+          "width": 284,
+          "height": 213,
+          "y": 184.390625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/garantia-informada.webp",
+          "alt": "Documento de condiciones junto a una lupa y un escudo",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 663,
+          "width": 284,
+          "height": 213,
+          "y": 184.390625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/soporte-tecnico.webp",
+          "alt": "Circuito electrónico genérico y herramientas de precisión",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 973,
+          "width": 284,
+          "height": 213,
+          "y": 184.390625
+        },
+        {
+          "src": "http://127.0.0.1:3017/images/backing/atencion-directa.webp",
+          "alt": "Auriculares y dispositivo genérico con símbolos de conversación",
+          "loading": "lazy",
+          "fit": "contain",
+          "x": 1283,
+          "width": 284,
+          "height": 213,
+          "y": 184.390625
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

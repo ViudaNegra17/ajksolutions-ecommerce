@@ -148,6 +148,25 @@ for (const width of [390, 1440]) {
 
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible({ timeout: 45_000 })
       await page.evaluate(() => document.fonts.ready)
+      if (screen === 'home') {
+        const backing = page.locator('section[aria-labelledby="home-support"]')
+        const how = page.locator('section[aria-labelledby="home-how"]')
+        await expect(backing.locator('img')).toHaveCount(4)
+        await expect(how.locator('img')).toHaveCount(3)
+        for (const image of await backing.locator('img').or(how.locator('img')).all()) {
+          await image.scrollIntoViewIfNeeded()
+          await expect
+            .poll(
+              () =>
+                image.evaluate(
+                  (node) => node instanceof HTMLImageElement && node.complete && node.naturalWidth > 0
+                ),
+              { timeout: 30_000 }
+            )
+            .toBe(true)
+        }
+        await page.evaluate(() => scrollTo(0, 0))
+      }
       await expect(page.locator('html')).not.toHaveClass(/dark/)
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
       await expect(page).toHaveScreenshot(`${screen}-${width}.png`, screenshotOptions)

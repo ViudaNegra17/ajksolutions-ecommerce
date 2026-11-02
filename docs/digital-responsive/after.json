@@ -1,0 +1,216 @@
+{
+  "phase": "after",
+  "rows": [
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": -97.8125,
+        "width": 320,
+        "height": 907.046875
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -3039,
+        "width": 320,
+        "height": 691.4375
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 41,
+          "y": 215.359375,
+          "width": 238,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 41,
+          "y": 295.359375,
+          "width": 238,
+          "height": 488.875
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 114.484375,
+        "width": 390,
+        "height": 758.65625
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -2800,
+        "width": 390,
+        "height": 715.140625
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 41,
+          "y": 398.859375,
+          "width": 308,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 41,
+          "y": 478.859375,
+          "width": 308,
+          "height": 369.28125
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 265.28125,
+        "width": 768,
+        "height": 636.859375
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -2827,
+        "width": 768,
+        "height": 909.078125
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 49,
+          "y": 499.25,
+          "width": 222.484375,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 49,
+          "y": 579.25,
+          "width": 670,
+          "height": 297.890625
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "container": {
+        "x": 0,
+        "y": 251.15625,
+        "width": 1024,
+        "height": 409.859375
+      },
+      "heroContainer": {
+        "x": 0,
+        "y": -1469,
+        "width": 1024,
+        "height": 442.65625
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 63.71875,
+          "y": 554.328125,
+          "width": 222.484375,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 572.9375,
+          "y": 282.875,
+          "width": 387.34375,
+          "height": 346.421875
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "container": {
+        "x": 80,
+        "y": 372.984375,
+        "width": 1280,
+        "height": 397.484375
+      },
+      "heroContainer": {
+        "x": 80,
+        "y": -1645,
+        "width": 1280,
+        "height": 560.8125
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 153,
+          "y": 659.109375,
+          "width": 222.484375,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 799.375,
+          "y": 413.984375,
+          "width": 487.625,
+          "height": 315.484375
+        }
+      ],
+      "iconCount": 3
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "container": {
+        "x": 320,
+        "y": 409.703125,
+        "width": 1280,
+        "height": 403.890625
+      },
+      "heroContainer": {
+        "x": 320,
+        "y": -1611,
+        "width": 1280,
+        "height": 564.875
+      },
+      "links": [
+        {
+          "href": "/productos?productType=DIGITAL",
+          "x": 393,
+          "y": 699.03125,
+          "width": 222.484375,
+          "height": 48
+        }
+      ],
+      "cards": [
+        {
+          "x": 1041.890625,
+          "y": 450.703125,
+          "width": 485.109375,
+          "height": 321.890625
+        }
+      ],
+      "iconCount": 3
+    }
+  ],
+  "errors": []
+}
