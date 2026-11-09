@@ -1,0 +1,86 @@
+{
+  "observedAt": "2026-11-09T23:49:13.942Z",
+  "certifiedCandidateSha": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93",
+  "sourceBranch": "main",
+  "certificationEvidenceBranch": "codex/v1-certification-evidence",
+  "certificationEvidencePurpose": "Post-deployment audit evidence only. This documentation commit is not a second application candidate.",
+  "ci": {
+    "runId": 42721602694,
+    "workflowId": 352296434,
+    "status": "GREEN",
+    "url": "https://github.com/ViudaNegra17/ajksolutions-ecommerce/actions/runs/42721602694"
+  },
+  "deployment": {
+    "observedAt": "2026-11-09T23:37:27.469Z",
+    "id": "dpl_FNR12PD2k1mabjrVGpQ9VHnTzHS5",
+    "sha": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93",
+    "regions": ["iad1"],
+    "state": "READY",
+    "framework": "nuxtjs",
+    "nodeVersion": "26.x",
+    "configuredNode": "24.x",
+    "url": "ajksolutions-ecommerce-3urk551t1-viudanegra17s-projects.vercel.app",
+    "alias": "https://ajksolutions-ecommerce-neon.vercel.app",
+    "runtimeEvidenceSource": "Deployment and configured metadata only, process.version not observed"
+  },
+  "smoke": {
+    "success": true,
+    "httpChecks": 12,
+    "browserVisits": 12,
+    "commercialEntries": 6,
+    "operatorAdminCheck": {
+      "result": "PASS",
+      "method": "User manual confirmation",
+      "response": "Login y panel funcionan",
+      "candidate": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93"
+    }
+  },
+  "quality": {
+    "prisma": "PASS",
+    "schemaUnchanged": true,
+    "migrations": 14,
+    "lint": "PASS after documented key-order fix",
+    "format": "PASS",
+    "typecheck": "PASS",
+    "vitest": 184,
+    "isolatedDatabase": 57,
+    "e2e": 74,
+    "visual": 19,
+    "build": "PASS",
+    "productionAudit": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 2,
+      "low": 1
+    }
+  },
+  "findings": {
+    "F9-05": "ACCEPTED OBSERVABILITY / PERFORMANCE RISK",
+    "F9-06": "CLOSED",
+    "F9-07": "KNOWN TECHNICAL DEBT / ACCEPTED FOR V1",
+    "F9-08": "CLOSED",
+    "F9-09": "RESOLVED INCIDENTALLY BY PASS 27"
+  },
+  "passes": {
+    "28": "ACCEPTED / COMPLETE FOR V1",
+    "29": "ACCEPTED FOR V1",
+    "30": "ACCEPTED ARCHITECTURAL LIMITATION FOR V1",
+    "31": "COMPLETE",
+    "32": "COMPLETE"
+  },
+  "cleanup": {
+    "observedAt": "2026-11-09T23:41:57.410Z",
+    "temporaryDatabasesRemaining": [],
+    "readOnly": true
+  },
+  "businessLegal": "PENDING BUSINESS/LEGAL INPUT",
+  "finalClassification": "TECHNICALLY PRODUCTION READY — BUSINESS/LEGAL PENDING",
+  "phase9": "CLOSED technically under authorized accepted risks",
+  "version": {
+    "tag": "v1.0.0",
+    "target": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93",
+    "activation": "Tag creation and remote verification recorded in annotated tag",
+    "baseline": "V1.0.0 is the frozen functional baseline."
+  },
+  "runtimeLimits": "Deployment nodeVersion 26.x, configured project 24.x. These are metadata fields, process.version not independently observed. F9-05 retains accepted observability limitation."
+}

@@ -4,7 +4,7 @@ Actualizado 2026-11-09, America/Guayaquil. Historial de auditoría y estado vige
 
 ## Estado del pass final V1
 
-Gates locales completos. CI, deployment exacto y smoke final pendientes. F9-05 y F9-07 aceptados para V1 por el prompt de cierre. F9-06 conserva su comprobación productiva final. La sección Final V1 Certification al final del documento establece la disposición actual y prevalece sobre el historial que sigue.
+FASE 9 CLOSED técnicamente. Clasificación TECHNICALLY PRODUCTION READY — BUSINESS/LEGAL PENDING. El candidato `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93` tiene CI GREEN y deployment exacto READY, con smoke final aprobado y login/panel confirmados manualmente por el operador. F9-06 CLOSED. F9-05 y F9-07 aceptados para V1 por el prompt de cierre. Final V1 Certification establece la disposición actual y prevalece sobre el historial que sigue.
 
 ## Historial de auditoría
 
@@ -211,30 +211,65 @@ Estado de certificación **NOT PRODUCTION READY**, hasta completar los criterios
 
 ## Final V1 Certification
 
-Pass final iniciado el 2026-11-09. Esta sección prevalece sobre los pendientes históricos cuando cada control obtiene evidencia final.
+Fecha local 2026-11-09, America/Guayaquil. Certificación técnica autorizada por el pass final de cierre. Las evidencias posteriores al despliegue se conservan en la rama documental `codex/v1-certification-evidence`. El candidato de aplicación es el commit de main indicado a continuación. La anotación del tag incorpora también el commit de evidencia documental.
 
-- Candidato inicial `cd7b7b4ef8c6027941b6107244df2d9cf8a68716`, main con evidencia QA pendiente. El SHA final se fijará después de los gates locales.
-- CI y deployment exacto pendientes. Smoke productivo final y acceso administrativo manual pendientes.
-- F9-05 ACCEPTED OBSERVABILITY / PERFORMANCE RISK, causa completa sin determinar.
-- F9-07 KNOWN TECHNICAL DEBT / ACCEPTED FOR V1, warning reproducible sin fallo funcional o de integridad demostrado.
-- F9-06 mantiene final smoke pending. F9-08 CLOSED. F9-09 RESOLVED.
-- PASS 28 ACCEPTED / COMPLETE FOR V1. Los contratos existentes cubren constraints, unicidad, rollback, inventario, pedidos y tickets.
-- PASS 29 ACCEPTED FOR V1. La causa DB del pico productivo sigue sin probarse.
-- PASS 30 ACCEPTED ARCHITECTURAL LIMITATION FOR V1. Cache por instancia e invalidación funcional cubiertas. Invalidación entre instancias sin garantía.
-- PASS 31 COMPLETE en fuentes. Instrumentación temporal retirada y tres pruebas permanentes del contrato de logging. Confirmación adicional en build pendiente.
-- PASS 32 COMPLETE. Las cinco variables obligatorias están presentes en scope production. Evidencia conserva nombres y booleanos.
-- Visual pendiente reproducido 18/19. Se revisó la diferencia del carrito, debida al aviso transitorio y DevTools en la referencia. La prueba verifica el aviso y espera su cierre antes de la captura estable. Se regeneran solo las referencias de carrito revisadas.
-- El ejecutor de integración usa un worker por contención local reproducida. Conserva los 57 casos y sus timeouts, incluidas las pruebas internas de concurrencia.
-- Prisma schema y las 14 migraciones se contrastan mediante hashes.
-- Audit prod con 0 Critical y 0 High. Residuales de test/build mantienen la aceptación temporal del PASS 27.
-- Riesgos aceptados en [v1-known-risks.md](v1-known-risks.md). Evidencia de inicio en [v1-final-baseline.json](phase9/v1-final-baseline.json).
-- Business/legal PENDING BUSINESS/LEGAL INPUT.
-- Clasificación vigente NOT PRODUCTION READY hasta completar gates, CI y smoke del candidato exacto. Tag y freeze pendientes.
+| Control                  | Resultado                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Final SHA                | `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93`                                                                  |
+| CI                       | GREEN, workflow 352296434, run 42721602694, quality 129516658063                                            |
+| Deployment ID            | `dpl_FNR12PD2k1mabjrVGpQ9VHnTzHS5`                                                                          |
+| Production SHA           | `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93`                                                                  |
+| Vercel                   | READY, iad1, nuxtjs                                                                                         |
+| Runtime                  | nodeVersion 26.x en metadata, proyecto configurado 24.x. process.version sin observación independiente      |
+| Prisma                   | format --check, validate, generate y migrate status PASS                                                    |
+| Schema y migraciones     | Hashes idénticos, 14 migraciones históricas, cero nuevas                                                    |
+| Lint, formato, typecheck | PASS. Lint revalidado tras ordenar routeRules según la regla Nuxt                                           |
+| Vitest                   | 184/184, 29 archivos                                                                                        |
+| Integración DB           | 57/57 sobre base aislada                                                                                    |
+| E2E                      | 74/74. El nuevo caso verifica el 404 reproducido de /login y su redirección 302 a /admin/login              |
+| Visual                   | 19/19. Aviso del carrito comprobado antes de esperar su cierre. Solo referencia móvil revisada y regenerada |
+| Build                    | PASS. Smoke del artefacto con seis visitas hidratadas y dos health checks                                   |
+| Audit prod               | 0 Critical, 0 High, 2 Moderate, 1 Low                                                                       |
+| Audit completo           | 0 Critical, 2 High, 2 Moderate, 1 Low. Aceptaciones test/build del PASS 27 vigentes                         |
 
-### Final local gates — 2026-11-09
+[Workflow aprobado](https://github.com/ViudaNegra17/ajksolutions-ecommerce/actions/runs/42721602694). [Gates locales](phase9/v1-local-gates.json), [pasos CI](phase9/v1-ci.json), [certificación consolidada](phase9/v1-final-certification.json).
 
-Prisma format, validate, generate, migrate status, formato global y typecheck PASS. Vitest 184/184, integración aislada 57/57, E2E 74/74, visual 19/19 y build PASS. El caso E2E añadido verifica la redirección 302 de `/login` hacia `/admin/login`, cuyo 404 se reprodujo antes del cambio. El orden de la clave routeRules produjo un fallo de lint, corregido y revalidado con `pnpm lint`.
+### Production smoke
 
-Schema y 14 SQL históricos con hashes idénticos antes y después. Cero migraciones nuevas. Base temporal eliminada. Build servido en proceso nuevo con seis visitas hidratadas, dos health 200 y cero marcadores runtime temporales. Se cambió únicamente la referencia visual de carrito a 390 px tras revisar la superposición temporal. [Gates locales](phase9/v1-local-gates.json).
+Home, productos, servicios, Diagnóstico, admin/login, live, ready, robots y sitemap respondieron 200. /login devuelve 302 a /admin/login y /admin redirige a autenticación. /api/admin/products anónimo responde 401. Se completaron 12 comprobaciones HTTP, 12 visitas de navegador a 390 y 1440 px y seis entradas comerciales. Hidratación, un H1, ausencia de overflow, metadata y JSON-LD requeridos aprobaron. Cero errores JavaScript o de hidratación observados.
 
-El candidato de despliegue se fija mediante el commit de esta consolidación. CI, deployment exacto y smoke final se registrarán después de ejecutarse. La comprobación de login productivo corresponde al operador por su elección explícita.
+PHYSICAL llegó de ficha a carrito y formulario checkout. DIGITAL llegó mediante Comprar ahora a checkout directo. SERVICE presentó formulario dinámico y entrada a creación de ticket. Las comprobaciones terminaron en esos formularios. El operador confirmó manualmente “Login y panel funcionan” sobre este candidato. Las protecciones de roles y sesiones conservan cobertura de integración/E2E.
+
+Se observaron CSP con frame-ancestors, HSTS, nosniff, Referrer-Policy y Permissions-Policy. Una respuesta de logout anónimo aislado emitió cookie con Secure, HttpOnly y SameSite=Lax. Sus valores se omitieron. La creación autenticada corresponde al flujo manual y a las pruebas existentes. Product, Service, Organization y WebSite JSON-LD son parseables. Canonical, title, description, robots y sitemap corresponden al dominio productivo. [Smoke final](phase9/v1-production-smoke.json).
+
+### Final findings disposition
+
+- F9-05 ACCEPTED OBSERVABILITY / PERFORMANCE RISK. Causa completa sin determinar, impacto intermitente en primera carga y sin fallo funcional, de integridad o de seguridad demostrado. Continúa en backlog V1.x.
+- F9-06 CLOSED. API de Diagnóstico confirma image null. Listado y ficha muestran el placeholder compartido en móvil y escritorio, cero imágenes rotas, errores ORB, errores JS de imagen o solicitudes al origen retirado. Home NOT APPLICABLE — service not currently featured.
+- F9-07 KNOWN TECHNICAL DEBT / ACCEPTED FOR V1. Warning pg/Prisma reproducible, sin fallo transaccional o de integridad demostrado.
+- F9-08 CLOSED. Organization y WebSite SSR, escaping e inyección cubiertos.
+- F9-09 RESOLVED INCIDENTALLY BY PASS 27.
+
+### PASS 28–32
+
+| PASS | Disposición y evidencia                                                                                                                                                                                                                                                                               |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 28   | ACCEPTED / COMPLETE FOR V1. Las 14 migraciones y 57 integraciones cubren constraints, claves foráneas, códigos/barcode únicos, pedidos, inventario, tickets, rollback y concurrencia. Véanse tests/integration/phase2-1-integrity.test.ts, phase4-1-hardening.test.ts y final-review-phase8-5.test.ts |
+| 29   | ACCEPTED FOR V1. N+1 bloqueante o query determinista multisegundo sin demostración. Comportamiento warm observado. Causa DB/Neon del pico sin probar                                                                                                                                                  |
+| 30   | ACCEPTED ARCHITECTURAL LIMITATION FOR V1. HIT/MISS e invalidación administrativa probados en ui-phase7-5.spec.ts. Cache limitada a lecturas públicas. Invalidación entre instancias sin garantía                                                                                                      |
+| 31   | COMPLETE. Marcadores temporales retirados, tres pruebas permanentes del contrato de logging, build sin los marcadores y cero bases de QA remanentes                                                                                                                                                   |
+| 32   | COMPLETE. Las cinco variables obligatorias presentes en production. Se guardan nombres, booleanos y scope                                                                                                                                                                                             |
+
+El ejecutor aislado de integración utiliza un worker tras contención local reproducida. Conserva los 57 casos, sus timeouts y sus escenarios internos de concurrencia. El servidor localhost:3000 fue restaurado y respondió 200.
+
+### Known risks and business/legal
+
+[Riesgos aceptados](v1-known-risks.md). F9-05, F9-07, cache por instancia y residuales test/build tienen disposición explícita. Business/legal conserva PENDING BUSINESS/LEGAL INPUT. La aprobación de políticas, condiciones comerciales y contenido legal corresponde al responsable del negocio.
+
+### Final classification and version
+
+**TECHNICALLY PRODUCTION READY — BUSINESS/LEGAL PENDING**.
+
+**Phase 9 CLOSED técnicamente**, bajo las aceptaciones expresas del pass final. El tag anotado `v1.0.0` se crea exclusivamente sobre `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93` después de los gates, CI y smoke aprobados. Su presencia remota activa el freeze.
+
+**V1.0.0 is the frozen functional baseline.** V1.0.x corresponde a hotfixes, V1.1.x a mejoras/performance/observabilidad, V1.2.x a funcionalidad comercial y V2.x a cambios incompatibles. El backlog V1.x incluye performance F9-05, warning F9-07, cache distribuida según escala, profiling DB, observabilidad, bundle, INP de campo, UX y mejoras comerciales.

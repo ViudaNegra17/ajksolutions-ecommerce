@@ -1,6 +1,6 @@
 # V1 — Riesgos conocidos aceptados
 
-Fecha de disposición 2026-11-09, America/Guayaquil. La autorización del pass final permite aceptar estos riesgos para V1 si los gates, CI y smoke final aprueban.
+Fecha de disposición 2026-11-09, America/Guayaquil. El pass final autorizó estas aceptaciones. Gates, CI y smoke productivo del candidato `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93` aprobaron.
 
 ## F9-05 — ACCEPTED OBSERVABILITY / PERFORMANCE RISK
 

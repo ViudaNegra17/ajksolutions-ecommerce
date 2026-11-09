@@ -358,3 +358,7 @@ Continúan pendientes F9-07, PASS 28–32, CI final, deployment del candidato y 
 | Business y legal | Validaciones operativas y comerciales del informe general pendientes              |
 
 El bloque termina con la evidencia y estos estados para revisión.
+
+## Final V1 disposition — 2026-11-09
+
+F9-05 ACCEPTED OBSERVABILITY / PERFORMANCE RISK por autorización del pass final. La causa completa conserva H — NOT ENOUGH EVIDENCE. Primera carga intermitente, fallo funcional sin demostrar, impacto de integridad y seguridad sin demostrar. DB CAUSE NOT PROVEN y NEON CAUSE NOT PROVEN. El seguimiento pasa a V1.x. La aceptación representa disposición del riesgo. El candidato certificado es `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93`, con CI GREEN y smoke productivo aprobado. [Riesgos aceptados](v1-known-risks.md), [certificación final](phase9-qa-final-report.md#final-v1-certification).

@@ -1,0 +1,427 @@
+{
+  "observedAt": "2026-11-09T23:39:01.215Z",
+  "deployment": {
+    "observedAt": "2026-11-09T23:37:27.469Z",
+    "id": "dpl_FNR12PD2k1mabjrVGpQ9VHnTzHS5",
+    "sha": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93",
+    "regions": ["iad1"],
+    "state": "READY",
+    "framework": "nuxtjs",
+    "nodeVersion": "26.x",
+    "configuredNode": "24.x",
+    "url": "ajksolutions-ecommerce-3urk551t1-viudanegra17s-projects.vercel.app",
+    "alias": "https://ajksolutions-ecommerce-neon.vercel.app",
+    "runtimeEvidenceSource": "Deployment and configured metadata only, process.version not observed"
+  },
+  "scope": "Public read-only production smoke. Checkout preview permitted, no orders, tickets or WhatsApp sent.",
+  "operatorAdminCheck": {
+    "result": "PASS",
+    "method": "User manual confirmation",
+    "response": "Login y panel funcionan",
+    "candidate": "93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93"
+  },
+  "http": [
+    {
+      "path": "/",
+      "status": 200,
+      "requestId": "c3c51c43-ef08-4a20-be6f-44833157bb00",
+      "location": null,
+      "headers": {
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https: wss:; frame-src 'none'; worker-src 'self' blob:; manifest-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+      }
+    },
+    {
+      "path": "/productos",
+      "status": 200,
+      "requestId": "e39878c3-d93d-422f-b7fb-fa7393aa5245",
+      "location": null
+    },
+    {
+      "path": "/servicios",
+      "status": 200,
+      "requestId": "1f5a6a50-efe4-400f-8fe0-e6e6cd43af46",
+      "location": null
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "status": 200,
+      "requestId": "2efe96a4-4ab6-4743-bbf7-7633ae1e5950",
+      "location": null
+    },
+    {
+      "path": "/login",
+      "status": 302,
+      "requestId": null,
+      "location": "/admin/login"
+    },
+    {
+      "path": "/admin/login",
+      "status": 200,
+      "requestId": "24ccfd6c-790c-4f2b-b3f0-89acf6909125",
+      "location": null
+    },
+    {
+      "path": "/admin",
+      "status": 302,
+      "requestId": "be1737ef-969e-443a-b4dc-06e93a1f15af",
+      "location": "/admin/login?redirect=/admin"
+    },
+    {
+      "path": "/api/health/live",
+      "status": 200,
+      "requestId": "c4347460-a312-4479-877d-6c23729cb0d1",
+      "location": null
+    },
+    {
+      "path": "/api/health/ready",
+      "status": 200,
+      "requestId": "bdcbfcdb-37e4-41ad-aa7f-310420ddab76",
+      "location": null
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "requestId": "513cb179-5fb8-4727-b9de-b381997945af",
+      "location": null,
+      "exclusionsVerified": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "requestId": "6cd645e7-6c2c-4b5b-8790-8d060351dbaa",
+      "location": null,
+      "publicDomainVerified": true
+    },
+    {
+      "path": "/api/admin/products",
+      "status": 401,
+      "requestId": null,
+      "location": null
+    }
+  ],
+  "browser": [
+    {
+      "path": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "AjkSolutionS e-Commerce · AjkSolutionS",
+      "description": "Productos tecnológicos y servicios profesionales.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/",
+      "structuredTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/productos",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Catálogo de productos · AjkSolutionS",
+      "description": "Busca, filtra y compara productos tecnológicos disponibles en AjkSolutionS.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/productos",
+      "structuredTypes": []
+    },
+    {
+      "path": "/servicios",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Servicios tecnológicos · AjkSolutionS",
+      "description": "Solicita soporte y servicios tecnológicos con seguimiento mediante ticket.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/servicios",
+      "structuredTypes": [],
+      "placeholderVisible": true,
+      "brokenImages": 0
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Diagnóstico técnico · AjkSolutionS",
+      "description": "Evaluación inicial de equipos y recomendación de solución.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/servicios/diagnostico-tecnico",
+      "structuredTypes": ["Service"],
+      "placeholderVisible": true,
+      "brokenImages": 0
+    },
+    {
+      "path": "/productos/stencil-universal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Stencil Universal · AjkSolutionS",
+      "description": "Stencil de reparación AMAOE",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/productos/stencil-universal",
+      "structuredTypes": ["Product", "BreadcrumbList"]
+    },
+    {
+      "path": "/admin/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": "Login form visible",
+      "noOverflow": true,
+      "title": "Acceso administrativo · AjkSolutionS",
+      "description": "Productos tecnológicos, licencias digitales y servicios profesionales.",
+      "canonical": null,
+      "structuredTypes": []
+    },
+    {
+      "path": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "AjkSolutionS e-Commerce · AjkSolutionS",
+      "description": "Productos tecnológicos y servicios profesionales.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/",
+      "structuredTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/productos",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Catálogo de productos · AjkSolutionS",
+      "description": "Busca, filtra y compara productos tecnológicos disponibles en AjkSolutionS.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/productos",
+      "structuredTypes": []
+    },
+    {
+      "path": "/servicios",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Servicios tecnológicos · AjkSolutionS",
+      "description": "Solicita soporte y servicios tecnológicos con seguimiento mediante ticket.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/servicios",
+      "structuredTypes": [],
+      "placeholderVisible": true,
+      "brokenImages": 0
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Diagnóstico técnico · AjkSolutionS",
+      "description": "Evaluación inicial de equipos y recomendación de solución.",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/servicios/diagnostico-tecnico",
+      "structuredTypes": ["Service"],
+      "placeholderVisible": true,
+      "brokenImages": 0
+    },
+    {
+      "path": "/productos/stencil-universal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": true,
+      "noOverflow": true,
+      "title": "Stencil Universal · AjkSolutionS",
+      "description": "Stencil de reparación AMAOE",
+      "canonical": "https://ajksolutions-ecommerce-neon.vercel.app/productos/stencil-universal",
+      "structuredTypes": ["Product", "BreadcrumbList"]
+    },
+    {
+      "path": "/admin/login",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageErrors": [],
+      "hydrationWarnings": [],
+      "imageFailures": [],
+      "removedOriginRequests": [],
+      "status": 200,
+      "hydrated": "Login form visible",
+      "noOverflow": true,
+      "title": "Acceso administrativo · AjkSolutionS",
+      "description": "Productos tecnológicos, licencias digitales y servicios profesionales.",
+      "canonical": null,
+      "structuredTypes": []
+    }
+  ],
+  "commercial": [
+    {
+      "type": "PHYSICAL",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cart": true,
+      "checkoutForm": true,
+      "submitted": false
+    },
+    {
+      "type": "DIGITAL",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "buyNow": true,
+      "directCheckout": true,
+      "submitted": false
+    },
+    {
+      "type": "SERVICE",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dynamicForm": true,
+      "ticketFlowEntry": true,
+      "submitted": false
+    },
+    {
+      "type": "PHYSICAL",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cart": true,
+      "checkoutForm": true,
+      "submitted": false
+    },
+    {
+      "type": "DIGITAL",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "buyNow": true,
+      "directCheckout": true,
+      "submitted": false
+    },
+    {
+      "type": "SERVICE",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dynamicForm": true,
+      "ticketFlowEntry": true,
+      "submitted": false
+    }
+  ],
+  "success": true,
+  "serviceImageNull": true,
+  "homeServiceFeatured": false,
+  "homeSurface": "NOT APPLICABLE — service not currently featured",
+  "products": {
+    "physical": "stencil-universal",
+    "digital": "borneo-schematic"
+  },
+  "sessionCookie": {
+    "productionConfiguration": {
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "lax"
+    },
+    "coveredBy": "Production readiness and admin session tests plus manual production login confirmation",
+    "productionCookieAttributesInspected": true,
+    "runtimeAnonymousLogout": {
+      "observedAt": "2026-11-09T23:40:32.579Z",
+      "scope": "Anonymous isolated logout response, no user session or account used. Cookie value omitted. Secure, HttpOnly and SameSite flags observed.",
+      "status": 200,
+      "cookieAttributes": [
+        {
+          "name": "nuxt-session",
+          "secure": true,
+          "httpOnly": true,
+          "sameSiteLax": true,
+          "cleared": false
+        }
+      ],
+      "valuesStored": false
+    },
+    "attributeObservationScope": "Anonymous isolated logout response. Authenticated login and panel confirmed manually by operator. Cookie contents omitted."
+  }
+}

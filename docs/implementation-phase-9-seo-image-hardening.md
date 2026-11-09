@@ -141,3 +141,7 @@ F9-05 conserva la investigación de primera Home/frío pendiente. F9-07 conserva
 ### Block status
 
 **PARTIAL operativo. Código y QA locales aprobados.** El pendiente de contenido productivo de F9-06 determina el estado parcial del bloque.
+
+## Final V1 disposition — 2026-11-09
+
+F9-06 CLOSED sobre `93ea95cbb8f1ef5e3bf3fffcd3038fc0f9dbfe93`, deployment `dpl_FNR12PD2k1mabjrVGpQ9VHnTzHS5` READY. API image null confirmado y placeholder compartido visible en listado/ficha a 390 y 1440 px. Cero imágenes rotas, ORB observado, errores JS de imagen o solicitudes a URLs retiradas. Home NOT APPLICABLE — service not currently featured. F9-08 CLOSED y F9-09 RESOLVED INCIDENTALLY BY PASS 27. F9-05 y F9-07 tienen aceptación V1 en el pass final. [Smoke productivo certificado](phase9/v1-production-smoke.json), [certificación final](phase9-qa-final-report.md#final-v1-certification).
