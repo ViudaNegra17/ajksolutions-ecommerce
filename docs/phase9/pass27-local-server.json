@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-08",
+  "url": "http://localhost:3000",
+  "ready": true,
+  "health": 200,
+  "live": 200,
+  "home": 200,
+  "serverMode": "persistent local execution session"
+}

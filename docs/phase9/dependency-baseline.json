@@ -1,0 +1,199 @@
+{
+  "date": "2026-11-08",
+  "commit": "675b73967d99f2c12b40fbf750a54125c0c65696",
+  "branch": "main",
+  "node": "v24.15.0",
+  "pnpm": "11.24.0",
+  "installed": [
+    {
+      "name": "ajksolutions-ecommerce",
+      "version": "0.1.0",
+      "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce",
+      "private": true,
+      "dependencies": {
+        "@nuxt/icon": {
+          "from": "@nuxt/icon",
+          "version": "2.5.1",
+          "resolved": "https://registry.npmjs.org/@nuxt/icon/-/icon-2.5.1.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+icon@2.5.1_magic-stri_1ebb900ffaec1ce1586df2ff7a1c79f5\\node_modules\\@nuxt\\icon"
+        },
+        "@nuxt/image": {
+          "from": "@nuxt/image",
+          "version": "2.1.0",
+          "resolved": "https://registry.npmjs.org/@nuxt/image/-/image-2.1.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+image@2.1.0_@types+no_9b0b34063380f223fc6a0b7ea4967e68\\node_modules\\@nuxt\\image"
+        },
+        "@nuxt/ui": {
+          "from": "@nuxt/ui",
+          "version": "4.11.0",
+          "resolved": "https://registry.npmjs.org/@nuxt/ui/-/ui-4.11.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+ui@4.11.0_d977fc604d269e9dcd93a57a55d0287a\\node_modules\\@nuxt\\ui"
+        },
+        "@pinia/nuxt": {
+          "from": "@pinia/nuxt",
+          "version": "1.0.2",
+          "resolved": "https://registry.npmjs.org/@pinia/nuxt/-/nuxt-1.0.2.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@pinia+nuxt@1.0.2_magic-str_19d60f7d6ad55c9949cac69f782fdfc2\\node_modules\\@pinia\\nuxt"
+        },
+        "@prisma/adapter-pg": {
+          "from": "@prisma/adapter-pg",
+          "version": "7.10.0",
+          "resolved": "https://registry.npmjs.org/@prisma/adapter-pg/-/adapter-pg-7.10.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@prisma+adapter-pg@7.10.0\\node_modules\\@prisma\\adapter-pg"
+        },
+        "@prisma/client": {
+          "from": "@prisma/client",
+          "version": "7.10.0",
+          "resolved": "https://registry.npmjs.org/@prisma/client/-/client-7.10.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@prisma+client@7.10.0_prism_23c5c03dbd4bd6032ede6dbd3f9ba646\\node_modules\\@prisma\\client"
+        },
+        "argon2": {
+          "from": "argon2",
+          "version": "0.45.1",
+          "resolved": "https://registry.npmjs.org/argon2/-/argon2-0.45.1.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\argon2@0.45.1\\node_modules\\argon2"
+        },
+        "nuxt": {
+          "from": "nuxt",
+          "version": "4.5.2",
+          "resolved": "https://registry.npmjs.org/nuxt/-/nuxt-4.5.2.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\nuxt@4.5.2_ce75e2cee26820d19d75b78f9d975f10\\node_modules\\nuxt"
+        },
+        "nuxt-auth-utils": {
+          "from": "nuxt-auth-utils",
+          "version": "0.5.30",
+          "resolved": "https://registry.npmjs.org/nuxt-auth-utils/-/nuxt-auth-utils-0.5.30.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\nuxt-auth-utils@0.5.30_argo_c8c970535966256ca6e207c71cbdc6a7\\node_modules\\nuxt-auth-utils"
+        },
+        "pg": {
+          "from": "pg",
+          "version": "8.23.0",
+          "resolved": "https://registry.npmjs.org/pg/-/pg-8.23.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\pg@8.23.0\\node_modules\\pg"
+        },
+        "pinia": {
+          "from": "pinia",
+          "version": "3.0.3",
+          "resolved": "https://registry.npmjs.org/pinia/-/pinia-3.0.3.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\pinia@3.0.3_typescript@5.9.3_vue@3.5.40_typescript@5.9.3_\\node_modules\\pinia"
+        },
+        "vue": {
+          "from": "vue",
+          "version": "3.5.40",
+          "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.40.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\vue@3.5.40_typescript@5.9.3\\node_modules\\vue"
+        },
+        "zod": {
+          "from": "zod",
+          "version": "4.4.3",
+          "resolved": "https://registry.npmjs.org/zod/-/zod-4.4.3.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\zod@4.4.3\\node_modules\\zod"
+        }
+      },
+      "devDependencies": {
+        "@nuxt/eslint": {
+          "from": "@nuxt/eslint",
+          "version": "1.17.0",
+          "resolved": "https://registry.npmjs.org/@nuxt/eslint/-/eslint-1.17.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+eslint@1.17.0_@typesc_f22c5651a5d4e2abaa5a993947a01604\\node_modules\\@nuxt\\eslint"
+        },
+        "@nuxt/test-utils": {
+          "from": "@nuxt/test-utils",
+          "version": "4.2.0",
+          "resolved": "https://registry.npmjs.org/@nuxt/test-utils/-/test-utils-4.2.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+test-utils@4.2.0_@pla_c0fa6df1cae8fcd603904754cacc2187\\node_modules\\@nuxt\\test-utils"
+        },
+        "@playwright/test": {
+          "from": "@playwright/test",
+          "version": "1.62.1",
+          "resolved": "https://registry.npmjs.org/@playwright/test/-/test-1.62.1.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@playwright+test@1.62.1\\node_modules\\@playwright\\test"
+        },
+        "@types/pg": {
+          "from": "@types/pg",
+          "version": "8.23.1",
+          "resolved": "https://registry.npmjs.org/@types/pg/-/pg-8.23.1.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@types+pg@8.23.1\\node_modules\\@types\\pg"
+        },
+        "@vitest/coverage-v8": {
+          "from": "@vitest/coverage-v8",
+          "version": "4.1.11",
+          "resolved": "https://registry.npmjs.org/@vitest/coverage-v8/-/coverage-v8-4.1.11.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@vitest+coverage-v8@4.1.11_vitest@4.1.11\\node_modules\\@vitest\\coverage-v8"
+        },
+        "dotenv": {
+          "from": "dotenv",
+          "version": "17.4.2",
+          "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-17.4.2.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\dotenv@17.4.2\\node_modules\\dotenv"
+        },
+        "eslint": {
+          "from": "eslint",
+          "version": "10.9.0",
+          "resolved": "https://registry.npmjs.org/eslint/-/eslint-10.9.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\eslint@10.9.0_jiti@2.7.0_supports-color@10.2.2\\node_modules\\eslint"
+        },
+        "happy-dom": {
+          "from": "happy-dom",
+          "version": "20.11.13",
+          "resolved": "https://registry.npmjs.org/happy-dom/-/happy-dom-20.11.13.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\happy-dom@20.11.13\\node_modules\\happy-dom"
+        },
+        "prettier": {
+          "from": "prettier",
+          "version": "3.9.6",
+          "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.9.6.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\prettier@3.9.6\\node_modules\\prettier"
+        },
+        "prisma": {
+          "from": "prisma",
+          "version": "7.10.0",
+          "resolved": "https://registry.npmjs.org/prisma/-/prisma-7.10.0.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\prisma@7.10.0_@types+node@2_672a781998f48a08ff18108da9ac9aad\\node_modules\\prisma"
+        },
+        "tsx": {
+          "from": "tsx",
+          "version": "4.23.12",
+          "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.23.12.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\tsx@4.23.12\\node_modules\\tsx"
+        },
+        "typescript": {
+          "from": "typescript",
+          "version": "5.9.3",
+          "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\typescript@5.9.3\\node_modules\\typescript"
+        },
+        "vitest": {
+          "from": "vitest",
+          "version": "4.1.11",
+          "resolved": "https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\vitest@4.1.11_@types+node@2_f79e154b017b54bce7dea19aca40c700\\node_modules\\vitest"
+        },
+        "vue-tsc": {
+          "from": "vue-tsc",
+          "version": "3.3.11",
+          "resolved": "https://registry.npmjs.org/vue-tsc/-/vue-tsc-3.3.11.tgz",
+          "path": "C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\vue-tsc@3.3.11_typescript@5.9.3\\node_modules\\vue-tsc"
+        }
+      }
+    }
+  ],
+  "migrationCount": 14,
+  "hashes": {
+    "prisma/schema.prisma": "de40e04aa3b056eb3354289687d7c2bbb109ea0c6ee4c2c656a35e4a272bc52e",
+    "prisma/migrations/20260828000000_init_auth_rbac/migration.sql": "5becc54ae7df3c045f849b2df8d5559000413435bdce1eee27e68c5241354563",
+    "prisma/migrations/20260829175358_phase2_catalog_inventory/migration.sql": "4af7aa0dc12c18e95521b37544a267272062658a4d4fbc8998e4249c24ec297c",
+    "prisma/migrations/20260830090000_phase2_1_integrity_hardening/migration.sql": "448af1304f4ac06b8f3466840e631d724c0b01617bc4bf2da902fcba837a1637",
+    "prisma/migrations/20260830191321_phase4_services_tickets/migration.sql": "4d8bbab8cfd694032ab41ddce030704405a2bb81a52f7bb5f2fa97df19101d40",
+    "prisma/migrations/20260831090000_phase4_1_ticket_customer_hardening/migration.sql": "e9ce4aa6bdff367fd1dd7d9fabf0694cc6bd56b4c29bd56ee140ed519abd3030",
+    "prisma/migrations/20260831150000_phase5_cart_checkout_orders/migration.sql": "039c21c5e001109cf3e96137f1f9cc8a7289280de8f6fa12e8ec35e52ca2e0bc",
+    "prisma/migrations/20260903090000_phase5_1_order_integrity_hardening/migration.sql": "472a0ae77ab62e0a62fe6aca7c832b56fe29cb25882755bab0e9f67125167613",
+    "prisma/migrations/20260903180000_phase6_digital_products_licenses/migration.sql": "dd1a13940eb1e9ef284570e3a03c893512ac00e88a8d73770fa7919292aab3f0",
+    "prisma/migrations/20260903210000_phase6_1_license_buy_now_integrity/migration.sql": "139331d0547f89fe5902399188c4b7119578ec0d82a51650b1b2995561403131",
+    "prisma/migrations/20260903223000_phase6_2_simplify_digital_domain/migration.sql": "7271187e9e52f959e5a19e744cdce9bfce96e9429a84ed20d8e64c0ad9b647f3",
+    "prisma/migrations/20260904120000_phase7_operations_content/migration.sql": "b50e5f1654a753ebb30bb76a52bdcbb6410157c187787a1a772b0138e2e6f1e8",
+    "prisma/migrations/20260904150000_phase7_banner_promotion_integrity_hardening/migration.sql": "bf9d11c617182555fba3118693987994d21cd067c653a0bfc215d4ebf4210e6c",
+    "prisma/migrations/20260911090000_phase8_observability/migration.sql": "e44fb797c8d90f6793bc4fb23df0b91fd4684e894027cb0f0fbbfd819e034067",
+    "prisma/migrations/20261002090000_phase8_5_product_barcode/migration.sql": "9fb221e519a238c6a786c62dd60f1a733c3dc5a4108accde7118917ca81fcc75"
+  }
+}

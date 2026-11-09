@@ -2,7 +2,19 @@
 
 Fecha 2026-11-08, America/Guayaquil. Historial de auditoría y estado vigente de fase 9.
 
-## Actualización vigente — revisión local y Seguridad
+## Actualización vigente — PASS 27
+
+**PASS 27 PASSED.** Se completó la remediación compatible de dependencias y su regresión local. El audit completo cambió de 3 Critical / 35 High / 32 Moderate / 11 Low a 0 / 2 / 2 / 1. El audit --prod tiene 0 Critical y 0 High. Los cinco residuales corresponden a Happy DOM de pruebas y glob/minimatch/deepmerge de build, con condiciones, aceptación técnica temporal y ausencia ejecutable documentadas. [Remediación y reporte completo](phase9-dependency-remediation.md).
+
+Pasaron Prisma, lint, formato, tipos, 169 Vitest, el ensayo de base vacía con 57 integraciones adicionales, 62 E2E, 19 visuales y build. El reensayo del artefacto aprobó diez rutas SSR, payload, hidratación, JSON-LD presente, NuxtImg, WebP/AVIF, sesión y Seguridad. Se conservaron los intentos fallidos del script SSR y se ajustó su uso de la ruta /admin/login, layout y comprobaciones negativas. [Gates](phase9/pass27-regression.json), [SSR final](phase9/pass27-ssr.json), [reensayo](phase9/pass27-ssr-recheck.json).
+
+La inspección cubrió 792 archivos JavaScript y 235 source maps. Los paquetes críticos originales y los cinco residuales están excluidos del artefacto ejecutable. Schema y los SQL de 14 migraciones conservan hashes. Las bases temporales se eliminaron. El código del PASS se registra en b03f41b339427194bb45f1b503be57efe7f715ce. [Artefacto](phase9/dependency-artifact-after.json).
+
+El cierre general de fase 9 sigue condicionado a los hallazgos operativos F9-05 a F9-09 registrados abajo. El servidor local restaurado y sus respuestas se registran en [comprobación local](phase9/pass27-local-server.json).
+
+## Historial de revisión local y Seguridad
+
+La [matriz final del PASS 27](phase9/pass27-final-checks.json) consolida la regresión y el reensayo SSR aprobado.
 
 El usuario cambió el alcance de esta revisión a `http://localhost:3000` y autorizó implementar usuarios y roles. La ruta `/admin/seguridad` ya muestra un módulo funcional con búsqueda, alta, edición, activación y asignación de los cuatro roles existentes. Se verificaron permisos por API y URL, sesiones previas al cambio de rol, auditoría y rollback.
 

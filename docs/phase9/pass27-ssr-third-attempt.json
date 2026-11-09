@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-08",
+  "mode": "built production artifact, local isolated PostgreSQL",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/productos",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Productos",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/productos/producto-ssr-pass27",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": ["Product", "BreadcrumbList"],
+      "hydrated": true,
+      "h1": "Producto SSR PASS27",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/servicios",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": ["Service"],
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/carrito",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Tu carrito",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/checkout",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Finalizar pedido",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/admin/login",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Acceso administrativo",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/admin",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Dashboard",
+      "horizontalOverflow": false
+    },
+    {
+      "path": "/admin/seguridad",
+      "status": 200,
+      "payload": true,
+      "jsonLdTypes": [],
+      "hydrated": true,
+      "h1": "Seguridad",
+      "horizontalOverflow": false
+    }
+  ],
+  "images": [
+    {
+      "path": "/_ipx/f_webp&w_128/ajksolutions-official.png",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 5244
+    },
+    {
+      "path": "/_ipx/f_avif&w_128/ajksolutions-official.png",
+      "status": 200,
+      "type": "image/avif",
+      "bytes": 3192
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "cookies": [
+    {
+      "name": "nuxt-session",
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": true
+    }
+  ],
+  "session": {
+    "guestSecurity": 401,
+    "authenticatedSecurity": 200,
+    "localCookieTransport": "Secure flag verified on response. For local HTTP browser inspection only, copied session cookies without Secure. HTTPS transport was not tested.",
+    "logoutClearsCookie": false
+  },
+  "success": false,
+  "homeImages": [
+    {
+      "src": "/ajksolutions-official.png",
+      "currentSrc": "http://127.0.0.1:3020/ajksolutions-official.png",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/f_webp&q_88&s_1504x1128/images/hero/ajksolutions-hero-ecosystem.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/hero/ajksolutions-hero-ecosystem-752.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_640x480/images/backing/asesoria-especializada.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/backing/asesoria-especializada-400.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_640x480/images/backing/garantia-informada.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/backing/garantia-informada-400.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_640x480/images/backing/soporte-tecnico.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/backing/soporte-tecnico-400.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_640x480/images/backing/atencion-directa.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/backing/atencion-directa-400.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_506x380/images/how-it-works/encuentra-tu-solucion.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/how-it-works/encuentra-tu-solucion.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_506x380/images/how-it-works/registra-tu-solicitud.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/how-it-works/registra-tu-solicitud.webp",
+      "loaded": true
+    },
+    {
+      "src": "/_ipx/s_506x380/images/how-it-works/coordinamos-contigo.webp",
+      "currentSrc": "http://127.0.0.1:3020/images/how-it-works/coordinamos-contigo.webp",
+      "loaded": true
+    },
+    {
+      "src": "/ajksolutions-official.png",
+      "currentSrc": "http://127.0.0.1:3020/ajksolutions-official.png",
+      "loaded": true
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-08",
+  "initialHead": "675b73967d99f2c12b40fbf750a54125c0c65696",
+  "verifiedCodeHead": "b03f41b339427194bb45f1b503be57efe7f715ce",
+  "status": "PASSED",
+  "auditBefore": {
+    "info": 0,
+    "low": 11,
+    "moderate": 32,
+    "high": 35,
+    "critical": 3
+  },
+  "auditAfter": {
+    "info": 0,
+    "low": 1,
+    "moderate": 2,
+    "high": 2,
+    "critical": 0
+  },
+  "auditProduction": {
+    "info": 0,
+    "low": 1,
+    "moderate": 2,
+    "high": 0,
+    "critical": 0
+  },
+  "checks": [
+    {
+      "label": "prisma-format",
+      "command": "pnpm exec prisma format --check",
+      "exitCode": 0,
+      "durationMs": 4489,
+      "log": "logs/phase27-prisma-format.log"
+    },
+    {
+      "label": "prisma-validate",
+      "command": "pnpm exec prisma validate",
+      "exitCode": 0,
+      "durationMs": 4542,
+      "log": "logs/phase27-prisma-validate.log"
+    },
+    {
+      "label": "db-generate",
+      "command": "pnpm db:generate",
+      "exitCode": 0,
+      "durationMs": 6031,
+      "log": "logs/phase27-db-generate.log"
+    },
+    {
+      "label": "lint",
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "durationMs": 33353,
+      "log": "logs/phase27-lint.log"
+    },
+    {
+      "label": "format",
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "durationMs": 17463,
+      "log": "logs/phase27-format.log"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "durationMs": 53220,
+      "log": "logs/phase27-typecheck.log"
+    },
+    {
+      "label": "db-deploy",
+      "command": "pnpm db:deploy",
+      "exitCode": 0,
+      "durationMs": 6435,
+      "log": "logs/phase27-db-deploy.log"
+    },
+    {
+      "label": "db-status",
+      "command": "pnpm exec prisma migrate status",
+      "exitCode": 0,
+      "durationMs": 4871,
+      "log": "logs/phase27-db-status.log"
+    },
+    {
+      "label": "db-seed",
+      "command": "pnpm db:seed",
+      "exitCode": 0,
+      "durationMs": 3452,
+      "log": "logs/phase27-db-seed.log"
+    },
+    {
+      "label": "vitest",
+      "command": "pnpm test",
+      "exitCode": 0,
+      "durationMs": 62696,
+      "log": "logs/phase27-vitest.log"
+    },
+    {
+      "label": "database-isolated",
+      "command": "pnpm test:database:phase8-5",
+      "exitCode": 0,
+      "durationMs": 48640,
+      "log": "logs/phase27-database-isolated.log"
+    },
+    {
+      "label": "e2e",
+      "command": "pnpm test:e2e",
+      "exitCode": 0,
+      "durationMs": 384702,
+      "log": "logs/phase27-e2e.log"
+    },
+    {
+      "label": "visual",
+      "command": "pnpm exec playwright test tests/e2e/visual-phase7-5.spec.ts",
+      "exitCode": 0,
+      "durationMs": 146111,
+      "log": "logs/phase27-visual.log"
+    },
+    {
+      "label": "build",
+      "command": "pnpm build",
+      "exitCode": 0,
+      "durationMs": 91281,
+      "log": "logs/phase27-build.log"
+    },
+    {
+      "label": "ssr-artifact",
+      "command": "node logs/phase27-ssr.mjs",
+      "exitCode": 0,
+      "durationMs": 10439,
+      "log": "logs/phase27-recheck-ssr-artifact.log"
+    }
+  ],
+  "originalRun": "pass27-regression.json",
+  "originalSsrFailureRetained": {
+    "label": "ssr-artifact",
+    "command": "node logs/phase27-ssr.mjs",
+    "exitCode": 1,
+    "durationMs": 8427,
+    "log": "logs/phase27-ssr-artifact.log"
+  },
+  "approvedSsrRecheck": "pass27-ssr-recheck.json",
+  "ssrRoutes": 10,
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "artifactSuccess": true,
+  "schemaAndMigrationsUnchanged": true,
+  "migrationCount": 14,
+  "allTemporaryDatabasesCleaned": true,
+  "localServer": {
+    "date": "2026-11-08",
+    "url": "http://localhost:3000",
+    "ready": true,
+    "health": 200,
+    "live": 200,
+    "home": 200,
+    "serverMode": "persistent local execution session"
+  },
+  "remainingRiskAcceptance": "Two Happy DOM20 High test-only advisories and three build advisories; artifact exclusion proven. Proposed reassessment by 2026-12-08 or changed exposure/compatible upstream fix.",
+  "incidents": "Recovered overlapping pnpm postinstall; corrected SSR harness assumptions for login path, layout marker, cookie deletion representation and expected401 console. Prior attempts retained.",
+  "counts": {
+    "vitest": 169,
+    "isolatedDatabaseIntegration": 57,
+    "e2e": 62,
+    "visual": 19
+  },
+  "documentationFormat": {
+    "status": "PASS",
+    "command": "pnpm format:check",
+    "log": "logs/phase27-format-final.log"
+  }
+}
