@@ -1,18 +1,38 @@
 # Fase 9 — Informe de QA y auditoría V1
 
-Fecha 2026-11-08, America/Guayaquil. Historial de auditoría y estado vigente de fase 9.
+Actualizado 2026-11-09, America/Guayaquil. Historial de auditoría y estado vigente de fase 9.
 
-## Actualización vigente — PASS 27
+## Estado vigente — posterior a PASS 27
 
 **PASS 27 PASSED.** Se completó la remediación compatible de dependencias y su regresión local. El audit completo cambió de 3 Critical / 35 High / 32 Moderate / 11 Low a 0 / 2 / 2 / 1. El audit --prod tiene 0 Critical y 0 High. Los cinco residuales corresponden a Happy DOM de pruebas y glob/minimatch/deepmerge de build, con condiciones, aceptación técnica temporal y ausencia ejecutable documentadas. [Remediación y reporte completo](phase9-dependency-remediation.md).
 
-Pasaron Prisma, lint, formato, tipos, 169 Vitest, el ensayo de base vacía con 57 integraciones adicionales, 62 E2E, 19 visuales y build. El reensayo del artefacto aprobó diez rutas SSR, payload, hidratación, JSON-LD presente, NuxtImg, WebP/AVIF, sesión y Seguridad. Se conservaron los intentos fallidos del script SSR y se ajustó su uso de la ruta /admin/login, layout y comprobaciones negativas. [Gates](phase9/pass27-regression.json), [SSR final](phase9/pass27-ssr.json), [reensayo](phase9/pass27-ssr-recheck.json).
+La regresión de PASS 27 aprobó Prisma, lint, formato, tipos, 169 Vitest, el ensayo de base vacía con 57 integraciones adicionales, 62 E2E, 19 visuales y build. Su artefacto aprobó diez rutas SSR, payload, hidratación, JSON-LD presente, NuxtImg, WebP/AVIF, sesión y Seguridad. Los intentos de verificación se conservan en su reporte. [Gates de PASS 27](phase9/pass27-final-checks.json).
 
-La inspección cubrió 792 archivos JavaScript y 235 source maps. Los paquetes críticos originales y los cinco residuales están excluidos del artefacto ejecutable. Schema y los SQL de 14 migraciones conservan hashes. Las bases temporales se eliminaron. El código del PASS se registra en b03f41b339427194bb45f1b503be57efe7f715ce. [Artefacto](phase9/dependency-artifact-after.json).
+La inspección del artefacto de PASS 27 cubrió 792 archivos JavaScript y 235 source maps. Los paquetes críticos originales y los cinco residuales están excluidos del artefacto ejecutable. Schema y los SQL de 14 migraciones conservan hashes. Las bases temporales se eliminaron. El código de ese PASS se registra en b03f41b339427194bb45f1b503be57efe7f715ce. [Artefacto de PASS 27](phase9/dependency-artifact-after.json).
 
-El cierre general de fase 9 sigue condicionado a los hallazgos operativos F9-05 a F9-09 registrados abajo. El servidor local restaurado y sus respuestas se registran en [comprobación local](phase9/pass27-local-server.json).
+El cierre general de fase 9 conserva F9-05, F9-07 y la validación productiva de contenido F9-06, además de las revisiones operativas y de certificación detalladas en la matriz de PASS.
 
-## Historial de revisión local y Seguridad
+### Corrección controlada F9-06 y F9-08
+
+El bloque completó la corrección de código y QA local. La regresión aprobó 181 Vitest, 57 integraciones adicionales de base vacía, 73 E2E, 19 visuales y build. El smoke del artefacto aprobó 18 comprobaciones de Home, servicios y ficha con tres estados de imagen en móvil y escritorio. Las cuatro capturas afectadas por el placeholder se revisaron antes de actualizarse.
+
+| Hallazgo | Estado vigente                                   | Evidencia                                                                                           |
+| -------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| F9-06    | CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE | Fallback verificado en tres superficies. Origen histórico 403 HTML, imagen actual local 200 válida. |
+| F9-08    | CLOSED                                           | Organization y WebSite SSR con datos de settings, URLs absolutas, escape e inyección probados.      |
+| F9-09    | RESOLVED INCIDENTALLY BY PASS 27                 | Cuatro DEP0155 históricos, cero en PASS 27 y en el build actual.                                    |
+| F9-05    | OPEN                                             | Investigación de primera Home/frío pendiente.                                                       |
+| F9-07    | OPEN                                             | Warning pg pendiente.                                                                               |
+
+**Bloque PARTIAL operativo**, determinado por la validación de contenido productivo de F9-06. Código y QA locales aprobados.
+
+[Matriz final](phase9/f9-06-f9-08-final-checks.json), [smoke SSR](phase9/f9-06-f9-08-ssr.json), [revisión visual](phase9/f9-06-visual-review.json), [exports](phase9/f9-09-exports-validation.json).
+
+[Implementación y reproducción](implementation-phase-9-seo-image-hardening.md), [evidencia de imagen](phase9/f9-06-image-validation.json).
+
+## Historial — estado previo a PASS 27
+
+Este bloqueo fue resuelto posteriormente por PASS 27. Los resultados y referencias siguientes conservan el estado histórico de esa revisión.
 
 La [matriz final del PASS 27](phase9/pass27-final-checks.json) consolida la regresión y el reensayo SSR aprobado.
 
@@ -145,20 +165,25 @@ Los resultados finales de lint, formato, tipos y revisión del diff se guardan e
 
 ## Cobertura y trabajo restante
 
-| PASS  | Cobertura inicial                                                  | Trabajo restante para cierre                                                          |
-| ----- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| 0     | Baseline, commit, versiones, PostgreSQL, deployment y SHA          | CI verificable y configuración Neon                                                   |
-| 1–7   | Suites existentes y smoke público productivo                       | Matriz completa de casos, permisos por rol y operaciones productivas controladas      |
-| 8–10  | Diez navegaciones, H1, overflow y snapshots existentes             | Matriz completa responsive y revisión WCAG AA                                         |
-| 11    | Mediciones productivas, build local y primer HTML en proceso nuevo | Atribución del pico Home, chunks, INP y recursos                                      |
-| 12–15 | Metadata, sitemap, robots, JSON-LD, headers, health y request IDs  | SEO completo, cookies, CSP, runtime logs y Neon                                       |
-| 16–20 | Cobertura de integración/E2E existente                             | Evidencia trazable de rollback, concurrencia, retry, handoff y errores para el cierre |
-| 21–24 | Gates iniciales, visuales y bases temporales                       | CI completo del candidato final                                                       |
-| 25    | Dependencia de definición comercial/legal identificada             | PENDING BUSINESS/LEGAL INPUT                                                          |
-| 26    | Dominio y canonical coincidentes con producción                    | Verificar inventario privado de variables                                             |
-| 27–32 | Versiones, 14 migraciones, cache y env revisados inicialmente      | Auditoría de dependencias, constraints/queries, cache y limpieza completa             |
-| 33–36 | Runbook, informe y hallazgos priorizados                           | Resolver hallazgos y completar evidencias                                             |
-| 37–40 | Criterio de cierre registrado                                      | Commit final, CI verde, deployment, smoke y decisión de cierre                        |
+| PASS  | Cobertura inicial                                                       | Trabajo restante para cierre                                                          |
+| ----- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 0     | Baseline, commit, versiones, PostgreSQL, deployment y SHA               | CI verificable y configuración Neon                                                   |
+| 1–7   | Suites existentes y smoke público productivo                            | Matriz completa de casos, permisos por rol y operaciones productivas controladas      |
+| 8–10  | Diez navegaciones, H1, overflow y snapshots existentes                  | Matriz completa responsive y revisión WCAG AA                                         |
+| 11    | Mediciones productivas, build local y primer HTML en proceso nuevo      | Atribución del pico Home, chunks, INP y recursos                                      |
+| 12–15 | Metadata, sitemap, robots, JSON-LD, headers, health y request IDs       | SEO completo, cookies, CSP, runtime logs y Neon                                       |
+| 16–20 | Cobertura de integración/E2E existente                                  | Evidencia trazable de rollback, concurrencia, retry, handoff y errores para el cierre |
+| 21–24 | Gates iniciales, visuales y bases temporales                            | CI completo del candidato final                                                       |
+| 25    | Dependencia de definición comercial/legal identificada                  | PENDING BUSINESS/LEGAL INPUT                                                          |
+| 26    | Dominio y canonical coincidentes con producción                         | Verificar inventario privado de variables                                             |
+| 27    | PASSED, remediación y regresión completas, audit --prod 0 Critical/High | Aceptación temporal de build/pruebas documentada en PASS 27                           |
+| 28    | Database review inicial, schema y 14 migraciones verificados            | Pendiente revisión completa de constraints y queries                                  |
+| 29    | DB performance con muestras iniciales                                   | Pendiente auditoría específica de rendimiento de base                                 |
+| 30    | Cache en memoria e invalidación funcional probados                      | Pendiente alcance completo de cache entre instancias                                  |
+| 31    | Code cleanup inicial y quality gates aprobados                          | Pendiente revisión dedicada de limpieza                                               |
+| 32    | Environment revisado inicialmente y configuración validada por pruebas  | Pendiente inventario privado completo de variables                                    |
+| 33–36 | Runbook, informe y hallazgos priorizados                                | Resolver hallazgos y completar evidencias                                             |
+| 37–40 | Criterio de cierre registrado                                           | Commit final, CI verde, deployment, smoke y decisión de cierre                        |
 
 ## CI, riesgos y estado final
 

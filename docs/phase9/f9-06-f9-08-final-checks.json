@@ -1,0 +1,173 @@
+{
+  "dateStarted": "2026-11-08",
+  "dateCompleted": "2026-11-09",
+  "initialHead": "39f96401ce6e43a19ccec6a8405d1f74c0503763",
+  "verifiedCodeHead": "5e18af1bfe44ea8f1b8dc3d6107f25819d4017cd",
+  "codeChecksStatus": "PASSED",
+  "blockStatus": "PARTIAL",
+  "partialReason": "Production content validation and final smoke for F9-06 pending; code and local QA approved.",
+  "findings": {
+    "F9-06": "CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE",
+    "F9-08": "CLOSED",
+    "F9-09": "RESOLVED INCIDENTALLY BY PASS 27",
+    "F9-05": "OPEN, outside current block",
+    "F9-07": "OPEN, outside current block"
+  },
+  "counts": {
+    "vitest": 181,
+    "isolatedDatabaseIntegration": 57,
+    "e2e": 73,
+    "visual": 19,
+    "ssr": 18,
+    "targetedUnit": 22,
+    "targetedE2e": 11
+  },
+  "checks": [
+    {
+      "label": "prisma-format",
+      "command": "pnpm exec prisma format --check",
+      "exitCode": 0,
+      "durationMs": 4858,
+      "log": "logs/f90608-prisma-format.log"
+    },
+    {
+      "label": "prisma-validate",
+      "command": "pnpm exec prisma validate",
+      "exitCode": 0,
+      "durationMs": 4227,
+      "log": "logs/f90608-prisma-validate.log"
+    },
+    {
+      "label": "db-generate",
+      "command": "pnpm db:generate",
+      "exitCode": 0,
+      "durationMs": 5621,
+      "log": "logs/f90608-db-generate.log"
+    },
+    {
+      "label": "db-deploy",
+      "command": "pnpm db:deploy",
+      "exitCode": 0,
+      "durationMs": 10015,
+      "log": "logs/f90608-db-deploy.log"
+    },
+    {
+      "label": "db-status",
+      "command": "pnpm exec prisma migrate status",
+      "exitCode": 0,
+      "durationMs": 5629,
+      "log": "logs/f90608-db-status.log"
+    },
+    {
+      "label": "db-seed",
+      "command": "pnpm db:seed",
+      "exitCode": 0,
+      "durationMs": 4566,
+      "log": "logs/f90608-db-seed.log"
+    },
+    {
+      "label": "vitest",
+      "command": "pnpm test",
+      "exitCode": 0,
+      "durationMs": 75690,
+      "log": "logs/f90608-vitest.log"
+    },
+    {
+      "label": "database-isolated",
+      "command": "pnpm test:database:phase8-5",
+      "exitCode": 0,
+      "durationMs": 60891,
+      "log": "logs/f90608-database-isolated.log"
+    },
+    {
+      "label": "e2e",
+      "command": "pnpm test:e2e",
+      "exitCode": 0,
+      "durationMs": 454075,
+      "log": "logs/f90608-e2e.log"
+    },
+    {
+      "label": "build",
+      "command": "pnpm build",
+      "exitCode": 0,
+      "durationMs": 76700,
+      "log": "logs/f90608-build.log"
+    },
+    {
+      "label": "ssr-artifact",
+      "command": "node logs/f90608-ssr.mjs",
+      "exitCode": 0,
+      "durationMs": 15287,
+      "log": "logs/f90608-ssr-artifact.log"
+    },
+    {
+      "label": "visual",
+      "command": "pnpm test:visual",
+      "exitCode": 0,
+      "durationMs": 128641,
+      "log": "logs/f90608-visual-recheck-visual.log"
+    },
+    {
+      "label": "lint-final",
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "log": "logs/f90608-lint-final.log"
+    },
+    {
+      "label": "typecheck-final",
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "logs/f90608-typecheck-final.log"
+    },
+    {
+      "label": "format-final",
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "log": "logs/f90608-format-final.log"
+    }
+  ],
+  "originalFailedChecks": [
+    {
+      "label": "lint",
+      "command": "pnpm lint",
+      "exitCode": 1,
+      "durationMs": 31330,
+      "log": "logs/f90608-lint.log"
+    },
+    {
+      "label": "visual",
+      "command": "pnpm test:visual",
+      "exitCode": 1,
+      "durationMs": 177473,
+      "log": "logs/f90608-visual.log"
+    }
+  ],
+  "recovery": {
+    "lint": "Computed @context/@type/@id property syntax matches repository style; global lint recheck passed.",
+    "visual": "Four required placeholder goldens visually inspected, updated and exact hashes matched reviewed actual captures; complete19 recheck passed.",
+    "targetedTests": "Initial hydration wait, generated service slug and inert-DOM assertion were corrected; all11 targeted and full73 E2E passed."
+  },
+  "schemaAndMigrationsUnchanged": true,
+  "migrationCount": 14,
+  "newMigrations": 0,
+  "dependencyFilesChanged": false,
+  "temporaryDatabases": {
+    "names": [
+      "ajk_f90608_10080_9a2af279",
+      "ajk_f90608_14848_3ea7fc8d",
+      "ajk_f90608_13204_ce856f14",
+      "ajk_f90608_10552_01761fd1",
+      "ajk_f90608_10940_1c002d5e",
+      "ajk_f90608_4744_13e8c6a1",
+      "ajk_phase85_empty_7364_cb25a997",
+      "ajk_visual_7796_4c4b6939",
+      "ajk_visual_12656_026ca3b9",
+      "ajk_visual_9508_2e60d892"
+    ],
+    "remaining": [],
+    "allOuterCleanupTrue": true
+  },
+  "ssrEvidence": "f9-06-f9-08-ssr.json",
+  "visualEvidence": "f9-06-visual-review.json",
+  "localServerEvidence": "f9-06-f9-08-local-server.json"
+}

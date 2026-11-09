@@ -1,0 +1,323 @@
+{
+  "date": "2026-11-08",
+  "scope": "fresh production artifact executed locally with isolated PostgreSQL",
+  "routes": [
+    {
+      "path": "/",
+      "mode": "missing",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 639.09375,
+        "height": 279.59375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "missing",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 344,
+        "height": 193.5,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "missing",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 756,
+        "height": 425.25,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    },
+    {
+      "path": "/",
+      "mode": "missing",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 356,
+        "height": 200.25,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "missing",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 326,
+        "height": 183.375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "missing",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 358,
+        "height": 201.375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    },
+    {
+      "path": "/",
+      "mode": "valid",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 639.09375,
+        "height": 279.59375,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "valid",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 344,
+        "height": 193.5,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "valid",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 756,
+        "height": 425.25,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    },
+    {
+      "path": "/",
+      "mode": "valid",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 356,
+        "height": 200.25,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "valid",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 326,
+        "height": 183.375,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "valid",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 358,
+        "height": 201.375,
+        "fallback": false,
+        "broken": false,
+        "alt": "Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    },
+    {
+      "path": "/",
+      "mode": "failed",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 639.09375,
+        "height": 279.59375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "failed",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 344,
+        "height": 193.5,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "failed",
+      "width": 1440,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 756,
+        "height": 425.25,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    },
+    {
+      "path": "/",
+      "mode": "failed",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "overflow": false,
+      "image": {
+        "width": 356,
+        "height": 200.25,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "mode": "failed",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "overflow": false,
+      "image": {
+        "width": 326,
+        "height": 183.375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "mode": "failed",
+      "width": 390,
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico técnico",
+      "overflow": false,
+      "image": {
+        "width": 358,
+        "height": 201.375,
+        "fallback": true,
+        "broken": false,
+        "alt": "Imagen no disponible para Diagnóstico técnico"
+      },
+      "jsonLdTypes": ["Service"]
+    }
+  ],
+  "pageErrors": [],
+  "hydrationWarnings": [],
+  "success": true,
+  "settingsRestored": true,
+  "injectionProbe": {
+    "payload": "</script><script>globalThis.__phase9JsonLdProbe=true</script><script type=\"application/ld+json\">",
+    "noExecutableProbeScript": true,
+    "jsonParses": true,
+    "markerRetainedAsData": true,
+    "executed": false
+  }
+}

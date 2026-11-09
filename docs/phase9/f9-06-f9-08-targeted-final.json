@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-08",
+  "scope": "F9-06/F9-08 targeted gates with isolated PostgreSQL",
+  "commit": "39f96401ce6e43a19ccec6a8405d1f74c0503763",
+  "temporaryDatabase": "ajk_f90608_13204_ce856f14",
+  "beforeHashes": {
+    "prisma/schema.prisma": "de40e04aa3b056eb3354289687d7c2bbb109ea0c6ee4c2c656a35e4a272bc52e",
+    "prisma/migrations/20260828000000_init_auth_rbac/migration.sql": "5becc54ae7df3c045f849b2df8d5559000413435bdce1eee27e68c5241354563",
+    "prisma/migrations/20260829175358_phase2_catalog_inventory/migration.sql": "4af7aa0dc12c18e95521b37544a267272062658a4d4fbc8998e4249c24ec297c",
+    "prisma/migrations/20260830090000_phase2_1_integrity_hardening/migration.sql": "448af1304f4ac06b8f3466840e631d724c0b01617bc4bf2da902fcba837a1637",
+    "prisma/migrations/20260830191321_phase4_services_tickets/migration.sql": "4d8bbab8cfd694032ab41ddce030704405a2bb81a52f7bb5f2fa97df19101d40",
+    "prisma/migrations/20260831090000_phase4_1_ticket_customer_hardening/migration.sql": "e9ce4aa6bdff367fd1dd7d9fabf0694cc6bd56b4c29bd56ee140ed519abd3030",
+    "prisma/migrations/20260831150000_phase5_cart_checkout_orders/migration.sql": "039c21c5e001109cf3e96137f1f9cc8a7289280de8f6fa12e8ec35e52ca2e0bc",
+    "prisma/migrations/20260903090000_phase5_1_order_integrity_hardening/migration.sql": "472a0ae77ab62e0a62fe6aca7c832b56fe29cb25882755bab0e9f67125167613",
+    "prisma/migrations/20260903180000_phase6_digital_products_licenses/migration.sql": "dd1a13940eb1e9ef284570e3a03c893512ac00e88a8d73770fa7919292aab3f0",
+    "prisma/migrations/20260903210000_phase6_1_license_buy_now_integrity/migration.sql": "139331d0547f89fe5902399188c4b7119578ec0d82a51650b1b2995561403131",
+    "prisma/migrations/20260903223000_phase6_2_simplify_digital_domain/migration.sql": "7271187e9e52f959e5a19e744cdce9bfce96e9429a84ed20d8e64c0ad9b647f3",
+    "prisma/migrations/20260904120000_phase7_operations_content/migration.sql": "b50e5f1654a753ebb30bb76a52bdcbb6410157c187787a1a772b0138e2e6f1e8",
+    "prisma/migrations/20260904150000_phase7_banner_promotion_integrity_hardening/migration.sql": "bf9d11c617182555fba3118693987994d21cd067c653a0bfc215d4ebf4210e6c",
+    "prisma/migrations/20260911090000_phase8_observability/migration.sql": "e44fb797c8d90f6793bc4fb23df0b91fd4684e894027cb0f0fbbfd819e034067",
+    "prisma/migrations/20261002090000_phase8_5_product_barcode/migration.sql": "9fb221e519a238c6a786c62dd60f1a733c3dc5a4108accde7118917ca81fcc75"
+  },
+  "checks": [
+    {
+      "label": "db-deploy",
+      "command": "pnpm db:deploy",
+      "exitCode": 0,
+      "durationMs": 6533,
+      "log": "logs/f90608-targeted-final-db-deploy.log"
+    },
+    {
+      "label": "db-status",
+      "command": "pnpm exec prisma migrate status",
+      "exitCode": 0,
+      "durationMs": 4322,
+      "log": "logs/f90608-targeted-final-db-status.log"
+    },
+    {
+      "label": "db-seed",
+      "command": "pnpm db:seed",
+      "exitCode": 0,
+      "durationMs": 3117,
+      "log": "logs/f90608-targeted-final-db-seed.log"
+    },
+    {
+      "label": "e2e-targeted",
+      "command": "pnpm exec playwright test tests/e2e/seo-image-phase9.spec.ts",
+      "exitCode": 1,
+      "durationMs": 124928,
+      "log": "logs/f90608-targeted-final-e2e-targeted.log"
+    }
+  ],
+  "cleanup": true,
+  "afterHashes": {
+    "prisma/schema.prisma": "de40e04aa3b056eb3354289687d7c2bbb109ea0c6ee4c2c656a35e4a272bc52e",
+    "prisma/migrations/20260828000000_init_auth_rbac/migration.sql": "5becc54ae7df3c045f849b2df8d5559000413435bdce1eee27e68c5241354563",
+    "prisma/migrations/20260829175358_phase2_catalog_inventory/migration.sql": "4af7aa0dc12c18e95521b37544a267272062658a4d4fbc8998e4249c24ec297c",
+    "prisma/migrations/20260830090000_phase2_1_integrity_hardening/migration.sql": "448af1304f4ac06b8f3466840e631d724c0b01617bc4bf2da902fcba837a1637",
+    "prisma/migrations/20260830191321_phase4_services_tickets/migration.sql": "4d8bbab8cfd694032ab41ddce030704405a2bb81a52f7bb5f2fa97df19101d40",
+    "prisma/migrations/20260831090000_phase4_1_ticket_customer_hardening/migration.sql": "e9ce4aa6bdff367fd1dd7d9fabf0694cc6bd56b4c29bd56ee140ed519abd3030",
+    "prisma/migrations/20260831150000_phase5_cart_checkout_orders/migration.sql": "039c21c5e001109cf3e96137f1f9cc8a7289280de8f6fa12e8ec35e52ca2e0bc",
+    "prisma/migrations/20260903090000_phase5_1_order_integrity_hardening/migration.sql": "472a0ae77ab62e0a62fe6aca7c832b56fe29cb25882755bab0e9f67125167613",
+    "prisma/migrations/20260903180000_phase6_digital_products_licenses/migration.sql": "dd1a13940eb1e9ef284570e3a03c893512ac00e88a8d73770fa7919292aab3f0",
+    "prisma/migrations/20260903210000_phase6_1_license_buy_now_integrity/migration.sql": "139331d0547f89fe5902399188c4b7119578ec0d82a51650b1b2995561403131",
+    "prisma/migrations/20260903223000_phase6_2_simplify_digital_domain/migration.sql": "7271187e9e52f959e5a19e744cdce9bfce96e9429a84ed20d8e64c0ad9b647f3",
+    "prisma/migrations/20260904120000_phase7_operations_content/migration.sql": "b50e5f1654a753ebb30bb76a52bdcbb6410157c187787a1a772b0138e2e6f1e8",
+    "prisma/migrations/20260904150000_phase7_banner_promotion_integrity_hardening/migration.sql": "bf9d11c617182555fba3118693987994d21cd067c653a0bfc215d4ebf4210e6c",
+    "prisma/migrations/20260911090000_phase8_observability/migration.sql": "e44fb797c8d90f6793bc4fb23df0b91fd4684e894027cb0f0fbbfd819e034067",
+    "prisma/migrations/20261002090000_phase8_5_product_barcode/migration.sql": "9fb221e519a238c6a786c62dd60f1a733c3dc5a4108accde7118917ca81fcc75"
+  },
+  "schemaAndMigrationsUnchanged": true
+}

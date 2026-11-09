@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-09",
+  "origin": "http://localhost:3000",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "hydrated": true,
+      "h1": "Para trabajar,\ncrear y conectar.",
+      "jsonLdTypes": ["Organization", "WebSite"]
+    },
+    {
+      "path": "/servicios",
+      "status": 200,
+      "hydrated": true,
+      "h1": "Servicios tecnológicos",
+      "jsonLdTypes": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "status": 200,
+      "hydrated": true,
+      "h1": "Diagnóstico Técnico",
+      "jsonLdTypes": ["Service"]
+    }
+  ],
+  "pageErrors": [],
+  "hydrationWarnings": [],
+  "readiness": 200
+}

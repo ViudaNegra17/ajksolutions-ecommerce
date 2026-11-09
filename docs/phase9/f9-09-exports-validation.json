@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-08",
+  "finding": "F9-09",
+  "status": "RESOLVED INCIDENTALLY BY PASS 27",
+  "logs": [
+    {
+      "path": "logs/phase9-build.log",
+      "sha256": "258d8b71998d4d17e2b2640be290894a293c79e9fc25ece65eb56de1010571d9",
+      "warningCount": 4,
+      "matches": [
+        "(node:15916) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping \"./\" in the \"exports\" field module resolution of the package at C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+icon@2.5.1_magic-stri_1ebb900ffaec1ce1586df2ff7a1c79f5\\node_modules\\@iconify\\utils\\package.json imported from C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+icon@2.5.1_magic-stri_1ebb900ffaec1ce1586df2ff7a1c79f5\\node_modules\\@nuxt\\icon\\dist\\runtime\\server\\api.js. Mapping specifiers ending in \"/\" is no longer supported.",
+        "(node:15916) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping \"./\" in the \"exports\" field module resolution of the package at C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\node_modules\\@iconify\\utils\\package.json imported from C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\nuxt@4.5.2_ce75e2cee26820d19d75b78f9d975f10\\node_modules\\nuxt\\node_modules\\. Mapping specifiers ending in \"/\" is no longer supported.",
+        "(node:15916) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping \"./\" in the \"exports\" field module resolution of the package at C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\@prisma\\client\\package.json imported from C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\server\\utils\\prisma.ts. Mapping specifiers ending in \"/\" is no longer supported.",
+        "(node:15916) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping \"./\" in the \"exports\" field module resolution of the package at C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+nitro-server@4.5.2_@b_1827fb83fa3cb4d68d71157bd47640e0\\node_modules\\@vue\\shared\\package.json imported from C:\\Users\\ViudaNegra\\Documents\\ViudaNegra\\CodePlus\\AjkSolutions ecommerce\\ajksolutions-ecommerce\\node_modules\\.pnpm\\@nuxt+nitro-server@4.5.2_@b_1827fb83fa3cb4d68d71157bd47640e0\\node_modules\\@nuxt\\nitro-server\\dist\\runtime\\templates\\error-500.mjs. Mapping specifiers ending in \"/\" is no longer supported."
+      ]
+    },
+    {
+      "path": "logs/phase27-build.log",
+      "sha256": "3e2e2dcb621f0b89d7b62d5bf2d475abb9f55c283b284e584c99939cd95df1a5",
+      "warningCount": 0,
+      "matches": []
+    },
+    {
+      "path": "logs/f90608-build.log",
+      "sha256": "1fed83b9a8e96141533ba8e47a543f0d509e1315fe11e832a6be39947f5a3c48",
+      "warningCount": 0,
+      "matches": []
+    }
+  ],
+  "dependencyFilesChangedThisBlock": false,
+  "scope": "Read existing build evidence only; no dependency updates in this block",
+  "completedDate": "2026-11-09"
+}

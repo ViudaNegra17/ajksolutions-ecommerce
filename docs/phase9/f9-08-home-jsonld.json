@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-08",
+  "scope": "local built SSR",
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://f90608-local.example/#organization",
+    "name": "AjkSolutionS",
+    "url": "https://f90608-local.example/",
+    "logo": "https://f90608-local.example/ajksolutions-official.png",
+    "telephone": "+593999999999"
+  },
+  "website": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://f90608-local.example/#website",
+    "url": "https://f90608-local.example/",
+    "name": "AjkSolutionS",
+    "description": "Productos tecnológicos y servicios profesionales.",
+    "publisher": {
+      "@id": "https://f90608-local.example/#organization"
+    }
+  },
+  "sources": {
+    "business": "PublicSettings.business",
+    "seo": "PublicSettings.seo",
+    "social": "PublicSettings.social",
+    "origin": "NUXT_PUBLIC_APP_URL",
+    "logo": "verified public/ajksolutions-official.png"
+  },
+  "singleTopLevelOrganization": true,
+  "metadata": {
+    "canonical": "https://f90608-local.example/",
+    "title": "AjkSolutionS e-Commerce · AjkSolutionS",
+    "description": "Productos tecnológicos y servicios profesionales.",
+    "ogTitle": "AjkSolutionS e-Commerce",
+    "twitterTitle": "AjkSolutionS e-Commerce"
+  },
+  "injectionProbe": {
+    "payload": "</script><script>globalThis.__phase9JsonLdProbe=true</script><script type=\"application/ld+json\">",
+    "noExecutableProbeScript": true,
+    "jsonParses": true,
+    "markerRetainedAsData": true,
+    "executed": false
+  }
+}

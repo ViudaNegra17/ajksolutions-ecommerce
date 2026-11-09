@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-08",
+  "scope": "read-only local content and browser before code changes",
+  "service": {
+    "name": "Diagnóstico Técnico",
+    "slug": "diagnostico-tecnico",
+    "imageUrl": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png"
+  },
+  "seedAssignsImage": false,
+  "origin": {
+    "url": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+    "finalUrl": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+    "status": 200,
+    "contentType": "image/png"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "imageFailures": [],
+      "imageResponses": [
+        {
+          "url": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "status": 200,
+          "contentType": "image/webp"
+        }
+      ],
+      "status": 200,
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "currentSrc": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "alt": "Diagnóstico Técnico",
+          "loaded": true
+        }
+      ],
+      "jsonLd": []
+    },
+    {
+      "path": "/servicios",
+      "imageFailures": [],
+      "imageResponses": [
+        {
+          "url": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "status": 200,
+          "contentType": "image/webp"
+        }
+      ],
+      "status": 200,
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "currentSrc": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "alt": "Diagnóstico Técnico",
+          "loaded": true
+        }
+      ],
+      "jsonLd": []
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "imageFailures": [],
+      "imageResponses": [
+        {
+          "url": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "status": 200,
+          "contentType": "image/webp"
+        }
+      ],
+      "status": 200,
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "currentSrc": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "alt": "Diagnóstico Técnico",
+          "loaded": true
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Diagnóstico Técnico",
+          "description": "Evaluación inicial de equipos y recomendación de solución.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AjkSolutionS"
+          },
+          "areaServed": "EC"
+        }
+      ]
+    }
+  ],
+  "productionContentStatus": "CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE",
+  "controlledFailureBefore": [
+    {
+      "path": "/",
+      "status": 200,
+      "responseInjected": {
+        "status": 200,
+        "contentType": "text/html",
+        "purpose": "Controlled decode failure, not a claim about current origin"
+      },
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "broken": true,
+          "stillRendered": true
+        }
+      ],
+      "fallbackPresent": 0
+    },
+    {
+      "path": "/servicios",
+      "status": 200,
+      "responseInjected": {
+        "status": 200,
+        "contentType": "text/html",
+        "purpose": "Controlled decode failure, not a claim about current origin"
+      },
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "broken": true,
+          "stillRendered": true
+        }
+      ],
+      "fallbackPresent": 0
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "status": 200,
+      "responseInjected": {
+        "status": 200,
+        "contentType": "text/html",
+        "purpose": "Controlled decode failure, not a claim about current origin"
+      },
+      "images": [
+        {
+          "src": "https://icontinental.edu.pe/wp-content/uploads/2018/05/feria-de-servicio-ic.png",
+          "broken": true,
+          "stillRendered": true
+        }
+      ],
+      "fallbackPresent": 0
+    }
+  ],
+  "localOriginCurrentlyHealthy": true,
+  "historicalORB": {
+    "source": "production-smoke.json",
+    "requests": [
+      {
+        "url": "https://guayaquil.solutekla.com/photo/8/soporte_tecnico/_/_/soporte_tecnico_0001",
+        "error": "net::ERR_BLOCKED_BY_ORB",
+        "originNow": {
+          "status": 403,
+          "contentType": "text/html; charset=UTF-8",
+          "finalUrl": "https://guayaquil.solutekla.com/photo/8/soporte_tecnico/_/_/soporte_tecnico_0001"
+        }
+      }
+    ]
+  },
+  "codeMitigation": "PASS",
+  "builtArtifactChecks": "f9-06-f9-08-ssr.json",
+  "nuxtImageObservation": "The managed external image used its original URL directly. No IPX transformation was observed in the local pre-change reproduction."
+}

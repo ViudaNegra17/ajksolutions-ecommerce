@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-08",
+  "reason": "Required null/error fallback adds stable image area in Home and service detail.",
+  "review": "All four actual screenshots inspected before updating. Wrench placeholder, rounded AJK surface, readable content, price and CTA present, mobile and desktop layout coherent.",
+  "screens": [
+    {
+      "name": "home-390",
+      "file": "tests/e2e/visual-phase7-5.spec.ts-snapshots/home-390-chromium-win32.png",
+      "before": {
+        "sha256": "cd40dfbff2461e0b3008a06ad76a4c64aa11daade4777ea181a50bffeeef8ba4",
+        "width": 390,
+        "height": 8027
+      },
+      "reviewedActualSha256": "fe316227967ce62efabe3a7437abc9f2bad6dd3da7581f0524df2bf75e840426",
+      "after": {
+        "sha256": "fe316227967ce62efabe3a7437abc9f2bad6dd3da7581f0524df2bf75e840426",
+        "width": 390,
+        "height": 8227
+      },
+      "matchesReviewedActual": true
+    },
+    {
+      "name": "home-1440",
+      "file": "tests/e2e/visual-phase7-5.spec.ts-snapshots/home-1440-chromium-win32.png",
+      "before": {
+        "sha256": "39f0afafa66f1ffa0b4ecfa2ec5b5e5e1f317b3cdffe15dcd225815b763f3325",
+        "width": 1440,
+        "height": 4653
+      },
+      "reviewedActualSha256": "d55c1d9f3a620e5e2e9dde9dc2fac5c62b5a474af2bd7d70b86d723ac4a88e59",
+      "after": {
+        "sha256": "d55c1d9f3a620e5e2e9dde9dc2fac5c62b5a474af2bd7d70b86d723ac4a88e59",
+        "width": 1440,
+        "height": 4933
+      },
+      "matchesReviewedActual": true
+    },
+    {
+      "name": "service-detail-390",
+      "file": "tests/e2e/visual-phase7-5.spec.ts-snapshots/service-detail-390-chromium-win32.png",
+      "before": {
+        "sha256": "2d5a368c65fe0f622c53006fb34effc8137d1b8d58b9febd8ac33a508cf7740f",
+        "width": 390,
+        "height": 2516
+      },
+      "reviewedActualSha256": "78b2e4da325ea505c5d9b4220d0f1dfad7ca3744f603e4cf3d7ef5629a17e10f",
+      "after": {
+        "sha256": "78b2e4da325ea505c5d9b4220d0f1dfad7ca3744f603e4cf3d7ef5629a17e10f",
+        "width": 390,
+        "height": 2750
+      },
+      "matchesReviewedActual": true
+    },
+    {
+      "name": "service-detail-1440",
+      "file": "tests/e2e/visual-phase7-5.spec.ts-snapshots/service-detail-1440-chromium-win32.png",
+      "before": {
+        "sha256": "9bffe8572828590e39028851ce4573b39ea52340d6027126fbcdd404b364ee04",
+        "width": 1440,
+        "height": 1396
+      },
+      "reviewedActualSha256": "854badaebfa97f4d90ea6b8397cb900bbb42f6c31efe221f50a6704845c8a9a8",
+      "after": {
+        "sha256": "854badaebfa97f4d90ea6b8397cb900bbb42f6c31efe221f50a6704845c8a9a8",
+        "width": 1440,
+        "height": 1595
+      },
+      "matchesReviewedActual": true
+    }
+  ],
+  "completedDate": "2026-11-09",
+  "completeVisualSuite": "19/19 PASS"
+}
