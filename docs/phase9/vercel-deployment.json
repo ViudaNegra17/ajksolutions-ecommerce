@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-08",
+  "id": "dpl_8mPXuEbmgrwviwSp9cRDXrkYA9Td",
+  "url": "ajksolutions-ecommerce-fwjsipa7e-viudanegra17s-projects.vercel.app",
+  "alias": ["ajksolutions-ecommerce-neon.vercel.app"],
+  "readyState": "READY",
+  "target": "production",
+  "createdAt": 1793589381505,
+  "ready": 1793589456082,
+  "regions": ["iad1"],
+  "meta": {
+    "githubCommitMessage": "Implementacion de UI/UX pagina Publica",
+    "githubCommitRef": "main",
+    "githubCommitSha": "5636093f1d9ed4536525f9fffeab51f21e4436ab",
+    "githubRepo": "ajksolutions-ecommerce"
+  },
+  "nodeVersion": "24.x",
+  "framework": "nuxtjs"
+}

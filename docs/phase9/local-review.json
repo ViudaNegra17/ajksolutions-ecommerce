@@ -1,0 +1,3262 @@
+{
+  "date": "2026-11-08",
+  "base": "http://localhost:3000",
+  "scope": "Local running application; public reads and authenticated navigation; no commercial records created",
+  "http": [
+    {
+      "path": "/api/health/live",
+      "status": 200,
+      "totalMs": 182,
+      "contentType": "application/json",
+      "requestId": "af7bd43d-8a5f-437e-ae6e-ddcb3516ea2c",
+      "health": {
+        "status": "ok"
+      }
+    },
+    {
+      "path": "/api/health/ready",
+      "status": 200,
+      "totalMs": 351,
+      "contentType": "application/json",
+      "requestId": "3d2b6b01-016e-4b02-81a2-62805560255a",
+      "health": {
+        "status": "ok"
+      }
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "totalMs": 11,
+      "contentType": "text/plain; charset=utf-8",
+      "requestId": "0db6e96e-2cb4-46c2-980e-a3337296ae1d"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "totalMs": 264,
+      "contentType": "application/xml; charset=utf-8",
+      "requestId": "1f831d66-64d7-4b6c-927e-397498282c03"
+    },
+    {
+      "path": "/api/admin/security/users",
+      "status": 401,
+      "totalMs": 338,
+      "contentType": "application/json",
+      "requestId": null
+    },
+    {
+      "path": "/api/admin/security/roles",
+      "status": 401,
+      "totalMs": 266,
+      "contentType": "application/json",
+      "requestId": null
+    }
+  ],
+  "pages": [
+    {
+      "path": "/",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/",
+      "hydratedMs": 6934,
+      "title": "AjkSolutionS e-Commerce · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/productos",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/productos",
+      "hydratedMs": 3221,
+      "title": "Catálogo de productos · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/servicios",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/servicios",
+      "hydratedMs": 2703,
+      "title": "Servicios tecnológicos · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/carrito",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/carrito",
+      "hydratedMs": 1891,
+      "title": "Carrito · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/checkout",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/checkout",
+      "hydratedMs": 2332,
+      "title": "Finalizar pedido · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/productos/flash-memory-adata-128gb-ur340-usb3-2-plata",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/productos/flash-memory-adata-128gb-ur340-usb3-2-plata",
+      "hydratedMs": 3052,
+      "title": "FLASH MEMORY ADATA 128GB-UR340 USB3.2 PLATA · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "section": "public",
+      "status": 200,
+      "finalPath": "/servicios/diagnostico-tecnico",
+      "hydratedMs": 2149,
+      "title": "Diagnóstico Técnico · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin",
+      "hydratedMs": 2827,
+      "title": "Dashboard operativo · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/productos",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/productos",
+      "hydratedMs": 2787,
+      "title": "Productos · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/categorias",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/categorias",
+      "hydratedMs": 2996,
+      "title": "Categorías · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/marcas",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/marcas",
+      "hydratedMs": 3295,
+      "title": "Marcas · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/proveedores",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/proveedores",
+      "hydratedMs": 5359,
+      "title": "Proveedores · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/atributos",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/atributos",
+      "hydratedMs": 5934,
+      "title": "Atributos · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/catalogo/inventario",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/catalogo/inventario",
+      "hydratedMs": 3099,
+      "title": "AjkSolutionS e-Commerce",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/servicios",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/servicios",
+      "hydratedMs": 2574,
+      "title": "Servicios · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/servicios/categorias",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/servicios/categorias",
+      "hydratedMs": 2826,
+      "title": "Categorías de servicio · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/pedidos",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/pedidos",
+      "hydratedMs": 2325,
+      "title": "Pedidos · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/tickets",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/tickets",
+      "hydratedMs": 2178,
+      "title": "Tickets · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/clientes",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/clientes",
+      "hydratedMs": 1758,
+      "title": "Clientes · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/banners",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/banners",
+      "hydratedMs": 1859,
+      "title": "Banners · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/promociones",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/promociones",
+      "hydratedMs": 1836,
+      "title": "Promociones · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/configuracion",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/configuracion",
+      "hydratedMs": 1869,
+      "title": "Configuración · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ]
+    },
+    {
+      "path": "/admin/seguridad",
+      "section": "admin",
+      "status": 200,
+      "finalPath": "/admin/seguridad",
+      "hydratedMs": 2052,
+      "title": "Seguridad · AjkSolutionS",
+      "errors": [],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 412,
+          "height": 915,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 430,
+          "height": 932,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1024,
+          "height": 1024,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "overflow": false,
+          "h1Count": 1,
+          "placeholder": false,
+          "visibleBrokenImages": []
+        }
+      ],
+      "security": {
+        "userTableVisible": true,
+        "userRows": 3,
+        "roleCards": 4
+      }
+    }
+  ],
+  "auth": {
+    "status": 200
+  }
+}

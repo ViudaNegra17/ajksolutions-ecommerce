@@ -28,7 +28,7 @@ vi.mock('@nuxt/ui/components/Icon.vue', async () => {
 })
 
 describe('Contacto de Inicio', () => {
-  it('ofrece el WhatsApp configurado con mensaje preparado y aviso de otra pestaña por SSR', async () => {
+  it('ofrece el WhatsApp configurado con mensaje preparado y aviso de apertura por SSR', async () => {
     const document = new DOMParser().parseFromString(
       await renderToString(createSSRApp(Contact, { whatsapp: '+593 99 123 4567' })),
       'text/html'
@@ -45,7 +45,7 @@ describe('Contacto de Inicio', () => {
     expect(link.rel).toContain('noopener')
     expect(link.rel).toContain('noreferrer')
     expect(document.getElementById(link.getAttribute('aria-describedby')!)?.textContent).toContain(
-      'otra pestaña'
+      'Se abrirá WhatsApp.'
     )
     expect(document.querySelectorAll('a')).toHaveLength(1)
   })

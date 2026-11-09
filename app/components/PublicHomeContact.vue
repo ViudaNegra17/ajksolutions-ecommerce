@@ -42,11 +42,7 @@ const contactUrl = computed(() =>
           class="home-contact__action"
         />
         <p id="home-contact-note" class="home-contact__note">
-          {{
-            hasWhatsApp
-              ? 'Se abrirá WhatsApp.'
-              : 'Consulta las opciones de atención disponibles.'
-          }}
+          {{ hasWhatsApp ? 'Se abrirá WhatsApp.' : 'Consulta las opciones de atención disponibles.' }}
         </p>
       </div>
     </UContainer>

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-08",
+  "origin": "http://127.0.0.1:3019",
+  "isolatedDatabase": "ajk_phase9_local_5568_7cac4531",
+  "payload": "</script><script>globalThis.__phase9JsonLdProbe=true</script><script type=\"application/ld+json\">",
+  "cleanup": true,
+  "status": 200,
+  "executed": false,
+  "jsonLdParseable": true
+}

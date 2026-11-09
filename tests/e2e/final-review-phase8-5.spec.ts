@@ -131,7 +131,10 @@ test('formulario comercial oculta identificadores, cambia garantía y limpia pes
   await expect(page.getByText('Atributo creado', { exact: true })).toBeVisible()
 })
 
-test('hero y campaña reutilizan imagen, contenido y CTA administrables', async ({ page, request }) => {
+test('conserva el Hero definitivo y las campañas con imagen, contenido y CTA administrables', async ({
+  page,
+  request
+}) => {
   const home = (await (await request.get('/api/home')).json()).data
   const hero = {
     title: 'Solución comercial de prueba',
@@ -159,14 +162,26 @@ test('hero y campaña reutilizan imagen, contenido y CTA administrables', async 
     timeout: 45_000
   })
   await page.getByRole('link', { name: 'AJKSolutionS, inicio', exact: true }).first().click()
-  await expect(page.getByRole('heading', { level: 1, name: hero.title })).toBeVisible()
-  await expect(page.getByRole('img', { name: hero.title, exact: true })).toBeVisible()
-  await expect(page.locator('picture source')).toHaveAttribute('srcset', hero.mobileImageUrl)
-  await expect(page.getByRole('heading', { name: 'Campaña de prueba', exact: true })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Ver laptops', exact: true }).first()).toHaveAttribute(
-    'href',
-    '/productos'
+  const fixedHero = page.locator('section[aria-labelledby="home-hero"]')
+  await expect(fixedHero.getByRole('heading', { level: 1 })).toHaveText('Para trabajar, crear y conectar.')
+  await expect(fixedHero.locator('img')).toHaveAttribute(
+    'srcset',
+    /\/images\/hero\/ajksolutions-hero-ecosystem\.webp 1448w/
   )
+  const campaigns = page.getByRole('region', { name: 'Campañas comerciales' })
+  for (const title of [hero.title, 'Campaña de prueba']) {
+    const campaign = campaigns.getByRole('article').filter({
+      has: page.getByRole('heading', { level: 2, name: title, exact: true })
+    })
+    await expect(campaign.getByRole('heading', { level: 2 })).toBeVisible()
+    await expect(campaign.getByRole('img', { name: title, exact: true })).toBeVisible()
+    await expect(campaign.locator('picture source')).toHaveAttribute('srcset', hero.mobileImageUrl)
+    await expect(campaign.getByText(hero.description, { exact: true })).toBeVisible()
+    await expect(campaign.getByRole('link', { name: 'Ver laptops', exact: true })).toHaveAttribute(
+      'href',
+      '/productos'
+    )
+  }
   await page.setViewportSize({ width: 320, height: 900 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
 })

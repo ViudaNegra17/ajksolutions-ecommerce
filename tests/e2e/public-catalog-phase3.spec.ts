@@ -20,7 +20,7 @@ async function waitForHydration(page: import('@playwright/test').Page) {
   })
 }
 
-test.beforeAll(async () => {
+test.beforeAll(async ({ request }) => {
   const category = await prisma.category.create({
     data: { name: `Equipos E2E ${suffix}`, slug: fixture.categorySlug, active: true }
   })
@@ -105,6 +105,16 @@ test.beforeAll(async () => {
       quantityOnHand: index === 0 ? 3 : 1
     }))
   })
+
+  // Direct database fixtures must also publish through the normal cache invalidation path.
+  const login = await request.post('/api/auth/login', {
+    data: { email: process.env.SEED_ADMIN_EMAIL, password: process.env.SEED_ADMIN_PASSWORD }
+  })
+  expect(login.ok()).toBe(true)
+  const published = await request.put('/api/admin/categories/' + category.id, {
+    data: { name: category.name, active: true, sortOrder: category.sortOrder }
+  })
+  expect(published.ok()).toBe(true)
 })
 
 test.afterAll(async () => {
@@ -133,8 +143,12 @@ test('API pública pagina, filtra y no expone datos internos', async ({ request 
 test('Home navega al catálogo y conserva el filtro en la URL', async ({ page }) => {
   await page.goto(`/?e2e=${suffix}`)
   await waitForHydration(page)
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Tecnología')
-  await page.goto('/productos')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Para trabajar, crear y conectar.')
+  await page
+    .locator('section[aria-labelledby="home-hero"]')
+    .getByRole('link', { name: 'Ver productos', exact: true })
+    .click()
+  await expect(page).toHaveURL(/\/productos$/)
   await waitForHydration(page)
   await page.locator('#filter-category').selectOption(fixture.categorySlug)
   await expect(page).toHaveURL(new RegExp(`category=${fixture.categorySlug}`))

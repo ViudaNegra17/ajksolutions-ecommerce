@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-08",
+  "base": "http://127.0.0.1:3020",
+  "artifact": "node .output/server/index.mjs",
+  "method": "Fresh production process, liveness-only startup probe, first Home HTML request and two subsequent requests; all GET; no artificial CPU/network throttling",
+  "requests": [
+    {
+      "path": "/",
+      "sample": 1,
+      "status": 200,
+      "headersMs": 1709,
+      "totalMs": 1711,
+      "bytes": 67946
+    },
+    {
+      "path": "/",
+      "sample": 2,
+      "status": 200,
+      "headersMs": 88,
+      "totalMs": 88,
+      "bytes": 67946
+    },
+    {
+      "path": "/",
+      "sample": 3,
+      "status": 200,
+      "headersMs": 83,
+      "totalMs": 84,
+      "bytes": 67946
+    },
+    {
+      "path": "/productos",
+      "sample": 1,
+      "status": 200,
+      "headersMs": 647,
+      "totalMs": 648,
+      "bytes": 46959
+    },
+    {
+      "path": "/productos",
+      "sample": 2,
+      "status": 200,
+      "headersMs": 124,
+      "totalMs": 125,
+      "bytes": 46958
+    },
+    {
+      "path": "/productos",
+      "sample": 3,
+      "status": 200,
+      "headersMs": 119,
+      "totalMs": 120,
+      "bytes": 46958
+    },
+    {
+      "path": "/servicios",
+      "sample": 1,
+      "status": 200,
+      "headersMs": 137,
+      "totalMs": 138,
+      "bytes": 26996
+    },
+    {
+      "path": "/servicios",
+      "sample": 2,
+      "status": 200,
+      "headersMs": 86,
+      "totalMs": 87,
+      "bytes": 26996
+    },
+    {
+      "path": "/servicios",
+      "sample": 3,
+      "status": 200,
+      "headersMs": 166,
+      "totalMs": 167,
+      "bytes": 26996
+    },
+    {
+      "path": "/productos/flash-memory-adata-128gb-ur340-usb3-2-plata",
+      "sample": 1,
+      "status": 200,
+      "headersMs": 520,
+      "totalMs": 521,
+      "bytes": 36910
+    },
+    {
+      "path": "/productos/flash-memory-adata-128gb-ur340-usb3-2-plata",
+      "sample": 2,
+      "status": 200,
+      "headersMs": 102,
+      "totalMs": 103,
+      "bytes": 36910
+    },
+    {
+      "path": "/productos/flash-memory-adata-128gb-ur340-usb3-2-plata",
+      "sample": 3,
+      "status": 200,
+      "headersMs": 114,
+      "totalMs": 115,
+      "bytes": 36910
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "sample": 1,
+      "status": 200,
+      "headersMs": 267,
+      "totalMs": 268,
+      "bytes": 36594
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "sample": 2,
+      "status": 200,
+      "headersMs": 229,
+      "totalMs": 229,
+      "bytes": 36594
+    },
+    {
+      "path": "/servicios/diagnostico-tecnico",
+      "sample": 3,
+      "status": 200,
+      "headersMs": 107,
+      "totalMs": 108,
+      "bytes": 36594
+    }
+  ],
+  "cleanup": true
+}
