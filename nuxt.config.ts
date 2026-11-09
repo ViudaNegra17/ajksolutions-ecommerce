@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     checkoutSigningSecret: process.env.NUXT_CHECKOUT_SIGNING_SECRET || developmentSessionSecret,
     orderHandoffSecret: process.env.NUXT_ORDER_HANDOFF_SECRET || developmentSessionSecret,
     session: {
-      password: process.env.NUXT_SESSION_PASSWORD,
+      password: process.env.NUXT_SESSION_PASSWORD || '',
       maxAge: 60 * 60 * 8,
       cookie: {
         httpOnly: true,

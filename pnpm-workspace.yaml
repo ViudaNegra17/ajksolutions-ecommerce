@@ -9,10 +9,11 @@ allowBuilds:
   vue-demi: false
 overrides:
   '@tiptap/core': 3.30.5
+  prosemirror-view: 1.42.3
   deepmerge-ts: 8.0.0
   esbuild: 0.28.1
   mysql2: 3.23.1
   nanoid: 3.3.18
-  vue: 3.5.40
+  vue: 3.5.44
 minimumReleaseAgeExclude:
   - happy-dom@20.11.13
