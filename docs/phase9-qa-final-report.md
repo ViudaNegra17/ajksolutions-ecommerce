@@ -2,6 +2,22 @@
 
 Actualizado 2026-11-09, America/Guayaquil. Historial de auditoría y estado vigente de fase 9.
 
+## Estado del pass final V1
+
+Gates locales completos. CI, deployment exacto y smoke final pendientes. F9-05 y F9-07 aceptados para V1 por el prompt de cierre. F9-06 conserva su comprobación productiva final. La sección Final V1 Certification al final del documento establece la disposición actual y prevalece sobre el historial que sigue.
+
+## Historial de auditoría
+
+## Actualización 2026-11-09 — investigación F9-05 y smoke F9-06
+
+F9-05 PARTIAL. Se reprodujo TTFB 9673.5 ms y LCP 12760 ms en Chromium productivo. El request cc923c96-2bf4-43f0-947d-644cd5d958e3 se correlacionó con 1663.48 ms dentro de la aplicación. La causa completa del pico sigue pendiente de aislamiento. Se completaron doce procesos HTTP locales, seis procesos locales con navegador, dieciocho navegaciones productivas y observación separada de consultas, caché, SSR y chunks. [Investigación y límites](implementation-phase-9-performance-investigation.md).
+
+El operador eliminó manualmente desde Administración → Servicios → Diagnóstico técnico la URL externa de imagen. El API productivo confirma imagen null. F9-06 permanece CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING. El alias sigue en 675b739, anterior al fallback compartido, y Home publica otros dos servicios. El smoke móvil y escritorio registró cero solicitudes a los orígenes retirados, cero ORB observado y CLS 0. Listado y ficha conservan precio, CTA y formulario. La validación del nuevo placeholder en las tres superficies depende del candidato desplegado y del servicio publicado en Home. [Evidencia productiva](phase9/f9-06-production-smoke.json).
+
+## Aislamiento adicional F9-05
+
+F9-05 permanece PARTIAL, clasificación H — NOT ENOUGH EVIDENCE. Se capturaron seis documentos con CDP completo y dieciocho controles HTTP simultáneos del mismo deployment 675b739. La muestra root-1-390 registró 2290.46 ms de resolución de proxy, responseStart intermedio a 2591.5 ms, cabeceras finales a 5199.1 ms y LCP 5672 ms. Su aplicación registró 1711.48 ms y API Home 825.58 ms. El residual entre timestamp de plataforma y middleware es aproximadamente 893.52 ms y requiere el detalle de inicio de función. La captura distingue Early Hints de cabeceras finales, registra la discrepancia de relojes y separa las tres fuentes de metadata de Node. El pico anterior de 9673.5 ms conserva su atribución incompleta. [Root cause isolation](implementation-phase-9-performance-investigation.md#root-cause-isolation).
+
 ## Estado vigente — posterior a PASS 27
 
 **PASS 27 PASSED.** Se completó la remediación compatible de dependencias y su regresión local. El audit completo cambió de 3 Critical / 35 High / 32 Moderate / 11 Low a 0 / 2 / 2 / 1. El audit --prod tiene 0 Critical y 0 High. Los cinco residuales corresponden a Happy DOM de pruebas y glob/minimatch/deepmerge de build, con condiciones, aceptación técnica temporal y ausencia ejecutable documentadas. [Remediación y reporte completo](phase9-dependency-remediation.md).
@@ -16,13 +32,13 @@ El cierre general de fase 9 conserva F9-05, F9-07 y la validación productiva de
 
 El bloque completó la corrección de código y QA local. La regresión aprobó 181 Vitest, 57 integraciones adicionales de base vacía, 73 E2E, 19 visuales y build. El smoke del artefacto aprobó 18 comprobaciones de Home, servicios y ficha con tres estados de imagen en móvil y escritorio. Las cuatro capturas afectadas por el placeholder se revisaron antes de actualizarse.
 
-| Hallazgo | Estado vigente                                   | Evidencia                                                                                           |
-| -------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| F9-06    | CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE | Fallback verificado en tres superficies. Origen histórico 403 HTML, imagen actual local 200 válida. |
-| F9-08    | CLOSED                                           | Organization y WebSite SSR con datos de settings, URLs absolutas, escape e inyección probados.      |
-| F9-09    | RESOLVED INCIDENTALLY BY PASS 27                 | Cuatro DEP0155 históricos, cero en PASS 27 y en el build actual.                                    |
-| F9-05    | OPEN                                             | Investigación de primera Home/frío pendiente.                                                       |
-| F9-07    | OPEN                                             | Warning pg pendiente.                                                                               |
+| Hallazgo | Estado vigente                                               | Evidencia                                                                                                         |
+| -------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| F9-06    | CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING | Fallback local verificado. Imagen null confirmada. Alias productivo anterior al candidato, smoke final pendiente. |
+| F9-08    | CLOSED                                                       | Organization y WebSite SSR con datos de settings, URLs absolutas, escape e inyección probados.                    |
+| F9-09    | RESOLVED INCIDENTALLY BY PASS 27                             | Cuatro DEP0155 históricos, cero en PASS 27 y en el build actual.                                                  |
+| F9-05    | PARTIAL                                                      | Pico reproducido y correlacionado. Causa completa pendiente. Ver investigación F9-05.                             |
+| F9-07    | OPEN                                                         | Warning pg pendiente.                                                                                             |
 
 **Bloque PARTIAL operativo**, determinado por la validación de contenido productivo de F9-06. Código y QA locales aprobados.
 
@@ -76,12 +92,12 @@ Se verificaron Home, catálogo, servicios, login, carrito, checkout, robots y si
 
 La documentación vigente del [Hero responsive](ui-hero-responsive-improvement.md) mantiene composición definitiva y campañas separadas. Las correcciones de prueba conservan esa decisión del usuario. Las aserciones funcionales siguen activas.
 
-## Hallazgos abiertos y prioridades
+## Hallazgos y prioridades con evidencia histórica
 
 | ID    | Prioridad         | Hallazgo                                                                                                                                                                              | Siguiente comprobación                                                                                                        |
 | ----- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | F9-05 | P1, investigación | Primera navegación Home con TTFB 9768,6 ms y LCP 10804 ms. En la repetición, Home tuvo TTFB 397,2–458,5 ms y LCP 1492–1692 ms                                                         | Repetir muestras temporales y correlacionar request IDs con Runtime Logs y latencia DB. La causa queda pendiente de evidencia |
-| F9-06 | P2                | Imagen externa de Diagnóstico técnico falla con `net::ERR_BLOCKED_BY_ORB` en catálogo y ficha de servicio                                                                             | Revisar URL/MIME/permisos del origen y definir imagen comercial válida o fallback verificado                                  |
+| F9-06 | P2                | Imagen externa de Diagnóstico técnico falla con `net::ERR_BLOCKED_BY_ORB` en catálogo y ficha de servicio                                                                             | Dato corregido manualmente. Validación productiva final del fallback y servicio en Home pendiente                             |
 | F9-07 | P2                | Se reproduce la deprecación pg por consultas sobre un cliente ya ocupado. La traza comienza en Client.query de pg y continúa en PgTransaction.performIO/queryRaw del adaptador Prisma | Identificar la operación de aplicación que origina esa cadena y evaluar compatibilidad antes de modificar consultas           |
 | F9-08 | P2                | Home carece de JSON-LD Organization/WebSite en las muestras                                                                                                                           | Evaluar datos reales disponibles y completar la revisión SEO del PASS 12                                                      |
 | F9-09 | P3                | Build emite deprecaciones de exports con patrón de slash final                                                                                                                        | Registrar dependencias implicadas y evaluar corrección compatible en el PASS 27                                               |
@@ -122,7 +138,7 @@ Las muestras corresponden a navegaciones observadas. El estado frío del servido
 
 También se inició un proceso nuevo del artefacto productivo local en el puerto 3020, con PostgreSQL local y secretos efímeros. Después de un probe de liveness, la primera solicitud HTML de Home tuvo headers en 1709 ms y total de 1711 ms. Las dos siguientes tuvieron headers en 88 y 83 ms. Quince solicitudes a cinco rutas respondieron 200. El proceso se detuvo al finalizar. Las primeras solicitudes de las otras rutas corresponden a un proceso ya iniciado. [Mediciones HTTP del build local](phase9/local-build-http.json).
 
-Las diez navegaciones del segundo muestreo no registraron solicitudes a Iconify remoto ni a `/api/_nuxt_icon/*`. El seguimiento de bundles queda abierto. La imagen de servicio fallida limita la interpretación de su LCP. [Datos de medición](phase9/production-smoke.json).
+Las diez navegaciones del segundo muestreo no registraron solicitudes a Iconify remoto ni a `/api/_nuxt_icon/*`. El seguimiento de bundles queda abierto. La imagen de servicio fallida en aquel muestreo histórico limita la interpretación de su LCP. El estado vigente corresponde a la validación productiva final de F9-06. [Datos de medición](phase9/production-smoke.json).
 
 ## SEO y seguridad
 
@@ -189,6 +205,36 @@ Los resultados finales de lint, formato, tipos y revisión del diff se guardan e
 
 El conector GitHub devolvió HTTP 404 al consultar el estado del SHA inicial. El estado real del workflow queda pendiente de evidencia accesible. El estado READY de Vercel y sus metadatos se registran por separado.
 
-Persisten el pico de rendimiento por investigar, la imagen de servicio fallida, la revisión de configuración Neon, las comprobaciones integrales de seguridad y los contenidos legales/comerciales aprobados.
+Persisten F9-05 PARTIAL, la validación productiva final de F9-06, la revisión de configuración Neon, las comprobaciones integrales de seguridad y los contenidos legales/comerciales aprobados.
 
 Estado de certificación **NOT PRODUCTION READY**, hasta completar los criterios de aceptación de la fase 9. Esta clasificación expresa el estado de la auditoría V1. La entrega inicial deja el baseline, las evidencias y el plan de continuidad registrados.
+
+## Final V1 Certification
+
+Pass final iniciado el 2026-11-09. Esta sección prevalece sobre los pendientes históricos cuando cada control obtiene evidencia final.
+
+- Candidato inicial `cd7b7b4ef8c6027941b6107244df2d9cf8a68716`, main con evidencia QA pendiente. El SHA final se fijará después de los gates locales.
+- CI y deployment exacto pendientes. Smoke productivo final y acceso administrativo manual pendientes.
+- F9-05 ACCEPTED OBSERVABILITY / PERFORMANCE RISK, causa completa sin determinar.
+- F9-07 KNOWN TECHNICAL DEBT / ACCEPTED FOR V1, warning reproducible sin fallo funcional o de integridad demostrado.
+- F9-06 mantiene final smoke pending. F9-08 CLOSED. F9-09 RESOLVED.
+- PASS 28 ACCEPTED / COMPLETE FOR V1. Los contratos existentes cubren constraints, unicidad, rollback, inventario, pedidos y tickets.
+- PASS 29 ACCEPTED FOR V1. La causa DB del pico productivo sigue sin probarse.
+- PASS 30 ACCEPTED ARCHITECTURAL LIMITATION FOR V1. Cache por instancia e invalidación funcional cubiertas. Invalidación entre instancias sin garantía.
+- PASS 31 COMPLETE en fuentes. Instrumentación temporal retirada y tres pruebas permanentes del contrato de logging. Confirmación adicional en build pendiente.
+- PASS 32 COMPLETE. Las cinco variables obligatorias están presentes en scope production. Evidencia conserva nombres y booleanos.
+- Visual pendiente reproducido 18/19. Se revisó la diferencia del carrito, debida al aviso transitorio y DevTools en la referencia. La prueba verifica el aviso y espera su cierre antes de la captura estable. Se regeneran solo las referencias de carrito revisadas.
+- El ejecutor de integración usa un worker por contención local reproducida. Conserva los 57 casos y sus timeouts, incluidas las pruebas internas de concurrencia.
+- Prisma schema y las 14 migraciones se contrastan mediante hashes.
+- Audit prod con 0 Critical y 0 High. Residuales de test/build mantienen la aceptación temporal del PASS 27.
+- Riesgos aceptados en [v1-known-risks.md](v1-known-risks.md). Evidencia de inicio en [v1-final-baseline.json](phase9/v1-final-baseline.json).
+- Business/legal PENDING BUSINESS/LEGAL INPUT.
+- Clasificación vigente NOT PRODUCTION READY hasta completar gates, CI y smoke del candidato exacto. Tag y freeze pendientes.
+
+### Final local gates — 2026-11-09
+
+Prisma format, validate, generate, migrate status, formato global y typecheck PASS. Vitest 184/184, integración aislada 57/57, E2E 74/74, visual 19/19 y build PASS. El caso E2E añadido verifica la redirección 302 de `/login` hacia `/admin/login`, cuyo 404 se reprodujo antes del cambio. El orden de la clave routeRules produjo un fallo de lint, corregido y revalidado con `pnpm lint`.
+
+Schema y 14 SQL históricos con hashes idénticos antes y después. Cero migraciones nuevas. Base temporal eliminada. Build servido en proceso nuevo con seis visitas hidratadas, dos health 200 y cero marcadores runtime temporales. Se cambió únicamente la referencia visual de carrito a 390 px tras revisar la superposición temporal. [Gates locales](phase9/v1-local-gates.json).
+
+El candidato de despliegue se fija mediante el commit de esta consolidación. CI, deployment exacto y smoke final se registrarán después de ejecutarse. La comprobación de login productivo corresponde al operador por su elección explícita.

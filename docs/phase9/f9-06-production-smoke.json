@@ -1,0 +1,310 @@
+{
+  "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+  "homeSlugs": ["desarrollo-software-a-medida", "isp-en-memorias-emmc-y-ufs"],
+  "imageKeyPresent": true,
+  "imageIsNull": true,
+  "operatorReportedRemoval": true,
+  "rows": [
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "status": 200,
+      "servicePublishedOnSurface": false,
+      "candidatePlaceholderVisible": false,
+      "cls": 0
+    },
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/servicios",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "servicePublishedOnSurface": true,
+      "status": 200,
+      "requestId": "fd57732f-ecc4-4cb0-9216-1a4825139eae",
+      "candidatePlaceholderVisible": false,
+      "placeholder": null,
+      "legacyAspectPlaceholderCount": 1,
+      "brokenImages": 0,
+      "priceVisible": true,
+      "formVisible": null,
+      "cls": 0,
+      "ctaWorks": true
+    },
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/servicios/diagnostico-tecnico",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "servicePublishedOnSurface": true,
+      "status": 200,
+      "requestId": "eccde0fb-4924-43ea-bc67-b272c1207df9",
+      "candidatePlaceholderVisible": false,
+      "placeholder": null,
+      "legacyAspectPlaceholderCount": 0,
+      "brokenImages": 0,
+      "priceVisible": true,
+      "formVisible": true,
+      "cls": 0,
+      "ctaWorks": true
+    },
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "path": "/",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "status": 200,
+      "servicePublishedOnSurface": false,
+      "candidatePlaceholderVisible": false,
+      "cls": 0
+    },
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "path": "/servicios",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "servicePublishedOnSurface": true,
+      "status": 200,
+      "requestId": "3359c93d-4fc2-4ccf-872b-d3ad09f03f03",
+      "candidatePlaceholderVisible": false,
+      "placeholder": null,
+      "legacyAspectPlaceholderCount": 1,
+      "brokenImages": 0,
+      "priceVisible": true,
+      "formVisible": null,
+      "cls": 0,
+      "ctaWorks": true
+    },
+    {
+      "label": "production 675b73967d99f2c12b40fbf750a54125c0c65696",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "path": "/servicios/diagnostico-tecnico",
+      "removedOriginRequests": [],
+      "imageFailures": [],
+      "jsErrors": [],
+      "servicePublishedOnSurface": true,
+      "status": 200,
+      "requestId": "69c509c1-b17b-4e33-9e9d-9e56524f56e5",
+      "candidatePlaceholderVisible": false,
+      "placeholder": null,
+      "legacyAspectPlaceholderCount": 0,
+      "brokenImages": 0,
+      "priceVisible": true,
+      "formVisible": true,
+      "cls": 0,
+      "ctaWorks": true
+    }
+  ],
+  "allCandidatePlaceholders": false,
+  "noRemovedOriginRequests": true,
+  "noOrb": true,
+  "status": "CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING",
+  "deployment": {
+    "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+    "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+    "url": "ajksolutions-ecommerce-bfnaxrwnj-viudanegra17s-projects.vercel.app",
+    "regions": ["iad1"],
+    "nodeVersion": "26.x",
+    "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+    "teamId": "team_QrtpZ7mzS3SF87UNc7K71qkA",
+    "readyState": "READY"
+  },
+  "localCandidate": {
+    "label": "local cd7b7b4",
+    "homeSlugs": ["diagnostico-tecnico"],
+    "imageKeyPresent": true,
+    "imageIsNull": true,
+    "operatorReportedRemoval": true,
+    "rows": [
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "1ffe17a7-70fd-41b6-86bd-e752431de7d7",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 9",
+          "width": 356,
+          "height": 200.25
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": null,
+        "cls": 0,
+        "ctaWorks": true
+      },
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/servicios",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "a49c010a-963b-44bd-a613-6d34fae1f7a1",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 9",
+          "width": 326,
+          "height": 183.375
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": null,
+        "cls": 0,
+        "ctaWorks": true
+      },
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/servicios/diagnostico-tecnico",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "2daf6a80-1ca8-4c04-9c79-760b39ffd109",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 9",
+          "width": 358,
+          "height": 201.375
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": true,
+        "cls": 0,
+        "ctaWorks": true
+      },
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "path": "/",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "a494c9a1-cee7-41d7-b91f-858e1eaeba48",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 7",
+          "width": 639.09375,
+          "height": 279.59375
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": null,
+        "cls": 0,
+        "ctaWorks": true
+      },
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "path": "/servicios",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "0d2f1a4d-0502-41d2-8e64-05ba8e7ce02e",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 9",
+          "width": 344,
+          "height": 193.5
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": null,
+        "cls": 0,
+        "ctaWorks": true
+      },
+      {
+        "label": "local cd7b7b4",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "path": "/servicios/diagnostico-tecnico",
+        "removedOriginRequests": [],
+        "imageFailures": [],
+        "jsErrors": [],
+        "servicePublishedOnSurface": true,
+        "status": 200,
+        "requestId": "b13787e0-853b-4992-8673-7a1496945e5a",
+        "candidatePlaceholderVisible": true,
+        "placeholder": {
+          "aspectRatio": "16 / 9",
+          "width": 756,
+          "height": 425.25
+        },
+        "legacyAspectPlaceholderCount": 1,
+        "brokenImages": 0,
+        "priceVisible": true,
+        "formVisible": true,
+        "cls": 0,
+        "ctaWorks": true
+      }
+    ],
+    "allCandidatePlaceholders": true,
+    "noRemovedOriginRequests": true,
+    "noOrb": true,
+    "status": "PASSED LOCAL CANDIDATE ONLY"
+  }
+}

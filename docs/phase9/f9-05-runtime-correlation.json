@@ -1,0 +1,1671 @@
+{
+  "timestamp": "2026-11-09T14:05:13.825Z",
+  "deployment": {
+    "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+    "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+    "regions": ["iad1"],
+    "runtime": "26.x",
+    "readyState": "READY",
+    "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+    "projectConfiguredNodeVersion": "24.x",
+    "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+  },
+  "scope": "Read-only Vercel runtime and request logs, fields allowlisted. Derived app/API starts use logged end minus logged duration, not an independent entry span.",
+  "samples": [
+    {
+      "navigationId": "root-1-390",
+      "appRequestId": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+      "platformRequestId": "9kw96-1794232789859-1d16a2b1a38b",
+      "browser": {
+        "navigationStart": "2026-11-09T13:59:56.857Z",
+        "responseStart": "2026-11-09T13:59:59.448Z",
+        "responseEnd": "2026-11-09T14:00:02.062Z",
+        "finalResponseHeadersStart": 5199.0999999940395,
+        "ttfbMs": 2591.5,
+        "lcpMs": 5672
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T13:59:52.466Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:52.464Z",
+                "level": "info",
+                "requestId": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 1711.48,
+                "inferredStart": "2026-11-09T13:59:50.752Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:52.360Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:52.349Z",
+                "level": "info",
+                "requestId": "542d3b4e-6a85-41f4-9f16-6e13deed32e2",
+                "route": "/api/_nuxt_icon/lucide.json",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 143.53,
+                "inferredStart": "2026-11-09T13:59:52.205Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:52.342Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:52.341Z",
+                "level": "info",
+                "requestId": "d811e50f-78db-4918-89ae-c378742f0221",
+                "route": "/api/_nuxt_icon/lucide.json",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 112.27,
+                "inferredStart": "2026-11-09T13:59:52.228Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:52.108Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:52.107Z",
+                "level": "info",
+                "requestId": "76953063-8954-4037-898b-462b55e34a8a",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 825.58,
+                "inferredStart": "2026-11-09T13:59:51.281Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:51.964Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:51.963Z",
+                "level": "info",
+                "requestId": "ffa5c310-627e-496f-b5bd-8a9de54931dd",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 682.03,
+                "inferredStart": "2026-11-09T13:59:51.280Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:51.903Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:51.902Z",
+                "level": "info",
+                "requestId": "8e0b41d4-9e4b-4413-944c-2aaf9912469b",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 620.59,
+                "inferredStart": "2026-11-09T13:59:51.281Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:51.706Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "error",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "timestamp": "2026-11-09T13:59:51.204Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:51.202Z",
+                "level": "info",
+                "requestId": "b2cb8a24-f633-47cf-85a0-2dd3236f4dd3",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 17.06,
+                "inferredStart": "2026-11-09T13:59:51.184Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T13:59:49.859Z",
+              "requestId": "9kw96-1794232789859-1d16a2b1a38b",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T13:59:52.464Z",
+        "level": "info",
+        "requestId": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 1711.48,
+        "inferredStart": "2026-11-09T13:59:50.752Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T13:59:52.107Z",
+        "level": "info",
+        "requestId": "76953063-8954-4037-898b-462b55e34a8a",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 825.58,
+        "inferredStart": "2026-11-09T13:59:51.281Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T13:59:51.902Z",
+        "level": "info",
+        "requestId": "8e0b41d4-9e4b-4413-944c-2aaf9912469b",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 620.59,
+        "inferredStart": "2026-11-09T13:59:51.281Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T13:59:51.963Z",
+        "level": "info",
+        "requestId": "ffa5c310-627e-496f-b5bd-8a9de54931dd",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 682.03,
+        "inferredStart": "2026-11-09T13:59:51.280Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T13:59:49.859Z",
+        "applicationEnd": "2026-11-09T13:59:52.464Z",
+        "requestToApplicationEndMs": 2605,
+        "preMiddlewareResidualMs": 893.52,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      },
+      "warningClassification": {
+        "exitCode": 0,
+        "records": [
+          {
+            "timestamp": "2026-11-09T13:59:51.706Z",
+            "level": "error",
+            "knownPgConcurrentQueryDeprecation": false,
+            "containsExceptionMarker": false,
+            "messageOmitted": true
+          }
+        ]
+      }
+    },
+    {
+      "navigationId": "root-1-1440",
+      "appRequestId": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+      "platformRequestId": "v5mbz-1794232795282-0113b5651995",
+      "browser": {
+        "navigationStart": "2026-11-09T14:00:04.583Z",
+        "responseStart": "2026-11-09T14:00:04.872Z",
+        "responseEnd": "2026-11-09T14:00:04.976Z",
+        "finalResponseHeadersStart": 386.59999999403954,
+        "ttfbMs": 289.5,
+        "lcpMs": 892
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T13:59:55.375Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:55.374Z",
+                "level": "info",
+                "requestId": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 72.18,
+                "inferredStart": "2026-11-09T13:59:55.301Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:55.366Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:55.366Z",
+                "level": "info",
+                "requestId": "944fb682-e3fe-4725-8723-a60ebf98cea6",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 50.68,
+                "inferredStart": "2026-11-09T13:59:55.315Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:55.340Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:55.334Z",
+                "level": "info",
+                "requestId": "1a1fcb73-b5aa-4e8f-83bd-ac5510b153a6",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 19.1,
+                "inferredStart": "2026-11-09T13:59:55.314Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:55.321Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:55.320Z",
+                "level": "info",
+                "requestId": "0264457a-6696-4261-afae-0919a31af548",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 5.36,
+                "inferredStart": "2026-11-09T13:59:55.314Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T13:59:55.310Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T13:59:55.309Z",
+                "level": "info",
+                "requestId": "79bb6a78-1155-457e-bf45-de2ea17be80d",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 1.64,
+                "inferredStart": "2026-11-09T13:59:55.307Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T13:59:55.282Z",
+              "requestId": "v5mbz-1794232795282-0113b5651995",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T13:59:55.374Z",
+        "level": "info",
+        "requestId": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 72.18,
+        "inferredStart": "2026-11-09T13:59:55.301Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T13:59:55.334Z",
+        "level": "info",
+        "requestId": "1a1fcb73-b5aa-4e8f-83bd-ac5510b153a6",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 19.1,
+        "inferredStart": "2026-11-09T13:59:55.314Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T13:59:55.366Z",
+        "level": "info",
+        "requestId": "944fb682-e3fe-4725-8723-a60ebf98cea6",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 50.68,
+        "inferredStart": "2026-11-09T13:59:55.315Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T13:59:55.320Z",
+        "level": "info",
+        "requestId": "0264457a-6696-4261-afae-0919a31af548",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 5.36,
+        "inferredStart": "2026-11-09T13:59:55.314Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T13:59:55.282Z",
+        "applicationEnd": "2026-11-09T13:59:55.374Z",
+        "requestToApplicationEndMs": 92,
+        "preMiddlewareResidualMs": 19.819999999999993,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      }
+    },
+    {
+      "navigationId": "root-2-390",
+      "appRequestId": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+      "platformRequestId": "ttsx9-1794232870672-429cf0e8c02e",
+      "browser": {
+        "navigationStart": "2026-11-09T14:01:19.957Z",
+        "responseStart": "2026-11-09T14:01:20.259Z",
+        "responseEnd": "2026-11-09T14:01:20.732Z",
+        "finalResponseHeadersStart": 771.7999999821186,
+        "ttfbMs": 301.7999999821186,
+        "lcpMs": 1268
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:01:11.140Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:11.139Z",
+                "level": "info",
+                "requestId": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 376.82,
+                "inferredStart": "2026-11-09T14:01:10.762Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:11.078Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:11.077Z",
+                "level": "info",
+                "requestId": "eaa66b38-8ee1-4aaf-8063-c96326d0d8f0",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 263.28,
+                "inferredStart": "2026-11-09T14:01:10.813Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:10.850Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:10.847Z",
+                "level": "info",
+                "requestId": "b424ea0f-2091-4ac1-a403-b37e1b7b7ff8",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 32.71,
+                "inferredStart": "2026-11-09T14:01:10.814Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:10.828Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:10.828Z",
+                "level": "info",
+                "requestId": "ea4f5e61-6cce-4233-9f2f-42964a9d4e14",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 13.67,
+                "inferredStart": "2026-11-09T14:01:10.814Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:10.808Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:10.807Z",
+                "level": "info",
+                "requestId": "9123dfbb-e3c6-4550-969c-682271237394",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 1.78,
+                "inferredStart": "2026-11-09T14:01:10.805Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:01:10.672Z",
+              "requestId": "ttsx9-1794232870672-429cf0e8c02e",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:01:11.139Z",
+        "level": "info",
+        "requestId": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 376.82,
+        "inferredStart": "2026-11-09T14:01:10.762Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T14:01:11.077Z",
+        "level": "info",
+        "requestId": "eaa66b38-8ee1-4aaf-8063-c96326d0d8f0",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 263.28,
+        "inferredStart": "2026-11-09T14:01:10.813Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T14:01:10.847Z",
+        "level": "info",
+        "requestId": "b424ea0f-2091-4ac1-a403-b37e1b7b7ff8",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 32.71,
+        "inferredStart": "2026-11-09T14:01:10.814Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T14:01:10.828Z",
+        "level": "info",
+        "requestId": "ea4f5e61-6cce-4233-9f2f-42964a9d4e14",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 13.67,
+        "inferredStart": "2026-11-09T14:01:10.814Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T14:01:10.672Z",
+        "applicationEnd": "2026-11-09T14:01:11.139Z",
+        "requestToApplicationEndMs": 467,
+        "preMiddlewareResidualMs": 90.18,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      }
+    },
+    {
+      "navigationId": "root-2-1440",
+      "appRequestId": "2e29fd25-c416-4ccc-acf5-27257085e352",
+      "platformRequestId": "4blsk-1794232874952-469e2ba5b1d5",
+      "browser": {
+        "navigationStart": "2026-11-09T14:01:24.257Z",
+        "responseStart": "2026-11-09T14:01:24.541Z",
+        "responseEnd": "2026-11-09T14:01:24.667Z",
+        "finalResponseHeadersStart": 407.5,
+        "ttfbMs": 283.90000000596046,
+        "lcpMs": 896
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:01:15.073Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:15.072Z",
+                "level": "info",
+                "requestId": "2e29fd25-c416-4ccc-acf5-27257085e352",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 88.04,
+                "inferredStart": "2026-11-09T14:01:14.983Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:15.064Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:15.063Z",
+                "level": "info",
+                "requestId": "097e61f9-0c8b-44c4-af17-1ff9820d6882",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 40.44,
+                "inferredStart": "2026-11-09T14:01:15.022Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:15.047Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:15.046Z",
+                "level": "info",
+                "requestId": "a186ed26-30ee-4301-9d81-c0ea5ac78b39",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 23.61,
+                "inferredStart": "2026-11-09T14:01:15.022Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:15.028Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:15.028Z",
+                "level": "info",
+                "requestId": "75cba9a5-9482-4636-85d9-798c225877dd",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 5.18,
+                "inferredStart": "2026-11-09T14:01:15.022Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:01:15.008Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:01:15.007Z",
+                "level": "info",
+                "requestId": "f1aa2a1f-2fd2-468d-84a6-4e839ef1c1e8",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 1.67,
+                "inferredStart": "2026-11-09T14:01:15.005Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:01:14.952Z",
+              "requestId": "4blsk-1794232874952-469e2ba5b1d5",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:01:15.072Z",
+        "level": "info",
+        "requestId": "2e29fd25-c416-4ccc-acf5-27257085e352",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 88.04,
+        "inferredStart": "2026-11-09T14:01:14.983Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T14:01:15.046Z",
+        "level": "info",
+        "requestId": "a186ed26-30ee-4301-9d81-c0ea5ac78b39",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 23.61,
+        "inferredStart": "2026-11-09T14:01:15.022Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T14:01:15.063Z",
+        "level": "info",
+        "requestId": "097e61f9-0c8b-44c4-af17-1ff9820d6882",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 40.44,
+        "inferredStart": "2026-11-09T14:01:15.022Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T14:01:15.028Z",
+        "level": "info",
+        "requestId": "75cba9a5-9482-4636-85d9-798c225877dd",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 5.18,
+        "inferredStart": "2026-11-09T14:01:15.022Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T14:01:14.952Z",
+        "applicationEnd": "2026-11-09T14:01:15.072Z",
+        "requestToApplicationEndMs": 120,
+        "preMiddlewareResidualMs": 31.959999999999994,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      }
+    },
+    {
+      "navigationId": "root-3-390",
+      "appRequestId": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+      "platformRequestId": "bnrk6-1794232947742-99e6f2900c77",
+      "browser": {
+        "navigationStart": "2026-11-09T14:02:37.023Z",
+        "responseStart": "2026-11-09T14:02:37.332Z",
+        "responseEnd": "2026-11-09T14:02:37.651Z",
+        "finalResponseHeadersStart": 624.6999999880791,
+        "ttfbMs": 308.90000000596046,
+        "lcpMs": 1036
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:02:28.060Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:28.060Z",
+                "level": "info",
+                "requestId": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 251.58,
+                "inferredStart": "2026-11-09T14:02:27.808Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:28.034Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:28.034Z",
+                "level": "info",
+                "requestId": "ffa2bef7-8e1a-4373-aebe-3d9a8bf8eef8",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 213.22,
+                "inferredStart": "2026-11-09T14:02:27.820Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:27.914Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:27.913Z",
+                "level": "info",
+                "requestId": "9e176c28-781a-4f66-a165-b28760ca9a39",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 92.49,
+                "inferredStart": "2026-11-09T14:02:27.820Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:27.857Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:27.857Z",
+                "level": "info",
+                "requestId": "fa036383-20a4-473d-95b9-8df76d0395c3",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 36.1,
+                "inferredStart": "2026-11-09T14:02:27.820Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:27.816Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:27.816Z",
+                "level": "info",
+                "requestId": "f9789de4-c6a9-439e-ba75-3a5732fa46b9",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 2.24,
+                "inferredStart": "2026-11-09T14:02:27.813Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:02:27.742Z",
+              "requestId": "bnrk6-1794232947742-99e6f2900c77",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:02:28.060Z",
+        "level": "info",
+        "requestId": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 251.58,
+        "inferredStart": "2026-11-09T14:02:27.808Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T14:02:28.034Z",
+        "level": "info",
+        "requestId": "ffa2bef7-8e1a-4373-aebe-3d9a8bf8eef8",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 213.22,
+        "inferredStart": "2026-11-09T14:02:27.820Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T14:02:27.913Z",
+        "level": "info",
+        "requestId": "9e176c28-781a-4f66-a165-b28760ca9a39",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 92.49,
+        "inferredStart": "2026-11-09T14:02:27.820Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T14:02:27.857Z",
+        "level": "info",
+        "requestId": "fa036383-20a4-473d-95b9-8df76d0395c3",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 36.1,
+        "inferredStart": "2026-11-09T14:02:27.820Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T14:02:27.742Z",
+        "applicationEnd": "2026-11-09T14:02:28.060Z",
+        "requestToApplicationEndMs": 318,
+        "preMiddlewareResidualMs": 66.41999999999999,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      }
+    },
+    {
+      "navigationId": "root-3-1440",
+      "appRequestId": "3e826005-b298-4a44-886f-aadb7349f291",
+      "platformRequestId": "f4t5d-1794232952068-70ae499a6b2f",
+      "browser": {
+        "navigationStart": "2026-11-09T14:02:41.369Z",
+        "responseStart": "2026-11-09T14:02:41.655Z",
+        "responseEnd": "2026-11-09T14:02:41.741Z",
+        "finalResponseHeadersStart": 370.30000001192093,
+        "ttfbMs": 286,
+        "lcpMs": 804
+      },
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:02:32.148Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:32.147Z",
+                "level": "info",
+                "requestId": "3e826005-b298-4a44-886f-aadb7349f291",
+                "route": "/",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 54.36,
+                "inferredStart": "2026-11-09T14:02:32.092Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:32.139Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:32.136Z",
+                "level": "info",
+                "requestId": "9452b7ee-c25e-4e7c-a278-be36fb059213",
+                "route": "/api/settings/public",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 32.24,
+                "inferredStart": "2026-11-09T14:02:32.103Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:32.120Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:32.119Z",
+                "level": "info",
+                "requestId": "ab5cd974-a2d6-4c65-8389-0c896a272588",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 15.66,
+                "inferredStart": "2026-11-09T14:02:32.103Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:32.110Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:32.110Z",
+                "level": "info",
+                "requestId": "d4354fca-e3ac-4a3a-a12e-71752c6d9805",
+                "route": "/api/categories",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 5.84,
+                "inferredStart": "2026-11-09T14:02:32.104Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:02:32.100Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:02:32.100Z",
+                "level": "info",
+                "requestId": "876764ff-467c-477f-89f0-f4ff1584954a",
+                "route": "/api/_auth/session",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 1.62,
+                "inferredStart": "2026-11-09T14:02:32.098Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:02:32.068Z",
+              "requestId": "f4t5d-1794232952068-70ae499a6b2f",
+              "requestPath": "/",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:02:32.147Z",
+        "level": "info",
+        "requestId": "3e826005-b298-4a44-886f-aadb7349f291",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 54.36,
+        "inferredStart": "2026-11-09T14:02:32.092Z"
+      },
+      "apiHome": {
+        "timestamp": "2026-11-09T14:02:32.119Z",
+        "level": "info",
+        "requestId": "ab5cd974-a2d6-4c65-8389-0c896a272588",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 15.66,
+        "inferredStart": "2026-11-09T14:02:32.103Z"
+      },
+      "settings": {
+        "timestamp": "2026-11-09T14:02:32.136Z",
+        "level": "info",
+        "requestId": "9452b7ee-c25e-4e7c-a278-be36fb059213",
+        "route": "/api/settings/public",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 32.24,
+        "inferredStart": "2026-11-09T14:02:32.103Z"
+      },
+      "categories": {
+        "timestamp": "2026-11-09T14:02:32.110Z",
+        "level": "info",
+        "requestId": "d4354fca-e3ac-4a3a-a12e-71752c6d9805",
+        "route": "/api/categories",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 5.84,
+        "inferredStart": "2026-11-09T14:02:32.104Z"
+      },
+      "instrumentationUnavailable": {
+        "homeSuboperations": true,
+        "queryCount": true,
+        "databaseConnection": true,
+        "ssrSpan": true,
+        "internalHomeCacheStatus": true,
+        "functionInitSpan": true,
+        "coldSignal": true
+      },
+      "platformInterval": {
+        "requestTimestamp": "2026-11-09T14:02:32.068Z",
+        "applicationEnd": "2026-11-09T14:02:32.147Z",
+        "requestToApplicationEndMs": 79,
+        "preMiddlewareResidualMs": 24.64,
+        "meaning": "Platform timestamp to application finish minus middleware duration. Approximate composite residual; no direct init span. Server clock domains may differ."
+      }
+    }
+  ],
+  "firstNativeControl": {
+    "sample": {
+      "timestamp": "2026-11-09T13:59:56.827Z",
+      "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+      "status": 200,
+      "dnsMs": 136.79869999999937,
+      "connectMs": 28.934000000001106,
+      "tlsMs": 164.78780000000006,
+      "ttfbMs": 2983.053900000001,
+      "totalMs": 3015.0262000000002,
+      "bytes": 71131,
+      "reusedSocket": false,
+      "requestId": "faa4ff07-8ff3-4c8d-a60d-a3f71524a79d",
+      "vercelId": "iad1::iad1::8vjvg-1794232787661-f1b1d9cabf82",
+      "cache": {
+        "public": null,
+        "vercel": "MISS",
+        "control": "public, max-age=0, must-revalidate",
+        "age": "0"
+      }
+    },
+    "platformRequestId": "8vjvg-1794232787661-f1b1d9cabf82",
+    "records": [
+      {
+        "timestamp": "2026-11-09T13:59:50.216Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:50.215Z",
+          "level": "info",
+          "requestId": "faa4ff07-8ff3-4c8d-a60d-a3f71524a79d",
+          "route": "/",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 1620.63,
+          "inferredStart": "2026-11-09T13:59:48.594Z"
+        }
+      },
+      {
+        "timestamp": "2026-11-09T13:59:50.131Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:50.130Z",
+          "level": "info",
+          "requestId": "245cb258-4681-4f89-b9c8-a44fedb4fb00",
+          "route": "/api/_nuxt_icon/lucide.json",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 93.32,
+          "inferredStart": "2026-11-09T13:59:50.036Z"
+        }
+      },
+      {
+        "timestamp": "2026-11-09T13:59:49.917Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:49.916Z",
+          "level": "info",
+          "requestId": "4af66204-e525-4e41-98cd-b17e52e6f23f",
+          "route": "/api/home",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 935.98,
+          "inferredStart": "2026-11-09T13:59:48.980Z"
+        }
+      },
+      {
+        "timestamp": "2026-11-09T13:59:49.851Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:49.851Z",
+          "level": "info",
+          "requestId": "b5a98e95-189b-4a13-9683-09b4a1ade907",
+          "route": "/api/categories",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 870.7,
+          "inferredStart": "2026-11-09T13:59:48.980Z"
+        }
+      },
+      {
+        "timestamp": "2026-11-09T13:59:49.813Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:49.812Z",
+          "level": "info",
+          "requestId": "d8edbe1b-f96c-4ef4-9598-9c4756d872d7",
+          "route": "/api/settings/public",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 832.18,
+          "inferredStart": "2026-11-09T13:59:48.979Z"
+        }
+      },
+      {
+        "timestamp": "2026-11-09T13:59:49.391Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "error",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "timestamp": "2026-11-09T13:59:48.911Z",
+        "requestId": "8vjvg-1794232787661-f1b1d9cabf82",
+        "requestPath": "/",
+        "requestMethod": "GET",
+        "region": "iad1",
+        "source": "function",
+        "runtime": "nodejs22.x",
+        "level": "info",
+        "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+      },
+      {
+        "applicationEvent": {
+          "timestamp": "2026-11-09T13:59:48.909Z",
+          "level": "info",
+          "requestId": "3c605f14-16bf-41dc-877d-187945538806",
+          "route": "/api/_auth/session",
+          "method": "GET",
+          "status": 200,
+          "durationMs": 1.1,
+          "inferredStart": "2026-11-09T13:59:48.907Z"
+        }
+      }
+    ],
+    "exitCode": 0
+  },
+  "runtimeEvidence": {
+    "deploymentMetadataNodeVersion": "26.x",
+    "currentProjectConfiguredNodeVersion": "24.x",
+    "runtimeLogValues": ["nodejs22.x"],
+    "actualProcessVersionConfirmed": false,
+    "limitation": "Source metadata disagrees. No production process.version span was available; preserve all values without assuming they are equivalent."
+  },
+  "uiObservation": {
+    "available": false,
+    "error": "CryptUnprotectData failed: 2148073483",
+    "fallback": "Authenticated CLI worked. Requested user-provided request details for Start Type and Function Init."
+  },
+  "standaloneApiControls": [
+    {
+      "appRequestId": "eb5013a9-62b2-4d57-b37e-c0ab3a8ca42b",
+      "platformRequestId": "n8llf-1794233573062-be53ae8d0bcd",
+      "headers": {
+        "age": "0",
+        "cache-control": "no-store",
+        "content-length": "1393",
+        "content-type": "application/json",
+        "date": "Mon, 09 Nov 2026 14:12:54 GMT",
+        "x-public-cache": "MISS",
+        "x-request-id": "eb5013a9-62b2-4d57-b37e-c0ab3a8ca42b",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "iad1::iad1::n8llf-1794233573062-be53ae8d0bcd"
+      },
+      "clientTtfbMs": 2198.4374000000003,
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:12:54.813Z",
+              "requestId": "n8llf-1794233573062-be53ae8d0bcd",
+              "requestPath": "/api/home",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:12:54.812Z",
+                "level": "info",
+                "requestId": "eb5013a9-62b2-4d57-b37e-c0ab3a8ca42b",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 769.42,
+                "inferredStart": "2026-11-09T14:12:54.042Z"
+              }
+            },
+            {
+              "timestamp": "2026-11-09T14:12:54.517Z",
+              "requestId": "n8llf-1794233573062-be53ae8d0bcd",
+              "requestPath": "/api/home",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "error",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:12:53.062Z",
+              "requestId": "n8llf-1794233573062-be53ae8d0bcd",
+              "requestPath": "/api/home",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:12:54.812Z",
+        "level": "info",
+        "requestId": "eb5013a9-62b2-4d57-b37e-c0ab3a8ca42b",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 769.42,
+        "inferredStart": "2026-11-09T14:12:54.042Z"
+      }
+    },
+    {
+      "appRequestId": "0c881f53-8658-4bbb-b434-a02abbd4c467",
+      "platformRequestId": "v2rt2-1794233574919-202ac53f1e7c",
+      "headers": {
+        "age": "0",
+        "cache-control": "no-store",
+        "content-length": "1393",
+        "content-type": "application/json",
+        "date": "Mon, 09 Nov 2026 14:12:54 GMT",
+        "x-public-cache": "HIT",
+        "x-request-id": "0c881f53-8658-4bbb-b434-a02abbd4c467",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "iad1::iad1::v2rt2-1794233574919-202ac53f1e7c"
+      },
+      "clientTtfbMs": 129.91969999999992,
+      "records": [
+        {
+          "source": "runtime",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:12:54.955Z",
+              "requestId": "v2rt2-1794233574919-202ac53f1e7c",
+              "requestPath": "/api/home",
+              "requestMethod": "GET",
+              "region": "iad1",
+              "source": "function",
+              "runtime": "nodejs22.x",
+              "level": "info",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            },
+            {
+              "applicationEvent": {
+                "timestamp": "2026-11-09T14:12:54.954Z",
+                "level": "info",
+                "requestId": "0c881f53-8658-4bbb-b434-a02abbd4c467",
+                "route": "/api/home",
+                "method": "GET",
+                "status": 200,
+                "durationMs": 4.6,
+                "inferredStart": "2026-11-09T14:12:54.949Z"
+              }
+            }
+          ]
+        },
+        {
+          "source": "requests",
+          "exitCode": 0,
+          "records": [
+            {
+              "timestamp": "2026-11-09T14:12:54.919Z",
+              "requestId": "v2rt2-1794233574919-202ac53f1e7c",
+              "requestPath": "/api/home",
+              "requestMethod": "GET",
+              "httpStatus": 200,
+              "cacheResult": "MISS",
+              "deploymentId": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6"
+            }
+          ]
+        }
+      ],
+      "application": {
+        "timestamp": "2026-11-09T14:12:54.954Z",
+        "level": "info",
+        "requestId": "0c881f53-8658-4bbb-b434-a02abbd4c467",
+        "route": "/api/home",
+        "method": "GET",
+        "status": 200,
+        "durationMs": 4.6,
+        "inferredStart": "2026-11-09T14:12:54.949Z"
+      }
+    }
+  ]
+}

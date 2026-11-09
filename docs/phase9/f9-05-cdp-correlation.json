@@ -1,0 +1,759 @@
+{
+  "startedAt": "2026-11-09T13:59:52.773Z",
+  "deployment": {
+    "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+    "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+    "regions": ["iad1"],
+    "runtime": "26.x",
+    "readyState": "READY",
+    "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+    "projectConfiguredNodeVersion": "24.x",
+    "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+  },
+  "samples": [
+    {
+      "navigationId": "root-1-390",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+      "platformRequestId": "9kw96-1794232789859-1d16a2b1a38b",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.4011,
+      "absoluteReceiveHeadersStart": "2026-11-09T13:59:59.448Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:00:02.056Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T13:59:56.861Z",
+          "observedMonotonicMs": 9661.789,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "loaderId": "24BEF1195850492C36EE8A8ACA784A83",
+          "timestamp": 153503.763125,
+          "wallTime": 1794232796.857526,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T13:59:59.449Z",
+          "observedMonotonicMs": 12250.0572,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "headers": {
+            "x-vercel-id": "qxSp8nS5wDV9QBU25H4DMXzd1wzFbnPH"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:00:02.059Z",
+          "observedMonotonicMs": 14860.3526,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 13:59:52 GMT",
+            "x-request-id": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::9kw96-1794232789859-1d16a2b1a38b"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:00:02.079Z",
+          "observedMonotonicMs": 14880.3738,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "timestamp": 153508.972284,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 13:59:52 GMT",
+            "x-request-id": "146a2596-f98b-489b-bcd7-52ecfc53b948",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::9kw96-1794232789859-1d16a2b1a38b"
+          },
+          "timing": {
+            "requestTime": 153503.764767,
+            "proxyStart": 0.401,
+            "proxyEnd": 2290.861,
+            "dnsStart": 2291.21,
+            "dnsEnd": 2296.655,
+            "connectStart": 2296.86,
+            "connectEnd": 2494.799,
+            "sslStart": 2323.329,
+            "sslEnd": 2494.685,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 2496.484,
+            "sendEnd": 2498.015,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 2589.481,
+            "receiveHeadersEnd": 5197.82
+          },
+          "connectionId": 29,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 706
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:00:02.111Z",
+          "observedMonotonicMs": 14911.8387,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "timestamp": 153508.997994,
+          "dataLength": 71131,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:00:02.123Z",
+          "observedMonotonicMs": 14924.2507,
+          "requestId": "24BEF1195850492C36EE8A8ACA784A83",
+          "timestamp": 153508.968384,
+          "encodedDataLength": 15038
+        }
+      ]
+    },
+    {
+      "navigationId": "root-1-1440",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+      "platformRequestId": "v5mbz-1794232795282-0113b5651995",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.386,
+      "absoluteReceiveHeadersStart": "2026-11-09T14:00:04.872Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:00:04.971Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T14:00:04.586Z",
+          "observedMonotonicMs": 17387.2928,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "loaderId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "timestamp": 153511.489196,
+          "wallTime": 1794232804.583582,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T14:00:04.874Z",
+          "observedMonotonicMs": 17674.4534,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "headers": {
+            "x-vercel-id": "HykKFoFXDpZ5aUEYDuO90X3T4g4xasRK"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:00:04.975Z",
+          "observedMonotonicMs": 17776.3234,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 13:59:55 GMT",
+            "x-request-id": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::v5mbz-1794232795282-0113b5651995"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:00:04.981Z",
+          "observedMonotonicMs": 17782.0712,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "timestamp": 153511.885218,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 13:59:55 GMT",
+            "x-request-id": "a7df25df-915e-43df-bd68-7210b6ff80b4",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::v5mbz-1794232795282-0113b5651995"
+          },
+          "timing": {
+            "requestTime": 153511.490218,
+            "proxyStart": 0.159,
+            "proxyEnd": 2.929,
+            "dnsStart": 3.02,
+            "dnsEnd": 4.592,
+            "connectStart": 4.703,
+            "connectEnd": 196.593,
+            "sslStart": 31.042,
+            "sslEnd": 196.57,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 197.122,
+            "sendEnd": 197.958,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 288.133,
+            "receiveHeadersEnd": 387.011
+          },
+          "connectionId": 288,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 707
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:00:05.017Z",
+          "observedMonotonicMs": 17817.881,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "timestamp": 153511.894129,
+          "dataLength": 71158,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:00:05.020Z",
+          "observedMonotonicMs": 17820.9871,
+          "requestId": "F6009351EEBF24D51E5FA92BC486AA65",
+          "timestamp": 153511.882045,
+          "encodedDataLength": 15021
+        }
+      ]
+    },
+    {
+      "navigationId": "root-2-390",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+      "platformRequestId": "ttsx9-1794232870672-429cf0e8c02e",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.4119,
+      "absoluteReceiveHeadersStart": "2026-11-09T14:01:20.259Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:01:20.729Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T14:01:19.960Z",
+          "observedMonotonicMs": 92760.2866,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "loaderId": "273684B14D43F8F6CDB3E5C625204364",
+          "timestamp": 153586.863655,
+          "wallTime": 1794232879.958067,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T14:01:20.260Z",
+          "observedMonotonicMs": 93060.2626,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "headers": {
+            "x-vercel-id": "I0edOHLCkaZACERxFcmq0zkpbytkDreh"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:01:20.732Z",
+          "observedMonotonicMs": 93533.0505,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:01:11 GMT",
+            "x-request-id": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::ttsx9-1794232870672-429cf0e8c02e"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:01:20.733Z",
+          "observedMonotonicMs": 93533.7122,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "timestamp": 153587.637815,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:01:11 GMT",
+            "x-request-id": "8782e783-52f4-4c29-b15a-b80cfdd5fb2c",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::ttsx9-1794232870672-429cf0e8c02e"
+          },
+          "timing": {
+            "requestTime": 153586.866778,
+            "proxyStart": 0.443,
+            "proxyEnd": 10.042,
+            "dnsStart": 10.362,
+            "dnsEnd": 16.694,
+            "connectStart": 16.93,
+            "connectEnd": 207.103,
+            "sslStart": 43.545,
+            "sslEnd": 207.071,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 207.734,
+            "sendEnd": 208.067,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 298.359,
+            "receiveHeadersEnd": 768.675
+          },
+          "connectionId": 29,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 704
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:01:20.765Z",
+          "observedMonotonicMs": 93565.2903,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "timestamp": 153587.644642,
+          "dataLength": 71158,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:01:20.766Z",
+          "observedMonotonicMs": 93566.3101,
+          "requestId": "273684B14D43F8F6CDB3E5C625204364",
+          "timestamp": 153587.63807,
+          "encodedDataLength": 15017
+        }
+      ]
+    },
+    {
+      "navigationId": "root-2-1440",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "2e29fd25-c416-4ccc-acf5-27257085e352",
+      "platformRequestId": "4blsk-1794232874952-469e2ba5b1d5",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.371,
+      "absoluteReceiveHeadersStart": "2026-11-09T14:01:24.541Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:01:24.665Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T14:01:24.258Z",
+          "observedMonotonicMs": 97058.7027,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "loaderId": "0D490555E42058D2B3A89D8771A4547C",
+          "timestamp": 153591.16392,
+          "wallTime": 1794232884.258291,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T14:01:24.542Z",
+          "observedMonotonicMs": 97342.4569,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "headers": {
+            "x-vercel-id": "tp0KkYHWY7SRX3kWGcYDAqCJpfNZnyJk"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:01:24.666Z",
+          "observedMonotonicMs": 97466.2202,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:01:15 GMT",
+            "x-request-id": "2e29fd25-c416-4ccc-acf5-27257085e352",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::4blsk-1794232874952-469e2ba5b1d5"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:01:24.668Z",
+          "observedMonotonicMs": 97468.4504,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "timestamp": 153591.573383,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:01:15 GMT",
+            "x-request-id": "2e29fd25-c416-4ccc-acf5-27257085e352",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::4blsk-1794232874952-469e2ba5b1d5"
+          },
+          "timing": {
+            "requestTime": 153591.164996,
+            "proxyStart": 0.143,
+            "proxyEnd": 1.816,
+            "dnsStart": 1.881,
+            "dnsEnd": 2.396,
+            "connectStart": 2.455,
+            "connectEnd": 190.85,
+            "sslStart": 28.907,
+            "sslEnd": 190.839,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 191.212,
+            "sendEnd": 191.405,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 282.577,
+            "receiveHeadersEnd": 406.345
+          },
+          "connectionId": 288,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 705
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:01:24.698Z",
+          "observedMonotonicMs": 97499.0369,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "timestamp": 153591.578864,
+          "dataLength": 71158,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:01:24.699Z",
+          "observedMonotonicMs": 97499.4273,
+          "requestId": "0D490555E42058D2B3A89D8771A4547C",
+          "timestamp": 153591.572751,
+          "encodedDataLength": 15021
+        }
+      ]
+    },
+    {
+      "navigationId": "root-3-390",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+      "platformRequestId": "bnrk6-1794232947742-99e6f2900c77",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.514,
+      "absoluteReceiveHeadersStart": "2026-11-09T14:02:37.332Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:02:37.648Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T14:02:37.028Z",
+          "observedMonotonicMs": 169828.2155,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "loaderId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "timestamp": 153663.929571,
+          "wallTime": 1794232957.024085,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T14:02:37.332Z",
+          "observedMonotonicMs": 170132.9192,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "headers": {
+            "x-vercel-id": "f2o5xfL7GDi52IZZqqTvExNuKiZslbUt"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:02:37.649Z",
+          "observedMonotonicMs": 170449.4111,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:02:28 GMT",
+            "x-request-id": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::bnrk6-1794232947742-99e6f2900c77"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:02:37.653Z",
+          "observedMonotonicMs": 170453.128,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "timestamp": 153664.556379,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:02:28 GMT",
+            "x-request-id": "a3e1edf4-9772-4af7-a017-14c824e62dfd",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::bnrk6-1794232947742-99e6f2900c77"
+          },
+          "timing": {
+            "requestTime": 153663.93262,
+            "proxyStart": 0.434,
+            "proxyEnd": 9.957,
+            "dnsStart": 10.279,
+            "dnsEnd": 19.214,
+            "connectStart": 19.414,
+            "connectEnd": 210.396,
+            "sslStart": 45.836,
+            "sslEnd": 210.362,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 211.063,
+            "sendEnd": 211.407,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 305.192,
+            "receiveHeadersEnd": 621.456
+          },
+          "connectionId": 29,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 705
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:02:37.682Z",
+          "observedMonotonicMs": 170482.0542,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "timestamp": 153664.563662,
+          "dataLength": 71158,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:02:37.682Z",
+          "observedMonotonicMs": 170482.4186,
+          "requestId": "BE0E9F487B4D4E4855A2D9815D83F36E",
+          "timestamp": 153664.55733,
+          "encodedDataLength": 15017
+        }
+      ]
+    },
+    {
+      "navigationId": "root-3-1440",
+      "deployment": {
+        "id": "dpl_MgtJxCrjWpz6eTQArZMck2GCcBU6",
+        "sha": "675b73967d99f2c12b40fbf750a54125c0c65696",
+        "regions": ["iad1"],
+        "runtime": "26.x",
+        "readyState": "READY",
+        "projectId": "prj_D4H1xMiLdw4VO60ewh6msk3MRUlR",
+        "projectConfiguredNodeVersion": "24.x",
+        "runtimeSource": "Deployment nodeVersion, separate from current projectSettings.nodeVersion"
+      },
+      "appRequestId": "3e826005-b298-4a44-886f-aadb7349f291",
+      "platformRequestId": "f4t5d-1794232952068-70ae499a6b2f",
+      "cdpMonotonicToWallOffsetMs": 1794079293094.3809,
+      "absoluteReceiveHeadersStart": "2026-11-09T14:02:41.655Z",
+      "absoluteReceiveHeadersEnd": "2026-11-09T14:02:41.739Z",
+      "events": [
+        {
+          "type": "requestWillBeSent",
+          "observedAt": "2026-11-09T14:02:41.370Z",
+          "observedMonotonicMs": 174169.9236,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "loaderId": "B29840A47133CD853F1E1689769B0EAB",
+          "timestamp": 153668.275236,
+          "wallTime": 1794232961.369617,
+          "url": "https://ajksolutions-ecommerce-neon.vercel.app/",
+          "method": "GET",
+          "redirectStatus": null
+        },
+        {
+          "type": "responseReceivedEarlyHints",
+          "observedAt": "2026-11-09T14:02:41.655Z",
+          "observedMonotonicMs": 174455.7397,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "headers": {
+            "x-vercel-id": "A1PHe6WceICVwK6oDIWj1nJDxbNGI8jf"
+          }
+        },
+        {
+          "type": "responseReceivedExtraInfo",
+          "observedAt": "2026-11-09T14:02:41.740Z",
+          "observedMonotonicMs": 174540.7973,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "statusCode": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:02:32 GMT",
+            "x-request-id": "3e826005-b298-4a44-886f-aadb7349f291",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::f4t5d-1794232952068-70ae499a6b2f"
+          },
+          "resourceIPAddressSpace": "Public"
+        },
+        {
+          "type": "responseReceived",
+          "observedAt": "2026-11-09T14:02:41.743Z",
+          "observedMonotonicMs": 174543.4049,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "timestamp": 153668.648082,
+          "status": 200,
+          "headers": {
+            "age": "0",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-encoding": "br",
+            "content-type": "text/html;charset=utf-8",
+            "date": "Mon, 09 Nov 2026 14:02:32 GMT",
+            "x-request-id": "3e826005-b298-4a44-886f-aadb7349f291",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "iad1::iad1::f4t5d-1794232952068-70ae499a6b2f"
+          },
+          "timing": {
+            "requestTime": 153668.276159,
+            "proxyStart": 0.189,
+            "proxyEnd": 1.702,
+            "dnsStart": 1.76,
+            "dnsEnd": 2.249,
+            "connectStart": 2.309,
+            "connectEnd": 194.381,
+            "sslStart": 27.762,
+            "sslEnd": 194.368,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 194.821,
+            "sendEnd": 195.128,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 284.848,
+            "receiveHeadersEnd": 369.32
+          },
+          "connectionId": 288,
+          "connectionReused": false,
+          "protocol": "h2",
+          "remoteIPAddress": "64.29.17.131",
+          "remotePort": 443,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 705
+        },
+        {
+          "type": "dataReceived",
+          "observedAt": "2026-11-09T14:02:41.768Z",
+          "observedMonotonicMs": 174568.7268,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "timestamp": 153668.653919,
+          "dataLength": 71158,
+          "encodedDataLength": 0
+        },
+        {
+          "type": "loadingFinished",
+          "observedAt": "2026-11-09T14:02:41.770Z",
+          "observedMonotonicMs": 174570.0604,
+          "requestId": "B29840A47133CD853F1E1689769B0EAB",
+          "timestamp": 153668.647288,
+          "encodedDataLength": 15019
+        }
+      ]
+    }
+  ]
+}

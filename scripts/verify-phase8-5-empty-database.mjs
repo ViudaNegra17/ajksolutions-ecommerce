@@ -35,7 +35,7 @@ try {
   await run(['db:deploy'])
   await run(['exec', 'prisma', 'migrate', 'status'])
   await run(['db:seed'])
-  await run(['exec', 'vitest', 'run', 'tests/integration'])
+  await run(['exec', 'vitest', 'run', 'tests/integration', '--maxWorkers=1'])
   const verify = new Client({ connectionString: targetUrl.toString() })
   await verify.connect()
   try {

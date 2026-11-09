@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       appUrl: normalizeAppUrl(process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000')
     }
   },
+  routeRules: { '/login': { redirect: { to: '/admin/login', statusCode: 302 } } },
   compatibilityDate: '2026-06-30',
   nitro: { storage: { 'public-cache': { driver: 'memory' } } },
   // Keep production bundling independent from vite-plugin-checker's Windows path parsing.

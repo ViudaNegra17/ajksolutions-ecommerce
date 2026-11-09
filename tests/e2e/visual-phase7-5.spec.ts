@@ -137,6 +137,7 @@ for (const width of [390, 1440]) {
       if (screen === 'cart' || screen === 'checkout') {
         await page.waitForFunction(() => localStorage.getItem('ajksolutions-cart') !== null)
         await page.getByTestId('add-to-cart').click()
+        await expect(page.getByText('Producto agregado', { exact: true })).toBeVisible()
         await expect(page.getByTestId('cart-count')).toHaveText('1')
         await page.getByLabel('Carrito', { exact: true }).click()
         if (screen === 'checkout') {
@@ -148,6 +149,9 @@ for (const width of [390, 1440]) {
 
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible({ timeout: 45_000 })
       await page.evaluate(() => document.fonts.ready)
+      if (screen === 'cart' || screen === 'checkout') {
+        await expect(page.getByText('Producto agregado', { exact: true })).toBeHidden({ timeout: 10_000 })
+      }
       if (screen === 'home') {
         const backing = page.locator('section[aria-labelledby="home-support"]')
         const how = page.locator('section[aria-labelledby="home-how"]')

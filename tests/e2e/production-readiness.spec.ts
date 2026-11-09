@@ -3,6 +3,15 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('Phase 8 production readiness', () => {
+  test('redirects the login entry to the protected administrative sign-in', async ({ request }) => {
+    const response = await request.get('/login', { maxRedirects: 0 })
+    expect(response.status()).toBe(302)
+    expect(response.headers().location).toBe('/admin/login')
+    const login = await request.get('/admin/login')
+    expect(login.status()).toBe(200)
+    expect(await login.text()).toContain('Acceso administrativo')
+  })
+
   test('serves correlation and security headers without development HSTS', async ({ request }) => {
     const response = await request.get('/')
     expect(response.status()).toBe(200)

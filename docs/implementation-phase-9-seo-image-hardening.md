@@ -2,6 +2,12 @@
 
 Inicio 2026-11-08 y cierre 2026-11-09, America/Guayaquil.
 
+## Actualización 2026-11-09 — investigación F9-05 y smoke F9-06
+
+F9-05 PARTIAL. Se reprodujo TTFB 9673.5 ms y LCP 12760 ms en Chromium productivo. El request cc923c96-2bf4-43f0-947d-644cd5d958e3 se correlacionó con 1663.48 ms dentro de la aplicación. La causa completa del pico sigue pendiente de aislamiento. Se completaron doce procesos HTTP locales, seis procesos locales con navegador, dieciocho navegaciones productivas y observación separada de consultas, caché, SSR y chunks. [Investigación y límites](implementation-phase-9-performance-investigation.md).
+
+El operador eliminó manualmente desde Administración → Servicios → Diagnóstico técnico la URL externa de imagen. El API productivo confirma imagen null. F9-06 permanece CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING. El alias sigue en 675b739, anterior al fallback compartido, y Home publica otros dos servicios. El smoke móvil y escritorio registró cero solicitudes a los orígenes retirados, cero ORB observado y CLS 0. Listado y ficha conservan precio, CTA y formulario. La validación del nuevo placeholder en las tres superficies depende del candidato desplegado y del servicio publicado en Home. [Evidencia productiva](phase9/f9-06-production-smoke.json).
+
 ## Baseline
 
 HEAD inicial `39f96401ce6e43a19ccec6a8405d1f74c0503763`, rama main y árbol limpio. PASS 27 PASSED. Nuxt 4.6.3, Vue 3.5.44, Zod 4.6.6 y Pinia 3.0.4. Baseline de 169 Vitest, 62 E2E, 19 visuales y build aprobado. Prisma CLI/Client/adapter 7.10.0, schema y 14 migraciones registrados por SHA256. Audit --prod posterior a PASS 27 con cero críticos y altos.
@@ -28,7 +34,7 @@ El placeholder para URL ausente ocupa ahora el espacio de imagen en Home y ficha
 
 ## Estado del contenido productivo
 
-**F9-06 — CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE.**
+**F9-06 — CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING.**
 
 El contenido local se inspeccionó mediante lecturas. El reemplazo del dato productivo y su validación final requieren el smoke del candidato desplegado. Las URLs ficticias del test se limitan a fixtures y respuestas interceptadas en PostgreSQL temporal. El logo institucional se utiliza únicamente como imagen de prueba válida de esos fixtures.
 
@@ -68,7 +74,7 @@ F9-09 queda RESOLVED INCIDENTALLY BY PASS 27. La revisión encontró cuatro depr
 
 ## Estado
 
-**PARTIAL operativo.** F9-08 CLOSED, F9-09 RESOLVED INCIDENTALLY BY PASS 27 y F9-06 CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE. Código y QA locales aprobados.
+**PARTIAL operativo.** F9-08 CLOSED, F9-09 RESOLVED INCIDENTALLY BY PASS 27 y F9-06 CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING. Código y QA locales aprobados.
 
 ## F9-06 + F9-08 FINAL REPORT
 
@@ -86,7 +92,7 @@ La causa de presentación era la falta de estado de error de imagen en Home, lis
 
 PublicServiceImage retira la imagen fallida y presenta wrench accesible en el contenedor AJK estable. Los casos null, URL válida y respuesta no decodificable aprobaron en las tres superficies. Se verificaron dimensiones, alt, navegación, precio y CTA.
 
-**CODE FIXED / PRODUCTION DATA PENDING FINAL SMOKE.** El dato local actual cargó. La validación del contenido productivo definitivo conserva su pendiente.
+**CODE FIXED / PRODUCTION DATA CORRECTED / FINAL SMOKE PENDING.** El dato local actual cargó. La validación del contenido productivo definitivo conserva su pendiente.
 
 ### F9-08
 

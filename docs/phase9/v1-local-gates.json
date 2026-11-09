@@ -1,0 +1,249 @@
+{
+  "date": "2026-11-09",
+  "scope": "Final V1 gates with isolated PostgreSQL and production logging cleanup",
+  "commit": "cd7b7b4ef8c6027941b6107244df2d9cf8a68716",
+  "temporaryDatabase": "ajk_v1_10408_c41c00d0",
+  "beforeHashes": {
+    "prisma/schema.prisma": "de40e04aa3b056eb3354289687d7c2bbb109ea0c6ee4c2c656a35e4a272bc52e",
+    "prisma/migrations/20260828000000_init_auth_rbac/migration.sql": "5becc54ae7df3c045f849b2df8d5559000413435bdce1eee27e68c5241354563",
+    "prisma/migrations/20260829175358_phase2_catalog_inventory/migration.sql": "4af7aa0dc12c18e95521b37544a267272062658a4d4fbc8998e4249c24ec297c",
+    "prisma/migrations/20260830090000_phase2_1_integrity_hardening/migration.sql": "448af1304f4ac06b8f3466840e631d724c0b01617bc4bf2da902fcba837a1637",
+    "prisma/migrations/20260830191321_phase4_services_tickets/migration.sql": "4d8bbab8cfd694032ab41ddce030704405a2bb81a52f7bb5f2fa97df19101d40",
+    "prisma/migrations/20260831090000_phase4_1_ticket_customer_hardening/migration.sql": "e9ce4aa6bdff367fd1dd7d9fabf0694cc6bd56b4c29bd56ee140ed519abd3030",
+    "prisma/migrations/20260831150000_phase5_cart_checkout_orders/migration.sql": "039c21c5e001109cf3e96137f1f9cc8a7289280de8f6fa12e8ec35e52ca2e0bc",
+    "prisma/migrations/20260903090000_phase5_1_order_integrity_hardening/migration.sql": "472a0ae77ab62e0a62fe6aca7c832b56fe29cb25882755bab0e9f67125167613",
+    "prisma/migrations/20260903180000_phase6_digital_products_licenses/migration.sql": "dd1a13940eb1e9ef284570e3a03c893512ac00e88a8d73770fa7919292aab3f0",
+    "prisma/migrations/20260903210000_phase6_1_license_buy_now_integrity/migration.sql": "139331d0547f89fe5902399188c4b7119578ec0d82a51650b1b2995561403131",
+    "prisma/migrations/20260903223000_phase6_2_simplify_digital_domain/migration.sql": "7271187e9e52f959e5a19e744cdce9bfce96e9429a84ed20d8e64c0ad9b647f3",
+    "prisma/migrations/20260904120000_phase7_operations_content/migration.sql": "b50e5f1654a753ebb30bb76a52bdcbb6410157c187787a1a772b0138e2e6f1e8",
+    "prisma/migrations/20260904150000_phase7_banner_promotion_integrity_hardening/migration.sql": "bf9d11c617182555fba3118693987994d21cd067c653a0bfc215d4ebf4210e6c",
+    "prisma/migrations/20260911090000_phase8_observability/migration.sql": "e44fb797c8d90f6793bc4fb23df0b91fd4684e894027cb0f0fbbfd819e034067",
+    "prisma/migrations/20261002090000_phase8_5_product_barcode/migration.sql": "9fb221e519a238c6a786c62dd60f1a733c3dc5a4108accde7118917ca81fcc75"
+  },
+  "checks": [
+    {
+      "label": "prisma-format",
+      "command": "pnpm exec prisma format --check",
+      "exitCode": 0,
+      "durationMs": 5072,
+      "log": "logs/v1/qa-prisma-format.log"
+    },
+    {
+      "label": "prisma-validate",
+      "command": "pnpm exec prisma validate",
+      "exitCode": 0,
+      "durationMs": 5471,
+      "log": "logs/v1/qa-prisma-validate.log"
+    },
+    {
+      "label": "db-generate",
+      "command": "pnpm db:generate",
+      "exitCode": 0,
+      "durationMs": 5491,
+      "log": "logs/v1/qa-db-generate.log"
+    },
+    {
+      "label": "lint",
+      "command": "pnpm lint",
+      "exitCode": 1,
+      "durationMs": 32902,
+      "log": "logs/v1/qa-lint.log"
+    },
+    {
+      "label": "format",
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "durationMs": 14635,
+      "log": "logs/v1/qa-format.log"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "durationMs": 58788,
+      "log": "logs/v1/qa-typecheck.log"
+    },
+    {
+      "label": "db-deploy",
+      "command": "pnpm db:deploy",
+      "exitCode": 0,
+      "durationMs": 5104,
+      "log": "logs/v1/qa-db-deploy.log"
+    },
+    {
+      "label": "db-status",
+      "command": "pnpm exec prisma migrate status",
+      "exitCode": 0,
+      "durationMs": 4151,
+      "log": "logs/v1/qa-db-status.log"
+    },
+    {
+      "label": "db-seed",
+      "command": "pnpm db:seed",
+      "exitCode": 0,
+      "durationMs": 2784,
+      "log": "logs/v1/qa-db-seed.log"
+    },
+    {
+      "label": "vitest",
+      "command": "pnpm test",
+      "exitCode": 0,
+      "durationMs": 54155,
+      "log": "logs/v1/qa-vitest.log"
+    },
+    {
+      "label": "database-isolated",
+      "command": "pnpm test:database:phase8-5",
+      "exitCode": 0,
+      "durationMs": 63407,
+      "log": "logs/v1/qa-database-isolated.log"
+    },
+    {
+      "label": "e2e",
+      "command": "pnpm test:e2e",
+      "exitCode": 0,
+      "durationMs": 369579,
+      "log": "logs/v1/qa-e2e.log"
+    },
+    {
+      "label": "visual",
+      "command": "pnpm test:visual",
+      "exitCode": 0,
+      "durationMs": 158134,
+      "log": "logs/v1/qa-visual.log"
+    },
+    {
+      "label": "build",
+      "command": "pnpm build",
+      "exitCode": 0,
+      "durationMs": 73514,
+      "log": "logs/v1/qa-build.log"
+    },
+    {
+      "label": "ssr-artifact",
+      "command": "node logs/v1/ssr-smoke.mjs",
+      "exitCode": 0,
+      "durationMs": 6152,
+      "log": "logs/v1/qa-ssr-artifact.log"
+    }
+  ],
+  "cleanup": true,
+  "afterHashes": {
+    "prisma/schema.prisma": "de40e04aa3b056eb3354289687d7c2bbb109ea0c6ee4c2c656a35e4a272bc52e",
+    "prisma/migrations/20260828000000_init_auth_rbac/migration.sql": "5becc54ae7df3c045f849b2df8d5559000413435bdce1eee27e68c5241354563",
+    "prisma/migrations/20260829175358_phase2_catalog_inventory/migration.sql": "4af7aa0dc12c18e95521b37544a267272062658a4d4fbc8998e4249c24ec297c",
+    "prisma/migrations/20260830090000_phase2_1_integrity_hardening/migration.sql": "448af1304f4ac06b8f3466840e631d724c0b01617bc4bf2da902fcba837a1637",
+    "prisma/migrations/20260830191321_phase4_services_tickets/migration.sql": "4d8bbab8cfd694032ab41ddce030704405a2bb81a52f7bb5f2fa97df19101d40",
+    "prisma/migrations/20260831090000_phase4_1_ticket_customer_hardening/migration.sql": "e9ce4aa6bdff367fd1dd7d9fabf0694cc6bd56b4c29bd56ee140ed519abd3030",
+    "prisma/migrations/20260831150000_phase5_cart_checkout_orders/migration.sql": "039c21c5e001109cf3e96137f1f9cc8a7289280de8f6fa12e8ec35e52ca2e0bc",
+    "prisma/migrations/20260903090000_phase5_1_order_integrity_hardening/migration.sql": "472a0ae77ab62e0a62fe6aca7c832b56fe29cb25882755bab0e9f67125167613",
+    "prisma/migrations/20260903180000_phase6_digital_products_licenses/migration.sql": "dd1a13940eb1e9ef284570e3a03c893512ac00e88a8d73770fa7919292aab3f0",
+    "prisma/migrations/20260903210000_phase6_1_license_buy_now_integrity/migration.sql": "139331d0547f89fe5902399188c4b7119578ec0d82a51650b1b2995561403131",
+    "prisma/migrations/20260903223000_phase6_2_simplify_digital_domain/migration.sql": "7271187e9e52f959e5a19e744cdce9bfce96e9429a84ed20d8e64c0ad9b647f3",
+    "prisma/migrations/20260904120000_phase7_operations_content/migration.sql": "b50e5f1654a753ebb30bb76a52bdcbb6410157c187787a1a772b0138e2e6f1e8",
+    "prisma/migrations/20260904150000_phase7_banner_promotion_integrity_hardening/migration.sql": "bf9d11c617182555fba3118693987994d21cd067c653a0bfc215d4ebf4210e6c",
+    "prisma/migrations/20260911090000_phase8_observability/migration.sql": "e44fb797c8d90f6793bc4fb23df0b91fd4684e894027cb0f0fbbfd819e034067",
+    "prisma/migrations/20261002090000_phase8_5_product_barcode/migration.sql": "9fb221e519a238c6a786c62dd60f1a733c3dc5a4108accde7118917ca81fcc75"
+  },
+  "schemaAndMigrationsUnchanged": true,
+  "rechecks": [
+    {
+      "label": "lint",
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "reason": "Nuxt config key order corrected by ESLint after adding the verified /login redirect. All other gates then passed."
+    }
+  ],
+  "counts": {
+    "vitest": 184,
+    "databaseIsolated": 57,
+    "e2e": 74,
+    "visual": 19
+  },
+  "e2eCountChange": "One added compatibility redirect regression for the observed /login 404; previous 73 retained.",
+  "visualReview": {
+    "initialResult": "18/19",
+    "cause": "Expected cart-390 snapshot contained transient toast and DevTools overlay",
+    "reviewed": ["cart-390 expected vs actual", "cart-1440 expected"],
+    "changed": ["cart-390-chromium-win32.png"],
+    "settledCartRetest": "2/2 PASS",
+    "fullVisual": "19/19 PASS",
+    "automaticGoldenUpdate": false
+  },
+  "ssr": {
+    "scope": "LOCAL ONLY, fresh built candidate with isolated temporary database",
+    "nodeProcessVersion": "v24.15.0",
+    "serverPid": 15260,
+    "routes": [
+      {
+        "path": "/",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "status": 200,
+        "hydrated": true
+      },
+      {
+        "path": "/servicios",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "status": 200,
+        "hydrated": true
+      },
+      {
+        "path": "/servicios/diagnostico-tecnico",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "status": 200,
+        "hydrated": true
+      },
+      {
+        "path": "/",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "status": 200,
+        "hydrated": true
+      },
+      {
+        "path": "/servicios",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "status": 200,
+        "hydrated": true
+      },
+      {
+        "path": "/servicios/diagnostico-tecnico",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "status": 200,
+        "hydrated": true
+      }
+    ],
+    "health": [
+      {
+        "path": "/api/health/live",
+        "status": 200
+      },
+      {
+        "path": "/api/health/ready",
+        "status": 200
+      }
+    ],
+    "runtimeMarkers": [],
+    "success": true,
+    "firstRequestId": "8a81ecf4-90d8-42f4-b20a-dd40925b279f",
+    "pageErrors": []
+  },
+  "finalLocalStatus": "PASS after documented lint recheck"
+}
