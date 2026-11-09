@@ -65,12 +65,11 @@ useHead(() => ({
           {{ service.name }}
         </h1>
         <p class="mt-5 text-xl leading-8 text-default">{{ service.shortDescription }}</p>
-        <NuxtImg
-          v-if="service.image"
+        <PublicServiceImage
           :src="service.image"
           :alt="service.name"
-          width="1000"
-          height="560"
+          :width="1000"
+          :height="560"
           class="mt-8 aspect-video w-full rounded-2xl object-cover"
         />
         <PublicDescription

@@ -34,12 +34,11 @@ defineProps<{ services: PublicServiceCard[] }>()
           :aria-labelledby="`home-service-${service.slug}-title home-service-${service.slug}-cta`"
           class="home-services__card"
         >
-          <NuxtImg
-            v-if="service.image"
+          <PublicServiceImage
             :src="service.image"
             :alt="service.name"
-            width="640"
-            height="360"
+            :width="640"
+            :height="360"
             sizes="100vw sm:640px lg:50vw xl:640px"
             loading="lazy"
             class="home-services__image"

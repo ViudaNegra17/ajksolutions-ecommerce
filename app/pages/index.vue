@@ -2,6 +2,8 @@
 import type { ApiSuccess } from '#shared/types/api'
 import type { PublicBanner, PublicSettings } from '#shared/types/public-catalog'
 import type { PublicServiceCard } from '#shared/types/services'
+import { homeStructuredData } from '#shared/utils/seo'
+import { serializeJsonLd } from '#shared/utils/public-catalog'
 
 type HomeData = { settings: PublicSettings; services: PublicServiceCard[]; banners: PublicBanner[] }
 const config = useRuntimeConfig()
@@ -23,7 +25,16 @@ useSeoMeta({
   twitterDescription: () =>
     home.value?.settings.seo.description || 'Productos, licencias digitales y servicios tecnológicos.'
 })
-useHead({ link: [{ rel: 'canonical', href: canonical }] })
+useHead(() => ({
+  link: [{ rel: 'canonical', href: canonical }],
+  script: home.value
+    ? homeStructuredData(home.value.settings, config.public.appUrl).map((schema) => ({
+        key: `home-${schema['@type']}`,
+        type: 'application/ld+json',
+        innerHTML: serializeJsonLd(schema)
+      }))
+    : []
+}))
 </script>
 
 <template>
